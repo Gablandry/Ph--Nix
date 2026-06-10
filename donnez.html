@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faire un don | Phé-Nix — Soutenez les personnes en situation d'itinérance</title>
+<meta name="description" content="Faites un don à Phé-Nix et aidez les sans-abris au Québec. Don sécurisé en ligne ou par Interac. Chaque dollar va directement sur le terrain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+.don-main {
+  background: #F7F5F2;
+  padding: 100px 72px;
+}
+.don-main-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+.don-form-large {
+  background: #fff;
+  border-radius: 24px;
+  padding: 44px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+.don-form-large h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 24px; color: #111; margin-bottom: 8px; }
+.don-form-large .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; color: #888; margin-bottom: 28px; }
+.don-toggle { display: flex; background: #F0EFED; border-radius: 8px; padding: 4px; margin-bottom: 28px; gap: 4px; }
+.don-toggle-btn { flex: 1; padding: 10px 16px; border: none; background: transparent; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; color: #888; cursor: pointer; transition: all 0.2s; }
+.don-toggle-btn.active { background: #fff; color: #111; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.don-amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.don-amount-btn { border: 1.5px solid #E5E3DF; background: transparent; border-radius: 12px; padding: 16px 8px; cursor: pointer; transition: all 0.2s; text-align: center; }
+.don-amount-btn:hover, .don-amount-btn.active { border-color: #FF5C1A; background: rgba(255,92,26,0.06); }
+.don-amount-price { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; color: #111; display: block; }
+.don-amount-btn.active .don-amount-price { color: #FF5C1A; }
+.don-amount-label { font-family: 'Inter', sans-serif; font-size: 11px; color: #999; display: block; margin-top: 3px; }
+.don-custom-input { width: 100%; border: 1.5px solid #E5E3DF; border-radius: 12px; padding: 16px 18px; font-family: 'Inter', sans-serif; font-size: 16px; color: #111; margin-bottom: 24px; transition: border-color 0.2s; box-sizing: border-box; outline: none; }
+.don-custom-input:focus { border-color: #FF5C1A; }
+.don-interac { text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; color: #AAA; margin-top: 20px; }
+.don-secure { text-align: center; font-family: 'Inter', sans-serif; font-size: 11px; color: #BBB; margin-top: 8px; }
+
+.don-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.don-info-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.don-info-card h4 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #111; margin-bottom: 16px; }
+.don-usage-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-size: 14px; color: #555; }
+.don-usage-bar { flex: 1; height: 6px; background: #F0EFED; border-radius: 3px; }
+.don-usage-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); }
+
+.pourquoi-section { background: #080808; padding: 100px 72px; }
+.pourquoi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 56px auto 0; }
+.pourquoi-card { background: #1A1A1A; border-radius: 16px; padding: 32px; }
+.pourquoi-icon { font-size: 32px; margin-bottom: 16px; }
+.pourquoi-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 12px; }
+.pourquoi-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+.faq-don-section { background: #F7F5F2; padding: 100px 72px; }
+
+@media (max-width: 900px) {
+  .don-main-inner { grid-template-columns: 1fr; }
+  .pourquoi-grid { grid-template-columns: 1fr; max-width: 440px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header scrolled" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="36" height="36"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Notre Mission</a></li>
+      <li><a href="participez.html">Participez avec nous</a></li>
+      <li><a href="programmes.html">Nos Programmes</a></li>
+      <li><a href="commanditaires.html">Nos Commanditaires</a></li>
+      <li><a href="donnez.html" class="active">Donnez</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
+      <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.72), rgba(8,8,8,0.72)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80') center/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center;">——— FAIRE UN DON</div>
+    <h1>Chaque don<br>nourrit une vie réelle.</h1>
+    <p>100% de votre don va directement sur le terrain. Pas de salaires, pas d'administratif : juste de l'action.</p>
+  </div>
+</section>
+
+<!-- FORMULAIRE PRINCIPAL -->
+<section class="don-main">
+  <div style="max-width:1100px; margin:0 auto 60px; text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">——— VOTRE CONTRIBUTION</div>
+    <h2 style="color:#111;">Choisissez votre contribution.</h2>
+    <p style="color:#555; font-size:16px; max-width:500px; margin:16px auto 0;">Simple, rapide, sécurisé.</p>
+  </div>
+  <div class="don-main-inner">
+    <div class="don-form-large">
+      <h3>Je fais un don</h3>
+      <p class="subtitle">Chaque dollar va directement sur le terrain.</p>
+      <div class="don-toggle">
+        <button class="don-toggle-btn active" onclick="setToggle(this)">Don unique</button>
+        <button class="don-toggle-btn" onclick="setToggle(this)">Don mensuel</button>
+      </div>
+      <div class="don-amounts">
+        <button class="don-amount-btn active" onclick="setAmount(this)"><span class="don-amount-price">10 $</span><span class="don-amount-label">Un repas</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">25 $</span><span class="don-amount-label">Vêtements</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">50 $</span><span class="don-amount-label">Transport</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">100 $</span><span class="don-amount-label">Distribution</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">250 $</span><span class="don-amount-label">Impact majeur</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">Autre</span><span class="don-amount-label">Montant libre</span></button>
+      </div>
+      <input class="don-custom-input" type="text" placeholder="$ Montant personnalisé">
+      <button class="btn btn-primary" style="width:100%;font-size:16px;padding:20px;">Procéder au don →</button>
+      <p class="don-interac">Ou par Interac : <strong>phenixactioncitoyenne@gmail.com</strong><br><span style="font-size:11px;">En note : "Don Phé-Nix"</span></p>
+      <p class="don-secure">🔒 Paiement sécurisé · Reçu envoyé par courriel sur demande</p>
+    </div>
+    <div class="don-sidebar">
+      <div class="don-info-card">
+        <h4>Comment votre don est utilisé</h4>
+        <div class="don-usage-item">
+          <span style="min-width:130px;">🍎 Nourriture</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" style="width:60%"></div></div>
+          <span style="color:#FF5C1A; font-weight:600; font-size:13px;">60%</span>
+        </div>
+        <div class="don-usage-item">
+          <span style="min-width:130px;">🧤 Vêtements</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" style="width:20%"></div></div>
+          <span style="color:#FF5C1A; font-weight:600; font-size:13px;">20%</span>
+        </div>
+        <div class="don-usage-item">
+          <span style="min-width:130px;">🚗 Transport</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" style="width:12%"></div></div>
+          <span style="color:#FF5C1A; font-weight:600; font-size:13px;">12%</span>
+        </div>
+        <div class="don-usage-item">
+          <span style="min-width:130px;">📦 Matériel</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" style="width:8%"></div></div>
+          <span style="color:#FF5C1A; font-weight:600; font-size:13px;">8%</span>
+        </div>
+      </div>
+      <div class="don-info-card">
+        <h4>Des questions ?</h4>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#666; line-height:1.65; margin-bottom:16px;">On est là pour vous répondre.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333; margin-bottom:8px;">📧 <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:#FF5C1A; text-decoration:none;">phenixactioncitoyenne@gmail.com</a></p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333;">📞 <a href="tel:4385263889" style="color:#FF5C1A; text-decoration:none;">(438) 526-3889</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI PHÉ-NIX -->
+<section class="pourquoi-section">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">——— POURQUOI PHÉ-NIX</div>
+    <h2 style="color:#fff;">Pourquoi Phé-Nix ?</h2>
+    <div class="pourquoi-grid">
+      <div class="pourquoi-card">
+        <div class="pourquoi-icon">🎯</div>
+        <h3>100% terrain</h3>
+        <p>Chaque dollar de don est utilisé pour acheter de la nourriture, des vêtements et du matériel. Zéro frais administratifs.</p>
+      </div>
+      <div class="pourquoi-card">
+        <div class="pourquoi-icon">📍</div>
+        <h3>Vrai impact local</h3>
+        <p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p>
+      </div>
+      <div class="pourquoi-card">
+        <div class="pourquoi-icon">💎</div>
+        <h3>Transparence totale</h3>
+        <p>Organisme à but non lucratif enregistré. Nous sommes disponibles pour toute question sur l'utilisation des dons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ DONS -->
+<section class="faq-don-section">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">——— QUESTIONS SUR LES DONS</div>
+      <h2 style="color:#111;">Questions fréquentes.</h2>
+    </div>
+    <div class="faq-list" style="max-width:760px; margin:48px auto 0;">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je obtenir un reçu fiscal pour mon don ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Oui, sur demande. Contactez-nous par courriel à phenixactioncitoyenne@gmail.com en précisant votre nom et le montant du don pour recevoir votre reçu.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je faire un don mensuel automatique ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Oui. Sélectionnez "Don mensuel" dans le formulaire pour mettre en place un don récurrent.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Mon don est-il sécurisé ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Oui. Tous les paiements sont traités via la plateforme Wix Payments, sécurisée et chiffrée.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je faire un don de matériel (vêtements, nourriture) ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Absolument ! Contactez-nous par courriel ou téléphone pour organiser un dépôt ou une collecte.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment annuler un don mensuel ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Écrivez-nous à phenixactioncitoyenne@gmail.com et nous nous en occuperons dans les 24h.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div><p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p><div class="footer-socials"><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div></div>
+    <div class="footer-col"><h4>NAVIGATION</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">Notre mission</a></li><li><a href="participez.html">Participez avec nous</a></li><li><a href="programmes.html">Nos programmes</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
+    <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+<script>
+function toggleFaq(btn) { const i = btn.closest('.faq-item'); const w = i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open')); if (!w) i.classList.add('open'); }
+function setToggle(btn) { btn.parentElement.querySelectorAll('.don-toggle-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+function setAmount(btn) { btn.closest('.don-amounts').querySelectorAll('.don-amount-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+const h = document.getElementById('site-header'); window.addEventListener('scroll', () => h.classList.toggle('scrolled', window.scrollY > 40));
+</script>
+</body>
+</html>

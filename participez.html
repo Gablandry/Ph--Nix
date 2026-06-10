@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Participez | Phé-Nix — Devenez bénévole au Québec</title>
+<meta name="description" content="Rejoignez l'équipe Phé-Nix comme bénévole. Aucune expérience requise — juste l'envie d'agir. Montréal, Longueuil, Gatineau et Trois-Rivières.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+.options-section {
+  background: #F7F5F2;
+  padding: 100px 72px;
+}
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 960px;
+  margin: 56px auto 0;
+}
+.option-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  border-top: 4px solid transparent;
+}
+.option-card.benevole { border-top-color: #FF5C1A; }
+.option-card.donateur { border-top-color: #D63FA3; }
+.option-icon { font-size: 48px; margin-bottom: 20px; }
+.option-card h3 { font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 700; color: #111; margin-bottom: 16px; }
+.option-card p { font-family: 'Inter', sans-serif; font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.option-detail { font-family: 'Inter', sans-serif; font-size: 13px; color: #888; margin-bottom: 28px; font-style: italic; }
+
+.experience-section {
+  background: #080808;
+  padding: 120px 72px;
+}
+.experience-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+.experience-image img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.experience-text h2 { color: #fff; margin: 24px 0 20px; }
+.experience-text p { color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+
+.faq-section {
+  background: #F7F5F2;
+  padding: 100px 72px;
+}
+.faq-section .section-header { text-align: center; max-width: 560px; margin: 0 auto 8px; }
+.faq-section h2 { color: #111; }
+
+.inscription-section {
+  background: #080808;
+  padding: 100px 72px;
+}
+.inscription-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.inscription-inner h2 { color: #fff; text-align: center; margin-bottom: 12px; }
+.inscription-subtitle {
+  text-align: center;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .options-grid { grid-template-columns: 1fr; }
+  .experience-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header scrolled" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="36" height="36"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Notre Mission</a></li>
+      <li><a href="participez.html" class="active">Participez avec nous</a></li>
+      <li><a href="programmes.html">Nos Programmes</a></li>
+      <li><a href="commanditaires.html">Nos Commanditaires</a></li>
+      <li><a href="donnez.html">Donnez</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
+      <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.75), rgba(8,8,8,0.75)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1400&q=80') center/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center;">——— DEVENEZ BÉNÉVOLE</div>
+    <h1>Impliquez-vous.<br>Votre présence suffit.</h1>
+    <p>Découvrez comment participer aux distributions Phé-Nix dans votre région.</p>
+  </div>
+</section>
+
+<!-- DEUX OPTIONS -->
+<section class="options-section">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">——— COMMENT PARTICIPER</div>
+      <h2 style="color:#111;">Choisissez votre façon<br>de faire une différence.</h2>
+    </div>
+    <div class="options-grid">
+      <div class="option-card benevole">
+        <div class="option-icon">🙌</div>
+        <h3>Bénévole terrain</h3>
+        <p>Venez distribuer nourriture, vêtements et écoute directement sur le terrain lors de nos distributions hebdomadaires.</p>
+        <p class="option-detail">2–4h par semaine · Régions multiples · Aucune expérience requise</p>
+        <a href="#inscription" class="btn btn-primary" style="width:100%;display:block;text-align:center;">M'inscrire comme bénévole</a>
+      </div>
+      <div class="option-card donateur">
+        <div class="option-icon">💛</div>
+        <h3>Soutien financier</h3>
+        <p>Votre don, même modeste, finance directement les distributions : nourriture, vêtements, transport.</p>
+        <p class="option-detail">10$ = un repas · 25$ = vêtements · 100$ = distribution complète</p>
+        <a href="donnez.html" class="btn" style="width:100%;display:block;text-align:center;background:#D63FA3;color:#fff;border-radius:10px;padding:16px;">Faire un don →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCE BÉNÉVOLE -->
+<section class="experience-section">
+  <div class="experience-inner">
+    <div class="experience-image">
+      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=700&q=80" alt="Bénévoles Phé-Nix sous la tente lors d'une distribution">
+    </div>
+    <div class="experience-text">
+      <div class="eyebrow">——— VIVEZ L'EXPÉRIENCE</div>
+      <h2>Vivez l'expérience de contribuer.</h2>
+      <p>Faire partie d'une distribution alimente le sens de l'accomplissement et vous fait valoir la gratitude des gens dans le besoin lors de notre arrivée. Que ce soit d'apporter du support moral, servir, jaser, votre simple présence suffit.</p>
+      <p>Non seulement agir avec Phé-Nix améliorera la vie de nombreuses personnes, mais cela aura aussi un impact sur votre propre vie, car vous saurez que vos actions ont du sens. Changer le monde se fait petit à petit, au quotidien.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-header" style="text-align:center; max-width:560px; margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">——— QUESTIONS FRÉQUENTES</div>
+      <h2 style="color:#111;">Tout ce que vous voulez savoir.</h2>
+    </div>
+    <div class="faq-list" style="max-width:760px; margin:48px auto 0;">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Faut-il avoir de l'expérience pour être bénévole ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Aucune expérience n'est nécessaire. Nous accueillons tout le monde, des jeunes aux aînés. L'équipe vous guidera sur place.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Quel est l'engagement de temps requis ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Une distribution dure généralement 2 à 4 heures. Il n'y a aucune obligation de fréquence — venez quand vous pouvez.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Où ont lieu les distributions ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">À Montréal, Longueuil, St-Jean-sur-le-Richelieu, Gatineau et Trois-Rivières. Lors de votre inscription, on vous indique le lieu le plus proche de chez vous.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Est-ce que les adolescents peuvent participer ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Oui, les jeunes de 16 ans et plus sont les bienvenus, accompagnés d'un adulte. C'est une belle expérience pour toute la famille.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Que faut-il apporter ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">Rien de particulier. Des vêtements confortables adaptés à la météo. Tout le matériel est fourni par l'organisation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Comment rester informé des prochaines distributions ? <span class="faq-arrow">+</span></button>
+        <div class="faq-answer">En vous inscrivant via le formulaire ci-dessous, vous recevrez les informations pour votre région par courriel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAIRE INSCRIPTION -->
+<section class="inscription-section" id="inscription">
+  <div class="inscription-inner">
+    <h2>Venez participer.</h2>
+    <p class="inscription-subtitle">Remplissez le formulaire et on vous contacte rapidement.</p>
+    <div class="form-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Prénom *</label>
+          <input class="form-input" type="text" placeholder="Votre prénom">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nom *</label>
+          <input class="form-input" type="text" placeholder="Votre nom">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Courriel *</label>
+          <input class="form-input" type="email" placeholder="vous@exemple.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Téléphone</label>
+          <input class="form-input" type="tel" placeholder="(514) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Région</label>
+        <select class="form-select">
+          <option value="">Choisissez votre région</option>
+          <option>Montréal</option>
+          <option>Longueuil</option>
+          <option>St-Jean-sur-le-Richelieu</option>
+          <option>Gatineau</option>
+          <option>Trois-Rivières</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Disponibilité</label>
+        <select class="form-select">
+          <option value="">Quand êtes-vous disponible ?</option>
+          <option>Semaine</option>
+          <option>Fin de semaine</option>
+          <option>Les deux</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Comment avez-vous entendu parler de Phé-Nix ?</label>
+        <input class="form-input" type="text" placeholder="Facebook, un ami, ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Commentaires / Questions</label>
+        <textarea class="form-textarea" placeholder="Dites-nous ce que vous voulez..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%;font-size:16px;padding:18px;">Envoyer ma candidature</button>
+      <p style="text-align:center; margin-top:20px; font-family:'Inter',sans-serif; font-size:13px; color:#666;">
+        Ou rejoignez-nous directement sur <a href="#" style="color:#FF5C1A;">Facebook →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
+      <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
+      <div class="footer-socials"><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>NAVIGATION</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">Notre mission</a></li><li><a href="participez.html">Participez avec nous</a></li><li><a href="programmes.html">Nos programmes</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
+    <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+const h = document.getElementById('site-header');
+window.addEventListener('scroll', () => h.classList.toggle('scrolled', window.scrollY > 40));
+</script>
+</body>
+</html>
