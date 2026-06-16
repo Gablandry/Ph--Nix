@@ -9,24 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
-.don-main {
-  background: #F7F5F2;
-  padding: 100px 72px;
-}
-.don-main-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  align-items: start;
-}
-.don-form-large {
-  background: #fff;
-  border-radius: 24px;
-  padding: 44px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-}
+/* BARRE DE PROGRESSION */
+.don-progress-band { background: #fff; border-bottom: 1px solid #F0EFED; padding: 28px 72px; }
+.don-progress-inner { max-width: 860px; margin: 0 auto; }
+.don-progress-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.don-progress-goal { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: #111; }
+.don-progress-raised { font-family: 'Inter', sans-serif; font-size: 14px; color: #888; }
+.don-progress-raised strong { color: #FF5C1A; font-weight: 600; }
+.don-progress-bar-outer { background: #F0EFED; border-radius: 99px; height: 10px; width: 100%; overflow: hidden; }
+.don-progress-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); transition: width 1.2s cubic-bezier(0.4,0,0.2,1); width: 0; }
+.don-progress-bottom { display: flex; justify-content: space-between; margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 12px; color: #aaa; }
+.don-progress-pct { color: #FF5C1A; font-weight: 600; font-family: 'Sora', sans-serif; font-size: 13px; }
+
+.don-main { background: #F7F5F2; padding: 100px 72px; }
+.don-main-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; max-width: 1100px; margin: 0 auto; align-items: start; }
+.don-form-large { background: #fff; border-radius: 24px; padding: 44px; box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
 .don-form-large h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 24px; color: #111; margin-bottom: 8px; }
 .don-form-large .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; color: #888; margin-bottom: 28px; }
 .don-toggle { display: flex; background: #F0EFED; border-radius: 8px; padding: 4px; margin-bottom: 28px; gap: 4px; }
@@ -42,26 +39,23 @@
 .don-custom-input:focus { border-color: #FF5C1A; }
 .don-interac { text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; color: #AAA; margin-top: 20px; }
 .don-secure { text-align: center; font-family: 'Inter', sans-serif; font-size: 11px; color: #BBB; margin-top: 8px; }
-
 .don-sidebar { display: flex; flex-direction: column; gap: 20px; }
 .don-info-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 .don-info-card h4 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #111; margin-bottom: 16px; }
 .don-usage-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-size: 14px; color: #555; }
 .don-usage-bar { flex: 1; height: 6px; background: #F0EFED; border-radius: 3px; }
 .don-usage-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); }
-
 .pourquoi-section { background: #080808; padding: 100px 72px; }
 .pourquoi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 56px auto 0; }
 .pourquoi-card { background: #1A1A1A; border-radius: 16px; padding: 32px; }
-.pourquoi-icon { font-size: 32px; margin-bottom: 16px; }
+.pourquoi-icon { width: 48px; height: 48px; background: linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.08)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #FF5C1A; }
 .pourquoi-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 12px; }
 .pourquoi-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; }
-
 .faq-don-section { background: #F7F5F2; padding: 100px 72px; }
-
 @media (max-width: 900px) {
   .don-main-inner { grid-template-columns: 1fr; }
   .pourquoi-grid { grid-template-columns: 1fr; max-width: 440px; }
+  .don-main, .pourquoi-section, .faq-don-section { padding-left: 28px; padding-right: 28px; }
 }
 </style>
 </head>
@@ -74,23 +68,32 @@
       <span class="nav-logo-text">Phé-Nix</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="a-propos.html">Notre Mission</a></li>
-      <li><a href="participez.html">Participez avec nous</a></li>
-      <li><a href="programmes.html">Nos Programmes</a></li>
-      <li><a href="commanditaires.html">Nos Commanditaires</a></li>
-      <li><a href="donnez.html" class="active">Donnez</a></li>
+      <li><a href="a-propos.html">Notre mission</a></li>
+      <li><a href="programmes.html">Programmes</a></li>
+      <li><a href="participez.html">Participer</a></li>
+      <li><a href="blog.html">Actualités</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
       <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">Notre mission</a>
+    <a href="programmes.html">Nos programmes</a>
+    <a href="participez.html">Participer avec nous</a>
+    <a href="blog.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="participez.html" class="btn btn-ghost">Bénévole</a>
+      <a href="donnez.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
 </header>
 
-<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.72), rgba(8,8,8,0.72)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80') center/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.72), rgba(8,8,8,0.72)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center top/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center;">——— FAIRE UN DON</div>
     <h1>Chaque don<br>nourrit une vie réelle.</h1>
@@ -98,8 +101,24 @@
   </div>
 </section>
 
-<!-- FORMULAIRE PRINCIPAL -->
-<section class="don-main">
+<!-- BARRE DE PROGRESSION -->
+<div class="don-progress-band">
+  <div class="don-progress-inner">
+    <div class="don-progress-top">
+      <div class="don-progress-goal">Objectif — juin 2026 : 15 000 $</div>
+      <div class="don-progress-raised"><strong>9 200 $</strong> récoltés jusqu'à présent</div>
+    </div>
+    <div class="don-progress-bar-outer">
+      <div class="don-progress-bar-fill" data-width="61%"></div>
+    </div>
+    <div class="don-progress-bottom">
+      <span class="don-progress-pct">61 % atteint</span>
+      <span>5 800 $ encore nécessaires · <a href="#don-form" style="color:#FF5C1A;text-decoration:none;">Contribuer maintenant →</a></span>
+    </div>
+  </div>
+</div>
+
+<section class="don-main" id="don-form">
   <div style="max-width:1100px; margin:0 auto 60px; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">——— VOTRE CONTRIBUTION</div>
     <h2 style="color:#111;">Choisissez votre contribution.</h2>
@@ -108,84 +127,78 @@
   <div class="don-main-inner">
     <div class="don-form-large">
       <h3>Je fais un don</h3>
-      <p class="subtitle">Chaque dollar va directement sur le terrain.</p>
+      <p class="subtitle">Chaque dollar fait un vrai impact dans la rue.</p>
       <div class="don-toggle">
         <button class="don-toggle-btn active" onclick="setToggle(this)">Don unique</button>
         <button class="don-toggle-btn" onclick="setToggle(this)">Don mensuel</button>
       </div>
       <div class="don-amounts">
-        <button class="don-amount-btn active" onclick="setAmount(this)"><span class="don-amount-price">10 $</span><span class="don-amount-label">Un repas</span></button>
-        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">25 $</span><span class="don-amount-label">Vêtements</span></button>
-        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">50 $</span><span class="don-amount-label">Transport</span></button>
-        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">100 $</span><span class="don-amount-label">Distribution</span></button>
-        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">250 $</span><span class="don-amount-label">Impact majeur</span></button>
-        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">Autre</span><span class="don-amount-label">Montant libre</span></button>
+        <button class="don-amount-btn active" onclick="setAmount(this)"><span class="don-amount-price">10 $</span><span class="don-amount-label">env. un repas</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">25 $</span><span class="don-amount-label">env. vêtements</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">50 $</span><span class="don-amount-label">env. transport</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">100 $</span><span class="don-amount-label">env. distribution</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">250 $</span><span class="don-amount-label">impact majeur</span></button>
+        <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">Autre</span><span class="don-amount-label">montant libre</span></button>
       </div>
       <input class="don-custom-input" type="text" placeholder="$ Montant personnalisé">
-      <button class="btn btn-primary" style="width:100%;font-size:16px;padding:20px;">Procéder au don →</button>
-      <p class="don-interac">Ou par Interac : <strong>phenixactioncitoyenne@gmail.com</strong><br><span style="font-size:11px;">En note : "Don Phé-Nix"</span></p>
-      <p class="don-secure">🔒 Paiement sécurisé · Reçu envoyé par courriel sur demande</p>
+      <button class="btn btn-primary" style="width:100%;font-size:16px;padding:20px;" onclick="showDonInstructions(this)">Procéder au don →</button>
+      <div id="don-instructions" style="display:none; background:#FFF8F5; border:1.5px solid rgba(255,92,26,0.25); border-radius:14px; padding:24px; margin-top:16px; text-align:center;">
+        <div style="margin-bottom:12px; display:flex; justify-content:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF5C1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <p style="font-family:'Sora',sans-serif; font-weight:700; font-size:16px; color:#111; margin-bottom:12px;">Merci pour votre générosité !</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#444; line-height:1.65; margin-bottom:16px;">Pour compléter votre don, envoyez le montant choisi par <strong>Interac</strong> :</p>
+        <p style="font-family:'Sora',sans-serif; font-weight:700; font-size:18px; color:#FF5C1A; margin-bottom:6px;">phenixactioncitoyenne@gmail.com</p>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#777;">En note : <strong>"Don Phé-Nix"</strong> — Un reçu vous sera envoyé sur demande.</p>
+      </div>
+      <p class="don-interac" id="don-interac-txt">Ou par Interac : <strong>phenixactioncitoyenne@gmail.com</strong><br><span style="font-size:11px;">En note : "Don Phé-Nix"</span></p>
+      <p class="don-secure"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Don sécurisé · Reçu envoyé par courriel sur demande</p>
     </div>
     <div class="don-sidebar">
       <div class="don-info-card">
         <h4>Comment votre don est utilisé</h4>
         <div class="don-usage-item">
-          <span style="min-width:130px;">🍎 Nourriture</span>
-          <div class="don-usage-bar"><div class="don-usage-fill" style="width:60%"></div></div>
+          <span style="min-width:130px;">Nourriture</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" data-width="60%"></div></div>
           <span style="color:#FF5C1A; font-weight:600; font-size:13px;">60%</span>
         </div>
         <div class="don-usage-item">
-          <span style="min-width:130px;">🧤 Vêtements</span>
-          <div class="don-usage-bar"><div class="don-usage-fill" style="width:20%"></div></div>
+          <span style="min-width:130px;">Vêtements</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" data-width="20%"></div></div>
           <span style="color:#FF5C1A; font-weight:600; font-size:13px;">20%</span>
         </div>
         <div class="don-usage-item">
-          <span style="min-width:130px;">🚗 Transport</span>
-          <div class="don-usage-bar"><div class="don-usage-fill" style="width:12%"></div></div>
+          <span style="min-width:130px;">Transport</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" data-width="12%"></div></div>
           <span style="color:#FF5C1A; font-weight:600; font-size:13px;">12%</span>
         </div>
         <div class="don-usage-item">
-          <span style="min-width:130px;">📦 Matériel</span>
-          <div class="don-usage-bar"><div class="don-usage-fill" style="width:8%"></div></div>
+          <span style="min-width:130px;">Matériel</span>
+          <div class="don-usage-bar"><div class="don-usage-fill" data-width="8%"></div></div>
           <span style="color:#FF5C1A; font-weight:600; font-size:13px;">8%</span>
         </div>
+        <p style="font-family:'Inter',sans-serif; font-size:11px; color:#aaa; font-style:italic; margin-top:12px;">* Répartition approximative — varie selon les besoins.</p>
       </div>
       <div class="don-info-card">
         <h4>Des questions ?</h4>
         <p style="font-family:'Inter',sans-serif; font-size:14px; color:#666; line-height:1.65; margin-bottom:16px;">On est là pour vous répondre.</p>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333; margin-bottom:8px;">📧 <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:#FF5C1A; text-decoration:none;">phenixactioncitoyenne@gmail.com</a></p>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333;">📞 <a href="tel:4385263889" style="color:#FF5C1A; text-decoration:none;">(438) 526-3889</a></p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333; margin-bottom:8px; display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5C1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:phenixactioncitoyenne@gmail.com" style="color:#FF5C1A; text-decoration:none;">phenixactioncitoyenne@gmail.com</a></p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#333; display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5C1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:4385263889" style="color:#FF5C1A; text-decoration:none;">(438) 526-3889</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- POURQUOI PHÉ-NIX -->
 <section class="pourquoi-section">
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">——— POURQUOI PHÉ-NIX</div>
     <h2 style="color:#fff;">Pourquoi Phé-Nix ?</h2>
     <div class="pourquoi-grid">
-      <div class="pourquoi-card">
-        <div class="pourquoi-icon">🎯</div>
-        <h3>100% terrain</h3>
-        <p>Chaque dollar de don est utilisé pour acheter de la nourriture, des vêtements et du matériel. Zéro frais administratifs.</p>
-      </div>
-      <div class="pourquoi-card">
-        <div class="pourquoi-icon">📍</div>
-        <h3>Vrai impact local</h3>
-        <p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p>
-      </div>
-      <div class="pourquoi-card">
-        <div class="pourquoi-icon">💎</div>
-        <h3>Transparence totale</h3>
-        <p>Organisme à but non lucratif enregistré. Nous sommes disponibles pour toute question sur l'utilisation des dons.</p>
-      </div>
+      <div class="pourquoi-card reveal reveal-d1"><div class="pourquoi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>100% terrain</h3><p>Chaque dollar de don est utilisé pour acheter de la nourriture, des vêtements et du matériel. Zéro frais administratifs.</p></div>
+      <div class="pourquoi-card reveal reveal-d2"><div class="pourquoi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Vrai impact local</h3><p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p></div>
+      <div class="pourquoi-card reveal reveal-d3"><div class="pourquoi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Transparence totale</h3><p>Organisme à but non lucratif enregistré. Nous sommes disponibles pour toute question sur l'utilisation des dons.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FAQ DONS -->
 <section class="faq-don-section">
   <div style="max-width:1200px; margin:0 auto;">
     <div style="text-align:center;">
@@ -224,13 +237,23 @@
     <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
     <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span></div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
+<script src="nav.js"></script>
 <script>
-function toggleFaq(btn) { const i = btn.closest('.faq-item'); const w = i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open')); if (!w) i.classList.add('open'); }
 function setToggle(btn) { btn.parentElement.querySelectorAll('.don-toggle-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
 function setAmount(btn) { btn.closest('.don-amounts').querySelectorAll('.don-amount-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
-const h = document.getElementById('site-header'); window.addEventListener('scroll', () => h.classList.toggle('scrolled', window.scrollY > 40));
+function showDonInstructions(btn) {
+  const box = document.getElementById('don-instructions');
+  const txt = document.getElementById('don-interac-txt');
+  if (box) { box.style.display = 'block'; btn.style.display = 'none'; if (txt) txt.style.display = 'none'; box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+}
 </script>
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<div class="mobile-donate-bar">
+  <a href="#don-form" class="btn btn-primary" onclick="document.querySelector('.don-form-large').scrollIntoView({behavior:'smooth'}); return false;">Faire un don maintenant →</a>
+</div>
 </body>
 </html>

@@ -3,29 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos Commanditaires | Phé-Nix — Merci à nos partenaires</title>
-<meta name="description" content="Découvrez les entreprises et organisations qui soutiennent Phé-Nix dans sa mission d'aide aux personnes en situation d'itinérance au Québec.">
+<title>Nos Commanditaires | Phé-Nix — Devenez partenaire</title>
+<meta name="description" content="Associez votre entreprise à Phé-Nix et soutenez concrètement les personnes en situation d'itinérance au Québec. Découvrez nos niveaux de partenariat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
+/* Logos / Sponsors */
 .commanditaires-grid-section { background: #F7F5F2; padding: 100px 72px; }
-.logos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 960px; margin: 56px auto 0; }
-.logo-card { background: #fff; border-radius: 12px; padding: 32px; display: flex; align-items: center; justify-content: center; transition: all 0.25s; border: 1px solid rgba(0,0,0,0.06); }
-.logo-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.logo-placeholder { width: 100%; aspect-ratio: 3/1; background: linear-gradient(135deg, #F0EFED, #E8E6E3); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-.logo-placeholder span { font-family: 'Inter', sans-serif; font-size: 13px; color: #aaa; font-weight: 500; }
+.logos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 960px; margin: 56px auto 0; }
+.logo-card { background: #fff; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: all 0.25s; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; gap: 8px; position: relative; overflow: hidden; }
+.logo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); opacity: 0; transition: opacity 0.25s; }
+.logo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.logo-card:hover::before { opacity: 1; }
+.sponsor-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: #111; line-height: 1.3; }
+.sponsor-cat { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #FF5C1A; margin-top: 4px; }
 
-.devenir-section { background: #080808; padding: 100px 72px; }
-.devenir-section .section-header { text-align: center; margin: 0 auto 16px; }
-.devenir-section p { color: rgba(255,255,255,0.55); text-align: center; max-width: 560px; margin: 0 auto 64px; }
+/* Pourquoi section */
+.pourquoi-cmdite-section { background: #080808; padding: 100px 72px; }
+.pourquoi-cmdite-inner { max-width: 1200px; margin: 0 auto; }
+.impact-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+.impact-stat-card { background: #1A1A1A; border-radius: 20px; padding: 36px 28px; border: 1px solid rgba(255,255,255,0.06); }
+.impact-stat-icon { width: 52px; height: 52px; background: rgba(255,92,26,0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #FF5C1A; }
+.impact-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; background: linear-gradient(135deg,#FF5C1A,#D63FA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+.impact-stat-label { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
+/* Tiers section — light background for visibility */
+.tiers-section { background: #F7F5F2; padding: 100px 72px; }
+.tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 64px auto 0; }
+.tier-card { background: #fff; border-radius: 20px; padding: 36px 28px; border: 2px solid transparent; transition: all 0.3s; box-shadow: 0 2px 16px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+.tier-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+.tier-card.featured { border-color: #FF5C1A; box-shadow: 0 0 0 4px rgba(255,92,26,0.08), 0 20px 48px rgba(0,0,0,0.1); }
+.tier-badge { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+.badge-bronze { background: rgba(205,127,50,0.12); color: #A0622A; }
+.badge-argent { background: rgba(255,92,26,0.12); color: #FF5C1A; }
+.badge-or { background: linear-gradient(135deg,rgba(244,185,66,0.2),rgba(255,92,26,0.15)); color: #C47A00; }
+.tier-price { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 32px; color: #111; margin-bottom: 4px; }
+.tier-period { font-family: 'Inter', sans-serif; font-size: 13px; color: #999; margin-bottom: 8px; }
+.tier-impact { font-family: 'Inter', sans-serif; font-size: 13px; color: #FF5C1A; font-weight: 600; margin-bottom: 24px; padding: 8px 12px; background: rgba(255,92,26,0.06); border-radius: 8px; }
+.tier-benefits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; flex: 1; }
+.tier-benefit { font-family: 'Inter', sans-serif; font-size: 14px; color: #555; display: flex; align-items: flex-start; gap: 10px; }
+.tier-benefit::before { content: '✓'; color: #FF5C1A; font-weight: 700; flex-shrink: 0; }
+
+/* Partenariat sur mesure */
+.sur-mesure-section { background: #080808; padding: 80px 72px; }
+.sur-mesure-card { max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, rgba(255,92,26,0.1), rgba(214,63,163,0.08)); border: 1px solid rgba(255,92,26,0.2); border-radius: 24px; padding: 48px; text-align: center; }
+.sur-mesure-card h3 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: #fff; margin-bottom: 16px; }
+.sur-mesure-card p { font-family: 'Inter', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+
+/* CTA contact */
 .contact-commandite { background: #F7F5F2; padding: 100px 72px; text-align: center; }
 .contact-commandite h2 { color: #111; margin-bottom: 20px; }
 .contact-commandite p { color: #555; font-size: 16px; max-width: 480px; margin: 0 auto 40px; }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .logos-grid { grid-template-columns: 1fr 1fr; }
+  .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+  .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 28px; padding-right: 28px; }
 }
 </style>
 </head>
@@ -38,23 +72,33 @@
       <span class="nav-logo-text">Phé-Nix</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="a-propos.html">Notre Mission</a></li>
-      <li><a href="participez.html">Participez avec nous</a></li>
-      <li><a href="programmes.html">Nos Programmes</a></li>
-      <li><a href="commanditaires.html" class="active">Nos Commanditaires</a></li>
-      <li><a href="donnez.html">Donnez</a></li>
+      <li><a href="a-propos.html">Notre mission</a></li>
+      <li><a href="programmes.html">Programmes</a></li>
+      <li><a href="participez.html">Participer</a></li>
+      <li><a href="blog.html">Actualités</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
       <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">Notre mission</a>
+    <a href="programmes.html">Nos programmes</a>
+    <a href="participez.html">Participer avec nous</a>
+    <a href="blog.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="participez.html" class="btn btn-ghost">Bénévole</a>
+      <a href="donnez.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
 </header>
 
-<section class="page-hero" style="background:#080808; height:45vh; min-height:320px;">
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.72), rgba(8,8,8,0.72)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center top/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center;">——— NOS COMMANDITAIRES</div>
     <h1>Ils nous font confiance.<br>Merci.</h1>
@@ -62,69 +106,143 @@
   </div>
 </section>
 
-<!-- LOGOS -->
+<!-- LOGOS PARTENAIRES -->
 <section class="commanditaires-grid-section">
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">——— NOS PARTENAIRES 2026</div>
     <h2 style="color:#111;">Nos partenaires 2026.</h2>
     <p style="color:#666; font-size:15px; margin-top:12px;">Merci à toutes les organisations qui soutiennent notre mission.</p>
     <div class="logos-grid">
-      <div class="logo-card"><div class="logo-placeholder"><span>Partenaire</span></div></div>
-      <div class="logo-card"><div class="logo-placeholder"><span>Partenaire</span></div></div>
-      <div class="logo-card"><div class="logo-placeholder"><span>Partenaire</span></div></div>
-      <div class="logo-card" style="border: 2px dashed rgba(255,92,26,0.3); background: rgba(255,92,26,0.02);">
-        <div style="text-align:center;">
-          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#FF5C1A; font-weight:500; line-height:1.5;">Votre entreprise<br>pourrait figurer ici.</p>
-        </div>
+      <a class="logo-card" href="https://www.fkaiser.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Kaiser Fromagerie</div>
+        <div class="sponsor-cat">Alimentation</div>
+      </a>
+      <a class="logo-card" href="https://www.marchelavigne.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Marché Lavigne</div>
+        <div class="sponsor-cat">Épicerie</div>
+      </a>
+      <a class="logo-card" href="https://www.pizzaartisanalejdl.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Pizza Artisanale JDL</div>
+        <div class="sponsor-cat">Restauration</div>
+      </a>
+      <a class="logo-card" href="https://www.grenierauxtrouvailles.org/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Grenier aux Trouvailles</div>
+        <div class="sponsor-cat">Récupération</div>
+      </a>
+      <a class="logo-card" href="https://lesescomptesstjean.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Les Escomptes St-Jean</div>
+        <div class="sponsor-cat">Commerce</div>
+      </a>
+      <a class="logo-card" href="http://www.pizzapizza.ca" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Pizza Pizza</div>
+        <div class="sponsor-cat">Restauration</div>
+      </a>
+      <a class="logo-card" href="https://www.boulangeriecheznonna.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Boulangerie Chez Nonna</div>
+        <div class="sponsor-cat">Alimentation</div>
+      </a>
+      <a class="logo-card" href="https://www.marcherichelieu.ca/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-name">Marché Richelieu</div>
+        <div class="sponsor-cat">Épicerie</div>
+      </a>
+      <div class="logo-card">
+        <div class="sponsor-name">Cantine BB Lou</div>
+        <div class="sponsor-cat">Restauration</div>
       </div>
     </div>
-    <p style="font-family:'Inter',sans-serif; font-size:13px; color:#aaa; margin-top:32px;">Les logos seront mis à jour dès que les commanditaires confirment leur partenariat.</p>
   </div>
 </section>
 
-<!-- DEVENIR COMMANDITAIRE -->
-<section class="devenir-section">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:16px;">
-      <div class="eyebrow" style="justify-content:center;">——— DEVENEZ PARTENAIRE</div>
-      <h2 style="color:#fff;">Votre entreprise veut<br>faire une différence ?</h2>
+<!-- POURQUOI COMMANDITER -->
+<section class="pourquoi-cmdite-section">
+  <div class="pourquoi-cmdite-inner">
+    <div style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">——— VOTRE IMPACT</div>
+      <h2 style="color:#fff;">Votre marque.<br>Notre mission. Une cause vraie.</h2>
+      <p style="color:rgba(255,255,255,0.55); font-size:17px; margin-top:20px; line-height:1.75;">En commanditant Phé-Nix, vous ne faites pas juste mettre un logo sur un site web. Vous vous associez à ce qui se passe chaque semaine dans les rues du Québec — concrètement, visiblement, humainement.</p>
     </div>
-    <p style="color:rgba(255,255,255,0.55); text-align:center; max-width:560px; margin:16px auto 64px;">En commanditant Phé-Nix, vous soutenez directement des distributions terrain au Québec et associez votre image à une cause humaine et concrète.</p>
-    <div class="commandite-grid">
-      <div class="commandite-card">
-        <span class="commandite-badge badge-bronze">Bronze</span>
-        <div class="commandite-price">250 $</div>
-        <div class="commandite-period">par année</div>
-        <div class="commandite-benefits">
-          <div class="commandite-benefit">Mention sur le site web</div>
-          <div class="commandite-benefit">Remerciement sur les réseaux sociaux</div>
-        </div>
-        <a href="contact.html" class="btn btn-ghost" style="width:100%;display:block;text-align:center;">Nous contacter</a>
+    <div class="impact-stats">
+      <div class="impact-stat-card reveal reveal-d1">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="impact-stat-num">60%</div>
+        <div class="impact-stat-label">de chaque commandite va directement à l'alimentation — fruits, légumes, repas chauds distribués sur le terrain.</div>
       </div>
-      <div class="commandite-card featured">
-        <span class="commandite-badge badge-argent">Argent ⭐</span>
-        <div class="commandite-price">500 $</div>
-        <div class="commandite-period">par année</div>
-        <div class="commandite-benefits">
-          <div class="commandite-benefit">Logo sur le site web</div>
-          <div class="commandite-benefit">Mention lors des distributions</div>
-          <div class="commandite-benefit">Publication dédiée sur Facebook</div>
-        </div>
-        <a href="contact.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;">Nous contacter</a>
+      <div class="impact-stat-card reveal reveal-d2">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+        <div class="impact-stat-num">20%</div>
+        <div class="impact-stat-label">habille les personnes en situation d'itinérance lors de nos distributions, particulièrement en hiver.</div>
       </div>
-      <div class="commandite-card">
-        <span class="commandite-badge badge-or">Or ✦</span>
-        <div class="commandite-price">1 000 $+</div>
-        <div class="commandite-period">par année</div>
-        <div class="commandite-benefits">
-          <div class="commandite-benefit">Logo en évidence sur le site</div>
-          <div class="commandite-benefit">Mention dans tous les communiqués</div>
-          <div class="commandite-benefit">Partenariat terrain (distributions)</div>
-          <div class="commandite-benefit">Reçu fiscal</div>
-        </div>
-        <a href="contact.html" class="btn btn-ghost" style="width:100%;display:block;text-align:center;">Nous contacter</a>
+      <div class="impact-stat-card reveal reveal-d3">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="impact-stat-num">20%</div>
+        <div class="impact-stat-label">couvre le transport, la logistique et le matériel pour que notre équipe soit présente chaque semaine, partout au Québec.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- COMMENT DEVENIR PARTENAIRE -->
+<section class="tiers-section">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">——— COMMENT S'IMPLIQUER</div>
+    <h2 style="color:#111;">Plusieurs façons<br>de faire une différence.</h2>
+    <p style="color:#555; font-size:16px; max-width:540px; margin:16px auto 0;">Être partenaire de Phé-Nix, c'est contribuer à votre façon — on s'adapte à ce que vous pouvez offrir. Aucun montant minimum, aucune pression.</p>
+  </div>
+  <div class="tiers-grid">
+    <div class="tier-card reveal reveal-d1">
+      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <span class="tier-badge badge-bronze">Don en nature</span>
+      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Nourriture, vêtements<br>et fournitures</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Impact direct et immédiat sur le terrain</div>
+        <div class="tier-benefit">Reconnaissance sur nos réseaux sociaux</div>
+        <div class="tier-benefit">Reçu fiscal officiel si applicable</div>
+      </div>
+      <a href="contact.html" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+    <div class="tier-card featured reveal reveal-d2">
+      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.15),rgba(214,63,163,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <span class="tier-badge badge-argent">Commandite</span>
+      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Soutien financier<br>à notre mission</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Logo sur le site web de Phé-Nix</div>
+        <div class="tier-benefit">Mentions lors de nos distributions</div>
+        <div class="tier-benefit">Publication dédiée sur nos réseaux sociaux</div>
+        <div class="tier-benefit">Reçu fiscal officiel</div>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+    <div class="tier-card reveal reveal-d3">
+      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <span class="tier-badge badge-or">Mobilisation</span>
+      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Votre équipe<br>sur le terrain</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Encadrement complet par notre équipe</div>
+        <div class="tier-benefit">Contenu photo et vidéo pour vos réseaux</div>
+        <div class="tier-benefit">Association de votre marque à notre mission</div>
+        <div class="tier-benefit">Expérience terrain inoubliable</div>
+      </div>
+      <a href="contact.html" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENARIAT SUR MESURE -->
+<section class="sur-mesure-section">
+  <div class="sur-mesure-card">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">——— AUTRE IDÉE ?</div>
+    <h3>Un partenariat qui vous ressemble.</h3>
+    <p>Don de matériel, activité de team building sur le terrain, partenariat médias, collecte de dons auprès de vos employés — on est ouverts à toutes les idées. Ce qui compte, c'est l'impact.</p>
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Parlons-nous directement →</a>
   </div>
 </section>
 
@@ -146,8 +264,15 @@
     <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
     <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span></div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
-<script>const h=document.getElementById('site-header');window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>40));</script>
+<script src="nav.js"></script>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<div class="mobile-donate-bar">
+  <a href="donnez.html" class="btn btn-primary">Faire un don →</a>
+</div>
 </body>
 </html>

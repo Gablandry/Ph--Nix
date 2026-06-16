@@ -1,0 +1,42 @@
+[
+  {
+    "mois": "JUIN",
+    "jour": "21",
+    "ville": "Montréal",
+    "quartier": "Centre-Ville, Montréal",
+    "heureDebut": "10h00",
+    "heureFin": "13h00",
+    "placesRestantes": 5,
+    "complet": false
+  },
+  {
+    "mois": "JUIN",
+    "jour": "28",
+    "ville": "Longueuil",
+    "quartier": "Longueuil, Rive-Sud",
+    "heureDebut": "10h00",
+    "heureFin": "12h00",
+    "placesRestantes": 12,
+    "complet": false
+  },
+  {
+    "mois": "JUIL.",
+    "jour": "5",
+    "ville": "Montréal",
+    "quartier": "Rosemont–La Petite-Patrie",
+    "heureDebut": "10h00",
+    "heureFin": "13h00",
+    "placesRestantes": 8,
+    "complet": false
+  },
+  {
+    "mois": "JUIL.",
+    "jour": "12",
+    "ville": "Trois-Rivières",
+    "quartier": "Centre-Ville, Trois-Rivières",
+    "heureDebut": "10h00",
+    "heureFin": "12h00",
+    "placesRestantes": 15,
+    "complet": false
+  }
+]

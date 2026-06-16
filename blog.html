@@ -10,14 +10,10 @@
 <link rel="stylesheet" href="design-system.css">
 <style>
 .blog-page { background: #111111; padding: 80px 72px 120px; }
-
-/* Filtres */
-.blog-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 56px; max-width: 1200px; margin-left: auto; margin-right: auto; margin-bottom: 56px; }
+.blog-filters { display: flex; gap: 8px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto 56px; }
 .filter-btn { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 20px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; }
 .filter-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
 .filter-btn.active { background: #FF5C1A; border-color: #FF5C1A; color: #fff; font-weight: 600; }
-
-/* Article vedette */
 .blog-featured { max-width: 1200px; margin: 0 auto 48px; background: #1A1A1A; border-radius: 20px; overflow: hidden; display: grid; grid-template-columns: 1.1fr 0.9fr; }
 .blog-featured-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 .blog-featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
@@ -25,13 +21,10 @@
 .blog-featured-body .blog-date { margin-bottom: 16px; font-family: 'Inter', sans-serif; font-size: 13px; color: #666; }
 .blog-featured-body h2 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: #fff; margin-bottom: 16px; line-height: 1.25; letter-spacing: -0.02em; }
 .blog-featured-body p { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 28px; }
-
 .blog-tag { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #D63FA3; background: rgba(214,63,163,0.1); border-radius: 4px; padding: 4px 10px; }
 .blog-tag.distribution { color: #FF8C42; background: rgba(255,140,66,0.1); }
 .blog-tag.actualite { color: #8B5CF6; background: rgba(139,92,246,0.1); }
 .blog-tag.temoignage { color: #D63FA3; background: rgba(214,63,163,0.1); }
-
-/* Grille articles */
 .blog-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
 .blog-card { background: #1A1A1A; border-radius: 16px; overflow: hidden; transition: transform 0.3s; }
 .blog-card:hover { transform: translateY(-4px); }
@@ -42,15 +35,12 @@
 .blog-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 20px; }
 .blog-read-link { color: #FF5C1A; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .blog-read-link:hover { gap: 10px; }
-
 @media (max-width: 900px) {
   .blog-featured { grid-template-columns: 1fr; }
   .blog-articles-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .blog-articles-grid { grid-template-columns: 1fr; }
   .blog-page { padding: 60px 28px; }
 }
+@media (max-width: 600px) { .blog-articles-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -62,24 +52,32 @@
       <span class="nav-logo-text">Phé-Nix</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="a-propos.html">Notre Mission</a></li>
-      <li><a href="participez.html">Participez avec nous</a></li>
-      <li><a href="programmes.html">Nos Programmes</a></li>
-      <li><a href="commanditaires.html">Nos Commanditaires</a></li>
-      <li><a href="donnez.html">Donnez</a></li>
+      <li><a href="a-propos.html">Notre mission</a></li>
+      <li><a href="programmes.html">Programmes</a></li>
+      <li><a href="participez.html">Participer</a></li>
+      <li><a href="blog.html" class="active">Actualités</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
       <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">Notre mission</a>
+    <a href="programmes.html">Nos programmes</a>
+    <a href="participez.html">Participer avec nous</a>
+    <a href="blog.html" class="active">Actualités</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="participez.html" class="btn btn-ghost">Bénévole</a>
+      <a href="donnez.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
 </header>
 
-<!-- HERO -->
-<section class="page-hero" style="background: #080808; height:40vh; min-height:280px;">
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.75), rgba(8,8,8,0.75)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center top/cover no-repeat; height:40vh; min-height:280px;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center;">——— ACTUALITÉS</div>
     <h1>Sur le terrain.</h1>
@@ -87,65 +85,90 @@
   </div>
 </section>
 
-<!-- BLOG CONTENT -->
 <section class="blog-page">
-  <!-- Filtres -->
   <div class="blog-filters">
-    <button class="filter-btn active">Tous</button>
-    <button class="filter-btn">Distribution</button>
-    <button class="filter-btn">Bénévolat</button>
-    <button class="filter-btn">Témoignage</button>
-    <button class="filter-btn">Actualité</button>
+    <button class="filter-btn active" data-cat="tous">Tous</button>
+    <button class="filter-btn" data-cat="distribution">Distribution</button>
+    <button class="filter-btn" data-cat="benevole">Bénévolat</button>
+    <button class="filter-btn" data-cat="temoignage">Témoignage</button>
+    <button class="filter-btn" data-cat="actualite">Actualité</button>
   </div>
 
-  <!-- Article vedette -->
-  <div class="blog-featured">
-    <img class="blog-featured-img" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80" alt="Distributions Été 2025 Phé-Nix">
+  <div class="blog-featured reveal" data-cat="actualite">
+    <img class="blog-featured-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Équipe bénévole Phé-Nix — agir prend tout son sens" style="object-position:center top;">
     <div class="blog-featured-body">
-      <span class="blog-tag distribution">Distribution</span>
-      <span class="blog-date">Août 2025</span>
-      <h2>Distributions Été 2025 : bilan et moments forts</h2>
-      <p>Un été complet sur le terrain — voici les moments qui nous ont marqués, les chiffres, les visages, et ce qui nous donne envie de continuer chaque semaine.</p>
+      <span class="blog-tag actualite">Actualité</span>
+      <span class="blog-date">Novembre 2023</span>
+      <h2>Phé-Nix : quand agir prend tout son sens</h2>
+      <p>Depuis 2022, on se bat pour ceux que le monde oublie. Voici pourquoi chaque distribution compte, ce qui nous a menés jusqu'ici — et ce qui nous donne envie de continuer.</p>
       <a href="#" class="btn btn-primary" style="align-self:flex-start;">Lire l'article →</a>
     </div>
   </div>
 
-  <!-- Grille articles -->
   <div class="blog-articles-grid">
-    <div class="blog-card">
-      <img class="blog-card-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Phé-Nix en 2026">
-      <div class="blog-card-body">
-        <span class="blog-tag actualite">Actualité</span>
-        <span class="blog-date">Janvier 2026</span>
-        <h3>Phé-Nix en 2026 : nouvelle saison, même engagement</h3>
-        <p>Message de Mike Couture sur la saison qui commence, les projets et les besoins de l'organisme.</p>
-        <a href="#" class="blog-read-link">Lire l'article →</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img class="blog-card-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80" alt="Rebecca bénévole Phé-Nix">
-      <div class="blog-card-body">
-        <span class="blog-tag temoignage">Témoignage</span>
-        <span class="blog-date">Mars 2026</span>
-        <h3>Rebecca, 2 ans de bénévolat : ce que ça m'a appris</h3>
-        <p>Rebecca partage ce que deux ans de présence sur le terrain lui ont apporté, bien au-delà du simple bénévolat.</p>
-        <a href="#" class="blog-read-link">Lire l'article →</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img class="blog-card-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Distribution hiver Phé-Nix">
+    <div class="blog-card reveal reveal-d1" data-cat="distribution">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Distribution novembre 2023 — Phé-Nix sur le terrain" style="object-position:center top;">
       <div class="blog-card-body">
         <span class="blog-tag distribution">Distribution</span>
         <span class="blog-date">Novembre 2023</span>
-        <h3>Distribution de novembre : une nuit froide, des cœurs chauds</h3>
-        <p>Récit d'une distribution hivernale à Montréal où l'équipe a bravé le froid pour ceux qui n'ont pas le choix.</p>
+        <h3>Distribution novembre 2023</h3>
+        <p>Retour sur une distribution d'automne où l'équipe a bravé le froid pour distribuer repas chauds, vêtements et écoute aux personnes dans le besoin.</p>
+        <a href="#" class="blog-read-link">Lire l'article →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-d2" data-cat="temoignage">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Rebecca en action — bénévole Phé-Nix" style="object-position:center top;">
+      <div class="blog-card-body">
+        <span class="blog-tag temoignage">Témoignage</span>
+        <span class="blog-date">Novembre 2023</span>
+        <h3>De la théorie à la pratique : Rebecca en action !</h3>
+        <p>Rebecca a décidé de passer de l'intention à l'action. Elle nous raconte sa première distribution et ce qu'elle a découvert sur le terrain.</p>
+        <a href="#" class="blog-read-link">Lire l'article →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-d3" data-cat="benevole">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Bénévoles Phé-Nix — comment rejoindre" style="object-position:center top;">
+      <div class="blog-card-body">
+        <span class="blog-tag" style="color:#3B82F6;background:rgba(59,130,246,0.1);">Bénévolat</span>
+        <span class="blog-date">À venir</span>
+        <h3>Comment rejoindre Phé-Nix dans votre région</h3>
+        <p>Montréal, Longueuil, Gatineau, Trois-Rivières — on vous explique comment s'impliquer, peu importe où vous êtes.</p>
+        <a href="participez.html" class="blog-read-link">Participer →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-d1" data-cat="actualite">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Préparation hivernale Phé-Nix — denrées et couvertures" style="object-position:center top;">
+      <div class="blog-card-body">
+        <span class="blog-tag actualite">Actualité</span>
+        <span class="blog-date">Décembre 2023</span>
+        <h3>Préparer l'hiver : Phé-Nix redouble d'effort</h3>
+        <p>Avec l'arrivée du froid, les besoins explosent. L'équipe Phé-Nix a lancé un appel aux dons pour doubler les couvertures et vêtements chauds distribués.</p>
+        <a href="#" class="blog-read-link">Lire l'article →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-d2" data-cat="temoignage">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Bénévoles Phé-Nix sur le terrain" style="object-position:center top;">
+      <div class="blog-card-body">
+        <span class="blog-tag temoignage">Témoignage</span>
+        <span class="blog-date">Mai 2026</span>
+        <h3>Jean-Philippe : "Je suis venu une fois, je n'ai plus arrêté"</h3>
+        <p>Deux ans après sa première distribution, Jean-Philippe est devenu l'un des piliers de l'équipe de Longueuil.</p>
+        <a href="#" class="blog-read-link">Lire l'article →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-d3" data-cat="actualite">
+      <img class="blog-card-img" src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Équipe Phé-Nix printemps 2026" style="object-position:center top;">
+      <div class="blog-card-body">
+        <span class="blog-tag actualite">Actualité</span>
+        <span class="blog-date">Juin 2026</span>
+        <h3>Printemps 2026 : de nouveaux visages, le même cœur</h3>
+        <p>Une nouvelle cohorte de bénévoles rejoint l'équipe pour la saison — et leur énergie change tout.</p>
         <a href="#" class="blog-read-link">Lire l'article →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section" style="background:#080808;">
   <h2>Vous aussi,<br>faites partie de l'histoire.</h2>
   <p>Chaque distribution est une nouvelle page. Venez l'écrire avec nous.</p>
@@ -162,16 +185,14 @@
     <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
     <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span></div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
-<script>
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-const h=document.getElementById('site-header');window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>40));
-</script>
+<script src="nav.js"></script>
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<div class="mobile-donate-bar">
+  <a href="donnez.html" class="btn btn-primary">Faire un don →</a>
+</div>
 </body>
 </html>

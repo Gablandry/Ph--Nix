@@ -4,667 +4,210 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phé-Nix | Aide aux personnes en situation d'itinérance au Québec</title>
-<meta name="description" content="Phé-Nix est un OBNL québécois qui nourrit, habille et soutient les sans-abris à Montréal, Longueuil, Gatineau et Trois-Rivières. 100% bénévole, actif depuis 2022. Faites un don ou rejoignez l'équipe.">
+<meta name="description" content="Phé-Nix est un OBNL québécois qui nourrit, habille et soutient les sans-abris à Montréal, Longueuil, Montérégie, Gatineau et Trois-Rivières. 100% bénévole, actif depuis 2022.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
-/* ===== PAGE ACCUEIL SPÉCIFIQUE ===== */
-
 /* HERO */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 100px;
-  overflow: hidden;
-  background: #080808;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 30%, rgba(214,63,163,0.10) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,0.65) 60%, rgba(8,8,8,1) 100%),
-    url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1400&q=80') center/cover no-repeat;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 72px;
-  max-width: 1200px;
-  width: 100%;
-}
-.hero-content h1 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: clamp(52px, 7vw, 88px);
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: #fff;
-  margin: 16px 0 24px;
-}
-.hero-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  color: rgba(255,255,255,0.65);
-  max-width: 520px;
-  line-height: 1.65;
-  margin-bottom: 40px;
-}
-.hero-btns {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
+.hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; padding-bottom: 100px; overflow: hidden; background: #080808; }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg-slide { position: absolute; inset: 0; background-size: cover; background-position: center top; }
+.hero-bg-slide::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(214,63,163,0.10) 0%, transparent 60%), linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,0.6) 55%, rgba(8,8,8,1) 100%); }
+.hero-bg-slide-1 { background-image: url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg'); }
+.hero-bg-slide-2 { background-image: url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg'); }
+@keyframes hero-crossfade-1 { 0%, 40% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes hero-crossfade-2 { 0%, 40% { opacity: 0; } 50%, 90% { opacity: 1; } 100% { opacity: 0; } }
+.hero-bg-slide-1 { animation: hero-crossfade-1 16s ease-in-out infinite; }
+.hero-bg-slide-2 { animation: hero-crossfade-2 16s ease-in-out infinite; }
 
-/* STATS BAND */
-.stats-band {
-  background: #F7F5F2;
-  padding: 64px 72px;
-}
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.stat-item {
-  text-align: center;
-  padding: 0 32px;
-  position: relative;
-}
-.stat-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 10%;
-  height: 80%;
-  width: 1px;
-  background: rgba(0,0,0,0.1);
-}
-.stat-number {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: 52px;
-  line-height: 1;
-  background: linear-gradient(135deg, #FF5C1A, #D63FA3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 12px;
-}
-.stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
-}
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+.lightbox-close { position: absolute; top: 24px; right: 28px; background: none; border: none; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: 0.65; transition: opacity 0.2s; }
+.lightbox-close:hover { opacity: 1; }
 
-/* MISSION SECTION */
-.mission-section {
-  background: #080808;
-  padding: 140px 72px;
-}
-.mission-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-}
-.mission-text h2 {
-  color: #fff;
-  margin: 24px 0 28px;
-}
-.mission-text p {
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 20px;
-}
-.mission-text .link-arrow {
-  color: #FF5C1A;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  transition: gap 0.2s;
-}
-.mission-text .link-arrow:hover { gap: 14px; }
-.mission-image-wrap {
-  position: relative;
-}
-.mission-image-wrap img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-}
-.mission-badge {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  background: rgba(8,8,8,0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  padding: 16px 20px;
-}
-.mission-badge-year {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: 28px;
-  color: #fff;
-  line-height: 1;
-}
-.mission-badge-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: #888;
-  margin-top: 4px;
-}
+/* IMPACT */
+.impact-section { background: #080808; padding: 120px 72px; border-top: 1px solid rgba(255,255,255,0.05); }
+.impact-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.impact-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; margin-top: 64px; }
+.impact-item { display: flex; flex-direction: column; align-items: center; }
+.impact-number { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 76px); line-height: 1; background: linear-gradient(135deg, #FF5C1A, #D63FA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.impact-label { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.hero-content { position: relative; z-index: 2; padding: 0 72px; max-width: 1200px; width: 100%; }
+.hero-content h1 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(52px, 7vw, 88px); line-height: 1.0; letter-spacing: -0.03em; color: #fff; margin: 16px 0 24px; }
+.hero-subtitle { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 18px; color: rgba(255,255,255,0.65); max-width: 520px; line-height: 1.65; margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-scroll-hint { position: absolute; bottom: 36px; right: 72px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.28); }
+.hero-scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); margin-top: 4px; }
+
+/* TRUST BAND */
+.trust-band { background: #111; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 18px 72px; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.42); white-space: nowrap; }
+.trust-item svg { color: var(--fire); flex-shrink: 0; }
+
+/* STATS */
+.stats-band { background: #F7F5F2; padding: 72px 72px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); max-width: 1200px; margin: 0 auto; }
+.stat-item { text-align: center; padding: 0 32px; position: relative; }
+.stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background: rgba(0,0,0,0.1); }
+.stat-number { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; background: linear-gradient(135deg,#FF5C1A,#D63FA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+.stat-label { font-family: 'Inter', sans-serif; font-size: 14px; color: #555; line-height: 1.5; }
+
+/* MISSION */
+.mission-section { background: #080808; padding: 140px 72px; }
+.mission-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1200px; margin: 0 auto; align-items: center; }
+.mission-text h2 { color: #fff; margin: 24px 0 28px; }
+.mission-text p { color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+.link-arrow { color: #FF5C1A; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; transition: gap 0.2s; }
+.link-arrow:hover { gap: 14px; }
+.mission-image-wrap { position: relative; }
+.mission-image-wrap img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; display: block; }
+.mission-badge { position: absolute; bottom: 24px; left: 24px; background: rgba(8,8,8,0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 16px 20px; }
+.mission-badge-year { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: #fff; line-height: 1; }
+.mission-badge-label { font-family: 'Inter', sans-serif; font-size: 12px; color: #888; margin-top: 4px; }
 
 /* PROGRAMMES */
-.programmes-section {
-  background: #F7F5F2;
-  padding: 120px 72px;
-}
-.programmes-section .section-header {
-  max-width: 580px;
-  margin-bottom: 72px;
-}
-.programmes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.programme-card {
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.programme-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-}
-.programme-card-img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s;
-}
-.programme-card:hover .programme-card-img {
-  transform: scale(1.04);
-}
-.programme-card-body {
-  padding: 28px;
-}
-.programme-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, rgba(255,92,26,0.12), rgba(214,63,163,0.12));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-.programme-card h3 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: #111;
-  margin-bottom: 12px;
-  letter-spacing: -0.015em;
-}
-.programme-card p {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-.programme-link {
-  color: #FF5C1A;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.2s;
-}
+.programmes-section { background: #F7F5F2; padding: 120px 72px; }
+.programmes-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+.programme-card { background: #fff; border-radius: 20px; overflow: hidden; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s; }
+.programme-card:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(0,0,0,0.14); }
+.programme-card-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.programme-card:hover .programme-card-img { transform: scale(1.05); }
+.programme-card-body { padding: 28px; overflow: hidden; }
+.programme-icon { width: 40px; height: 40px; background: linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.12)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #FF5C1A; margin-bottom: 16px; }
+.programme-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; color: #111; margin-bottom: 12px; }
+.programme-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 20px; }
+.programme-link { color: #FF5C1A; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .programme-link:hover { gap: 10px; }
 
-/* TESTIMONIAL */
-.testimonial-section {
-  background: #080808;
-  padding: 140px 72px;
-  position: relative;
-  overflow: hidden;
-}
-.testimonial-quote-bg {
-  position: absolute;
-  top: -60px;
-  left: 40px;
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: 320px;
-  color: rgba(255,92,26,0.05);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-.testimonial-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-.testimonial-text {
-  font-family: 'Sora', sans-serif;
-  font-weight: 600;
-  font-size: clamp(22px, 3vw, 38px);
-  color: #fff;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
-  margin-bottom: 48px;
-}
-.testimonial-text em {
-  color: #FF5C1A;
-  font-style: normal;
-}
-.testimonial-author {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-.testimonial-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.1);
-  object-fit: cover;
-  margin-bottom: 4px;
-}
-.testimonial-name {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #fff;
-}
-.testimonial-role {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: #888;
-}
+/* TÉMOIGNAGE */
+.testimonial-section { background: #080808; padding: 140px 72px; position: relative; overflow: hidden; }
+.testimonial-quote-bg { position: absolute; top: -60px; left: 40px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 320px; color: rgba(255,92,26,0.04); line-height: 1; pointer-events: none; user-select: none; }
+.testimonial-inner { max-width: 860px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.testimonial-text { font-family: 'Sora', sans-serif; font-weight: 600; font-size: clamp(22px,3vw,38px); color: #fff; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 48px; }
+.testimonial-text em { color: #FF5C1A; font-style: normal; }
+.testimonial-author { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.testimonial-avatar { width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); object-fit: cover; margin-bottom: 4px; }
+.testimonial-name { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: #fff; }
+.testimonial-role { font-family: 'Inter', sans-serif; font-size: 13px; color: #888; }
 
-/* DON SECTION */
-.don-section {
-  background: #F7F5F2;
-  padding: 140px 72px;
-}
-.don-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: start;
-}
-.don-impact-list {
-  list-style: none;
-  padding: 0;
-  margin: 32px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.don-impact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-.don-impact-icon {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  background: linear-gradient(135deg, rgba(255,92,26,0.12), rgba(214,63,163,0.12));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-.don-impact-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  color: #444;
-  line-height: 1.5;
-  padding-top: 6px;
-}
-.don-impact-text strong {
-  color: #111;
-}
-
-/* DON FORM CARD */
-.don-form-card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 40px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-}
-.don-form-card h3 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  color: #111;
-  margin-bottom: 24px;
-}
-.don-toggle {
-  display: flex;
-  background: #F0EFED;
-  border-radius: 8px;
-  padding: 4px;
-  margin-bottom: 24px;
-  gap: 4px;
-}
-.don-toggle-btn {
-  flex: 1;
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #888;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.don-toggle-btn.active {
-  background: #fff;
-  color: #111;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.don-amounts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.don-amount-btn {
-  border: 1.5px solid #E5E3DF;
-  background: transparent;
-  border-radius: 10px;
-  padding: 14px 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-}
-.don-amount-btn:hover, .don-amount-btn.active {
-  border-color: #FF5C1A;
-  background: rgba(255,92,26,0.06);
-}
-.don-amount-price {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: #111;
-  display: block;
-}
+/* DON */
+.don-section { background: #F7F5F2; padding: 140px 72px; }
+.don-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1200px; margin: 0 auto; align-items: start; }
+.don-impact-list { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 16px; }
+.don-impact-item { display: flex; align-items: flex-start; gap: 16px; }
+.don-impact-icon { width: 36px; height: 36px; min-width: 36px; background: linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.12)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FF5C1A; }
+.don-impact-text { font-family: 'Inter', sans-serif; font-size: 15px; color: #444; line-height: 1.5; padding-top: 6px; }
+.don-impact-text strong { color: #111; }
+.don-note { font-family: 'Inter', sans-serif; font-size: 11px; color: #aaa; font-style: italic; margin-top: 16px; }
+.don-form-card { background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.10); }
+.don-form-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #111; margin-bottom: 24px; }
+.don-toggle { display: flex; background: #F0EFED; border-radius: 8px; padding: 4px; margin-bottom: 24px; gap: 4px; }
+.don-toggle-btn { flex: 1; padding: 8px 16px; border: none; background: transparent; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; color: #888; cursor: pointer; transition: all 0.2s; }
+.don-toggle-btn.active { background: #fff; color: #111; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.don-amounts { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 16px; }
+.don-amount-btn { border: 1.5px solid #E5E3DF; background: transparent; border-radius: 10px; padding: 14px 8px; cursor: pointer; transition: all 0.2s; text-align: center; }
+.don-amount-btn:hover, .don-amount-btn.active { border-color: #FF5C1A; background: rgba(255,92,26,0.06); }
+.don-amount-price { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #111; display: block; }
 .don-amount-btn.active .don-amount-price { color: #FF5C1A; }
-.don-amount-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: #999;
-  display: block;
-  margin-top: 2px;
-}
-.don-custom-input {
-  width: 100%;
-  border: 1.5px solid #E5E3DF;
-  border-radius: 10px;
-  padding: 14px 16px;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  color: #111;
-  margin-bottom: 20px;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-  outline: none;
-}
+.don-amount-label { font-family: 'Inter', sans-serif; font-size: 11px; color: #999; display: block; margin-top: 2px; }
+.don-custom-input { width: 100%; border: 1.5px solid #E5E3DF; border-radius: 10px; padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: #111; margin-bottom: 20px; transition: border-color 0.2s; box-sizing: border-box; outline: none; }
 .don-custom-input:focus { border-color: #FF5C1A; }
-.don-interac {
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: #AAA;
-  margin-top: 16px;
-}
-.don-secure {
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: #BBB;
-  margin-top: 8px;
-}
+.don-interac { text-align: center; font-family: 'Inter', sans-serif; font-size: 12px; color: #AAA; margin-top: 16px; }
+.don-secure { text-align: center; font-family: 'Inter', sans-serif; font-size: 11px; color: #BBB; margin-top: 8px; }
 
 /* BÉNÉVOLES */
-.benevoles-section {
-  background: #080808;
-  padding: 140px 72px;
-}
-.benevoles-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-}
-.benevoles-photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 12px;
-}
-.benevoles-photos img:first-child {
-  grid-column: 1 / -1;
-  border-radius: 16px;
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-.benevoles-photos img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 12px;
-}
+.benevoles-section { background: #080808; padding: 140px 72px; }
+.benevoles-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: center; }
+.benevoles-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.benevoles-photos img:first-child { grid-column: 1 / -1; border-radius: 16px; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.benevoles-photos img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; }
 .benevoles-text h2 { color: #fff; margin: 24px 0 16px; }
-.benevoles-intro {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 32px;
-}
-.steps-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 40px;
-}
-.step-item {
-  display: flex;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.step-num {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #FF5C1A;
-  min-width: 28px;
-}
-.step-content {}
-.step-title {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #fff;
-  margin-bottom: 4px;
-}
-.step-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(255,255,255,0.50);
-}
+.benevoles-intro { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+.steps-list { list-style: none; padding: 0; margin: 0 0 40px; }
+.step-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.step-num { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #FF5C1A; min-width: 28px; }
+.step-title { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: #fff; margin-bottom: 4px; }
+.step-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.50); }
 
 /* GALERIE */
-.galerie-section {
-  background: #080808;
-  padding: 0 72px 140px;
-}
-.galerie-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-}
-.galerie-header h2 { color: #fff; }
-.galerie-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.galerie-img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-  transition: transform 0.4s;
-  overflow: hidden;
-}
-.galerie-img-wrap {
-  overflow: hidden;
-  border-radius: 16px;
-  position: relative;
-}
-.galerie-img-wrap:first-child {
-  grid-row: 1 / 3;
-  aspect-ratio: 3/4;
-}
-.galerie-img-wrap:not(:first-child) {
-  aspect-ratio: 4/3;
-}
-.galerie-img-wrap:hover img { transform: scale(1.04); }
-.galerie-img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8,8,8,0.6), transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
+.galerie-section { background: #080808; padding: 0 72px 140px; }
+.galerie-header { display: flex; justify-content: space-between; align-items: flex-end; max-width: 1200px; margin: 0 auto 40px; }
+.galerie-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 12px; max-width: 1200px; margin: 0 auto; }
+.galerie-img-wrap { overflow: hidden; border-radius: 14px; position: relative; cursor: pointer; }
+.galerie-img-wrap:first-child { grid-row: 1 / 3; aspect-ratio: 3/4; }
+.galerie-img-wrap:not(:first-child) { aspect-ratio: 4/3; }
+.galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.galerie-img-wrap:hover img { transform: scale(1.05); }
+.galerie-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top,rgba(8,8,8,0.5),transparent 50%); opacity: 0; transition: opacity 0.3s; }
 .galerie-img-wrap:hover::after { opacity: 1; }
-.galerie-img-wrap img { width: 100%; height: 100%; }
 
 /* BLOG */
-.blog-section {
-  background: #111111;
-  padding: 120px 72px;
-}
-.blog-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  max-width: 1200px;
-  margin: 0 auto 48px;
-}
-.blog-header h2 { color: #fff; }
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.blog-card {
-  background: #1A1A1A;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.3s;
-}
+.blog-section { background: #111; padding: 120px 72px; }
+.blog-header { display: flex; justify-content: space-between; align-items: flex-end; max-width: 1200px; margin: 0 auto 48px; }
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.blog-card { background: #1A1A1A; border-radius: 16px; overflow: hidden; transition: transform 0.3s; }
 .blog-card:hover { transform: translateY(-4px); }
-.blog-card-img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  display: block;
-}
-.blog-card-body {
-  padding: 24px;
-}
-.blog-tag {
-  display: inline-block;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #D63FA3;
-  background: rgba(214,63,163,0.1);
-  border-radius: 4px;
-  padding: 4px 10px;
-  margin-bottom: 8px;
-}
-.blog-date {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 10px;
-  display: block;
-}
-.blog-card h3 {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: #fff;
-  margin-bottom: 16px;
-  line-height: 1.35;
-}
-.blog-read-link {
-  color: #FF5C1A;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.2s;
-}
+.blog-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.4s; }
+.blog-card:hover .blog-card-img { transform: scale(1.04); }
+.blog-card-body { padding: 24px; }
+.blog-tag { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #D63FA3; background: rgba(214,63,163,0.1); border-radius: 4px; padding: 4px 10px; margin-bottom: 8px; }
+.blog-date { font-family: 'Inter', sans-serif; font-size: 12px; color: #666; margin-bottom: 10px; display: block; }
+.blog-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 16px; line-height: 1.35; }
+.blog-read-link { color: #FF5C1A; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .blog-read-link:hover { gap: 10px; }
+
+/* RESSOURCES */
+.ressources-section { background: #0D0D0D; padding: 120px 72px; border-top: 1px solid rgba(255,255,255,0.05); }
+.ressources-inner { max-width: 1200px; margin: 0 auto; }
+.ressources-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 64px; }
+.ressources-intro h2 { color: #fff; margin: 20px 0 20px; }
+.ressources-intro p { color: rgba(255,255,255,0.55); font-size: 16px; line-height: 1.75; margin-bottom: 28px; }
+.ressources-phenix-card { background: linear-gradient(135deg, rgba(255,92,26,0.12), rgba(214,63,163,0.08)); border: 1px solid rgba(255,92,26,0.25); border-radius: 20px; padding: 32px; }
+.ressources-phenix-card p { color: rgba(255,255,255,0.65); font-size: 15px; margin-bottom: 20px; line-height: 1.65; }
+.ressources-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.ressource-card { background: #161616; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.ressource-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+.ressource-tag { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; }
+.tag-urgence { background: rgba(239,68,68,0.15); color: #F87171; }
+.tag-sante { background: rgba(59,130,246,0.15); color: #93C5FD; }
+.tag-refuge { background: rgba(16,185,129,0.15); color: #6EE7B7; }
+.tag-ecoute { background: rgba(139,92,246,0.15); color: #C4B5FD; }
+.tag-jeunes { background: rgba(245,158,11,0.15); color: #FCD34D; }
+.tag-famille { background: rgba(236,72,153,0.15); color: #F9A8D4; }
+.ressource-card h4 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 6px; }
+.ressource-card .ressource-org { font-family: 'Inter', sans-serif; font-size: 12px; color: #666; margin-bottom: 14px; }
+.ressource-phone { display: flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #FF5C1A; text-decoration: none; transition: color 0.2s; }
+.ressource-phone:hover { color: #FF8C42; }
+.ressource-phone span { font-size: 14px; }
+.ressource-details { font-family: 'Inter', sans-serif; font-size: 12px; color: #555; margin-top: 8px; line-height: 1.5; }
+.ressources-disclaimer { font-family: 'Inter', sans-serif; font-size: 12px; color: #444; margin-top: 32px; text-align: center; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .impact-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .impact-section { padding-left: 28px; padding-right: 28px; }
+  .hero-content { padding: 0 28px; }
+  .hero-scroll-hint { display: none; }
+  .trust-band { padding: 16px 28px; gap: 20px; }
+  .stats-band { padding: 48px 28px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .mission-inner, .benevoles-inner { grid-template-columns: 1fr; gap: 48px; }
+  .don-inner { grid-template-columns: 1fr; gap: 48px; }
+  .programmes-grid, .blog-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .galerie-section, .benevoles-section, .mission-section, .testimonial-section, .don-section, .programmes-section, .blog-section, .ressources-section { padding-left: 28px; padding-right: 28px; }
+  .galerie-grid { grid-template-columns: 1fr 1fr; }
+  .galerie-img-wrap:first-child { grid-column: 1/-1; grid-row: auto; aspect-ratio: 16/9; }
+  .ressources-header { grid-template-columns: 1fr; gap: 32px; }
+  .ressources-grid { grid-template-columns: 1fr 1fr; }
+  .blog-header, .galerie-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 600px) {
+  .ressources-grid { grid-template-columns: 1fr; }
+  .programmes-grid { max-width: 100%; }
+  .blog-grid { max-width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -673,177 +216,217 @@
 <header class="site-header" id="site-header">
   <nav class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <svg viewBox="0 0 44 44" fill="none" width="36" height="36">
-        <path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/>
-        <path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/>
-        <defs>
-          <linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#D63FA3"/>
-            <stop offset="0.5" stop-color="#FF5C1A"/>
-            <stop offset="1" stop-color="#F4B942"/>
-          </linearGradient>
-          <linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FF5C1A"/>
-            <stop offset="1" stop-color="#F4B942"/>
-          </linearGradient>
-        </defs>
-      </svg>
+      <svg viewBox="0 0 44 44" fill="none" width="36" height="36"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
       <span class="nav-logo-text">Phé-Nix</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="a-propos.html">Notre Mission</a></li>
-      <li><a href="participez.html">Participez avec nous</a></li>
-      <li><a href="programmes.html">Nos Programmes</a></li>
-      <li><a href="commanditaires.html">Nos Commanditaires</a></li>
-      <li><a href="donnez.html">Donnez</a></li>
+      <li><a href="a-propos.html">Notre mission</a></li>
+      <li><a href="programmes.html">Programmes</a></li>
+      <li><a href="participez.html">Participer</a></li>
+      <li><a href="blog.html">Actualités</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="participez.html" class="btn btn-ghost btn-sm">Devenir bénévole</a>
       <a href="donnez.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html" class="active">Accueil</a>
+    <a href="a-propos.html">Notre mission</a>
+    <a href="programmes.html">Nos programmes</a>
+    <a href="participez.html">Participer avec nous</a>
+    <a href="blog.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-ctas">
+      <a href="participez.html" class="btn btn-ghost">Bénévole</a>
+      <a href="donnez.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <div class="hero-bg-slide hero-bg-slide-1"></div>
+    <div class="hero-bg-slide hero-bg-slide-2"></div>
+  </div>
   <div class="hero-content">
+    <div class="hero-event-chip"><span class="live-dot"></span>Prochaine distribution · Sam. 14 juin · Montréal, 10h</div>
     <div class="eyebrow">——— OBNL QUÉBÉCOIS · ACTIF DEPUIS 2022</div>
     <h1>Chaque semaine,<br>on est là.</h1>
-    <p class="hero-subtitle">Phé-Nix nourrit, habille et soutient les personnes en situation d'itinérance à Montréal, Longueuil, Gatineau et Trois-Rivières. 100 % bénévole, 100 % sur le terrain.</p>
+    <p class="hero-subtitle">Phé-Nix nourrit, habille et soutient les personnes en situation d'itinérance à Montréal, Longueuil, Montérégie, Gatineau et Trois-Rivières. 100 % bénévole, 100 % sur le terrain.</p>
     <div class="hero-btns">
       <a href="donnez.html" class="btn btn-primary btn-lg">Faire un don</a>
       <a href="participez.html" class="btn btn-ghost btn-lg">Devenir bénévole</a>
     </div>
   </div>
+  <div class="hero-scroll-hint">Défiler</div>
 </section>
 
-<!-- STATS BAND -->
+<!-- NEXT EVENT BAND -->
+<div class="next-event-band">
+  <span class="neb-label">Prochain terrain</span>
+  <div class="neb-items">
+    <span class="neb-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Montréal</span>
+    <span class="neb-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Samedi 14 juin 2026</span>
+    <span class="neb-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Dès 10h00</span>
+    <span class="neb-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Longueuil · 13h00</span>
+    <span class="neb-item"><a href="participez.html">Rejoindre →</a></span>
+  </div>
+</div>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    OBNL enregistré au Québec
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    100 % bénévole — aucun salaire
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Reçu fiscal sur demande
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Sur le terrain depuis 2022
+  </div>
+</div>
+
+<!-- STATS -->
 <section class="stats-band">
   <div class="stats-grid">
-    <div class="stat-item">
-      <div class="stat-number">3 ans</div>
+    <div class="stat-item reveal">
+      <div class="stat-number" data-counter data-target="3" data-suffix=" ans">3 ans</div>
       <div class="stat-label">Sur le terrain,<br>semaine après semaine</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">5</div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-number" data-counter data-target="5">5</div>
       <div class="stat-label">Régions du Québec<br>couvertes</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">100%</div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-number" data-counter data-target="100" data-suffix="%">100%</div>
       <div class="stat-label">Bénévoles<br>Aucun salaire versé</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number" style="font-size: 42px;">Sans limite</div>
-      <div class="stat-label">Impact sur chaque<br>vie touchée</div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-number" data-counter data-target="52" data-suffix="+">52+</div>
+      <div class="stat-label">Distributions<br>par année</div>
     </div>
   </div>
 </section>
 
-<!-- MISSION RÉSUMÉ -->
+<!-- MISSION -->
 <section class="mission-section">
   <div class="mission-inner">
-    <div class="mission-text">
+    <div class="mission-text reveal-left">
       <div class="eyebrow">——— NOTRE MISSION</div>
       <h2>Personne ne devrait dormir dehors le ventre vide.</h2>
-      <p>Phé-Nix est né d'une conviction simple portée par Mike et Guy Couture depuis 2022 : l'itinérance n'est pas une fatalité. Chaque semaine, notre équipe de bénévoles se rend sur le terrain pour distribuer nourriture, vêtements chauds et écoute sincère — parce que la présence humaine est aussi essentielle que le repas.</p>
-      <p>Nous travaillons aussi avec des centres thérapeutiques pour aider ceux qui souhaitent reconstruire leur vie, en assurant transport et suivi personnalisé.</p>
+      <p>Phé-Nix est né en 2022 de la conviction de Michel Couture (Mike) et de ses bénévoles : l'itinérance n'est pas une fatalité. Ce que nous partageons tous, c'est un investissement absolu envers les sans-abris et les plus démunis.</p>
+      <p>Chaque semaine, on distribue nourriture, vêtements chauds, couvertures et écoute sincère. On travaille aussi avec des centres thérapeutiques pour ceux qui veulent reconstruire leur vie — transport en thérapie et suivi personnalisé inclus.</p>
       <a href="a-propos.html" class="link-arrow">Lire notre histoire →</a>
     </div>
-    <div class="mission-image-wrap">
-      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Équipe bénévole Phé-Nix en action">
-      <div class="mission-badge">
-        <div class="mission-badge-year">2022</div>
-        <div class="mission-badge-label">Fondé à Montréal</div>
-      </div>
+    <div class="mission-image-wrap reveal-right">
+      <img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution Phé-Nix — bénévoles sur le terrain">
+      <div class="mission-badge"><div class="mission-badge-year">2022</div><div class="mission-badge-label">Fondé à Montréal</div></div>
     </div>
   </div>
 </section>
 
 <!-- PROGRAMMES -->
 <section class="programmes-section">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div class="section-header">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-header reveal" style="margin-bottom:72px;">
       <div class="eyebrow">——— NOS PROGRAMMES</div>
       <h2 style="color:#111;">Ce qu'on fait,<br>concrètement.</h2>
     </div>
     <div class="programmes-grid">
-      <div class="programme-card">
-        <img class="programme-card-img" src="https://images.unsplash.com/photo-1593113616828-6f22bca04804?w=600&q=80" alt="Distribution de nourriture Phé-Nix">
-        <div class="programme-card-body">
-          <div class="programme-icon">🍽️</div>
-          <h3>Nourriture &amp; Vêtements</h3>
-          <p>Des centaines de repas chauds, fruits, légumes, vêtements et articles d'hygiène distribués chaque semaine dans les rues de Montréal et ses environs.</p>
-          <a href="programmes.html" class="programme-link">En savoir plus →</a>
-        </div>
+      <div class="programme-card reveal reveal-d1">
+        <img class="programme-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution de nourriture Phé-Nix" style="object-position:center top;">
+        <div class="programme-card-body"><div class="programme-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div><h3>Nourriture &amp; Vêtements</h3><p>Des centaines de repas chauds, fruits, légumes, vêtements et articles d'hygiène distribués chaque semaine.</p><a href="programmes.html" class="programme-link">En savoir plus →</a></div>
       </div>
-      <div class="programme-card">
-        <img class="programme-card-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Bénévoles Phé-Nix en écoute">
-        <div class="programme-card-body">
-          <div class="programme-icon">🤝</div>
-          <h3>Écoute &amp; Support moral</h3>
-          <p>Être présent, regarder dans les yeux, écouter sans juger. Parfois, c'est la chose la plus précieuse qu'on peut offrir à quelqu'un que la société a oublié.</p>
-          <a href="programmes.html" class="programme-link">En savoir plus →</a>
-        </div>
+      <div class="programme-card reveal reveal-d2">
+        <div class="programme-card-img" style="background:linear-gradient(135deg,#1a1a1a 0%,#0d0d0d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(255,92,26,0.35)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.18);text-transform:uppercase;letter-spacing:0.12em;">Photo à venir</span></div>
+        <div class="programme-card-body"><div class="programme-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Écoute &amp; Support moral</h3><p>Être présent, regarder dans les yeux, écouter sans juger. Parfois c'est la chose la plus précieuse qu'on puisse offrir.</p><a href="programmes.html" class="programme-link">En savoir plus →</a></div>
       </div>
-      <div class="programme-card">
-        <img class="programme-card-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80" alt="Transport vers centre thérapeutique">
-        <div class="programme-card-body">
-          <div class="programme-icon">🚗</div>
-          <h3>Transport en thérapie</h3>
-          <p>En partenariat avec des centres thérapeutiques, nous assurons le transport et le suivi des personnes prêtes à reconstruire leur vie. Pas de jugement, juste du soutien concret.</p>
-          <a href="programmes.html" class="programme-link">En savoir plus →</a>
-        </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section">
+  <div class="impact-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">——— NOTRE IMPACT DEPUIS 2022</div>
+    <div class="impact-grid">
+      <div class="impact-item reveal">
+        <div class="impact-number" data-counter data-target="8000" data-suffix="+">8 000+</div>
+        <div class="impact-label">Repas chauds<br>distribués</div>
+      </div>
+      <div class="impact-item reveal reveal-d1">
+        <div class="impact-number" data-counter data-target="5">5</div>
+        <div class="impact-label">Régions du Québec<br>couvertes</div>
+      </div>
+      <div class="impact-item reveal reveal-d2">
+        <div class="impact-number" data-counter data-target="120" data-suffix="+">120+</div>
+        <div class="impact-label">Bénévoles<br>actifs</div>
+      </div>
+      <div class="impact-item reveal reveal-d3">
+        <div class="impact-number" data-counter data-target="52" data-suffix="+">52+</div>
+        <div class="impact-label">Distributions<br>par année</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TÉMOIGNAGE -->
+<!-- DÉCLARATION D'ÉQUIPE -->
 <section class="testimonial-section">
   <div class="testimonial-quote-bg">"</div>
-  <div class="testimonial-inner">
-    <p class="testimonial-text">
-      "J'avais peur que ma présence ne serve à rien. Mais quand j'ai vu le regard de cet homme recevoir un repas chaud, j'ai compris que <em>chaque geste compte</em>. Je reviens chaque semaine depuis deux ans."
-    </p>
-    <div class="testimonial-author">
-      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="Rebecca T., bénévole Phé-Nix" class="testimonial-avatar">
-      <span class="testimonial-name">Rebecca T.</span>
-      <span class="testimonial-role">Bénévole · Montréal · depuis 2023</span>
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:80px;align-items:center;flex-wrap:wrap;position:relative;z-index:2;">
+    <div style="flex:1;min-width:280px;">
+      <img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg"
+           alt="Équipe bénévole Phé-Nix Action Communautaire Citoyenne"
+           style="width:100%;border-radius:20px;aspect-ratio:16/10;object-fit:cover;object-position:center top;">
     </div>
+    <div style="flex:1;min-width:280px;">
+      <div class="eyebrow" style="margin-bottom:32px;">——— CE QUI NOUS UNIT</div>
+      <p class="testimonial-text" style="text-align:left;margin-bottom:32px;">"Ce que nous partageons tous, c'est un <em>investissement absolu</em> envers les sans-abris et les plus démunis."</p>
+      <p style="font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:40px;">Rejoignez-nous et tous ensemble, continuons à nous battre pour soutenir ceux qui en ont le plus de besoin — à Montréal, Longueuil, Montérégie, Gatineau et Trois-Rivières.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="a-propos.html" class="btn btn-ghost">Notre histoire →</a>
+        <a href="participez.html" class="btn btn-primary">Rejoindre l'équipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT APPLE-STYLE -->
+<section class="statement-section">
+  <div class="reveal" style="position:relative;z-index:2;">
+    <div class="statement-eyebrow">——— DEPUIS 2022</div>
+    <h2 class="statement-heading">Chaque samedi.<br>Sans exception.</h2>
+    <p class="statement-body">Peu importe la météo. Peu importe la saison. L'équipe Phé-Nix est dans les rues du Québec — à côté de ceux qui en ont le plus besoin.</p>
   </div>
 </section>
 
 <!-- FAIRE UN DON -->
 <section class="don-section">
   <div class="don-inner">
-    <div class="don-left">
+    <div class="don-left reveal-left">
       <div class="eyebrow">——— FAIRE UN DON</div>
-      <h2 style="color:#111; margin: 24px 0 20px;">Votre générosité<br>nourrit des vies.</h2>
-      <p style="color:#555; font-size:16px; line-height:1.75; margin-bottom: 8px;">Phé-Nix fonctionne grâce à des gens comme vous. Chaque dollar va directement sur le terrain — pour acheter de la nourriture, des vêtements, du matériel pour les distributions.</p>
+      <h2 style="color:#111;">Chaque dollar fait<br>un vrai impact dans la rue.</h2>
+      <p style="color:#555;font-size:16px;line-height:1.75;margin-bottom:8px;">Phé-Nix fonctionne grâce à des gens comme vous. Chaque dollar va directement sur le terrain — pour acheter de la nourriture, des vêtements, du matériel pour les distributions.</p>
       <ul class="don-impact-list">
-        <li class="don-impact-item">
-          <div class="don-impact-icon">🍊</div>
-          <div class="don-impact-text"><strong>10 $</strong> — couvre les fruits et légumes d'une distribution</div>
-        </li>
-        <li class="don-impact-item">
-          <div class="don-impact-icon">🧤</div>
-          <div class="don-impact-text"><strong>25 $</strong> — fournit gants, tuques et vêtements chauds pour une personne</div>
-        </li>
-        <li class="don-impact-item">
-          <div class="don-impact-icon">🚗</div>
-          <div class="don-impact-text"><strong>50 $</strong> — finance le transport d'une personne vers un centre d'aide</div>
-        </li>
-        <li class="don-impact-item">
-          <div class="don-impact-icon">⭐</div>
-          <div class="don-impact-text"><strong>100 $</strong> — soutient une distribution complète pour 10 à 15 personnes</div>
-        </li>
+        <li class="don-impact-item"><div class="don-impact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div class="don-impact-text"><strong>10 $</strong> — env. les fruits et légumes d'une distribution</div></li>
+        <li class="don-impact-item"><div class="don-impact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="don-impact-text"><strong>25 $</strong> — env. gants, tuques et vêtements chauds pour une personne</div></li>
+        <li class="don-impact-item"><div class="don-impact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="don-impact-text"><strong>50 $</strong> — env. le transport d'une personne vers un centre d'aide</div></li>
+        <li class="don-impact-item"><div class="don-impact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="don-impact-text"><strong>100 $</strong> — env. une distribution complète pour 10 à 15 personnes</div></li>
       </ul>
+      <p class="don-note">* Équivalences approximatives — les montants réels varient selon les besoins et la saison.</p>
     </div>
-    <div class="don-right">
+    <div class="don-right reveal-right">
       <div class="don-form-card">
         <h3>Choisissez votre contribution</h3>
         <div class="don-toggle">
@@ -851,35 +434,17 @@
           <button class="don-toggle-btn" onclick="setToggle(this)">Don mensuel</button>
         </div>
         <div class="don-amounts">
-          <button class="don-amount-btn active" onclick="setAmount(this)">
-            <span class="don-amount-price">10 $</span>
-            <span class="don-amount-label">Un repas</span>
-          </button>
-          <button class="don-amount-btn" onclick="setAmount(this)">
-            <span class="don-amount-price">25 $</span>
-            <span class="don-amount-label">Vêtements</span>
-          </button>
-          <button class="don-amount-btn" onclick="setAmount(this)">
-            <span class="don-amount-price">50 $</span>
-            <span class="don-amount-label">Transport</span>
-          </button>
-          <button class="don-amount-btn" onclick="setAmount(this)">
-            <span class="don-amount-price">100 $</span>
-            <span class="don-amount-label">Distribution</span>
-          </button>
-          <button class="don-amount-btn" onclick="setAmount(this)">
-            <span class="don-amount-price">250 $</span>
-            <span class="don-amount-label">Impact majeur</span>
-          </button>
-          <button class="don-amount-btn" onclick="setAmount(this)">
-            <span class="don-amount-price">Autre</span>
-            <span class="don-amount-label">Montant libre</span>
-          </button>
+          <button class="don-amount-btn active" onclick="setAmount(this)"><span class="don-amount-price">10 $</span><span class="don-amount-label">Un repas</span></button>
+          <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">25 $</span><span class="don-amount-label">Vêtements</span></button>
+          <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">50 $</span><span class="don-amount-label">Transport</span></button>
+          <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">100 $</span><span class="don-amount-label">Distribution</span></button>
+          <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">250 $</span><span class="don-amount-label">Impact majeur</span></button>
+          <button class="don-amount-btn" onclick="setAmount(this)"><span class="don-amount-price">Autre</span><span class="don-amount-label">Montant libre</span></button>
         </div>
         <input class="don-custom-input" type="text" placeholder="$ Montant personnalisé">
         <a href="donnez.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;">Procéder au don →</a>
         <p class="don-interac">Ou par Interac : phenixactioncitoyenne@gmail.com</p>
-        <p class="don-secure">🔒 Paiement sécurisé · Reçu envoyé par courriel</p>
+        <p class="don-secure"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Paiement sécurisé · Reçu envoyé par courriel sur demande</p>
       </div>
     </div>
   </div>
@@ -888,202 +453,105 @@
 <!-- BÉNÉVOLES -->
 <section class="benevoles-section">
   <div class="benevoles-inner">
-    <div class="benevoles-photos">
-      <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=700&q=80" alt="Équipe bénévole Phé-Nix">
-      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" alt="Distribution Phé-Nix">
-      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80" alt="Bénévoles Phé-Nix">
+    <div class="benevoles-photos reveal-left">
+      <img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Équipe bénévole Phé-Nix" style="object-position:center top;">
+      <img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution Phé-Nix — bénévoles et denrées" style="object-position:center top;">
     </div>
-    <div class="benevoles-text">
+    <div class="benevoles-text reveal-right">
       <div class="eyebrow">——— DEVENIR BÉNÉVOLE</div>
       <h2>Votre simple présence<br>fait toute la différence.</h2>
-      <p class="benevoles-intro">Aucune expérience requise. Juste l'envie d'agir. Voici comment ça se passe :</p>
+      <p class="benevoles-intro">Aucune expérience requise. Juste l'envie d'agir.</p>
       <ul class="steps-list">
-        <li class="step-item">
-          <span class="step-num">01</span>
-          <div class="step-content">
-            <div class="step-title">Remplissez le formulaire</div>
-            <div class="step-desc">Dites-nous votre région et vos disponibilités</div>
-          </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">02</span>
-          <div class="step-content">
-            <div class="step-title">On vous contacte</div>
-            <div class="step-desc">Pour vous expliquer la prochaine distribution dans votre secteur</div>
-          </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">03</span>
-          <div class="step-content">
-            <div class="step-title">Vous venez sur le terrain</div>
-            <div class="step-desc">Aucun équipement requis, l'équipe prend soin de tout</div>
-          </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">04</span>
-          <div class="step-content">
-            <div class="step-title">Vous revenez</div>
-            <div class="step-desc">Parce que l'expérience change quelque chose en vous</div>
-          </div>
-        </li>
+        <li class="step-item"><span class="step-num">01</span><div><div class="step-title">Remplissez le formulaire</div><div class="step-desc">Dites-nous votre région et choisissez un événement</div></div></li>
+        <li class="step-item"><span class="step-num">02</span><div><div class="step-title">On vous contacte</div><div class="step-desc">Pour vous expliquer la prochaine distribution dans votre secteur</div></div></li>
+        <li class="step-item"><span class="step-num">03</span><div><div class="step-title">Vous venez sur le terrain</div><div class="step-desc">Aucun équipement requis, l'équipe prend soin de tout</div></div></li>
+        <li class="step-item"><span class="step-num">04</span><div><div class="step-title">Vous revenez</div><div class="step-desc">Parce que l'expérience change quelque chose en vous</div></div></li>
       </ul>
-      <a href="participez.html" class="btn btn-primary btn-lg">S'inscrire comme bénévole</a>
+      <a href="participez.html" class="btn btn-primary btn-lg">Voir les prochains événements</a>
     </div>
   </div>
 </section>
 
 <!-- GALERIE -->
 <section class="galerie-section">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div class="galerie-header">
-      <div>
-        <div class="eyebrow">——— SUR LE TERRAIN</div>
-        <h2 style="color:#fff;">Chaque photo,<br>une vraie histoire.</h2>
-      </div>
-      <a href="blog.html" class="link-arrow" style="color:#FF5C1A; font-family:'Inter',sans-serif; font-size:14px; text-decoration:none; white-space:nowrap; margin-bottom:8px;">Voir toutes les photos →</a>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="galerie-header reveal">
+      <div><div class="eyebrow">——— SUR LE TERRAIN</div><h2 style="color:#fff;">Chaque photo,<br>une vraie histoire.</h2></div>
+      <a href="blog.html" style="color:#FF5C1A;font-family:'Inter',sans-serif;font-size:14px;text-decoration:none;white-space:nowrap;margin-bottom:8px;">Voir toutes les photos →</a>
     </div>
     <div class="galerie-grid">
-      <div class="galerie-img-wrap">
-        <img class="galerie-img" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80" alt="Équipe bénévole Phé-Nix distribution">
-      </div>
-      <div class="galerie-img-wrap">
-        <img class="galerie-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&q=80" alt="Distribution nourriture Phé-Nix Montréal">
-      </div>
-      <div class="galerie-img-wrap">
-        <img class="galerie-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&q=80" alt="Bénévoles Phé-Nix en action">
-      </div>
-      <div class="galerie-img-wrap">
-        <img class="galerie-img" src="https://images.unsplash.com/photo-1593113616828-6f22bca04804?w=500&q=80" alt="Distribution Phé-Nix Longueuil">
-      </div>
-      <div class="galerie-img-wrap">
-        <img class="galerie-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=500&q=80" alt="Transport Phé-Nix centre thérapeutique">
-      </div>
+      <div class="galerie-img-wrap"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Équipe bénévole Phé-Nix" style="object-position:center top;"></div>
+      <div class="galerie-img-wrap"><img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution Phé-Nix — bénévoles et denrées" style="object-position:center top;"></div>
+      <div class="galerie-img-wrap"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Bénévoles Phé-Nix sur le terrain" style="object-position:center right;"></div>
     </div>
   </div>
 </section>
 
-<!-- BLOG RÉCENTS -->
+<!-- BLOG -->
 <section class="blog-section">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div class="blog-header">
-      <div>
-        <div class="eyebrow">——— ACTUALITÉS</div>
-        <h2>Sur le terrain<br>cette saison.</h2>
-      </div>
-      <a href="blog.html" class="link-arrow" style="color:#FF5C1A; font-family:'Inter',sans-serif; font-size:14px; text-decoration:none; white-space:nowrap; margin-bottom:8px;">Voir tous les articles →</a>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="blog-header reveal">
+      <div><div class="eyebrow">——— ACTUALITÉS</div><h2>Sur le terrain<br>cette saison.</h2></div>
+      <a href="blog.html" style="color:#FF5C1A;font-family:'Inter',sans-serif;font-size:14px;text-decoration:none;white-space:nowrap;margin-bottom:8px;">Voir tous les articles →</a>
     </div>
     <div class="blog-grid">
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="Distributions Été 2025 Phé-Nix">
-        <div class="blog-card-body">
-          <span class="blog-tag">Distribution</span>
-          <span class="blog-date">Août 2025</span>
-          <h3>Distributions Été 2025 : bilan et moments forts</h3>
-          <a href="blog.html" class="blog-read-link">Lire l'article →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Phé-Nix en 2026">
-        <div class="blog-card-body">
-          <span class="blog-tag">Actualité</span>
-          <span class="blog-date">Janvier 2026</span>
-          <h3>Phé-Nix en 2026 : nouvelle saison, même engagement</h3>
-          <a href="blog.html" class="blog-read-link">Lire l'article →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80" alt="Rebecca bénévole Phé-Nix">
-        <div class="blog-card-body">
-          <span class="blog-tag">Témoignage</span>
-          <span class="blog-date">Mars 2026</span>
-          <h3>Rebecca, 2 ans de bénévolat : ce que ça m'a appris</h3>
-          <a href="blog.html" class="blog-read-link">Lire l'article →</a>
-        </div>
-      </div>
+      <div class="blog-card reveal reveal-d1"><img class="blog-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution Phé-Nix novembre 2023" style="object-position:center top;"><div class="blog-card-body"><span class="blog-tag">Distribution</span><span class="blog-date">Novembre 2023</span><h3>Phé-Nix : quand agir prend tout son sens</h3><a href="blog.html" class="blog-read-link">Lire l'article →</a></div></div>
+      <div class="blog-card reveal reveal-d2"><img class="blog-card-img" src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="Équipe bénévole Phé-Nix" style="object-position:center top;"><div class="blog-card-body"><span class="blog-tag" style="color:#8B5CF6;background:rgba(139,92,246,0.1);">Actualité</span><span class="blog-date">Novembre 2023</span><h3>Distribution novembre 2023 : merci à tous nos bénévoles</h3><a href="blog.html" class="blog-read-link">Lire l'article →</a></div></div>
+      <div class="blog-card reveal reveal-d3"><img class="blog-card-img" src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Rebecca en action — bénévole Phé-Nix" style="object-position:center top;"><div class="blog-card-body"><span class="blog-tag">Témoignage</span><span class="blog-date">Novembre 2023</span><h3>De la théorie à la pratique : Rebecca en action !</h3><a href="blog.html" class="blog-read-link">Lire l'article →</a></div></div>
     </div>
   </div>
 </section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner reveal">
+    <div class="eyebrow" style="justify-content:center;">——— RESTEZ INFORMÉ</div>
+    <h2>Suivez la mission<br>chaque mois.</h2>
+    <p>Actualités du terrain, témoignages, prochains événements — directement dans votre boîte courriel. Jamais de spam.</p>
+    <form class="newsletter-form" id="newsletter-form">
+      <input class="newsletter-input" type="email" placeholder="votre@courriel.com" required>
+      <button type="submit" class="btn btn-primary">S'abonner</button>
+    </form>
+    <div class="newsletter-success" id="newsletter-success">Merci ! Vous recevrez nos nouvelles chaque mois.</div>
+    <p class="newsletter-note">Désabonnement possible en tout temps · Aucun spam, jamais.</p>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">×</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">
-        <svg viewBox="0 0 44 44" fill="none" width="32" height="32">
-          <path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/>
-          <path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/>
-          <defs>
-            <linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#D63FA3"/>
-              <stop offset="0.5" stop-color="#FF5C1A"/>
-              <stop offset="1" stop-color="#F4B942"/>
-            </linearGradient>
-            <linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FF5C1A"/>
-              <stop offset="1" stop-color="#F4B942"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span>Phé-Nix</span>
-      </div>
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
       <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
-      <div class="footer-socials">
-        <a href="#" class="social-icon" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="#" class="social-icon" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </div>
+      <div class="footer-socials"><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div>
     </div>
-    <div class="footer-col">
-      <h4>NAVIGATION</h4>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="a-propos.html">Notre mission</a></li>
-        <li><a href="participez.html">Participez avec nous</a></li>
-        <li><a href="programmes.html">Nos programmes</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>SOUTENIR</h4>
-      <ul>
-        <li><a href="donnez.html">Faire un don</a></li>
-        <li><a href="donnez.html">Don mensuel</a></li>
-        <li><a href="participez.html">Devenir bénévole</a></li>
-        <li><a href="commanditaires.html">Commanditer</a></li>
-        <li><a href="contact.html">Don en nature</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>CONTACT</h4>
-      <ul>
-        <li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li>
-        <li><a href="tel:4385263889">(438) 526-3889</a></li>
-        <li style="color:#555; cursor:default; pointer-events:none;">Montréal, Québec</li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>NAVIGATION</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">Notre mission</a></li><li><a href="participez.html">Participez avec nous</a></li><li><a href="programmes.html">Nos programmes</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>SOUTENIR</h4><ul><li><a href="donnez.html">Faire un don</a></li><li><a href="donnez.html">Don mensuel</a></li><li><a href="participez.html">Devenir bénévole</a></li><li><a href="commanditaires.html">Commanditer</a></li><li><a href="contact.html">Don en nature</a></li></ul></div>
+    <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span>
-    <span>Fait avec ❤️ pour ceux qui en ont le plus besoin.</span>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- MOBILE STICKY DONATE -->
+<div class="mobile-donate-bar">
+  <a href="donnez.html" class="btn btn-primary">Faire un don →</a>
+</div>
+
+<script src="nav.js"></script>
 <script>
-const header = document.getElementById('site-header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 40);
-});
-function setToggle(btn) {
-  btn.parentElement.querySelectorAll('.don-toggle-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-function setAmount(btn) {
-  btn.closest('.don-amounts').querySelectorAll('.don-amount-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
+function setToggle(btn) { btn.parentElement.querySelectorAll('.don-toggle-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+function setAmount(btn) { btn.closest('.don-amounts').querySelectorAll('.don-amount-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
 </script>
 </body>
 </html>
