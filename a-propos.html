@@ -13,7 +13,8 @@
 .histoire-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: start; }
 .histoire-text h2 { color: #111; margin: 24px 0 28px; }
 .histoire-text p { font-family: 'Inter', sans-serif; font-size: 16px; color: #444; line-height: 1.75; margin-bottom: 20px; }
-.histoire-callout { font-family: 'Sora', sans-serif; font-weight: 600; font-style: italic; font-size: 22px; color: #FF5C1A; border-left: 3px solid #FF5C1A; padding-left: 24px; margin: 32px 0; line-height: 1.5; }
+.histoire-callout { font-family: 'Sora', sans-serif; font-weight: 600; font-style: italic; font-size: 20px; color: #111; border-left: 3px solid #FF5C1A; padding: 16px 0 16px 24px; margin: 32px 0; line-height: 1.55; position: relative; }
+.histoire-callout::before { content: '\201C'; position: absolute; top: -8px; left: -2px; font-size: 64px; font-style: normal; color: rgba(255,92,26,0.2); line-height: 1; font-family: 'Sora', sans-serif; pointer-events: none; }
 .histoire-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-self: start; position: sticky; top: 88px; }
 .histoire-photos img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 14px; }
 .histoire-photos img:first-child { grid-column: 1 / -1; aspect-ratio: 16/9; }
@@ -113,7 +114,7 @@
     <p class="equipe-subtitle reveal">Nous sommes des bénévoles comme vous. Des citoyens qui ont décidé d'agir.</p>
     <div class="team-grid">
       <div class="team-card reveal reveal-d1">
-        <div class="team-photo" style="background:linear-gradient(135deg,rgba(255,92,26,0.15),rgba(214,63,163,0.15));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:42px;color:rgba(255,92,26,0.75);letter-spacing:-2px;">MC</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,rgba(255,92,26,0.15),rgba(214,63,163,0.15));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:42px;color:rgba(255,92,26,0.75);letter-spacing:-2px;aspect-ratio:1/1;width:100%;border-radius:16px;margin-bottom:20px;">MC</div>
         <div class="team-name">Michel Couture "Mike"</div>
         <span class="team-role">Président-Fondateur</span>
       </div>
