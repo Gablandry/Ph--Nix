@@ -244,6 +244,21 @@
     });
   }
 
+  // ===== LOGO RÉEL PHÉ-NIX =====
+  // Remplace le SVG placeholder par la vraie image logo si elle est disponible
+  document.querySelectorAll('.nav-logo').forEach(function(navLogo) {
+    var svg = navLogo.querySelector('svg');
+    if (!svg) return;
+    var img = document.createElement('img');
+    img.src = 'logo-phenix.png';
+    img.alt = 'Phé-Nix';
+    img.width = 40;
+    img.height = 40;
+    img.style.cssText = 'border-radius:6px;object-fit:cover;flex-shrink:0;';
+    img.onerror = function() { this.remove(); navLogo.insertBefore(svg, navLogo.firstChild); };
+    navLogo.replaceChild(img, svg);
+  });
+
   // ===== BLOG FILTERS =====
   const filterBtns = document.querySelectorAll('.filter-btn[data-cat]');
   if (filterBtns.length) {

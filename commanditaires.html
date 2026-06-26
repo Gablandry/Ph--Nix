@@ -11,13 +11,15 @@
 <style>
 /* Logos / Sponsors */
 .commanditaires-grid-section { background: #F7F5F2; padding: 100px 72px; }
-.logos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 960px; margin: 56px auto 0; }
-.logo-card { background: #fff; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: all 0.25s; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; gap: 8px; position: relative; overflow: hidden; }
+.logos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1140px; margin: 48px auto 0; }
+.logo-card { background: #fff; border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: all 0.25s; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; gap: 6px; position: relative; overflow: hidden; }
 .logo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); opacity: 0; transition: opacity 0.25s; }
 .logo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
 .logo-card:hover::before { opacity: 1; }
-.sponsor-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: #111; line-height: 1.3; }
-.sponsor-cat { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #FF5C1A; margin-top: 4px; }
+.sponsor-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px; color: #111; line-height: 1.3; }
+.sponsor-cat { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #FF5C1A; margin-top: 2px; }
+.sponsor-category-label { grid-column: 1 / -1; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #FF5C1A; padding: 22px 2px 10px; border-bottom: 1px solid rgba(255,92,26,0.2); margin-bottom: 4px; }
+.sponsor-category-label:first-child { padding-top: 4px; }
 
 /* Pourquoi section */
 .pourquoi-cmdite-section { background: #080808; padding: 100px 72px; }
@@ -56,13 +58,16 @@
 .contact-commandite h2 { color: #111; margin-bottom: 20px; }
 .contact-commandite p { color: #555; font-size: 16px; max-width: 480px; margin: 0 auto 40px; }
 
+@media (max-width: 960px) {
+  .logos-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 860px) {
   .logos-grid { grid-template-columns: 1fr 1fr; }
   .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
   .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 28px; padding-right: 28px; }
 }
-@media (max-width: 480px) {
-  .logos-grid { grid-template-columns: 1fr; max-width: 320px; }
+@media (max-width: 400px) {
+  .logos-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
 }
 </style>
 </head>
@@ -114,44 +119,94 @@
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">——— NOS PARTENAIRES 2026</div>
     <h2 style="color:#111;">Nos partenaires 2026.</h2>
-    <p style="color:#666; font-size:15px; margin-top:12px;">Merci à toutes les organisations qui soutiennent notre mission.</p>
+    <p style="color:#666; font-size:15px; margin-top:12px;">Plus de <strong style="color:#FF5C1A;">80 commanditaires</strong> soutiennent notre mission semaine après semaine.</p>
     <div class="logos-grid">
-      <a class="logo-card" href="https://www.fkaiser.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Kaiser Fromagerie</div>
-        <div class="sponsor-cat">Alimentation</div>
-      </a>
-      <a class="logo-card" href="https://www.marchelavigne.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Marché Lavigne</div>
-        <div class="sponsor-cat">Épicerie</div>
-      </a>
-      <a class="logo-card" href="https://www.pizzaartisanalejdl.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Pizza Artisanale JDL</div>
-        <div class="sponsor-cat">Restauration</div>
-      </a>
-      <a class="logo-card" href="https://www.grenierauxtrouvailles.org/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Grenier aux Trouvailles</div>
-        <div class="sponsor-cat">Récupération</div>
-      </a>
-      <a class="logo-card" href="https://lesescomptesstjean.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Les Escomptes St-Jean</div>
-        <div class="sponsor-cat">Commerce</div>
-      </a>
-      <a class="logo-card" href="http://www.pizzapizza.ca" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Pizza Pizza</div>
-        <div class="sponsor-cat">Restauration</div>
-      </a>
-      <a class="logo-card" href="https://www.boulangeriecheznonna.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Boulangerie Chez Nonna</div>
-        <div class="sponsor-cat">Alimentation</div>
-      </a>
-      <a class="logo-card" href="https://www.marcherichelieu.ca/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-name">Marché Richelieu</div>
-        <div class="sponsor-cat">Épicerie</div>
-      </a>
-      <div class="logo-card">
-        <div class="sponsor-name">Cantine BB Lou</div>
-        <div class="sponsor-cat">Restauration</div>
-      </div>
+
+      <!-- ——— ALIMENTATION & RESTAURATION ——— -->
+      <div class="sponsor-category-label">——— Alimentation &amp; Restauration</div>
+      <div class="logo-card"><div class="sponsor-name">Kaiser Fromagerie</div><div class="sponsor-cat">Fromagerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Fromagerie Fritz Kaiser</div><div class="sponsor-cat">Fromagerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Fromagerie Victoria</div><div class="sponsor-cat">Fromagerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Saputo</div><div class="sponsor-cat">Industrie laitière</div></div>
+      <div class="logo-card"><div class="sponsor-name">Boulangerie Lacolle (Miche 42)</div><div class="sponsor-cat">Boulangerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Boulangerie Chez Nonna</div><div class="sponsor-cat">Boulangerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Boulangerie Alexis Nion</div><div class="sponsor-cat">Boulangerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Aux Croutons Dorés</div><div class="sponsor-cat">Boulangerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Marché Lavigne</div><div class="sponsor-cat">Épicerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Marché 360</div><div class="sponsor-cat">Épicerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Maxi St-Jean (Omer Marcil)</div><div class="sponsor-cat">Épicerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Alimentation Aubut</div><div class="sponsor-cat">Alimentation</div></div>
+      <div class="logo-card"><div class="sponsor-name">Provisions Mama Dou</div><div class="sponsor-cat">Alimentation</div></div>
+      <div class="logo-card"><div class="sponsor-name">Mangeons Maison</div><div class="sponsor-cat">Alimentation</div></div>
+      <div class="logo-card"><div class="sponsor-name">Le Roi du maïs Napierville</div><div class="sponsor-cat">Maraîchage</div></div>
+      <div class="logo-card"><div class="sponsor-name">Cantine BB-Lou</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Belle Province St-Paul</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Pizza Artisanale</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Pizza Pizza</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Pizza O-Ste-Marie</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Pizza Gino</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Souvlaki Bar</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Brasserie No.7</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">La Belle et le Bœuf</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Vieux Duluth</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Scores</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Restaurant Vivaldi</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Cochons Baveurs</div><div class="sponsor-cat">Restauration</div></div>
+      <div class="logo-card"><div class="sponsor-name">Traiteur Nancy — Buffet du chef</div><div class="sponsor-cat">Traiteur</div></div>
+      <div class="logo-card"><div class="sponsor-name">Marchand Traiteur</div><div class="sponsor-cat">Traiteur</div></div>
+      <div class="logo-card"><div class="sponsor-name">Boucherie Athlétique</div><div class="sponsor-cat">Boucherie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Hôtel Bonaventure</div><div class="sponsor-cat">Hôtellerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Tablée des Chefs</div><div class="sponsor-cat">Organisme alimentaire</div></div>
+      <div class="logo-card"><div class="sponsor-name">Terre à boire</div><div class="sponsor-cat">Vignoble</div></div>
+      <div class="logo-card"><div class="sponsor-name">Amalgame Vignoble</div><div class="sponsor-cat">Vignoble</div></div>
+
+      <!-- ——— COMMERCE & SERVICES ——— -->
+      <div class="sponsor-category-label">——— Commerce &amp; Services</div>
+      <div class="logo-card"><div class="sponsor-name">Grenier aux trouvailles Lacolle</div><div class="sponsor-cat">Don de vêtements</div></div>
+      <div class="logo-card"><div class="sponsor-name">Gamache</div><div class="sponsor-cat">Commerce local</div></div>
+      <div class="logo-card"><div class="sponsor-name">Escomptes St-Jean</div><div class="sponsor-cat">Commerce</div></div>
+      <div class="logo-card"><div class="sponsor-name">Korvette Iberville</div><div class="sponsor-cat">Commerce</div></div>
+      <div class="logo-card"><div class="sponsor-name">Essentiel LGG</div><div class="sponsor-cat">Commerce</div></div>
+      <div class="logo-card"><div class="sponsor-name">Liquidation 4-saisons</div><div class="sponsor-cat">Commerce</div></div>
+      <div class="logo-card"><div class="sponsor-name">Point S Delson — Pneus Roussillon</div><div class="sponsor-cat">Automobile</div></div>
+      <div class="logo-card"><div class="sponsor-name">Racine Auto</div><div class="sponsor-cat">Automobile</div></div>
+      <div class="logo-card"><div class="sponsor-name">U-next (Steve Houle)</div><div class="sponsor-cat">Transport &amp; logistique</div></div>
+      <div class="logo-card"><div class="sponsor-name">Coiffure Studio 22</div><div class="sponsor-cat">Coiffure</div></div>
+      <div class="logo-card"><div class="sponsor-name">Moi et l'Autre coiffure</div><div class="sponsor-cat">Coiffure</div></div>
+      <div class="logo-card"><div class="sponsor-name">Family's Barber</div><div class="sponsor-cat">Barbier</div></div>
+      <div class="logo-card"><div class="sponsor-name">Coiffure Accès Beauté</div><div class="sponsor-cat">Coiffure</div></div>
+      <div class="logo-card"><div class="sponsor-name">Salon Stylé</div><div class="sponsor-cat">Beauté</div></div>
+      <div class="logo-card"><div class="sponsor-name">Ongles Saroelle</div><div class="sponsor-cat">Beauté</div></div>
+      <div class="logo-card"><div class="sponsor-name">Fais-moi la reluire</div><div class="sponsor-cat">Entretien</div></div>
+      <div class="logo-card"><div class="sponsor-name">Fleuriste Lucy</div><div class="sponsor-cat">Fleuristerie</div></div>
+      <div class="logo-card"><div class="sponsor-name">Massage Head Spa Japonais</div><div class="sponsor-cat">Spa &amp; bien-être</div></div>
+      <div class="logo-card"><div class="sponsor-name">Toilettage Iva-Aly</div><div class="sponsor-cat">Toilettage animal</div></div>
+      <div class="logo-card"><div class="sponsor-name">Bete au Naturel</div><div class="sponsor-cat">Animaux</div></div>
+      <div class="logo-card"><div class="sponsor-name">Relais Eau Pure</div><div class="sponsor-cat">Distribution eau</div></div>
+      <div class="logo-card"><div class="sponsor-name">Musicopratik Verdun</div><div class="sponsor-cat">Musique</div></div>
+      <div class="logo-card"><div class="sponsor-name">Serge Leblond</div><div class="sponsor-cat">Donateur individuel</div></div>
+
+      <!-- ——— SPORTS & BIEN-ÊTRE ——— -->
+      <div class="sponsor-category-label">——— Sports &amp; Bien-être</div>
+      <div class="logo-card"><div class="sponsor-name">Golf St-Jean</div><div class="sponsor-cat">Golf</div></div>
+      <div class="logo-card"><div class="sponsor-name">Cross-fit St-Jean</div><div class="sponsor-cat">Conditionnement physique</div></div>
+      <div class="logo-card"><div class="sponsor-name">Mustangs de St-Jean</div><div class="sponsor-cat">Hockey</div></div>
+      <div class="logo-card"><div class="sponsor-name">Chloé Choquette — Prélèvements mobiles</div><div class="sponsor-cat">Santé</div></div>
+      <div class="logo-card"><div class="sponsor-name">Sabrina Aubin — Kinésiologue</div><div class="sponsor-cat">Kinésiologie</div></div>
+
+      <!-- ——— ORGANISMES & INSTITUTIONS ——— -->
+      <div class="sponsor-category-label">——— Organismes &amp; Institutions</div>
+      <div class="logo-card"><div class="sponsor-name">Chevaliers de Colombs Iberville</div><div class="sponsor-cat">Organisme</div></div>
+      <div class="logo-card"><div class="sponsor-name">Centre Action-Bénévole Iberville</div><div class="sponsor-cat">Bénévolat</div></div>
+      <div class="logo-card"><div class="sponsor-name">CPE Longueuil</div><div class="sponsor-cat">Éducation</div></div>
+      <div class="logo-card"><div class="sponsor-name">HLM St-Jean</div><div class="sponsor-cat">Logement social</div></div>
+      <div class="logo-card"><div class="sponsor-name">Comptoirs d'Yvonne Longueuil</div><div class="sponsor-cat">Économie sociale</div></div>
+      <div class="logo-card"><div class="sponsor-name">Corporation du fort St-Jean</div><div class="sponsor-cat">Institution culturelle</div></div>
+      <div class="logo-card"><div class="sponsor-name">Polyvalente Armand-Racicot</div><div class="sponsor-cat">Éducation</div></div>
+      <div class="logo-card"><div class="sponsor-name">Guillaume Cliche-Rivard</div><div class="sponsor-cat">Partenaire</div></div>
+      <div class="logo-card"><div class="sponsor-name">Député St-Henri</div><div class="sponsor-cat">Politique</div></div>
+      <div class="logo-card"><div class="sponsor-name">Christine Normandin</div><div class="sponsor-cat">Partenaire</div></div>
+
     </div>
   </div>
 </section>
