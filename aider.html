@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aider Phé-Nix | Don, bénévolat et dons en nature</title>
+<meta name="description" content="3 façons d'aider Phé-Nix : faire un don par Interac, devenir bénévole, ou déposer vêtements et nourriture dans nos points de collecte au Québec.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+/* ===== AIDER — 3 façons ===== */
+.aider-intro { background: #080808; padding: 90px 72px 0; text-align: center; }
+.aider-intro-inner { max-width: 680px; margin: 0 auto; }
+.aider-ways { background: #080808; padding: 56px 72px 90px; }
+.aider-ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+.aider-way { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s; display: flex; flex-direction: column; align-items: center; }
+.aider-way:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); border-color: rgba(255,92,26,0.3); }
+.aider-way-icon { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(255,92,26,0.15), rgba(214,63,163,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #FF5C1A; margin-bottom: 18px; }
+.aider-way h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 19px; color: #fff; margin-bottom: 8px; }
+.aider-way p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+
+/* ===== Bloc générique ===== */
+.aider-block { padding: 100px 72px; }
+.aider-block-inner { max-width: 1000px; margin: 0 auto; }
+.bg-light { background: #F7F5F2; }
+.bg-dark { background: #080808; }
+
+/* ===== DON Interac ===== */
+.don-card { background: #fff; border-radius: 24px; padding: 48px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); max-width: 620px; margin: 48px auto 0; text-align: center; }
+.don-card .interac-logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #FF5C1A; margin-bottom: 18px; }
+.don-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #111; margin-bottom: 10px; }
+.don-card .step { font-family: 'Inter', sans-serif; font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 28px; }
+.email-copy { display: flex; align-items: stretch; max-width: 420px; margin: 0 auto 16px; border: 1.5px solid #E5E3DF; border-radius: 12px; overflow: hidden; }
+.email-copy input { flex: 1; border: none; outline: none; padding: 16px 18px; font-family: 'Inter', sans-serif; font-size: 15px; color: #111; background: #FAF9F7; min-width: 0; }
+.email-copy button { border: none; background: #FF5C1A; color: #fff; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; padding: 0 22px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+.email-copy button:hover { background: #e64f10; }
+.email-copy button.copied { background: #16a34a; }
+.don-note-box { font-family: 'Inter', sans-serif; font-size: 13px; color: #777; line-height: 1.6; margin-top: 14px; }
+.don-note-box strong { color: #111; }
+
+/* Équivalences */
+.don-equiv { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 620px; margin: 36px auto 0; }
+.don-equiv-item { display: flex; align-items: center; gap: 14px; background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.don-equiv-amount { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; color: #FF5C1A; min-width: 58px; }
+.don-equiv-text { font-family: 'Inter', sans-serif; font-size: 13px; color: #555; line-height: 1.45; text-align: left; }
+
+/* ===== BÉNÉVOLE ===== */
+.benevole-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.benevole-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+
+/* ===== DÉPÔTS ===== */
+.depot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.depot-card { background: #1A1A1A; border-radius: 16px; padding: 28px; border: 1px solid rgba(255,255,255,0.06); }
+.depot-card .depot-icon { width: 40px; height: 40px; background: linear-gradient(135deg, rgba(255,92,26,0.15), rgba(214,63,163,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #FF5C1A; }
+.depot-num { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #FF5C1A; margin-bottom: 10px; }
+.depot-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 8px; }
+.depot-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+.depot-card p .sub { color: rgba(255,255,255,0.3); font-size: 12px; }
+
+/* ===== CONTACT ===== */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 48px auto 0; }
+.contact-card { background: #fff; border-radius: 16px; padding: 32px 26px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.1); }
+.contact-card .c-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(255,92,26,0.12), rgba(214,63,163,0.08)); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #FF5C1A; margin: 0 auto 16px; }
+.contact-card .c-label { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #999; margin-bottom: 6px; }
+.contact-card .c-value { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #111; word-break: break-word; }
+
+@media (max-width: 900px) {
+  .aider-intro { padding: 64px 28px 0; }
+  .aider-ways { padding: 40px 28px 64px; }
+  .aider-ways-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .aider-block { padding: 64px 28px; }
+  .don-card { padding: 32px 24px; }
+  .don-equiv { grid-template-columns: 1fr; }
+  .depot-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .contact-grid { grid-template-columns: 1fr; max-width: 380px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header scrolled" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="36" height="36"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="aider.html" class="active">Aider</a></li>
+      <li><a href="commanditaires.html">Merci</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#don" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="aider.html" class="active">Aider</a>
+    <a href="commanditaires.html">Merci à nos commanditaires</a>
+    <div class="nav-mobile-ctas">
+      <a href="#benevole" class="btn btn-ghost">Bénévole</a>
+      <a href="#don" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.74), rgba(8,8,8,0.78)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center top/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center;">——— COMMENT AIDER</div>
+    <h1>Aider, c'est simple.</h1>
+    <p>Un don, une heure de votre temps, ou quelques vêtements à déposer. Tout va directement sur le terrain — 100 % bénévole, zéro frais.</p>
+  </div>
+</section>
+
+<!-- 3 FAÇONS -->
+<section class="aider-intro">
+  <div class="aider-intro-inner">
+    <div class="eyebrow" style="justify-content:center;">——— 3 FAÇONS DE FAIRE UNE DIFFÉRENCE</div>
+    <h2 style="color:#fff;">Choisissez la vôtre.</h2>
+  </div>
+</section>
+<section class="aider-ways">
+  <div class="aider-ways-grid">
+    <a href="#don" class="aider-way">
+      <div class="aider-way-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Faire un don</h3>
+      <p>Par Interac, en 30 secondes. Chaque dollar achète de la nourriture et des vêtements.</p>
+    </a>
+    <a href="#benevole" class="aider-way">
+      <div class="aider-way-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Devenir bénévole</h3>
+      <p>Aucune expérience requise. Juste l'envie d'agir, un samedi à la fois.</p>
+    </a>
+    <a href="#depot" class="aider-way">
+      <div class="aider-way-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+      <h3>Donner du matériel</h3>
+      <p>Vêtements, nourriture, articles d'hygiène. Déposez dans un de nos 3 points de collecte.</p>
+    </a>
+  </div>
+</section>
+
+<!-- DON INTERAC -->
+<section class="aider-block bg-light" id="don">
+  <div class="aider-block-inner" style="text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">——— FAIRE UN DON</div>
+    <h2 style="color:#111;">Chaque dollar va<br>directement dans la rue.</h2>
+    <p style="color:#555; font-size:16px; max-width:520px; margin:16px auto 0;">Pas de carte de crédit, pas de frais, pas d'intermédiaire. Un simple virement Interac, et votre don est sur le terrain dès la prochaine distribution.</p>
+
+    <div class="don-card">
+      <div class="interac-logo">Virement Interac</div>
+      <h3>Envoyez votre don à&nbsp;:</h3>
+      <p class="step">Ouvrez votre application bancaire → « Virement Interac » → collez l'adresse ci-dessous.</p>
+      <div class="email-copy">
+        <input type="text" id="interac-email" value="phenixactioncitoyenne@gmail.com" readonly>
+        <button id="copy-btn" onclick="copyInterac()">Copier</button>
+      </div>
+      <p class="don-note-box">Dans la note du virement, écrivez <strong>« Don Phé-Nix »</strong>.<br>Un reçu vous est envoyé sur demande — il suffit de nous écrire.</p>
+    </div>
+
+    <div class="don-equiv">
+      <div class="don-equiv-item"><span class="don-equiv-amount">10 $</span><span class="don-equiv-text">les fruits et légumes d'une distribution</span></div>
+      <div class="don-equiv-item"><span class="don-equiv-amount">25 $</span><span class="don-equiv-text">gants, tuque et vêtements chauds pour une personne</span></div>
+      <div class="don-equiv-item"><span class="don-equiv-amount">50 $</span><span class="don-equiv-text">le transport d'une personne vers un centre d'aide</span></div>
+      <div class="don-equiv-item"><span class="don-equiv-amount">100 $</span><span class="don-equiv-text">une distribution complète pour 10 à 15 personnes</span></div>
+    </div>
+    <p style="font-family:'Inter',sans-serif; font-size:12px; color:#aaa; font-style:italic; margin-top:20px;">* Équivalences approximatives — varient selon les besoins et la saison.</p>
+  </div>
+</section>
+
+<!-- BÉNÉVOLE -->
+<section class="aider-block bg-dark" id="benevole">
+  <div class="benevole-inner">
+    <div class="eyebrow" style="justify-content:center;">——— DEVENIR BÉNÉVOLE</div>
+    <h2 style="color:#fff;">Votre présence<br>change une vie.</h2>
+    <p style="color:rgba(255,255,255,0.6); font-size:16px; line-height:1.75; margin-top:18px;">Aucune expérience requise, aucun équipement à prévoir — l'équipe s'occupe de tout. Écrivez-nous votre région et votre disponibilité, et on vous explique la prochaine distribution près de chez vous.</p>
+    <div class="benevole-btns">
+      <a href="mailto:phenixactioncitoyenne@gmail.com?subject=Je%20veux%20devenir%20b%C3%A9n%C3%A9vole&body=Bonjour%20Ph%C3%A9-Nix%2C%0A%0AJe%20souhaite%20devenir%20b%C3%A9n%C3%A9vole.%0A%0APr%C3%A9nom%20et%20nom%20%3A%0AR%C3%A9gion%20%3A%0ADisponibilit%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20(optionnel)%20%3A%0A%0AMerci%20!" class="btn btn-primary btn-lg">Écrire pour devenir bénévole →</a>
+      <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Voir les événements sur Facebook</a>
+    </div>
+    <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.35); margin-top:24px;">Le bouton ouvre votre courriel avec un message déjà préparé — vous n'avez qu'à compléter et envoyer.</p>
+  </div>
+</section>
+
+<!-- DONS MATÉRIELS -->
+<section class="aider-block bg-dark" id="depot" style="padding-top:0;">
+  <div class="aider-block-inner">
+    <div style="text-align:center; max-width:520px; margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">——— DONS EN NATURE</div>
+      <h2 style="color:#fff;">Déposez vêtements,<br>nourriture ou articles.</h2>
+      <p style="color:rgba(255,255,255,0.5); font-size:16px; margin-top:18px;">Pas d'argent à donner ? Déposez vos dons matériels dans l'un de ces points de collecte.</p>
+    </div>
+    <div class="depot-grid">
+      <div class="depot-card">
+        <div class="depot-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+        <div class="depot-num">Point 01</div>
+        <h3>Cantine BB-LOO</h3>
+        <p>349, rue Jacques-Cartier Sud<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Eugène)</span></p>
+      </div>
+      <div class="depot-card">
+        <div class="depot-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="depot-num">Point 02</div>
+        <h3>Clinique Accès Santé</h3>
+        <p>268, boul. Saint-Luc<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Luc)</span></p>
+      </div>
+      <div class="depot-card">
+        <div class="depot-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="depot-num">Point 03</div>
+        <h3>Mangeons Maison</h3>
+        <p>353, rue Saint-Jacques<br>Napierville</p>
+      </div>
+    </div>
+    <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.3); text-align:center; margin-top:32px;">Vêtements, nourriture non périssable, articles d'hygiène et soins personnels acceptés.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="aider-block bg-light" id="contact">
+  <div class="aider-block-inner" style="text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">——— UNE QUESTION ?</div>
+    <h2 style="color:#111;">Parlons-nous.</h2>
+    <p style="color:#555; font-size:16px; max-width:480px; margin:16px auto 0;">On répond à tous les messages, généralement sous 24 à 48 h.</p>
+    <div class="contact-grid">
+      <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="c-label">Courriel</div>
+        <div class="c-value">phenixactioncitoyenne<br>@gmail.com</div>
+      </a>
+      <a href="tel:4385263889" class="contact-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="c-label">Téléphone</div>
+        <div class="c-value">(438) 526-3889</div>
+      </a>
+      <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+        <div class="c-label">Facebook</div>
+        <div class="c-value">Suivez la mission</div>
+      </a>
+    </div>
+    <p style="font-family:'Inter',sans-serif; font-size:13px; color:#999; margin-top:32px;">Montréal · Longueuil · Saint-Jean-sur-Richelieu · Gatineau · Trois-Rivières</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
+      <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
+      <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>NAVIGATION</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
+    <div class="footer-col"><h4>AIDER</h4><ul><li><a href="aider.html#don">Faire un don</a></li><li><a href="aider.html#benevole">Devenir bénévole</a></li><li><a href="aider.html#depot">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="nav.js"></script>
+<script>
+function copyInterac() {
+  var input = document.getElementById('interac-email');
+  var btn = document.getElementById('copy-btn');
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value).then(function () {
+    btn.textContent = 'Copié ✓';
+    btn.classList.add('copied');
+    setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2200);
+  }).catch(function () {
+    document.execCommand('copy');
+    btn.textContent = 'Copié ✓';
+    btn.classList.add('copied');
+    setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2200);
+  });
+}
+</script>
+</body>
+</html>
