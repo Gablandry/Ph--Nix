@@ -6,57 +6,53 @@
 <title>Nos Commanditaires | Phé-Nix — Devenez partenaire</title>
 <meta name="description" content="Associez votre entreprise à Phé-Nix et soutenez concrètement les personnes en situation d'itinérance au Québec. Découvrez nos niveaux de partenariat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
 /* Logos / Sponsors */
-.commanditaires-grid-section { background: #F7F5F2; padding: 100px 72px; }
+.commanditaires-grid-section { background: var(--bg); padding: 110px 40px; }
 .logos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1140px; margin: 48px auto 0; }
-.logo-card { background: #fff; border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: all 0.25s; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; gap: 6px; position: relative; overflow: hidden; }
-.logo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF5C1A, #D63FA3); opacity: 0; transition: opacity 0.25s; }
-.logo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
-.logo-card:hover::before { opacity: 1; }
-.sponsor-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px; color: #111; line-height: 1.3; }
-.sponsor-cat { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #FF5C1A; margin-top: 2px; }
-.sponsor-category-label { grid-column: 1 / -1; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #FF5C1A; padding: 22px 2px 10px; border-bottom: 1px solid rgba(255,92,26,0.2); margin-bottom: 4px; }
+.logo-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; text-decoration: none; gap: 6px; }
+.logo-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: var(--accent); }
+.sponsor-name { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
+.sponsor-cat { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-top: 2px; }
+.sponsor-category-label { grid-column: 1 / -1; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); padding: 24px 2px 10px; border-bottom: 1px solid var(--hairline); margin-bottom: 4px; }
 .sponsor-category-label:first-child { padding-top: 4px; }
 
 /* Pourquoi section */
-.pourquoi-cmdite-section { background: #080808; padding: 100px 72px; }
-.pourquoi-cmdite-inner { max-width: 1200px; margin: 0 auto; }
-.impact-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
-.impact-stat-card { background: #1A1A1A; border-radius: 20px; padding: 36px 28px; border: 1px solid rgba(255,255,255,0.06); }
-.impact-stat-icon { width: 52px; height: 52px; background: rgba(255,92,26,0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #FF5C1A; }
-.impact-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; background: linear-gradient(135deg,#FF5C1A,#D63FA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
-.impact-stat-label { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.pourquoi-cmdite-section { background: var(--bg-soft); padding: 110px 40px; }
+.pourquoi-cmdite-inner { max-width: 1080px; margin: 0 auto; }
+.impact-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.impact-stat-card { background: var(--bg); border-radius: 20px; padding: 36px 28px; border: 1px solid var(--hairline); }
+.impact-stat-icon { width: 52px; height: 52px; background: var(--accent-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--accent); }
+.impact-stat-num { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 42px; line-height: 1; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 8px; }
+.impact-stat-label { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
 
-/* Tiers section — light background for visibility */
-.tiers-section { background: #F7F5F2; padding: 100px 72px; }
-.tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 64px auto 0; }
-.tier-card { background: #fff; border-radius: 20px; padding: 36px 28px; border: 2px solid transparent; transition: all 0.3s; box-shadow: 0 2px 16px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
-.tier-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
-.tier-card.featured { border-color: #FF5C1A; box-shadow: 0 0 0 4px rgba(255,92,26,0.08), 0 20px 48px rgba(0,0,0,0.1); }
-.tier-badge { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
-.badge-bronze { background: rgba(205,127,50,0.12); color: #A0622A; }
-.badge-argent { background: rgba(255,92,26,0.12); color: #FF5C1A; }
-.badge-or { background: linear-gradient(135deg,rgba(244,185,66,0.2),rgba(255,92,26,0.15)); color: #C47A00; }
-.tier-price { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 32px; color: #111; margin-bottom: 4px; }
-.tier-period { font-family: 'Inter', sans-serif; font-size: 13px; color: #999; margin-bottom: 8px; }
-.tier-impact { font-family: 'Inter', sans-serif; font-size: 13px; color: #FF5C1A; font-weight: 600; margin-bottom: 24px; padding: 8px 12px; background: rgba(255,92,26,0.06); border-radius: 8px; }
+/* Tiers section */
+.tiers-section { background: var(--bg); padding: 110px 40px; }
+.tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 60px auto 0; }
+.tier-card { background: var(--bg); border-radius: 20px; padding: 36px 28px; border: 1px solid var(--hairline); transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 2px 16px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+.tier-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+.tier-card.featured { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 20px 48px rgba(0,0,0,0.08); }
+.tier-badge { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+.badge-bronze { background: rgba(120,113,108,0.12); color: #78716C; }
+.badge-argent { background: var(--accent-soft); color: var(--accent); }
+.badge-or { background: rgba(202,138,4,0.12); color: #A16207; }
 .tier-benefits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; flex: 1; }
-.tier-benefit { font-family: 'Inter', sans-serif; font-size: 14px; color: #555; display: flex; align-items: flex-start; gap: 10px; }
-.tier-benefit::before { content: '✓'; color: #FF5C1A; font-weight: 700; flex-shrink: 0; }
+.tier-benefit { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; }
+.tier-benefit::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
 /* Partenariat sur mesure */
-.sur-mesure-section { background: #080808; padding: 80px 72px; }
-.sur-mesure-card { max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, rgba(255,92,26,0.1), rgba(214,63,163,0.08)); border: 1px solid rgba(255,92,26,0.2); border-radius: 24px; padding: 48px; text-align: center; }
-.sur-mesure-card h3 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: #fff; margin-bottom: 16px; }
-.sur-mesure-card p { font-family: 'Inter', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+.sur-mesure-section { background: var(--bg-soft); padding: 90px 40px; }
+.sur-mesure-card { max-width: 760px; margin: 0 auto; background: var(--accent-soft); border: 1px solid rgba(232,80,14,0.18); border-radius: 24px; padding: 48px; text-align: center; }
+.sur-mesure-card h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 26px; color: var(--ink); margin-bottom: 16px; }
+.sur-mesure-card p { font-family: 'Inter', sans-serif; font-size: 16px; color: var(--ink-soft); max-width: 560px; margin: 0 auto 28px; line-height: 1.65; }
 
 /* CTA contact */
-.contact-commandite { background: #F7F5F2; padding: 100px 72px; text-align: center; }
-.contact-commandite h2 { color: #111; margin-bottom: 20px; }
-.contact-commandite p { color: #555; font-size: 16px; max-width: 480px; margin: 0 auto 40px; }
+.contact-commandite { background: var(--bg); padding: 110px 40px; text-align: center; }
+.contact-commandite h2 { color: var(--ink); margin-bottom: 18px; }
+.contact-commandite p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin: 0 auto 36px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 @media (max-width: 960px) {
   .logos-grid { grid-template-columns: repeat(3, 1fr); }
@@ -64,7 +60,7 @@
 @media (max-width: 860px) {
   .logos-grid { grid-template-columns: 1fr 1fr; }
   .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
-  .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 28px; padding-right: 28px; }
+  .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 24px; padding-right: 24px; }
 }
 @media (max-width: 400px) {
   .logos-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -101,9 +97,9 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(8,8,8,0.72), rgba(8,8,8,0.72)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center top/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg') center 30%/cover no-repeat;">
   <div class="page-hero-content">
-    <div class="eyebrow" style="justify-content:center;">——— NOS COMMANDITAIRES</div>
+    <div class="eyebrow" style="justify-content:center;">NOS COMMANDITAIRES</div>
     <h1>Ils nous font confiance.<br>Merci.</h1>
     <p>Grâce au soutien de nos commanditaires, Phé-Nix peut agir semaine après semaine.</p>
   </div>
@@ -112,13 +108,13 @@
 <!-- LOGOS PARTENAIRES -->
 <section class="commanditaires-grid-section">
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
-    <div class="eyebrow" style="justify-content:center;">——— NOS PARTENAIRES 2026</div>
+    <div class="eyebrow" style="justify-content:center;">NOS PARTENAIRES 2026</div>
     <h2 style="color:#111;">Nos partenaires 2026.</h2>
-    <p style="color:#666; font-size:15px; margin-top:12px;">Plus de <strong style="color:#FF5C1A;">80 commanditaires</strong> soutiennent notre mission semaine après semaine.</p>
+    <p style="color:var(--ink-soft); font-size:15px; margin-top:12px;">Plus de <strong style="color:var(--accent);">80 commanditaires</strong> soutiennent notre mission semaine après semaine.</p>
     <div class="logos-grid">
 
-      <!-- ——— ALIMENTATION & RESTAURATION ——— -->
-      <div class="sponsor-category-label">——— Alimentation &amp; Restauration</div>
+      <!-- ALIMENTATION & RESTAURATION -->
+      <div class="sponsor-category-label">Alimentation &amp; Restauration</div>
       <div class="logo-card"><div class="sponsor-name">Kaiser Fromagerie</div><div class="sponsor-cat">Fromagerie</div></div>
       <div class="logo-card"><div class="sponsor-name">Fromagerie Fritz Kaiser</div><div class="sponsor-cat">Fromagerie</div></div>
       <div class="logo-card"><div class="sponsor-name">Fromagerie Victoria</div><div class="sponsor-cat">Fromagerie</div></div>
@@ -155,8 +151,8 @@
       <div class="logo-card"><div class="sponsor-name">Terre à boire</div><div class="sponsor-cat">Vignoble</div></div>
       <div class="logo-card"><div class="sponsor-name">Amalgame Vignoble</div><div class="sponsor-cat">Vignoble</div></div>
 
-      <!-- ——— COMMERCE & SERVICES ——— -->
-      <div class="sponsor-category-label">——— Commerce &amp; Services</div>
+      <!-- COMMERCE & SERVICES -->
+      <div class="sponsor-category-label">Commerce &amp; Services</div>
       <div class="logo-card"><div class="sponsor-name">Grenier aux trouvailles Lacolle</div><div class="sponsor-cat">Don de vêtements</div></div>
       <div class="logo-card"><div class="sponsor-name">Gamache</div><div class="sponsor-cat">Commerce local</div></div>
       <div class="logo-card"><div class="sponsor-name">Escomptes St-Jean</div><div class="sponsor-cat">Commerce</div></div>
@@ -181,16 +177,16 @@
       <div class="logo-card"><div class="sponsor-name">Musicopratik Verdun</div><div class="sponsor-cat">Musique</div></div>
       <div class="logo-card"><div class="sponsor-name">Serge Leblond</div><div class="sponsor-cat">Donateur individuel</div></div>
 
-      <!-- ——— SPORTS & BIEN-ÊTRE ——— -->
-      <div class="sponsor-category-label">——— Sports &amp; Bien-être</div>
+      <!-- SPORTS & BIEN-ÊTRE -->
+      <div class="sponsor-category-label">Sports &amp; Bien-être</div>
       <div class="logo-card"><div class="sponsor-name">Golf St-Jean</div><div class="sponsor-cat">Golf</div></div>
       <div class="logo-card"><div class="sponsor-name">Cross-fit St-Jean</div><div class="sponsor-cat">Conditionnement physique</div></div>
       <div class="logo-card"><div class="sponsor-name">Mustangs de St-Jean</div><div class="sponsor-cat">Hockey</div></div>
       <div class="logo-card"><div class="sponsor-name">Chloé Choquette — Prélèvements mobiles</div><div class="sponsor-cat">Santé</div></div>
       <div class="logo-card"><div class="sponsor-name">Sabrina Aubin — Kinésiologue</div><div class="sponsor-cat">Kinésiologie</div></div>
 
-      <!-- ——— ORGANISMES & INSTITUTIONS ——— -->
-      <div class="sponsor-category-label">——— Organismes &amp; Institutions</div>
+      <!-- ORGANISMES & INSTITUTIONS -->
+      <div class="sponsor-category-label">Organismes &amp; Institutions</div>
       <div class="logo-card"><div class="sponsor-name">Chevaliers de Colombs Iberville</div><div class="sponsor-cat">Organisme</div></div>
       <div class="logo-card"><div class="sponsor-name">Centre Action-Bénévole Iberville</div><div class="sponsor-cat">Bénévolat</div></div>
       <div class="logo-card"><div class="sponsor-name">CPE Longueuil</div><div class="sponsor-cat">Éducation</div></div>
@@ -210,9 +206,9 @@
 <section class="pourquoi-cmdite-section">
   <div class="pourquoi-cmdite-inner">
     <div style="text-align:center; max-width:680px; margin:0 auto;">
-      <div class="eyebrow" style="justify-content:center;">——— VOTRE IMPACT</div>
-      <h2 style="color:#fff;">Votre marque.<br>Notre mission. Une cause vraie.</h2>
-      <p style="color:rgba(255,255,255,0.55); font-size:17px; margin-top:20px; line-height:1.75;">En commanditant Phé-Nix, vous ne faites pas juste mettre un logo sur un site web. Vous vous associez à ce qui se passe chaque semaine dans les rues du Québec — concrètement, visiblement, humainement.</p>
+      <div class="eyebrow" style="justify-content:center;">VOTRE IMPACT</div>
+      <h2 style="color:var(--ink);">Votre marque.<br>Notre mission. Une cause vraie.</h2>
+      <p style="color:var(--ink-soft); font-size:17px; margin-top:20px; line-height:1.75;">En commanditant Phé-Nix, vous ne faites pas juste mettre un logo sur un site web. Vous vous associez à ce qui se passe chaque semaine dans les rues du Québec — concrètement, visiblement, humainement.</p>
     </div>
     <div class="impact-stats">
       <div class="impact-stat-card reveal reveal-d1">
@@ -237,17 +233,17 @@
 <!-- COMMENT DEVENIR PARTENAIRE -->
 <section class="tiers-section">
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
-    <div class="eyebrow" style="justify-content:center;">——— COMMENT S'IMPLIQUER</div>
+    <div class="eyebrow" style="justify-content:center;">COMMENT S'IMPLIQUER</div>
     <h2 style="color:#111;">Plusieurs façons<br>de faire une différence.</h2>
     <p style="color:#555; font-size:16px; max-width:540px; margin:16px auto 0;">Être partenaire de Phé-Nix, c'est contribuer à votre façon — on s'adapte à ce que vous pouvez offrir. Aucun montant minimum, aucune pression.</p>
   </div>
   <div class="tiers-grid">
     <div class="tier-card reveal reveal-d1">
-      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
       </div>
       <span class="tier-badge badge-bronze">Don en nature</span>
-      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Nourriture, vêtements<br>et fournitures</h3>
+      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Nourriture, vêtements<br>et fournitures</h3>
       <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
       <div class="tier-benefits">
         <div class="tier-benefit">Impact direct et immédiat sur le terrain</div>
@@ -257,11 +253,11 @@
       <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
     </div>
     <div class="tier-card featured reveal reveal-d2">
-      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.15),rgba(214,63,163,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
       </div>
       <span class="tier-badge badge-argent">Commandite</span>
-      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Soutien financier<br>à notre mission</h3>
+      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Soutien financier<br>à notre mission</h3>
       <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
       <div class="tier-benefits">
         <div class="tier-benefit">Logo sur le site web de Phé-Nix</div>
@@ -272,11 +268,11 @@
       <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
     </div>
     <div class="tier-card reveal reveal-d3">
-      <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(255,92,26,0.12),rgba(214,63,163,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#FF5C1A;">
+      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
       <span class="tier-badge badge-or">Mobilisation</span>
-      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#111;margin:16px 0 12px;line-height:1.3;">Votre équipe<br>sur le terrain</h3>
+      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Votre équipe<br>sur le terrain</h3>
       <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
       <div class="tier-benefits">
         <div class="tier-benefit">Encadrement complet par notre équipe</div>
@@ -292,7 +288,7 @@
 <!-- PARTENARIAT SUR MESURE -->
 <section class="sur-mesure-section">
   <div class="sur-mesure-card">
-    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">——— AUTRE IDÉE ?</div>
+    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">AUTRE IDÉE ?</div>
     <h3>Un partenariat qui vous ressemble.</h3>
     <p>Don de matériel, activité de team building sur le terrain, partenariat médias, collecte de dons auprès de vos employés — on est ouverts à toutes les idées. Ce qui compte, c'est l'impact.</p>
     <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Parlons-nous directement →</a>
@@ -301,7 +297,7 @@
 
 <!-- CONTACT CTA -->
 <section class="contact-commandite">
-  <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">——— ON VOUS RÉPOND</div>
+  <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">ON VOUS RÉPOND</div>
   <h2>Une question sur la commandite ?</h2>
   <p>Notre équipe est disponible pour discuter d'un partenariat adapté à votre organisation.</p>
   <div class="cta-btns">
