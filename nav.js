@@ -124,7 +124,7 @@
   }
 
   // ===== BARRES ANIMÉES AU SCROLL (don usage + progress) =====
-  const usageBars = document.querySelectorAll('.don-usage-fill[data-width], .don-progress-bar-fill[data-width]');
+  const usageBars = document.querySelectorAll('.usage-fill[data-width], .don-usage-fill[data-width], .don-progress-bar-fill[data-width]');
   if (usageBars.length && 'IntersectionObserver' in window) {
     const barIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {

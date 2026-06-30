@@ -61,7 +61,32 @@
 .contact-card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
 .contact-card .val { font-family: 'Inter',sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); word-break: break-word; }
 
+/* Usage du don */
+.usage { max-width: 640px; margin: 52px auto 0; text-align: left; }
+.usage-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.usage-label { min-width: 116px; font-size: 14px; color: var(--ink); font-weight: 500; }
+.usage-bar { flex: 1; height: 8px; background: #E9E9EC; border-radius: 4px; overflow: hidden; }
+.usage-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+.usage-pct { min-width: 40px; text-align: right; font-weight: 700; font-size: 14px; color: var(--accent); }
+
+/* Pourquoi */
+.pourquoi { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 960px; margin: 52px auto 0; }
+.pourquoi-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 28px; text-align: left; }
+.pourquoi-ic { width: 46px; height: 46px; background: var(--accent-soft); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 16px; }
+.pourquoi-card h3 { font-size: 18px; margin-bottom: 10px; }
+.pourquoi-card p { font-size: 14.5px; line-height: 1.6; margin: 0; }
+
+/* FAQ */
+.faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
+
 @media (max-width: 860px) {
+  .pourquoi { grid-template-columns: 1fr; max-width: 400px; }
   .section { padding: 72px 24px; }
   .ways { grid-template-columns: 1fr; max-width: 400px; }
   .don-card { padding: 32px 24px; }
@@ -154,6 +179,43 @@
   <p style="font-size:12px; color:#aaa; font-style:italic; margin-top:20px;">* Équivalences approximatives — varient selon les besoins et la saison.</p>
 </section>
 
+<!-- USAGE DU DON -->
+<section class="section center">
+  <div class="eyebrow" style="justify-content:center;">Transparence totale</div>
+  <h2>Où va votre argent.</h2>
+  <p class="lead">Pas de salaires, pas de bureaux, pas de frais cachés. Voici exactement comment chaque dollar est utilisé.</p>
+  <div class="usage">
+    <div class="usage-row"><span class="usage-label">Nourriture</span><div class="usage-bar"><div class="usage-fill" data-width="60%"></div></div><span class="usage-pct">60 %</span></div>
+    <div class="usage-row"><span class="usage-label">Vêtements</span><div class="usage-bar"><div class="usage-fill" data-width="20%"></div></div><span class="usage-pct">20 %</span></div>
+    <div class="usage-row"><span class="usage-label">Transport</span><div class="usage-bar"><div class="usage-fill" data-width="12%"></div></div><span class="usage-pct">12 %</span></div>
+    <div class="usage-row"><span class="usage-label">Matériel</span><div class="usage-bar"><div class="usage-fill" data-width="8%"></div></div><span class="usage-pct">8 %</span></div>
+  </div>
+  <p style="font-size:12px; color:#aaa; font-style:italic; margin-top:18px;">* Répartition approximative — varie selon les besoins de la saison.</p>
+</section>
+
+<!-- POURQUOI -->
+<section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Pourquoi Phé-Nix</div>
+  <h2>Un don qui a vraiment du sens.</h2>
+  <div class="pourquoi">
+    <div class="pourquoi-card reveal reveal-d1">
+      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <h3>100 % terrain</h3>
+      <p>Chaque dollar sert à acheter nourriture, vêtements et matériel. Aucun frais administratif, aucun salaire.</p>
+    </div>
+    <div class="pourquoi-card reveal reveal-d2">
+      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Impact local</h3>
+      <p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p>
+    </div>
+    <div class="pourquoi-card reveal reveal-d3">
+      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>OBNL transparent</h3>
+      <p>Organisme à but non lucratif enregistré. Reçu fiscal sur demande, et toujours disponibles pour vos questions.</p>
+    </div>
+  </div>
+</section>
+
 <!-- BÉNÉVOLE -->
 <section class="section center" id="benevole">
   <div class="benevole">
@@ -221,6 +283,30 @@
     </a>
   </div>
   <p style="font-size:13px; color:var(--ink-soft); margin-top:30px;">Montréal · Longueuil · Saint-Jean-sur-Richelieu · Gatineau · Trois-Rivières</p>
+</section>
+
+<!-- FAQ -->
+<section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Questions fréquentes</div>
+  <h2>Vous vous demandez peut-être…</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Puis-je obtenir un reçu fiscal ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Oui, sur demande. Écrivez-nous à phenixactioncitoyenne@gmail.com en précisant votre nom et le montant de votre don, et nous vous l'envoyons.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Mon don par Interac est-il sécurisé ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Tout à fait. Le virement Interac passe directement par votre institution bancaire, chiffré de bout en bout. Phé-Nix ne voit jamais vos informations bancaires.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Puis-je faire un don mensuel ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Oui. La plupart des applications bancaires permettent de programmer un virement Interac récurrent vers notre courriel. Écrivez-nous si vous avez besoin d'un coup de main.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Je préfère donner du matériel plutôt que de l'argent. <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Avec plaisir ! Déposez vêtements, nourriture non périssable et articles d'hygiène dans l'un de nos <a href="#depot" style="color:var(--accent);text-decoration:none;">3 points de collecte</a>, ou contactez-nous pour organiser un dépôt.</div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->

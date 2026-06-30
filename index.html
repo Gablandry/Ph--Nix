@@ -9,18 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
-/* ===== HERO photo pleine largeur ===== */
+/* ===== HERO ===== */
 .hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; background: #111; }
 .hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 30%; }
-.hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.78) 100%); }
-.hero-content { position: relative; z-index: 2; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 40px 96px; }
+.hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.8) 100%); }
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 40px 92px; }
 .hero-content h1 { color: #fff; margin: 14px 0 22px; max-width: 720px; }
 .hero-sub { font-size: 19px; color: rgba(255,255,255,0.86); max-width: 520px; line-height: 1.6; margin-bottom: 36px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-btns .btn-ghost { border-color: rgba(255,255,255,0.45); color: #fff; }
 .hero-btns .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
 
-/* ===== Conteneur générique ===== */
+/* ===== TRUST STRIP ===== */
+.trust { background: var(--ink); padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,0.7); white-space: nowrap; }
+.trust-item svg { color: var(--accent); flex-shrink: 0; }
+
+/* ===== Génériques ===== */
 .section { padding: 120px 40px; }
 .section-soft { background: var(--bg-soft); }
 .wrap { max-width: var(--maxw); margin: 0 auto; }
@@ -30,54 +35,60 @@
 /* ===== STATS ===== */
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: var(--maxw); margin: 0 auto; }
 .stat { text-align: center; }
-.stat-num { font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(40px,5vw,60px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 10px; }
+.stat-num { font-weight: 700; font-size: clamp(40px,5vw,60px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 10px; }
 .stat-lbl { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
 
-/* ===== Bloc texte + image ===== */
+/* ===== Split texte + image ===== */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: var(--maxw); margin: 0 auto; align-items: center; }
 .split img { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: 20px; }
 .split h2 { margin: 18px 0 22px; }
 .split p { margin-bottom: 18px; }
 
-/* ===== VALEURS ===== */
-.valeurs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
-.valeur { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 30px; transition: transform 0.3s, box-shadow 0.3s; }
-.valeur:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.06); }
-.valeur-ic { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
-.valeur h3 { font-size: 18px; margin-bottom: 8px; }
-.valeur p { font-size: 14.5px; line-height: 1.6; }
+/* ===== ÉTAPES ===== */
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: var(--maxw); margin: 60px auto 0; }
+.step { background: var(--bg); border: 1px solid var(--hairline); border-radius: 20px; padding: 36px 30px; position: relative; }
+.step-no { font-weight: 700; font-size: 14px; color: var(--accent); margin-bottom: 18px; }
+.step-ic { width: 46px; height: 46px; background: var(--accent-soft); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
+.step h3 { font-size: 19px; margin-bottom: 10px; }
+.step p { font-size: 14.5px; line-height: 1.6; }
 
-/* ===== PROGRAMMES ===== */
-.progs { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; max-width: 920px; margin: 60px auto 0; }
-.prog { background: var(--bg); border-radius: 22px; overflow: hidden; border: 1px solid var(--hairline); }
-.prog img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-.prog-body { padding: 30px; }
-.prog-body h3 { margin-bottom: 12px; }
-.prog-body p { font-size: 15px; line-height: 1.65; }
+/* ===== PROGRAMMES (4 cartes) ===== */
+.progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
+.prog { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 30px 26px; transition: transform 0.3s, box-shadow 0.3s; }
+.prog:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,0.07); }
+.prog-ic { width: 46px; height: 46px; background: var(--accent-soft); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
+.prog h3 { font-size: 18px; margin-bottom: 10px; }
+.prog p { font-size: 14.5px; line-height: 1.6; }
 
-/* ===== IMPACT ===== */
+/* ===== IMPACT + RÉGIONS ===== */
 .impact { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; max-width: var(--maxw); margin: 64px auto 0; }
 .impact-item { text-align: center; }
-.impact-num { font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(44px,5.5vw,68px); line-height: 1; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 14px; }
+.impact-num { font-weight: 700; font-size: clamp(44px,5.5vw,68px); line-height: 1; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 14px; }
 .impact-lbl { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+.regions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 760px; margin: 64px auto 0; }
+.region-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--hairline); border-radius: 40px; padding: 9px 18px; font-size: 14px; color: var(--ink); background: var(--bg); }
+.region-chip svg { color: var(--accent); flex-shrink: 0; }
 
-/* ===== CITATION ===== */
+/* ===== TÉMOIGNAGE ===== */
 .quote { max-width: 880px; margin: 0 auto; text-align: center; }
-.quote p { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(26px,3.4vw,40px); line-height: 1.35; letter-spacing: -0.02em; color: var(--ink); }
+.quote p { font-weight: 600; font-size: clamp(26px,3.4vw,40px); line-height: 1.35; letter-spacing: -0.02em; color: var(--ink); }
 .quote em { color: var(--accent); font-style: normal; }
+.quote-by { margin-top: 28px; font-size: 15px; color: var(--ink-soft); }
+.quote-by strong { color: var(--ink); }
 
-/* ===== CTA AIDER ===== */
+/* ===== CTA ===== */
 .cta { max-width: 760px; margin: 0 auto; text-align: center; }
 .cta h2 { margin-bottom: 18px; }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
 
-/* ===== GALERIE ===== */
-.galerie { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 14px; max-width: var(--maxw); margin: 56px auto 0; }
-.gimg { overflow: hidden; border-radius: 16px; position: relative; cursor: pointer; }
-.gimg:first-child { grid-row: 1 / 3; aspect-ratio: 3/4; }
-.gimg:not(:first-child) { aspect-ratio: 4/3; }
-.gimg img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-.gimg:hover img { transform: scale(1.05); }
+/* ===== GALERIE uniforme + zoom ===== */
+.galerie-head { display: flex; justify-content: space-between; align-items: flex-end; max-width: var(--maxw); margin: 0 auto 44px; gap: 16px; flex-wrap: wrap; }
+.galerie { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; max-width: var(--maxw); margin: 0 auto; }
+.galerie-img-wrap { overflow: hidden; border-radius: 16px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
+.galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.galerie-img-wrap:hover img { transform: scale(1.05); }
+.galerie-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 55%); opacity: 0; transition: opacity 0.3s; }
+.galerie-img-wrap:hover::after { opacity: 1; }
 
 /* ===== LIGHTBOX ===== */
 .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
@@ -85,19 +96,22 @@
 .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
 .lightbox-close { position: absolute; top: 24px; right: 28px; background: none; border: none; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: 0.7; }
 
+@media (max-width: 980px) {
+  .progs { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 860px) {
   .section { padding: 80px 24px; }
+  .trust { gap: 18px 28px; padding: 16px 24px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
-  .valeurs { grid-template-columns: 1fr 1fr; }
-  .progs { grid-template-columns: 1fr; max-width: 460px; }
+  .steps { grid-template-columns: 1fr; max-width: 460px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
   .galerie { grid-template-columns: 1fr 1fr; }
-  .gimg:first-child { grid-column: 1/-1; grid-row: auto; aspect-ratio: 16/9; }
 }
 @media (max-width: 540px) {
-  .valeurs { grid-template-columns: 1fr; }
+  .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .galerie { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -145,6 +159,14 @@
   </div>
 </section>
 
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré au Québec</div>
+  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % bénévole — aucun salaire</div>
+  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reçu fiscal sur demande</div>
+  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sur le terrain depuis 2022</div>
+</div>
+
 <!-- STATS -->
 <section class="section section-soft">
   <div class="stats-grid">
@@ -170,27 +192,30 @@
   </div>
 </section>
 
-<!-- VALEURS -->
+<!-- COMMENT ON AGIT -->
 <section class="section section-soft">
   <div class="wrap center">
-    <div class="eyebrow" style="justify-content:center;">Ce qui nous guide</div>
-    <h2>Nos valeurs.</h2>
-    <div class="valeurs">
-      <div class="valeur reveal reveal-d1">
-        <div class="valeur-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3>Action</h3><p>On n'attend pas. On est sur le terrain chaque semaine, peu importe la météo.</p>
+    <div class="eyebrow" style="justify-content:center;">Comment on agit</div>
+    <h2>Du don à la rue, en 3 étapes.</h2>
+    <p class="lead">Une chaîne simple et directe — sans intermédiaire, sans frais d'administration.</p>
+    <div class="steps">
+      <div class="step reveal reveal-d1" style="text-align:left;">
+        <div class="step-no">Étape 01</div>
+        <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.51a2.12 2.12 0 0 0-.09-3.67z"/><path d="M3.09 8.84v12.81L12 16.85"/></svg></div>
+        <h3>On collecte</h3>
+        <p>Dons en argent, nourriture, vêtements et articles d'hygiène — de citoyens et de plus de 80 commanditaires.</p>
       </div>
-      <div class="valeur reveal reveal-d2">
-        <div class="valeur-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>Dignité</h3><p>Chaque personne est traitée avec respect. On regarde dans les yeux, on écoute.</p>
+      <div class="step reveal reveal-d2" style="text-align:left;">
+        <div class="step-no">Étape 02</div>
+        <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <h3>On prépare</h3>
+        <p>L'équipe trie, cuisine et prépare des centaines de repas chauds et de sacs essentiels chaque semaine.</p>
       </div>
-      <div class="valeur reveal reveal-d3">
-        <div class="valeur-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Communauté</h3><p>Des bénévoles québécois ordinaires, unis par une même envie d'aider.</p>
-      </div>
-      <div class="valeur reveal reveal-d4">
-        <div class="valeur-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Transparence</h3><p>Zéro salaire, zéro frais. Chaque dollar va directement sur le terrain.</p>
+      <div class="step reveal reveal-d3" style="text-align:left;">
+        <div class="step-no">Étape 03</div>
+        <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>On distribue</h3>
+        <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
       </div>
     </div>
   </div>
@@ -201,20 +226,33 @@
   <div class="wrap center">
     <div class="eyebrow" style="justify-content:center;">Nos programmes</div>
     <h2>Ce qu'on fait, concrètement.</h2>
+    <p class="lead">Quatre façons d'agir, chaque semaine, auprès des plus démunis.</p>
     <div class="progs">
       <div class="prog reveal reveal-d1" style="text-align:left;">
-        <img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_900,h_560,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution de nourriture Phé-Nix">
-        <div class="prog-body"><h3>Nourriture &amp; vêtements</h3><p>Des centaines de repas chauds, fruits, légumes, vêtements et articles d'hygiène distribués chaque semaine.</p></div>
+        <div class="prog-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+        <h3>Repas &amp; nourriture</h3>
+        <p>Des centaines de repas chauds, fruits et légumes distribués chaque semaine.</p>
       </div>
       <div class="prog reveal reveal-d2" style="text-align:left;">
-        <img src="https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_900,h_560,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg" alt="Préparation des boîtes de nourriture">
-        <div class="prog-body"><h3>Écoute &amp; accompagnement</h3><p>Être présent, écouter sans juger, et accompagner vers la thérapie ceux qui veulent reconstruire leur vie.</p></div>
+        <div class="prog-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+        <h3>Vêtements &amp; couvertures</h3>
+        <p>Manteaux d'hiver, tuques, gants et couvertures pour affronter le froid.</p>
+      </div>
+      <div class="prog reveal reveal-d3" style="text-align:left;">
+        <div class="prog-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Écoute &amp; support moral</h3>
+        <p>Être présent, regarder dans les yeux, écouter sans juger. Parfois, c'est le plus précieux.</p>
+      </div>
+      <div class="prog reveal reveal-d4" style="text-align:left;">
+        <div class="prog-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3V6a1 1 0 0 1 1-1h11v12h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M15 9h4l3 3v5h-2"/></svg></div>
+        <h3>Transport vers la thérapie</h3>
+        <p>On accompagne et on transporte vers les centres ceux qui veulent reconstruire leur vie.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- IMPACT -->
+<!-- IMPACT + RÉGIONS -->
 <section class="section section-soft center">
   <div class="eyebrow" style="justify-content:center;">Notre impact depuis 2022</div>
   <h2>Des chiffres réels.</h2>
@@ -224,12 +262,22 @@
     <div class="impact-item reveal reveal-d2"><div class="impact-num" data-counter data-target="3000" data-suffix="+">3 000+</div><div class="impact-lbl">Manteaux d'hiver<br>distribués</div></div>
     <div class="impact-item reveal reveal-d3"><div class="impact-num" data-counter data-target="100" data-suffix="+">100+</div><div class="impact-lbl">Commanditaires<br>ayant contribué</div></div>
   </div>
+  <div class="regions">
+    <span class="region-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Montréal</span>
+    <span class="region-chip">Longueuil</span>
+    <span class="region-chip">Saint-Jean-sur-Richelieu</span>
+    <span class="region-chip">Montérégie</span>
+    <span class="region-chip">Gatineau</span>
+    <span class="region-chip">Trois-Rivières</span>
+  </div>
 </section>
 
-<!-- CITATION -->
+<!-- TÉMOIGNAGE -->
 <section class="section">
   <div class="quote reveal">
     <p>"Ce que nous partageons tous, c'est un <em>investissement absolu</em> envers les sans-abris et les plus démunis."</p>
+    <div class="quote-by"><strong>Michel Couture (Mike)</strong> · Président-fondateur de Phé-Nix</div>
+    <div style="margin-top:32px;"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Voir les témoignages en vidéo sur Facebook →</a></div>
   </div>
 </section>
 
@@ -248,17 +296,17 @@
 
 <!-- GALERIE -->
 <section class="section">
-  <div class="wrap">
-    <div class="center">
-      <div class="eyebrow" style="justify-content:center;">Sur le terrain</div>
-      <h2>Chaque photo, une vraie histoire.</h2>
-    </div>
-    <div class="galerie">
-      <div class="gimg" data-src="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_900,h_1100,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg"><img src="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_700,h_900,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg" alt="Distribution Phé-Nix"></div>
-      <div class="gimg" data-src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_600,h_450,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="L'équipe bénévole Phé-Nix"></div>
-      <div class="gimg" data-src="https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_1000,h_750,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg"><img src="https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_600,h_450,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg" alt="Préparation des dons alimentaires"></div>
-      <div class="gimg" data-src="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_900,h_1100,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg"><img src="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_600,h_450,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg" alt="Rebecca, bénévole Phé-Nix en action"></div>
-    </div>
+  <div class="galerie-head">
+    <div><div class="eyebrow">Sur le terrain</div><h2>Chaque photo, une vraie histoire.</h2></div>
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;">Voir plus sur Facebook →</a>
+  </div>
+  <div class="galerie">
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg"><img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution de repas Phé-Nix"></div>
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="L'équipe bénévole Phé-Nix"></div>
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg"><img src="https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg" alt="Préparation des dons alimentaires"></div>
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg"><img src="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg" alt="Distribution Phé-Nix sur le terrain"></div>
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg"><img src="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg" alt="Bénévole Phé-Nix en action"></div>
+    <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/57e184_272e4a67b81247638dd1111eedccf82af000.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/57e184_272e4a67b81247638dd1111eedccf82af000.jpg"><img src="https://static.wixstatic.com/media/57e184_272e4a67b81247638dd1111eedccf82af000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_272e4a67b81247638dd1111eedccf82af000.jpg" alt="Action communautaire Phé-Nix"></div>
   </div>
 </section>
 
