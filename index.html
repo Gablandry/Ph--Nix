@@ -45,6 +45,18 @@
 .split h2 { margin: 18px 0 22px; }
 .split p { margin-bottom: 18px; }
 
+/* FONDATEURS */
+.founders { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 920px; margin: 60px auto 0; }
+.founder { text-align: center; }
+.founder-photo { position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, var(--accent-soft), rgba(214,63,163,0.06)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--hairline); }
+.founder-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.founder-ph { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.founder-ph .initials { font-size: clamp(48px,7vw,72px); font-weight: 700; color: var(--accent); opacity: 0.5; letter-spacing: -0.02em; line-height: 1; }
+.founder-ph .ph-note { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-soft); }
+.founder-name { font-size: 22px; font-weight: 700; color: var(--ink); margin: 24px 0 4px; }
+.founder-role { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 14px; }
+.founder-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 360px; margin: 0 auto; }
+
 /* ===== ÉTAPES ===== */
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: var(--maxw); margin: 60px auto 0; }
 .step { background: var(--bg); border: 1px solid var(--hairline); border-radius: 20px; padding: 36px 30px; position: relative; }
@@ -112,6 +124,7 @@
   .trust { gap: 18px 28px; padding: 16px 24px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
+  .founders { grid-template-columns: 1fr; max-width: 420px; gap: 44px; }
   .steps { grid-template-columns: 1fr; max-width: 460px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
@@ -193,13 +206,38 @@
       <h2>Personne ne devrait dormir dehors le ventre vide.</h2>
       <p>Phé-Nix est né en 2022 de la conviction de Michel Couture (Mike) et de ses bénévoles : l'itinérance n'est pas une fatalité. Ce que nous partageons tous, c'est un investissement absolu envers les plus démunis.</p>
       <p>Chaque semaine, on distribue nourriture, vêtements chauds, couvertures et écoute sincère — et on accompagne vers la thérapie ceux qui veulent reconstruire leur vie.</p>
-      <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--hairline);">
-        <div style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px;">La fondation</div>
-        <p style="font-size:15px; color:var(--ink-soft); line-height:1.6; margin:0;"><strong style="color:var(--ink);">Michel Couture (Mike)</strong>, président-fondateur, et son père <strong style="color:var(--ink);">Guy Couture</strong>, vice-président-fondateur — épaulés par des dizaines de bénévoles québécois.</p>
-      </div>
     </div>
     <div class="reveal-right">
       <img src="img-equipe-2.jpg" alt="L'équipe bénévole Phé-Nix sur le terrain" onerror="this.src='https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1200,h_960,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg'">
+    </div>
+  </div>
+</section>
+
+<!-- FONDATEURS -->
+<section class="section section-warm">
+  <div class="wrap center">
+    <div class="eyebrow" style="justify-content:center;">La fondation</div>
+    <h2>Une histoire de famille.</h2>
+    <p class="lead">Phé-Nix, c'est d'abord l'histoire d'un fils et de son père qui ont décidé de ne plus détourner le regard.</p>
+    <div class="founders">
+      <div class="founder reveal reveal-d1">
+        <div class="founder-photo">
+          <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" onerror="this.style.display='none'">
+          <div class="founder-ph"><span class="initials">MC</span><span class="ph-note">Photo à venir</span></div>
+        </div>
+        <div class="founder-name">Michel Couture « Mike »</div>
+        <div class="founder-role">Président-fondateur</div>
+        <p class="founder-desc">C'est sa conviction qui a tout lancé en 2022 : l'itinérance n'est pas une fatalité. On le retrouve sur le terrain chaque semaine, là où les besoins sont les plus criants.</p>
+      </div>
+      <div class="founder reveal reveal-d2">
+        <div class="founder-photo">
+          <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" onerror="this.style.display='none'">
+          <div class="founder-ph"><span class="initials">GC</span><span class="ph-note">Photo à venir</span></div>
+        </div>
+        <div class="founder-name">Guy Couture</div>
+        <div class="founder-role">Vice-président-fondateur</div>
+        <p class="founder-desc">Le père de Mike, à ses côtés depuis le tout premier jour. La preuve vivante qu'aider son prochain, ça se transmet d'une génération à l'autre.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -350,7 +388,7 @@
       <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
     </div>
     <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
-    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Contributions matérielles</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
