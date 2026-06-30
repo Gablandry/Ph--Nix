@@ -69,9 +69,11 @@
 .statement { max-width: 900px; margin: 0 auto; text-align: center; }
 .statement p { font-weight: 700; font-size: clamp(30px,4.2vw,52px); line-height: 1.2; letter-spacing: -0.025em; color: var(--ink); }
 .statement p span { color: var(--accent); }
-.regions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 760px; margin: 64px auto 0; }
-.region-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--hairline); border-radius: 40px; padding: 9px 18px; font-size: 14px; color: var(--ink); background: var(--bg); }
-.region-chip svg { color: var(--accent); flex-shrink: 0; }
+.regions-ticker { margin: 60px auto 0; display: inline-flex; align-items: baseline; gap: 12px; font-weight: 600; font-size: clamp(22px,3.2vw,36px); letter-spacing: -0.01em; color: var(--ink); }
+.ticker-label { color: var(--ink-soft); }
+.ticker-window { height: 1.25em; overflow: hidden; }
+.ticker-list { display: flex; flex-direction: column; will-change: transform; }
+.ticker-list span { height: 1.25em; line-height: 1.25em; color: var(--accent); font-weight: 700; white-space: nowrap; }
 
 /* ===== TÉMOIGNAGE ===== */
 .quote { max-width: 880px; margin: 0 auto; text-align: center; }
@@ -272,13 +274,17 @@
     <div class="impact-item reveal reveal-d2"><div class="impact-num" data-counter data-target="57">57</div><div class="impact-lbl">Vies accompagnées<br>vers la thérapie</div></div>
     <div class="impact-item reveal reveal-d3"><div class="impact-num" data-counter data-target="100" data-suffix="+">100+</div><div class="impact-lbl">Commanditaires<br>engagés</div></div>
   </div>
-  <div class="regions">
-    <span class="region-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Montréal</span>
-    <span class="region-chip">Longueuil</span>
-    <span class="region-chip">Saint-Jean-sur-Richelieu</span>
-    <span class="region-chip">Montérégie</span>
-    <span class="region-chip">Gatineau</span>
-    <span class="region-chip">Trois-Rivières</span>
+  <div class="regions-ticker">
+    <span class="ticker-label">Présents à</span>
+    <span class="ticker-window"><span class="ticker-list" id="ticker-list">
+      <span>Montréal</span>
+      <span>Longueuil</span>
+      <span>Saint-Jean-sur-Richelieu</span>
+      <span>la Montérégie</span>
+      <span>Gatineau</span>
+      <span>Trois-Rivières</span>
+      <span>Montréal</span>
+    </span></span>
   </div>
 </section>
 
@@ -359,5 +365,28 @@
 </div>
 
 <script src="nav.js"></script>
+<script>
+/* Défileur vertical des régions — une ville à la fois, mouvement lent et discret */
+(function () {
+  var list = document.getElementById('ticker-list');
+  if (!list) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var step = 1.25; // doit correspondre à la hauteur d'item (em)
+  var total = list.children.length - 1; // exclut le clone final
+  var i = 0;
+  setInterval(function () {
+    i++;
+    list.style.transition = 'transform 0.7s cubic-bezier(0.5,0,0.2,1)';
+    list.style.transform = 'translateY(-' + (i * step) + 'em)';
+    if (i === total) {
+      setTimeout(function () {
+        list.style.transition = 'none';
+        list.style.transform = 'translateY(0)';
+        i = 0;
+      }, 720);
+    }
+  }, 2600);
+})();
+</script>
 </body>
 </html>
