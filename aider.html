@@ -11,47 +11,19 @@
 <style>
 .section { padding: 110px 40px; }
 .section-soft { background: var(--bg-soft); }
-.wrap { max-width: var(--maxw); margin: 0 auto; }
+.section-warm { background: var(--bg-warm); }
 .center { text-align: center; }
 .lead { font-size: 18px; color: var(--ink-soft); max-width: 560px; margin: 16px auto 0; line-height: 1.6; }
 
-/* 3 façons */
-.ways { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 960px; margin: 56px auto 0; }
-.way { background: var(--bg); border: 1px solid var(--hairline); border-radius: 20px; padding: 34px 28px; text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s, box-shadow 0.3s; }
-.way:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,0.08); }
-.way-ic { width: 54px; height: 54px; background: var(--accent-soft); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
-.way h3 { font-size: 19px; margin-bottom: 8px; }
-.way p { font-size: 14.5px; line-height: 1.55; margin: 0; }
-
-/* Don Interac */
-.don-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 24px; padding: 48px; max-width: 600px; margin: 48px auto 0; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-.don-card .tag { font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-.don-card h3 { font-size: 22px; margin-bottom: 10px; }
-.don-card .step { font-size: 15px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 26px; }
-.email-copy { display: flex; max-width: 420px; margin: 0 auto 16px; border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
-.email-copy input { flex: 1; border: none; outline: none; padding: 16px 18px; font-family: 'Inter',sans-serif; font-size: 15px; color: var(--ink); background: var(--bg-soft); min-width: 0; }
-.email-copy button { border: none; background: var(--accent); color: #fff; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 14px; padding: 0 22px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-.email-copy button:hover { background: var(--accent-deep); }
-.email-copy button.copied { background: #16a34a; }
-.don-note { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin-top: 14px; }
-.don-note strong { color: var(--ink); }
-.equiv { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; max-width: 600px; margin: 32px auto 0; }
-.equiv-item { display: flex; align-items: center; gap: 14px; background: var(--bg); border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 18px; }
-.equiv-amt { font-family: 'Inter',sans-serif; font-weight: 700; font-size: 22px; color: var(--accent); min-width: 56px; }
-.equiv-txt { font-size: 13px; color: var(--ink-soft); line-height: 1.45; text-align: left; }
-
-/* Bénévole */
-.benevole { max-width: 720px; margin: 0 auto; text-align: center; }
-.benevole-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
-
-/* Dépôts */
-.depots { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: var(--maxw); margin: 52px auto 0; }
-.depot { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 30px; }
-.depot-ic { width: 42px; height: 42px; background: var(--accent-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
-.depot-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 10px; }
-.depot h3 { font-size: 18px; margin-bottom: 8px; }
-.depot p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
-.depot p .sub { color: #aaa; font-size: 12px; }
+/* 3 grandes cartes de choix */
+.ways { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 980px; margin: 56px auto 0; }
+.way { background: var(--bg); border: 1px solid var(--hairline); border-radius: 22px; padding: 40px 30px; text-align: left; text-decoration: none; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+.way:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(0,0,0,0.09); border-color: var(--accent); }
+.way-ic { width: 56px; height: 56px; background: var(--accent-soft); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 22px; }
+.way h3 { font-size: 21px; margin-bottom: 10px; }
+.way p { font-size: 15px; line-height: 1.6; margin: 0 0 24px; flex: 1; }
+.way-go { font-size: 15px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 7px; transition: gap 0.2s; }
+.way:hover .way-go { gap: 12px; }
 
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
@@ -61,37 +33,9 @@
 .contact-card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
 .contact-card .val { font-family: 'Inter',sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); word-break: break-word; }
 
-/* Usage du don */
-.usage { max-width: 640px; margin: 52px auto 0; text-align: left; }
-.usage-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-.usage-label { min-width: 116px; font-size: 14px; color: var(--ink); font-weight: 500; }
-.usage-bar { flex: 1; height: 8px; background: #E9E9EC; border-radius: 4px; overflow: hidden; }
-.usage-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
-.usage-pct { min-width: 40px; text-align: right; font-weight: 700; font-size: 14px; color: var(--accent); }
-
-/* Pourquoi */
-.pourquoi { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 960px; margin: 52px auto 0; }
-.pourquoi-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 28px; text-align: left; }
-.pourquoi-ic { width: 46px; height: 46px; background: var(--accent-soft); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 16px; }
-.pourquoi-card h3 { font-size: 18px; margin-bottom: 10px; }
-.pourquoi-card p { font-size: 14.5px; line-height: 1.6; margin: 0; }
-
-/* FAQ */
-.faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
-.faq-item { border-bottom: 1px solid var(--hairline); }
-.faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
-.faq-item.open .faq-arrow { transform: rotate(45deg); }
-.faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
-.faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
-
 @media (max-width: 860px) {
-  .pourquoi { grid-template-columns: 1fr; max-width: 400px; }
   .section { padding: 72px 24px; }
-  .ways { grid-template-columns: 1fr; max-width: 400px; }
-  .don-card { padding: 32px 24px; }
-  .equiv { grid-template-columns: 1fr; }
-  .depots { grid-template-columns: 1fr; max-width: 400px; }
+  .ways { grid-template-columns: 1fr; max-width: 420px; }
   .contacts { grid-template-columns: 1fr; max-width: 360px; }
 }
 </style>
@@ -111,7 +55,7 @@
       <li><a href="commanditaires.html">Merci</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="#don" class="btn btn-primary btn-sm">Faire un don</a>
+      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -120,8 +64,8 @@
     <a href="aider.html" class="active">Aider</a>
     <a href="commanditaires.html">Merci à nos commanditaires</a>
     <div class="nav-mobile-ctas">
-      <a href="#benevole" class="btn btn-ghost">Bénévole</a>
-      <a href="#don" class="btn btn-primary">Faire un don</a>
+      <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
+      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
     </div>
   </div>
 </header>
@@ -140,128 +84,29 @@
   <div class="eyebrow" style="justify-content:center;">3 façons de faire une différence</div>
   <h2>Choisissez la vôtre.</h2>
   <div class="ways">
-    <a href="#don" class="way">
-      <div class="way-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-      <h3>Faire un don</h3><p>Par Interac, en 30 secondes. Chaque dollar achète nourriture et vêtements.</p>
+    <a href="faire-un-don.html" class="way">
+      <div class="way-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Faire un don</h3>
+      <p>Par Interac, en 30 secondes. Chaque dollar achète nourriture et vêtements, sans aucun frais.</p>
+      <span class="way-go">Faire un don →</span>
     </a>
-    <a href="#benevole" class="way">
-      <div class="way-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <h3>Devenir bénévole</h3><p>Aucune expérience requise. Juste l'envie d'agir, un samedi à la fois.</p>
+    <a href="benevole.html" class="way">
+      <div class="way-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Devenir bénévole</h3>
+      <p>Aucune expérience requise. Juste l'envie d'agir, un samedi à la fois, près de chez vous.</p>
+      <span class="way-go">Devenir bénévole →</span>
     </a>
-    <a href="#depot" class="way">
-      <div class="way-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-      <h3>Donner du matériel</h3><p>Vêtements, nourriture, hygiène. Déposez dans un de nos 3 points de collecte.</p>
+    <a href="dons-materiels.html" class="way">
+      <div class="way-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+      <h3>Donner du matériel</h3>
+      <p>Vêtements, nourriture, articles d'hygiène — à déposer dans un de nos 3 points de collecte.</p>
+      <span class="way-go">Voir les points de dépôt →</span>
     </a>
   </div>
-</section>
-
-<!-- DON -->
-<section class="section section-soft center" id="don">
-  <div class="eyebrow" style="justify-content:center;">Faire un don</div>
-  <h2>Chaque dollar va directement dans la rue.</h2>
-  <p class="lead">Pas de carte de crédit, pas de frais, pas d'intermédiaire. Un simple virement Interac, et votre don est sur le terrain dès la prochaine distribution.</p>
-  <div class="don-card">
-    <div class="tag">Virement Interac</div>
-    <h3>Envoyez votre don à :</h3>
-    <p class="step">Ouvrez votre application bancaire → « Virement Interac » → collez l'adresse ci-dessous.</p>
-    <div class="email-copy">
-      <input type="text" id="interac-email" value="phenixactioncitoyenne@gmail.com" readonly>
-      <button id="copy-btn" onclick="copyInterac()">Copier</button>
-    </div>
-    <p class="don-note">Dans la note du virement, écrivez <strong>« Don Phé-Nix »</strong>.<br>Un reçu vous est envoyé sur demande — il suffit de nous écrire.</p>
-  </div>
-  <div class="equiv">
-    <div class="equiv-item"><span class="equiv-amt">10 $</span><span class="equiv-txt">les fruits et légumes d'une distribution</span></div>
-    <div class="equiv-item"><span class="equiv-amt">25 $</span><span class="equiv-txt">gants, tuque et vêtements chauds pour une personne</span></div>
-    <div class="equiv-item"><span class="equiv-amt">50 $</span><span class="equiv-txt">le transport d'une personne vers un centre d'aide</span></div>
-    <div class="equiv-item"><span class="equiv-amt">100 $</span><span class="equiv-txt">une distribution complète pour 10 à 15 personnes</span></div>
-  </div>
-  <p style="font-size:12px; color:#aaa; font-style:italic; margin-top:20px;">* Équivalences approximatives — varient selon les besoins et la saison.</p>
-</section>
-
-<!-- USAGE DU DON -->
-<section class="section center">
-  <div class="eyebrow" style="justify-content:center;">Transparence totale</div>
-  <h2>Où va votre argent.</h2>
-  <p class="lead">Pas de salaires, pas de bureaux, pas de frais cachés. Voici exactement comment chaque dollar est utilisé.</p>
-  <div class="usage">
-    <div class="usage-row"><span class="usage-label">Nourriture</span><div class="usage-bar"><div class="usage-fill" data-width="60%"></div></div><span class="usage-pct">60 %</span></div>
-    <div class="usage-row"><span class="usage-label">Vêtements</span><div class="usage-bar"><div class="usage-fill" data-width="20%"></div></div><span class="usage-pct">20 %</span></div>
-    <div class="usage-row"><span class="usage-label">Transport</span><div class="usage-bar"><div class="usage-fill" data-width="12%"></div></div><span class="usage-pct">12 %</span></div>
-    <div class="usage-row"><span class="usage-label">Matériel</span><div class="usage-bar"><div class="usage-fill" data-width="8%"></div></div><span class="usage-pct">8 %</span></div>
-  </div>
-  <p style="font-size:12px; color:#aaa; font-style:italic; margin-top:18px;">* Répartition approximative — varie selon les besoins de la saison.</p>
-</section>
-
-<!-- POURQUOI -->
-<section class="section section-soft center">
-  <div class="eyebrow" style="justify-content:center;">Pourquoi Phé-Nix</div>
-  <h2>Un don qui a vraiment du sens.</h2>
-  <div class="pourquoi">
-    <div class="pourquoi-card reveal reveal-d1">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-      <h3>100 % terrain</h3>
-      <p>Chaque dollar sert à acheter nourriture, vêtements et matériel. Aucun frais administratif, aucun salaire.</p>
-    </div>
-    <div class="pourquoi-card reveal reveal-d2">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <h3>Impact local</h3>
-      <p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p>
-    </div>
-    <div class="pourquoi-card reveal reveal-d3">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>OBNL transparent</h3>
-      <p>Organisme à but non lucratif enregistré. Reçu fiscal sur demande, et toujours disponibles pour vos questions.</p>
-    </div>
-  </div>
-</section>
-
-<!-- BÉNÉVOLE -->
-<section class="section center" id="benevole">
-  <div class="benevole">
-    <div class="eyebrow" style="justify-content:center;">Devenir bénévole</div>
-    <h2>Votre présence change une vie.</h2>
-    <p class="lead">Aucune expérience requise, aucun équipement à prévoir — l'équipe s'occupe de tout. Écrivez-nous votre région et vos disponibilités, et on vous explique la prochaine distribution près de chez vous.</p>
-    <div class="benevole-btns">
-      <a href="mailto:phenixactioncitoyenne@gmail.com?subject=Je%20veux%20devenir%20b%C3%A9n%C3%A9vole&body=Bonjour%20Ph%C3%A9-Nix%2C%0A%0AJe%20souhaite%20devenir%20b%C3%A9n%C3%A9vole.%0A%0APr%C3%A9nom%20et%20nom%20%3A%0AR%C3%A9gion%20%3A%0ADisponibilit%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20(optionnel)%20%3A%0A%0AMerci%20!" class="btn btn-primary btn-lg">Écrire pour devenir bénévole →</a>
-      <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Voir les événements sur Facebook</a>
-    </div>
-    <p style="font-size:13px; color:var(--ink-soft); margin-top:22px;">Le bouton ouvre votre courriel avec un message déjà préparé — vous n'avez qu'à compléter et envoyer.</p>
-  </div>
-</section>
-
-<!-- DÉPÔTS -->
-<section class="section section-soft" id="depot">
-  <div class="center" style="max-width:540px; margin:0 auto;">
-    <div class="eyebrow" style="justify-content:center;">Dons en nature</div>
-    <h2>Déposez vêtements, nourriture ou articles.</h2>
-    <p class="lead">Pas d'argent à donner ? Déposez vos dons matériels dans l'un de ces points de collecte.</p>
-  </div>
-  <div class="depots">
-    <div class="depot">
-      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
-      <div class="depot-num">Point 01</div>
-      <h3>Cantine BB-LOO</h3>
-      <p>349, rue Jacques-Cartier Sud<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Eugène)</span></p>
-    </div>
-    <div class="depot">
-      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-      <div class="depot-num">Point 02</div>
-      <h3>Clinique Accès Santé</h3>
-      <p>268, boul. Saint-Luc<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Luc)</span></p>
-    </div>
-    <div class="depot">
-      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div class="depot-num">Point 03</div>
-      <h3>Mangeons Maison</h3>
-      <p>353, rue Saint-Jacques<br>Napierville</p>
-    </div>
-  </div>
-  <p style="font-size:13px; color:var(--ink-soft); text-align:center; margin-top:30px;">Vêtements, nourriture non périssable, articles d'hygiène et soins personnels acceptés.</p>
 </section>
 
 <!-- CONTACT -->
-<section class="section center" id="contact">
+<section class="section section-warm center" id="contact">
   <div class="eyebrow" style="justify-content:center;">Une question ?</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">On répond à tous les messages, généralement sous 24 à 48 h.</p>
@@ -282,31 +127,7 @@
       <div class="val">Suivez la mission</div>
     </a>
   </div>
-  <p style="font-size:13px; color:var(--ink-soft); margin-top:30px;">Montréal · Longueuil · Saint-Jean-sur-Richelieu · Gatineau · Trois-Rivières</p>
-</section>
-
-<!-- FAQ -->
-<section class="section section-soft center">
-  <div class="eyebrow" style="justify-content:center;">Questions fréquentes</div>
-  <h2>Vous vous demandez peut-être…</h2>
-  <div class="faq">
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Puis-je obtenir un reçu fiscal ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Oui, sur demande. Écrivez-nous à phenixactioncitoyenne@gmail.com en précisant votre nom et le montant de votre don, et nous vous l'envoyons.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Mon don par Interac est-il sécurisé ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Tout à fait. Le virement Interac passe directement par votre institution bancaire, chiffré de bout en bout. Phé-Nix ne voit jamais vos informations bancaires.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Puis-je faire un don mensuel ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Oui. La plupart des applications bancaires permettent de programmer un virement Interac récurrent vers notre courriel. Écrivez-nous si vous avez besoin d'un coup de main.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Je préfère donner du matériel plutôt que de l'argent. <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Avec plaisir ! Déposez vêtements, nourriture non périssable et articles d'hygiène dans l'un de nos <a href="#depot" style="color:var(--accent);text-decoration:none;">3 points de collecte</a>, ou contactez-nous pour organiser un dépôt.</div>
-    </div>
-  </div>
+  <p style="font-size:13px; color:#b3a99f; margin-top:30px;">Montréal · Longueuil · Saint-Jean-sur-Richelieu · Gatineau · Trois-Rivières</p>
 </section>
 
 <!-- FOOTER -->
@@ -318,7 +139,7 @@
       <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
     </div>
     <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
-    <div class="footer-col"><h4>Aider</h4><ul><li><a href="aider.html#don">Faire un don</a></li><li><a href="aider.html#benevole">Devenir bénévole</a></li><li><a href="aider.html#depot">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Dons en nature</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
@@ -329,14 +150,5 @@
 </button>
 
 <script src="nav.js"></script>
-<script>
-function copyInterac() {
-  var input = document.getElementById('interac-email');
-  var btn = document.getElementById('copy-btn');
-  input.select(); input.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(input.value).then(ok).catch(function () { try { document.execCommand('copy'); } catch(e){} ok(); });
-  function ok() { btn.textContent = 'Copié ✓'; btn.classList.add('copied'); setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2200); }
-}
-</script>
 </body>
 </html>

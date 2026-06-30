@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos Commanditaires | Phé-Nix — Devenez partenaire</title>
-<meta name="description" content="Associez votre entreprise à Phé-Nix et soutenez concrètement les personnes en situation d'itinérance au Québec. Découvrez nos niveaux de partenariat.">
+<title>Merci à nos commanditaires | Phé-Nix — Devenez partenaire</title>
+<meta name="description" content="Associez votre entreprise à Phé-Nix et soutenez concrètement les personnes en situation d'itinérance au Québec. Plus de 80 partenaires nous soutiennent.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
 /* Logos / Sponsors */
-.commanditaires-grid-section { background: var(--bg); padding: 110px 40px; }
+.commanditaires-grid-section { background: var(--bg-soft); padding: 110px 40px; }
 .logos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1140px; margin: 48px auto 0; }
 .logo-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 12px; padding: 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; text-decoration: none; gap: 6px; }
 .logo-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: var(--accent); }
@@ -41,6 +41,9 @@
 .tier-benefits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; flex: 1; }
 .tier-benefit { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; }
 .tier-benefit::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+.tier-card h3 { font-family: 'Inter',sans-serif; font-weight: 700; font-size: 20px; color: var(--ink); margin: 16px 0 12px; line-height: 1.3; }
+.tier-card .tier-desc { font-family: 'Inter',sans-serif; font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 20px; }
+.tier-ic { width: 48px; height: 48px; background: var(--accent-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent); }
 
 /* Partenariat sur mesure */
 .sur-mesure-section { background: var(--bg-soft); padding: 90px 40px; }
@@ -69,10 +72,10 @@
 </head>
 <body>
 
-<header class="site-header scrolled" id="site-header">
+<header class="site-header" id="site-header">
   <nav class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <svg viewBox="0 0 44 44" fill="none" width="36" height="36"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.8"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <svg viewBox="0 0 44 44" fill="none" width="30" height="30"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.85"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
       <span class="nav-logo-text">Phé-Nix</span>
     </a>
     <ul class="nav-links">
@@ -81,7 +84,7 @@
       <li><a href="commanditaires.html" class="active">Merci</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="aider.html#don" class="btn btn-primary btn-sm">Faire un don</a>
+      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -90,8 +93,8 @@
     <a href="aider.html">Aider</a>
     <a href="commanditaires.html" class="active">Merci à nos commanditaires</a>
     <div class="nav-mobile-ctas">
-      <a href="aider.html#benevole" class="btn btn-ghost">Bénévole</a>
-      <a href="aider.html#don" class="btn btn-primary">Faire un don</a>
+      <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
+      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
     </div>
   </div>
 </header>
@@ -99,14 +102,14 @@
 <!-- HERO -->
 <section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg') center 30%/cover no-repeat;">
   <div class="page-hero-content">
-    <div class="eyebrow" style="justify-content:center;">NOS COMMANDITAIRES</div>
+    <div class="eyebrow" style="justify-content:center; color:#fff;">Nos commanditaires</div>
     <h1>Ils nous font confiance.<br>Merci.</h1>
-    <p>Grâce au soutien de nos commanditaires, Phé-Nix peut agir semaine après semaine.</p>
+    <p>Grâce au soutien de plus de 80 partenaires, Phé-Nix peut agir semaine après semaine.</p>
   </div>
 </section>
 
 <!-- MOT DE REMERCIEMENT -->
-<section style="background:var(--bg); padding:110px 40px;">
+<section style="background:var(--bg-warm); padding:110px 40px;">
   <div style="max-width:780px; margin:0 auto; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">Un immense merci</div>
     <h2 style="margin-bottom:22px;">Sans vous, rien de tout ça<br>ne serait possible.</h2>
@@ -114,11 +117,109 @@
   </div>
 </section>
 
-<!-- LOGOS PARTENAIRES -->
-<section class="commanditaires-grid-section" style="padding-top:0;">
+<!-- POURQUOI COMMANDITER -->
+<section class="pourquoi-cmdite-section">
+  <div class="pourquoi-cmdite-inner">
+    <div style="text-align:center; max-width:680px; margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">Votre impact</div>
+      <h2 style="color:var(--ink);">Votre marque.<br>Notre mission. Une cause vraie.</h2>
+      <p style="color:var(--ink-soft); font-size:17px; margin-top:20px; line-height:1.75;">En commanditant Phé-Nix, vous ne faites pas juste mettre un logo sur un site web. Vous vous associez à ce qui se passe chaque semaine dans les rues du Québec — concrètement, visiblement, humainement.</p>
+    </div>
+    <div class="impact-stats">
+      <div class="impact-stat-card reveal reveal-d1">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="impact-stat-num">60%</div>
+        <div class="impact-stat-label">de chaque commandite va directement à l'alimentation — fruits, légumes, repas chauds distribués sur le terrain.</div>
+      </div>
+      <div class="impact-stat-card reveal reveal-d2">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+        <div class="impact-stat-num">20%</div>
+        <div class="impact-stat-label">habille les personnes en situation d'itinérance lors de nos distributions, particulièrement en hiver.</div>
+      </div>
+      <div class="impact-stat-card reveal reveal-d3">
+        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="impact-stat-num">20%</div>
+        <div class="impact-stat-label">couvre le transport, la logistique et le matériel pour que notre équipe soit présente chaque semaine, partout au Québec.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT DEVENIR PARTENAIRE -->
+<section class="tiers-section">
   <div style="max-width:1200px; margin:0 auto; text-align:center;">
-    <div class="eyebrow" style="justify-content:center;">NOS PARTENAIRES 2026</div>
-    <h2 style="color:#111;">Nos partenaires 2026.</h2>
+    <div class="eyebrow" style="justify-content:center;">Comment s'impliquer</div>
+    <h2 style="color:var(--ink);">Plusieurs façons<br>de faire une différence.</h2>
+    <p style="color:var(--ink-soft); font-size:16px; max-width:540px; margin:16px auto 0;">Être partenaire de Phé-Nix, c'est contribuer à votre façon — on s'adapte à ce que vous pouvez offrir. Aucun montant minimum, aucune pression.</p>
+  </div>
+  <div class="tiers-grid">
+    <div class="tier-card reveal reveal-d1">
+      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <span class="tier-badge badge-bronze">Don en nature</span>
+      <h3>Nourriture, vêtements<br>et fournitures</h3>
+      <p class="tier-desc">Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Impact direct et immédiat sur le terrain</div>
+        <div class="tier-benefit">Reconnaissance sur nos réseaux sociaux</div>
+        <div class="tier-benefit">Reçu fiscal officiel si applicable</div>
+      </div>
+      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+    <div class="tier-card featured reveal reveal-d2">
+      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <span class="tier-badge badge-argent">Commandite</span>
+      <h3>Soutien financier<br>à notre mission</h3>
+      <p class="tier-desc">Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Logo sur le site web de Phé-Nix</div>
+        <div class="tier-benefit">Mentions lors de nos distributions</div>
+        <div class="tier-benefit">Publication dédiée sur nos réseaux sociaux</div>
+        <div class="tier-benefit">Reçu fiscal officiel</div>
+      </div>
+      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+    <div class="tier-card reveal reveal-d3">
+      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="tier-badge badge-or">Mobilisation</span>
+      <h3>Votre équipe<br>sur le terrain</h3>
+      <p class="tier-desc">Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
+      <div class="tier-benefits">
+        <div class="tier-benefit">Encadrement complet par notre équipe</div>
+        <div class="tier-benefit">Contenu photo et vidéo pour vos réseaux</div>
+        <div class="tier-benefit">Association de votre marque à notre mission</div>
+        <div class="tier-benefit">Expérience terrain inoubliable</div>
+      </div>
+      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENARIAT SUR MESURE -->
+<section class="sur-mesure-section">
+  <div class="sur-mesure-card">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">Autre idée ?</div>
+    <h3>Un partenariat qui vous ressemble.</h3>
+    <p>Don de matériel, activité de team building sur le terrain, partenariat médias, collecte de dons auprès de vos employés — on est ouverts à toutes les idées. Ce qui compte, c'est l'impact.</p>
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Parlons-nous directement →</a>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-commandite">
+  <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">On vous répond</div>
+  <h2>Une question sur la commandite ?</h2>
+  <p>Notre équipe est disponible pour discuter d'un partenariat adapté à votre organisation.</p>
+  <div class="cta-btns">
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Nous écrire →</a>
+    <a href="tel:4385263889" class="btn btn-ghost-dark btn-lg">(438) 526-3889</a>
+  </div>
+</section>
+
+<!-- LISTE DES PARTENAIRES (tout en bas) -->
+<section class="commanditaires-grid-section">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">Nos partenaires 2026</div>
+    <h2 style="color:var(--ink);">La liste complète.</h2>
     <p style="color:var(--ink-soft); font-size:15px; margin-top:12px;">Plus de <strong style="color:var(--accent);">80 commanditaires</strong> soutiennent notre mission semaine après semaine.</p>
     <div class="logos-grid">
 
@@ -211,126 +312,22 @@
   </div>
 </section>
 
-<!-- POURQUOI COMMANDITER -->
-<section class="pourquoi-cmdite-section">
-  <div class="pourquoi-cmdite-inner">
-    <div style="text-align:center; max-width:680px; margin:0 auto;">
-      <div class="eyebrow" style="justify-content:center;">VOTRE IMPACT</div>
-      <h2 style="color:var(--ink);">Votre marque.<br>Notre mission. Une cause vraie.</h2>
-      <p style="color:var(--ink-soft); font-size:17px; margin-top:20px; line-height:1.75;">En commanditant Phé-Nix, vous ne faites pas juste mettre un logo sur un site web. Vous vous associez à ce qui se passe chaque semaine dans les rues du Québec — concrètement, visiblement, humainement.</p>
-    </div>
-    <div class="impact-stats">
-      <div class="impact-stat-card reveal reveal-d1">
-        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-        <div class="impact-stat-num">60%</div>
-        <div class="impact-stat-label">de chaque commandite va directement à l'alimentation — fruits, légumes, repas chauds distribués sur le terrain.</div>
-      </div>
-      <div class="impact-stat-card reveal reveal-d2">
-        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
-        <div class="impact-stat-num">20%</div>
-        <div class="impact-stat-label">habille les personnes en situation d'itinérance lors de nos distributions, particulièrement en hiver.</div>
-      </div>
-      <div class="impact-stat-card reveal reveal-d3">
-        <div class="impact-stat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="impact-stat-num">20%</div>
-        <div class="impact-stat-label">couvre le transport, la logistique et le matériel pour que notre équipe soit présente chaque semaine, partout au Québec.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMMENT DEVENIR PARTENAIRE -->
-<section class="tiers-section">
-  <div style="max-width:1200px; margin:0 auto; text-align:center;">
-    <div class="eyebrow" style="justify-content:center;">COMMENT S'IMPLIQUER</div>
-    <h2 style="color:#111;">Plusieurs façons<br>de faire une différence.</h2>
-    <p style="color:#555; font-size:16px; max-width:540px; margin:16px auto 0;">Être partenaire de Phé-Nix, c'est contribuer à votre façon — on s'adapte à ce que vous pouvez offrir. Aucun montant minimum, aucune pression.</p>
-  </div>
-  <div class="tiers-grid">
-    <div class="tier-card reveal reveal-d1">
-      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <span class="tier-badge badge-bronze">Don en nature</span>
-      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Nourriture, vêtements<br>et fournitures</h3>
-      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Impact direct et immédiat sur le terrain</div>
-        <div class="tier-benefit">Reconnaissance sur nos réseaux sociaux</div>
-        <div class="tier-benefit">Reçu fiscal officiel si applicable</div>
-      </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
-    <div class="tier-card featured reveal reveal-d2">
-      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      </div>
-      <span class="tier-badge badge-argent">Commandite</span>
-      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Soutien financier<br>à notre mission</h3>
-      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Logo sur le site web de Phé-Nix</div>
-        <div class="tier-benefit">Mentions lors de nos distributions</div>
-        <div class="tier-benefit">Publication dédiée sur nos réseaux sociaux</div>
-        <div class="tier-benefit">Reçu fiscal officiel</div>
-      </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
-    <div class="tier-card reveal reveal-d3">
-      <div style="width:48px;height:48px;background:var(--accent-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <span class="tier-badge badge-or">Mobilisation</span>
-      <h3 style="font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin:16px 0 12px;line-height:1.3;">Votre équipe<br>sur le terrain</h3>
-      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#666;line-height:1.7;margin-bottom:20px;">Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Encadrement complet par notre équipe</div>
-        <div class="tier-benefit">Contenu photo et vidéo pour vos réseaux</div>
-        <div class="tier-benefit">Association de votre marque à notre mission</div>
-        <div class="tier-benefit">Expérience terrain inoubliable</div>
-      </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
-  </div>
-</section>
-
-<!-- PARTENARIAT SUR MESURE -->
-<section class="sur-mesure-section">
-  <div class="sur-mesure-card">
-    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">AUTRE IDÉE ?</div>
-    <h3>Un partenariat qui vous ressemble.</h3>
-    <p>Don de matériel, activité de team building sur le terrain, partenariat médias, collecte de dons auprès de vos employés — on est ouverts à toutes les idées. Ce qui compte, c'est l'impact.</p>
-    <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Parlons-nous directement →</a>
-  </div>
-</section>
-
-<!-- CONTACT CTA -->
-<section class="contact-commandite">
-  <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">ON VOUS RÉPOND</div>
-  <h2>Une question sur la commandite ?</h2>
-  <p>Notre équipe est disponible pour discuter d'un partenariat adapté à votre organisation.</p>
-  <div class="cta-btns">
-    <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Nous écrire →</a>
-    <a href="tel:4385263889" class="btn btn-ghost-dark btn-lg">(438) 526-3889</a>
-  </div>
-</section>
-
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand"><div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.8"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div><p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p><div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div></div>
-    <div class="footer-col"><h4>NAVIGATION</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
-    <div class="footer-col"><h4>AIDER</h4><ul><li><a href="aider.html#don">Faire un don</a></li><li><a href="aider.html#benevole">Devenir bénévole</a></li><li><a href="aider.html#depot">Dons en nature</a></li></ul></div>
-    <div class="footer-col"><h4>CONTACT</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:#555;">Montréal, Québec</li></ul></div>
+    <div class="footer-brand"><div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="28" height="28"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.85"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div><p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p><div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
-<script src="nav.js"></script>
 
 <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 <div class="mobile-donate-bar">
-  <a href="aider.html#don" class="btn btn-primary">Faire un don →</a>
+  <a href="faire-un-don.html" class="btn btn-primary">Faire un don →</a>
 </div>
+<script src="nav.js"></script>
 </body>
 </html>

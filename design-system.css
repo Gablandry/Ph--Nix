@@ -10,6 +10,8 @@
   --accent:      #E8500E;   /* orange Phé-Nix, profond */
   --accent-deep: #C7440B;   /* hover */
   --accent-soft: rgba(232,80,14,0.08);
+  --bg-warm:     #FBF4EF;   /* pêche très clair — chaleur entre les blancs */
+  --warm-line:   #EDE0D7;   /* filet chaud */
   --radius:      14px;
   --maxw:        1080px;
 }

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donner du matériel | Phé-Nix — points de collecte</title>
+<meta name="description" content="Déposez vêtements, nourriture non périssable et articles d'hygiène dans l'un des 3 points de collecte de Phé-Nix en Montérégie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+.section { padding: 110px 40px; }
+.section-soft { background: var(--bg-soft); }
+.section-warm { background: var(--bg-warm); }
+.center { text-align: center; }
+.lead { font-size: 18px; color: var(--ink-soft); max-width: 560px; margin: 16px auto 0; line-height: 1.6; }
+
+/* Dépôts */
+.depots { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: var(--maxw); margin: 56px auto 0; }
+.depot { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 28px; text-align: left; }
+.depot-ic { width: 44px; height: 44px; background: var(--accent-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
+.depot-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 10px; }
+.depot h3 { font-size: 18px; margin-bottom: 8px; }
+.depot p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+.depot p .sub { color: #aaa; font-size: 12px; }
+
+/* Quoi donner */
+.give { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 52px auto 0; }
+.give-item { text-align: center; }
+.give-ic { width: 56px; height: 56px; background: var(--accent-soft); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin: 0 auto 14px; }
+.give-item h3 { font-size: 16px; margin-bottom: 6px; }
+.give-item p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .section { padding: 72px 24px; }
+  .depots { grid-template-columns: 1fr; max-width: 400px; }
+  .give { grid-template-columns: 1fr 1fr; max-width: 440px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="30" height="30"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.85"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="aider.html" class="active">Aider</a></li>
+      <li><a href="commanditaires.html">Merci</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="aider.html" class="active">Aider</a>
+    <a href="commanditaires.html">Merci à nos commanditaires</a>
+    <div class="nav-mobile-ctas">
+      <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
+      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg') center 40%/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center; color:#fff;">Dons en nature</div>
+    <h1>Déposez vêtements,<br>nourriture ou articles.</h1>
+    <p>Pas d'argent à donner ? Vos dons matériels font une différence tout aussi concrète sur le terrain.</p>
+  </div>
+</section>
+
+<!-- QUOI DONNER -->
+<section class="section center">
+  <div class="eyebrow" style="justify-content:center;">Ce qu'on accepte</div>
+  <h2>Ce qui fait vraiment la différence.</h2>
+  <div class="give">
+    <div class="give-item">
+      <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+      <h3>Vêtements chauds</h3>
+      <p>Manteaux, tuques, gants, bottes, couvertures.</p>
+    </div>
+    <div class="give-item">
+      <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+      <h3>Nourriture</h3>
+      <p>Conserves et denrées non périssables.</p>
+    </div>
+    <div class="give-item">
+      <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h3>Articles d'hygiène</h3>
+      <p>Savon, brosses à dents, produits de soin.</p>
+    </div>
+    <div class="give-item">
+      <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Soins personnels</h3>
+      <p>Trousses, articles de première nécessité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POINTS DE DÉPÔT -->
+<section class="section section-warm">
+  <div class="center" style="max-width:540px; margin:0 auto;">
+    <div class="eyebrow" style="justify-content:center;">Où déposer</div>
+    <h2>Nos 3 points de collecte.</h2>
+    <p class="lead">Déposez vos dons directement dans l'un de ces commerces partenaires.</p>
+  </div>
+  <div class="depots">
+    <div class="depot">
+      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+      <div class="depot-num">Point 01</div>
+      <h3>Cantine BB-LOO</h3>
+      <p>349, rue Jacques-Cartier Sud<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Eugène)</span></p>
+    </div>
+    <div class="depot">
+      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="depot-num">Point 02</div>
+      <h3>Clinique Accès Santé</h3>
+      <p>268, boul. Saint-Luc<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Luc)</span></p>
+    </div>
+    <div class="depot">
+      <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="depot-num">Point 03</div>
+      <h3>Mangeons Maison</h3>
+      <p>353, rue Saint-Jacques<br>Napierville</p>
+    </div>
+  </div>
+  <p style="font-size:13px; color:#b3a99f; text-align:center; margin-top:30px;">Pour un dépôt spécial ou une collecte, <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent);text-decoration:none;">écrivez-nous</a>.</p>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="section center">
+  <div style="max-width:600px; margin:0 auto;">
+    <div class="eyebrow" style="justify-content:center;">Une question ?</div>
+    <h2>On est là pour vous répondre.</h2>
+    <p class="lead">Pour organiser un dépôt, une collecte en entreprise, ou poser une question.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Nous écrire →</a>
+      <a href="tel:4385263889" class="btn btn-ghost btn-lg">(438) 526-3889</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="28" height="28"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.85"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
+      <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
+      <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="nav.js"></script>
+</body>
+</html>

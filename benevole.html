@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devenir bénévole | Phé-Nix — aucune expérience requise</title>
+<meta name="description" content="Devenez bénévole chez Phé-Nix. Aucune expérience requise, juste l'envie d'agir. Écrivez-nous votre région et vos disponibilités.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+.section { padding: 110px 40px; }
+.section-soft { background: var(--bg-soft); }
+.section-warm { background: var(--bg-warm); }
+.center { text-align: center; }
+.lead { font-size: 18px; color: var(--ink-soft); max-width: 600px; margin: 16px auto 0; line-height: 1.65; }
+
+.benevole-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+
+/* Étapes */
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
+.step { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 30px 26px; text-align: left; }
+.step-no { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 14px; }
+.step-ic { width: 44px; height: 44px; background: var(--accent-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 16px; }
+.step h3 { font-size: 17px; margin-bottom: 8px; }
+.step p { font-size: 14px; line-height: 1.55; }
+
+@media (max-width: 980px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) { .section { padding: 72px 24px; } }
+@media (max-width: 540px) { .steps { grid-template-columns: 1fr; max-width: 400px; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="30" height="30"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.85"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="aider.html" class="active">Aider</a></li>
+      <li><a href="commanditaires.html">Merci</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="aider.html" class="active">Aider</a>
+    <a href="commanditaires.html">Merci à nos commanditaires</a>
+    <div class="nav-mobile-ctas">
+      <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
+      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg') center 30%/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center; color:#fff;">Devenir bénévole</div>
+    <h1>Votre présence<br>change une vie.</h1>
+    <p>Aucune expérience requise, aucun équipement à prévoir — juste l'envie d'agir, un samedi à la fois.</p>
+  </div>
+</section>
+
+<!-- INTRO + CTA -->
+<section class="section center">
+  <div style="max-width:720px; margin:0 auto;">
+    <div class="eyebrow" style="justify-content:center;">Rejoignez l'équipe</div>
+    <h2>On s'occupe de tout le reste.</h2>
+    <p class="lead">Écrivez-nous votre région et vos disponibilités, et on vous explique la prochaine distribution près de chez vous. L'équipe vous accueille et vous guide sur le terrain.</p>
+    <div class="benevole-btns">
+      <a href="mailto:phenixactioncitoyenne@gmail.com?subject=Je%20veux%20devenir%20b%C3%A9n%C3%A9vole&body=Bonjour%20Ph%C3%A9-Nix%2C%0A%0AJe%20souhaite%20devenir%20b%C3%A9n%C3%A9vole.%0A%0APr%C3%A9nom%20et%20nom%20%3A%0AR%C3%A9gion%20%3A%0ADisponibilit%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20(optionnel)%20%3A%0A%0AMerci%20!" class="btn btn-primary btn-lg">Écrire pour devenir bénévole →</a>
+      <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Voir les événements sur Facebook</a>
+    </div>
+    <p style="font-size:13px; color:var(--ink-soft); margin-top:22px;">Le bouton ouvre votre courriel avec un message déjà préparé — vous n'avez qu'à compléter et envoyer.</p>
+  </div>
+</section>
+
+<!-- ÉTAPES -->
+<section class="section section-warm center">
+  <div class="eyebrow" style="justify-content:center;">Comment ça marche</div>
+  <h2>Quatre étapes, c'est tout.</h2>
+  <div class="steps">
+    <div class="step reveal reveal-d1">
+      <div class="step-no">Étape 01</div>
+      <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <h3>Vous écrivez</h3>
+      <p>Un courriel avec votre région et vos disponibilités. Ça prend deux minutes.</p>
+    </div>
+    <div class="step reveal reveal-d2">
+      <div class="step-no">Étape 02</div>
+      <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <h3>On vous contacte</h3>
+      <p>Pour vous expliquer la prochaine distribution dans votre secteur.</p>
+    </div>
+    <div class="step reveal reveal-d3">
+      <div class="step-no">Étape 03</div>
+      <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Vous venez</h3>
+      <p>Sur le terrain. Aucun équipement requis, l'équipe prend soin de tout.</p>
+    </div>
+    <div class="step reveal reveal-d4">
+      <div class="step-no">Étape 04</div>
+      <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Vous revenez</h3>
+      <p>Parce que l'expérience change quelque chose en vous.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="28" height="28"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.85"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
+      <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
+      <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Dons en nature</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="nav.js"></script>
+</body>
+</html>
