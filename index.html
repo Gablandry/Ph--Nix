@@ -19,6 +19,14 @@
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-btns .btn-ghost { border-color: rgba(255,255,255,0.45); color: #fff; }
 .hero-btns .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
+/* Entrée animée du hero au chargement */
+@keyframes heroUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.hero-content > * { animation: heroUp 0.85s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.35s; }
+@media (prefers-reduced-motion: reduce) { .hero-content > * { animation: none; } }
 
 /* ===== TRUST STRIP ===== */
 .trust { background: var(--ink); padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
@@ -69,7 +77,8 @@
 .progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
 .prog { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; text-align: left; }
 .prog:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,0.07); }
-.prog img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+.prog img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+.prog:hover img { transform: scale(1.05); }
 .prog-body { padding: 22px 22px 26px; }
 .prog h3 { font-size: 17px; margin-bottom: 8px; }
 .prog p { font-size: 14px; line-height: 1.55; margin: 0; }
