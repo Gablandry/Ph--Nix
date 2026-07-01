@@ -4,52 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faire un don | Phé-Nix — par Interac, 100 % sur le terrain</title>
-<meta name="description" content="Faites un don à Phé-Nix par virement Interac. Pas de frais, pas d'intermédiaire : chaque dollar va directement sur le terrain.">
+<meta name="description" content="Faites un don à Phé-Nix par virement Interac. Pas de frais, pas de salaires : chaque dollar achète nourriture, eau et vêtements, et va directement sur le terrain.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system.css">
 <style>
 .section { padding: 110px 40px; }
-.section-soft { background: var(--bg-soft); }
-.section-warm { background: var(--bg-warm); }
-.wrap { max-width: var(--maxw); margin: 0 auto; }
 .center { text-align: center; }
-.lead { font-size: 18px; color: var(--ink-soft); max-width: 560px; margin: 16px auto 0; line-height: 1.6; }
 
-/* Carte Interac */
-.don-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 24px; padding: 48px; max-width: 600px; margin: 48px auto 0; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-.don-card .tag { font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-.don-card h3 { font-size: 22px; margin-bottom: 10px; }
-.don-card .step { font-size: 15px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 26px; }
-.email-copy { display: flex; max-width: 420px; margin: 0 auto 16px; border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
-.email-copy input { flex: 1; border: none; outline: none; padding: 16px 18px; font-family: 'Inter',sans-serif; font-size: 15px; color: var(--ink); background: var(--bg-soft); min-width: 0; }
-.email-copy button { border: none; background: var(--accent); color: #fff; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 14px; padding: 0 22px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-.email-copy button:hover { background: var(--accent-deep); }
-.email-copy button.copied { background: #16a34a; }
-.don-note { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin-top: 14px; }
-.don-note strong { color: var(--ink); }
+/* ===== LE GRAND BLOC DON (tranche avec le reste du site) ===== */
+.dongive { position: relative; overflow: hidden; background: linear-gradient(165deg, #1E140E 0%, #3A1C0F 55%, #5A2410 108%); padding: 110px 40px; }
+.dongive::before { content: ''; position: absolute; top: -20%; right: -12%; width: 60%; height: 150%; background: radial-gradient(ellipse, rgba(244,185,66,0.16), transparent 62%); pointer-events: none; }
+.dongive-inner { position: relative; max-width: 900px; margin: 0 auto; text-align: center; }
+.dongive .eyebrow { color: #F4B942; justify-content: center; }
+.dongive h2 { color: #fff; font-size: clamp(32px,4.4vw,54px); line-height: 1.1; margin-bottom: 22px; }
+.dongive .intro { color: rgba(255,255,255,0.82); font-size: 18px; line-height: 1.65; max-width: 600px; margin: 0 auto; }
+.dongive .intro strong { color: #fff; }
 
-/* Montants — bande pleine largeur */
-.montants { display: grid; grid-template-columns: repeat(4,1fr); max-width: var(--maxw); margin: 52px auto 0; border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; background: var(--bg); }
-.montant { padding: 36px 24px; text-align: center; border-right: 1px solid var(--hairline); }
-.montant:last-child { border-right: none; }
-.montant-amt { font-weight: 700; font-size: 36px; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1; }
-.montant-txt { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.trust-row { display: flex; gap: 14px 30px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+.trust-row span { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.8); }
+.trust-row svg { color: #F4B942; flex-shrink: 0; }
 
-/* Usage du don */
-.usage { max-width: 640px; margin: 52px auto 0; text-align: left; }
-.usage-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-.usage-label { min-width: 116px; font-size: 14px; color: var(--ink); font-weight: 500; }
-.usage-bar { flex: 1; height: 8px; background: #E9E4DF; border-radius: 4px; overflow: hidden; }
-.usage-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
-.usage-pct { min-width: 40px; text-align: right; font-weight: 700; font-size: 14px; color: var(--accent); }
+.block { margin-top: 76px; }
+.block-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F4B942; margin-bottom: 8px; }
+.block h3.block-title { color: #fff; font-size: clamp(24px,3vw,34px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.block .block-sub { color: rgba(255,255,255,0.6); font-size: 15px; }
 
-/* Pourquoi */
-.pourquoi { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 960px; margin: 52px auto 0; }
-.pourquoi-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 28px; text-align: left; }
-.pourquoi-ic { width: 46px; height: 46px; background: var(--accent-soft); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 16px; }
-.pourquoi-card h3 { font-size: 18px; margin-bottom: 10px; }
-.pourquoi-card p { font-size: 14.5px; line-height: 1.6; margin: 0; }
+/* Montants sur fond foncé */
+.montants2 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 900px; margin: 30px auto 0; }
+.montant2 { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 30px 18px; text-align: center; transition: transform 0.25s, border-color 0.25s; }
+.montant2:hover { transform: translateY(-4px); border-color: rgba(244,185,66,0.5); }
+.montant2 .amt { font-weight: 700; font-size: 36px; color: #F4B942; line-height: 1; margin-bottom: 12px; letter-spacing: -0.02em; }
+.montant2 .txt { font-size: 13.5px; color: rgba(255,255,255,0.74); line-height: 1.5; }
+
+/* Répartition sur fond foncé */
+.repart { max-width: 600px; margin: 30px auto 0; text-align: left; }
+.repart-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.repart-label { min-width: 196px; font-size: 14px; color: #fff; font-weight: 500; }
+.repart-bar { flex: 1; height: 9px; background: rgba(255,255,255,0.12); border-radius: 5px; overflow: hidden; }
+.repart-fill { height: 100%; background: linear-gradient(90deg, #F4B942, var(--accent)); border-radius: 5px; width: 0; transition: width 1.3s cubic-bezier(0.4,0,0.2,1); }
+.repart-pct { min-width: 42px; text-align: right; font-weight: 700; font-size: 14px; color: #F4B942; }
+.repart-note { margin-top: 26px; font-weight: 700; font-size: 17px; color: #fff; }
+.repart-note span { color: #F4B942; }
+
+/* Carte Interac — la finale, fort contraste */
+.interac-final { background: #fff; border-radius: 26px; padding: 46px 40px; max-width: 560px; margin: 44px auto 0; box-shadow: 0 28px 70px rgba(0,0,0,0.45); }
+.interac-final .tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 14px; }
+.interac-final h3 { font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+.interac-final .step { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 22px; }
+.email-display { background: var(--bg-soft); border: 1px solid var(--hairline); border-radius: 12px; padding: 16px; font-weight: 600; font-size: 16px; color: var(--ink); word-break: break-word; margin-bottom: 14px; }
+.interac-copy { width: 100%; font-size: 17px; padding: 18px; }
+.interac-final .don-note { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin-top: 16px; }
+.interac-final .don-note strong { color: var(--ink); }
+.copied-msg { display: none; margin-top: 12px; font-size: 14px; font-weight: 600; color: #16a34a; }
+.copied-msg.show { display: block; }
 
 /* FAQ */
 .faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
@@ -59,19 +67,18 @@
 .faq-item.open .faq-arrow { transform: rotate(45deg); }
 .faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
 .faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
+.eyebrow-c { justify-content: center; }
 
 @media (max-width: 860px) {
   .section { padding: 72px 24px; }
-  .don-card { padding: 32px 24px; }
-  .montants { grid-template-columns: 1fr 1fr; }
-  .montant:nth-child(2) { border-right: none; }
-  .montant:nth-child(1), .montant:nth-child(2) { border-bottom: 1px solid var(--hairline); }
-  .pourquoi { grid-template-columns: 1fr; max-width: 400px; }
+  .dongive { padding: 80px 24px; }
+  .montants2 { grid-template-columns: 1fr 1fr; }
+  .repart-label { min-width: 150px; font-size: 13px; }
+  .interac-final { padding: 34px 24px; }
 }
 @media (max-width: 480px) {
-  .montants { grid-template-columns: 1fr; }
-  .montant { border-right: none; border-bottom: 1px solid var(--hairline); }
-  .montant:last-child { border-bottom: none; }
+  .montants2 { grid-template-columns: 1fr; max-width: 320px; }
+  .repart-label { min-width: 120px; }
 }
 </style>
 </head>
@@ -90,7 +97,7 @@
       <li><a href="commanditaires.html">Merci</a></li>
     </ul>
     <div class="nav-ctas">
-      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
+      <a href="#don" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -100,89 +107,80 @@
     <a href="commanditaires.html">Merci à nos commanditaires</a>
     <div class="nav-mobile-ctas">
       <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
-      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
+      <a href="#don" class="btn btn-primary">Faire un don</a>
     </div>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center 30%/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.62)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center 30%/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Faire un don</div>
-    <h1>Chaque dollar va<br>directement dans la rue.</h1>
-    <p>Pas de carte de crédit, pas de frais, pas d'intermédiaire. Un simple virement Interac, et votre don est sur le terrain dès la prochaine distribution.</p>
+    <h1>Votre don, c'est<br>un repas chaud ce soir.</h1>
+    <p>Pas de carte, pas de frais, pas d'intermédiaire. Un simple virement Interac — et votre geste est sur le terrain dès la prochaine distribution.</p>
   </div>
 </section>
 
-<!-- DON INTERAC -->
-<section class="section center" id="don">
-  <div class="eyebrow" style="justify-content:center;">En 30 secondes</div>
-  <h2>Faites votre don par Interac.</h2>
-  <div class="don-card">
-    <div class="tag">Virement Interac</div>
-    <h3>Envoyez votre don à :</h3>
-    <p class="step">Ouvrez votre application bancaire → « Virement Interac » → collez l'adresse ci-dessous.</p>
-    <div class="email-copy">
-      <input type="text" id="interac-email" value="phenixactioncitoyenne@gmail.com" readonly>
-      <button id="copy-btn" onclick="copyInterac()">Copier</button>
-    </div>
-    <p class="don-note">Dans la note du virement, écrivez <strong>« Don Phé-Nix »</strong>.<br>Un reçu vous est envoyé sur demande — il suffit de nous écrire.</p>
-  </div>
-</section>
+<!-- LE GRAND BLOC DON : pourquoi → impact → répartition → don -->
+<section class="dongive" id="don">
+  <div class="dongive-inner">
 
-<!-- MONTANTS pleine largeur -->
-<section class="section section-warm center">
-  <div class="eyebrow" style="justify-content:center;">L'impact de votre don</div>
-  <h2>Ce que votre montant permet.</h2>
-  <div class="montants">
-    <div class="montant"><div class="montant-amt">10 $</div><div class="montant-txt">Les fruits et légumes d'une distribution</div></div>
-    <div class="montant"><div class="montant-amt">25 $</div><div class="montant-txt">Gants, tuque et vêtements chauds pour une personne</div></div>
-    <div class="montant"><div class="montant-amt">50 $</div><div class="montant-txt">Le transport d'une personne vers un centre d'aide</div></div>
-    <div class="montant"><div class="montant-amt">100 $</div><div class="montant-txt">Une distribution complète pour 10 à 15 personnes</div></div>
-  </div>
-  <p style="font-size:12px; color:#b3a99f; font-style:italic; margin-top:20px;">* Équivalences approximatives — varient selon les besoins et la saison.</p>
-</section>
+    <!-- POURQUOI -->
+    <div class="eyebrow">Un don qui a vraiment du sens</div>
+    <h2>Votre argent ne paie pas<br>des bureaux. Il nourrit du monde.</h2>
+    <p class="intro">Pas de salaires. Pas de loyer. Pas de frais cachés.<br>Chaque dollar que vous donnez achète de la <strong>nourriture</strong>, de l'<strong>eau</strong> et des <strong>vêtements chauds</strong> — et les met, cette semaine, entre les mains de quelqu'un qui en a besoin.</p>
+    <div class="trust-row">
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % sur le terrain</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aidé près de chez vous</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré · reçu sur demande</span>
+    </div>
 
-<!-- USAGE -->
-<section class="section center">
-  <div class="eyebrow" style="justify-content:center;">Transparence totale</div>
-  <h2>Où va votre argent.</h2>
-  <p class="lead">Pas de salaires, pas de bureaux, pas de frais cachés. Voici exactement comment chaque dollar est utilisé.</p>
-  <div class="usage">
-    <div class="usage-row"><span class="usage-label">Nourriture</span><div class="usage-bar"><div class="usage-fill" data-width="60%"></div></div><span class="usage-pct">60 %</span></div>
-    <div class="usage-row"><span class="usage-label">Vêtements</span><div class="usage-bar"><div class="usage-fill" data-width="20%"></div></div><span class="usage-pct">20 %</span></div>
-    <div class="usage-row"><span class="usage-label">Transport</span><div class="usage-bar"><div class="usage-fill" data-width="12%"></div></div><span class="usage-pct">12 %</span></div>
-    <div class="usage-row"><span class="usage-label">Matériel</span><div class="usage-bar"><div class="usage-fill" data-width="8%"></div></div><span class="usage-pct">8 %</span></div>
-  </div>
-</section>
+    <!-- IMPACT CONCRET (montants) -->
+    <div class="block">
+      <div class="block-label">Ce que vous offrez</div>
+      <h3 class="block-title">Concrètement, votre montant donne :</h3>
+      <div class="montants2">
+        <div class="montant2"><div class="amt">10 $</div><div class="txt">De l'eau et des fruits frais pour une distribution.</div></div>
+        <div class="montant2"><div class="amt">25 $</div><div class="txt">Une tuque, des gants et un manteau contre le froid.</div></div>
+        <div class="montant2"><div class="amt">50 $</div><div class="txt">Le transport d'une personne vers sa thérapie.</div></div>
+        <div class="montant2"><div class="amt">100 $</div><div class="txt">Une distribution complète : 10 à 15 personnes nourries.</div></div>
+      </div>
+    </div>
 
-<!-- POURQUOI -->
-<section class="section section-soft center">
-  <div class="eyebrow" style="justify-content:center;">Pourquoi Phé-Nix</div>
-  <h2>Un don qui a vraiment du sens.</h2>
-  <div class="pourquoi">
-    <div class="pourquoi-card reveal reveal-d1">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-      <h3>100 % terrain</h3>
-      <p>Chaque dollar sert à acheter nourriture, vêtements et matériel. Aucun frais administratif, aucun salaire.</p>
+    <!-- RÉPARTITION TRANSPARENTE -->
+    <div class="block">
+      <div class="block-label">Où va chaque dollar</div>
+      <h3 class="block-title">Rien ne se perd en chemin.</h3>
+      <p class="block-sub">Pour chaque dollar reçu, voici exactement où il va.</p>
+      <div class="repart">
+        <div class="repart-row"><span class="repart-label">Nourriture &amp; eau</span><div class="repart-bar"><div class="repart-fill" data-width="60%"></div></div><span class="repart-pct">60 %</span></div>
+        <div class="repart-row"><span class="repart-label">Vêtements &amp; couvertures</span><div class="repart-bar"><div class="repart-fill" data-width="20%"></div></div><span class="repart-pct">20 %</span></div>
+        <div class="repart-row"><span class="repart-label">Transport vers la thérapie</span><div class="repart-bar"><div class="repart-fill" data-width="12%"></div></div><span class="repart-pct">12 %</span></div>
+        <div class="repart-row"><span class="repart-label">Matériel &amp; logistique</span><div class="repart-bar"><div class="repart-fill" data-width="8%"></div></div><span class="repart-pct">8 %</span></div>
+      </div>
+      <p class="repart-note">0 % en administration. 0 % en salaires. <span>100 % sur le terrain.</span></p>
     </div>
-    <div class="pourquoi-card reveal reveal-d2">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <h3>Impact local</h3>
-      <p>On agit dans votre communauté. Les personnes qu'on aide sont vos voisins, dans vos rues.</p>
+
+    <!-- LA FINALE : DON INTERAC -->
+    <div class="block">
+      <div class="interac-final">
+        <div class="tag">Virement Interac · 30 secondes</div>
+        <h3>Prêt à faire la différence ?</h3>
+        <p class="step">Ouvrez votre application bancaire → « Virement Interac » → collez l'adresse, et le tour est joué.</p>
+        <div class="email-display">phenixactioncitoyenne@gmail.com</div>
+        <button class="btn btn-primary btn-lg interac-copy" id="copy-btn" onclick="copyInterac()">Copier l'adresse Interac →</button>
+        <div class="copied-msg" id="copied-msg">✓ Adresse copiée — collez-la dans votre virement</div>
+        <p class="don-note">Dans la note du virement, écrivez <strong>« Don Phé-Nix »</strong>.<br>Un reçu fiscal vous est envoyé sur demande.</p>
+      </div>
     </div>
-    <div class="pourquoi-card reveal reveal-d3">
-      <div class="pourquoi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>OBNL transparent</h3>
-      <p>Organisme à but non lucratif enregistré. Reçu fiscal sur demande, et toujours disponibles pour vos questions.</p>
-    </div>
+
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="section center">
-  <div class="eyebrow" style="justify-content:center;">Questions fréquentes</div>
-  <h2>Vous vous demandez peut-être…</h2>
+  <div class="eyebrow eyebrow-c">Questions fréquentes</div>
+  <h2>Avant de donner, vous vous demandez peut-être…</h2>
   <div class="faq">
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Puis-je obtenir un reçu fiscal ? <span class="faq-arrow">+</span></button>
@@ -225,11 +223,21 @@
 <script src="nav.js"></script>
 <script>
 function copyInterac() {
-  var input = document.getElementById('interac-email');
+  var email = 'phenixactioncitoyenne@gmail.com';
   var btn = document.getElementById('copy-btn');
-  input.select(); input.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(input.value).then(ok).catch(function () { try { document.execCommand('copy'); } catch(e){} ok(); });
-  function ok() { btn.textContent = 'Copié ✓'; btn.classList.add('copied'); setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2200); }
+  var msg = document.getElementById('copied-msg');
+  var done = function () {
+    btn.textContent = 'Copié ✓';
+    if (msg) msg.classList.add('show');
+    setTimeout(function () { btn.textContent = 'Copier l\'adresse Interac →'; if (msg) msg.classList.remove('show'); }, 3000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(done).catch(done);
+  } else {
+    var t = document.createElement('textarea'); t.value = email; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(t); done();
+  }
 }
 </script>
 </body>
