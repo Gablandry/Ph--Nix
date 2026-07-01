@@ -154,13 +154,16 @@
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   .founders { grid-template-columns: 1fr; max-width: 420px; gap: 44px; }
-  .steps { grid-template-columns: 1fr; max-width: 460px; }
+  .steps { gap: 16px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
   .galerie { grid-template-columns: 1fr 1fr; }
   .cta-premium { padding: 56px 28px; border-radius: 24px; }
   .home-contacts { grid-template-columns: 1fr; max-width: 380px; }
   .testi { background-attachment: scroll; padding: 90px 24px; min-height: 50vh; }
+}
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr; max-width: 460px; }
 }
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }

@@ -63,6 +63,8 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .btn-ghost:hover, .btn-ghost-dark:hover { border-color: var(--ink); background: rgba(0,0,0,0.02); }
 .btn-sm { padding: 9px 20px; font-size: 13.5px; border-radius: 10px; }
 .btn-lg { padding: 16px 38px; font-size: 16px; }
+/* Focus visible — accessibilité & finition pro */
+.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ===== HEADER / NAV ===== */
 .site-header {
@@ -215,4 +217,6 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   .site-footer { padding: 56px 24px 32px; }
   .page-hero { padding: 120px 24px 64px; }
   .mobile-donate-bar { display: block; }
+  /* CTA pleine largeur sur mobile — plus « app », plus pro */
+  .btn-lg { width: 100%; }
 }
