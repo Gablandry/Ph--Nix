@@ -13,9 +13,24 @@
 /* ===== HERO — animation du logo plein écran ===== */
 .intro-phenix { position: relative; height: 100vh; background: #140c1e; overflow: hidden; }
 .intro-phenix canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-/* Vidéo paysage sur écran portrait : on garde le cadre entier, le fond sombre comble le reste */
-/* remontée vers le haut du cadre pour laisser le bas libre au titre et aux boutons */
-@media (max-aspect-ratio: 1/1) { .intro-phenix canvas { object-fit: contain; object-position: 50% 15%; } }
+/* le fond flouté ne sert qu'en portrait */
+#phenix-bg { display: none; }
+
+/* Écran portrait : le décor flouté remplit tout l'écran, l'animation nette se pose
+   par-dessus avec des bords fondus — plein écran d'un bord à l'autre, sans rien couper. */
+@media (max-aspect-ratio: 1/1) {
+  #phenix-bg {
+    display: block; object-fit: cover;
+    filter: blur(42px) saturate(1.25) brightness(0.82);
+    transform: scale(1.25);
+  }
+  #phenix-canvas {
+    inset: auto 0 auto 0; top: 6%;
+    width: 100%; height: auto; object-fit: unset;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  }
+}
 .intro-phenix-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(20,12,30,0) 34%, rgba(20,12,30,0.62) 70%, rgba(20,12,30,0.94) 100%); }
 .intro-phenix-hint {
   position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); z-index: 4;
@@ -259,6 +274,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 
 <!-- HERO — animation du logo plein écran, pilotée par le scroll (séquence d'images sur canvas) -->
 <section class="intro-phenix" id="intro-phenix">
+  <!-- fond flouté tiré de la même image : remplit l'écran en portrait, sans rien couper -->
+  <canvas id="phenix-bg" width="1280" height="830" aria-hidden="true"></canvas>
   <canvas id="phenix-canvas" width="1280" height="830" aria-label="Animation du logo Phé-Nix"></canvas>
   <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>
   <div class="hero-content" id="hero-content">
@@ -558,6 +575,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   if (!canvas || !section) return;
 
   var ctx = canvas.getContext('2d');
+  var bg = document.getElementById('phenix-bg');
+  var bgCtx = bg ? bg.getContext('2d') : null;
   var frames = new Array(TOTAL);
   var ready = new Array(TOTAL);
   var current = -1;
@@ -576,6 +595,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     if (pick === -1 || pick === current) return;
     current = pick;
     ctx.drawImage(frames[pick], 0, 0, canvas.width, canvas.height);
+    // même image dans le canevas de fond ; le flou et le cadrage sont faits en CSS
+    if (bgCtx) bgCtx.drawImage(frames[pick], 0, 0, bg.width, bg.height);
   }
 
   for (var i = 0; i < TOTAL; i++) {
