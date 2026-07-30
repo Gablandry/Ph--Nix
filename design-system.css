@@ -272,6 +272,9 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   /* l'espace est pris dans le bas de page : son fond foncé passe derrière la barre,
      au lieu d'une bande blanche qu'aurait créée une marge sur le corps */
   .site-footer { padding-bottom: calc(36px + 86px); }
+  /* la flèche de retour en haut se place au-dessus de la barre, sinon elle
+     recouvrait la dernière case du menu */
+  .scroll-top-btn { bottom: calc(92px + env(safe-area-inset-bottom)); right: 16px; }
 }
 /* Sur tablette la barre reste centrée plutôt qu'étirée sur toute la largeur */
 @media (min-width: 601px) and (max-width: 860px) {

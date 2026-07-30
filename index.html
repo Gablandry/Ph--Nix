@@ -23,7 +23,7 @@
    et ses quatre bords se fondent dans le décor flouté. */
 #phenix-canvas {
   top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: min(100%, calc(100vh * 1280 / 830)); height: auto;
+  width: min(100%, calc(100vh * 1024 / 664)); height: auto;
   -webkit-mask-image:
     linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%),
     linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
@@ -483,8 +483,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <!-- HERO — animation du logo plein écran, pilotée par le scroll (séquence d'images sur canvas) -->
 <section class="intro-phenix" id="intro-phenix">
   <!-- fond flouté tiré de la même image : remplit l'écran en portrait, sans rien couper -->
-  <canvas id="phenix-bg" width="1280" height="830" aria-hidden="true"></canvas>
-  <canvas id="phenix-canvas" width="1280" height="830" aria-label="Animation du logo Phé-Nix"></canvas>
+  <canvas id="phenix-bg" width="1024" height="664" aria-hidden="true"></canvas>
+  <canvas id="phenix-canvas" width="1024" height="664" aria-label="Animation du logo Phé-Nix"></canvas>
   <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>
   <div class="hero-content" id="hero-content">
     <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
