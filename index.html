@@ -60,9 +60,6 @@
 .founder { text-align: center; }
 .founder-photo { position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, var(--accent-soft), rgba(214,63,163,0.06)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--hairline); }
 .founder-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.founder-ph { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.founder-ph .initials { font-size: clamp(48px,7vw,72px); font-weight: 700; color: var(--accent); opacity: 0.5; letter-spacing: -0.02em; line-height: 1; }
-.founder-ph .ph-note { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-soft); }
 .founder-name { font-size: 22px; font-weight: 700; color: var(--ink); margin: 24px 0 4px; }
 .founder-role { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 14px; }
 .founder-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 360px; margin: 0 auto; }
@@ -286,8 +283,7 @@
     <div class="founders">
       <div class="founder reveal reveal-d1">
         <div class="founder-photo">
-          <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" onerror="this.style.display='none'">
-          <div class="founder-ph"><span class="initials">MC</span></div>
+          <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
         </div>
         <div class="founder-name">Michel Couture « Mike »</div>
         <div class="founder-role">Président-fondateur</div>
@@ -295,8 +291,7 @@
       </div>
       <div class="founder reveal reveal-d2">
         <div class="founder-photo">
-          <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" onerror="this.style.display='none'">
-          <div class="founder-ph"><span class="initials">GC</span></div>
+          <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
         </div>
         <div class="founder-name">Guy Couture</div>
         <div class="founder-role">Vice-président-fondateur</div>
