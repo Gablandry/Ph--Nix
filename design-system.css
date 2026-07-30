@@ -159,7 +159,8 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 }
 /* Voile sombre : garde les lueurs violet/orangé, atténue le phénix pour la lisibilité */
 .site-footer::before {
-  content: ''; position: absolute; inset: 0; z-index: -1;
+  /* -1px en haut : l'image de fond déborde sous la bordure, le voile doit la couvrir aussi */
+  content: ''; position: absolute; inset: -1px 0 0 0; z-index: -1;
   background: linear-gradient(180deg, rgba(16,9,24,0.90) 0%, rgba(16,9,24,0.94) 100%);
 }
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; max-width: var(--maxw); margin: 0 auto 48px; }
