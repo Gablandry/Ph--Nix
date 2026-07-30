@@ -260,23 +260,29 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .mobile-nav-bar a.nav-don.active { background: transparent; }
 
 /* ===== RESPONSIVE ===== */
+/* Dès que le menu du haut se replie, la barre du bas prend le relais —
+   sinon les tablettes se retrouvaient sans navigation visible. */
 @media (max-width: 860px) {
   .nav-links, .nav-ctas { display: none; }
   .nav-hamburger { display: flex; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
   /* Évite tout débordement horizontal des animations sur mobile */
   .reveal-left, .reveal-right { transform: translateY(28px); }
+  .mobile-nav-bar { display: grid; }
+  /* l'espace est pris dans le bas de page : son fond foncé passe derrière la barre,
+     au lieu d'une bande blanche qu'aurait créée une marge sur le corps */
+  .site-footer { padding-bottom: calc(36px + 86px); }
+}
+/* Sur tablette la barre reste centrée plutôt qu'étirée sur toute la largeur */
+@media (min-width: 601px) and (max-width: 860px) {
+  .mobile-nav-bar { padding-left: 12%; padding-right: 12%; }
 }
 @media (max-width: 600px) {
   .nav-inner { padding: 0 20px; }
   .footer-inner { grid-template-columns: 1fr; gap: 36px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-  .site-footer { padding: 56px 24px 32px; }
+  .site-footer { padding: 56px 24px calc(36px + 86px); }
   .page-hero { padding: 120px 24px 64px; }
-  .mobile-nav-bar { display: grid; }
-  /* l'espace est pris dans le bas de page : son fond foncé passe derrière la barre,
-     au lieu d'une bande blanche qu'aurait créée une marge sur le corps */
-  .site-footer { padding-bottom: calc(36px + 86px); }
   /* CTA pleine largeur sur mobile — plus « app », plus pro */
   .btn-lg { width: 100%; }
 }
