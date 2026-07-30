@@ -90,17 +90,16 @@
 .mur-cat-n { font-weight: 700; font-size: 42px; line-height: 1; letter-spacing: -0.03em; color: var(--accent); margin-bottom: 10px; }
 .mur-cat-l { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
 
-.mur-tuiles {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 9px;
-  max-width: 720px; margin: 44px auto 0;
+/* Grand MERCI aux couleurs du phénix */
+.merci-geant { text-align: center; margin: 64px auto 0; }
+.merci-mot {
+  display: block; font-weight: 700; line-height: 0.9;
+  font-size: clamp(84px, 18vw, 240px); letter-spacing: -0.045em;
+  background: linear-gradient(100deg, #D63FA3 0%, #FF5C1A 52%, #F4B942 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
 }
-.mur-tuile {
-  width: 30px; height: 30px; border-radius: 8px;
-  background: linear-gradient(150deg, #D63FA3, #FF5C1A 55%, #F4B942);
-  opacity: 0.46; transition: opacity 0.45s ease, transform 0.45s ease;
-}
-.mur-tuiles:hover .mur-tuile { opacity: 0.85; transform: translateY(-2px); }
-.mur-note { text-align: center; font-size: 13.5px; color: var(--ink-soft); margin: 26px auto 0; max-width: 460px; line-height: 1.6; }
+.merci-note { font-size: 14px; color: var(--ink-soft); margin: 28px auto 0; max-width: 460px; line-height: 1.65; }
 
 @media (max-width: 860px) {
   .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
@@ -108,8 +107,7 @@
   .mur-cats { grid-template-columns: repeat(2,1fr); gap: 12px; max-width: 380px; }
   .mur-cat { padding: 22px 12px; }
   .mur-cat-n { font-size: 34px; }
-  .mur-tuiles { gap: 7px; max-width: 320px; }
-  .mur-tuile { width: 24px; height: 24px; border-radius: 6px; }
+  .merci-mot { letter-spacing: -0.035em; }
 }
 </style>
 </head>
@@ -181,9 +179,11 @@
     </div>
   </div>
 
-  <!-- Une tuile par partenaire — volontairement sans nom, la liste reste privée -->
-  <div class="mur-tuiles reveal" id="mur-tuiles" aria-hidden="true"></div>
-  <p class="mur-note">Chaque tuile représente un partenaire. Par respect pour eux, nous ne publions pas leurs noms.</p>
+  <!-- Grand merci — dégradé du phénix. La liste des partenaires reste privée. -->
+  <div class="merci-geant reveal">
+    <span class="merci-mot">MERCI</span>
+    <p class="merci-note">À chacun d'entre vous. Par respect pour nos partenaires, nous ne publions pas leurs noms.</p>
+  </div>
 </section>
 
 <!-- (Bloc « Votre impact » + répartition déplacé vers faire-un-don.html) -->
@@ -281,22 +281,5 @@
   <a href="faire-un-don.html" class="btn btn-primary">Faire un don →</a>
 </div>
 <script src="nav.js"></script>
-<script>
-/* Mur des partenaires — une tuile par partenaire, sans aucun nom (la liste est privée) */
-(function () {
-  var mur = document.getElementById('mur-tuiles');
-  if (!mur) return;
-  var frag = document.createDocumentFragment();
-  for (var i = 0; i < 80; i++) {
-    var t = document.createElement('span');
-    t.className = 'mur-tuile';
-    // léger décalage de teinte et de délai pour éviter un damier trop régulier
-    t.style.filter = 'hue-rotate(' + (i % 7 * 4 - 12) + 'deg)';
-    t.style.transitionDelay = (i % 12 * 14) + 'ms';
-    frag.appendChild(t);
-  }
-  mur.appendChild(frag);
-})();
-</script>
 </body>
 </html>
