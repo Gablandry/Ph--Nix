@@ -183,8 +183,11 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 .lightbox-close { position: absolute; top: 24px; right: 28px; background: none; border: none; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: 0.7; }
 
 /* ===== CTA PREMIUM ===== */
-.cta-premium { position: relative; overflow: hidden; background: linear-gradient(135deg, #2A1A12 0%, #6E2A0E 58%, var(--accent) 125%); border-radius: 32px; max-width: var(--maxw); margin: 0 auto; padding: 88px 56px; text-align: center; }
-.cta-premium::before { content: ''; position: absolute; top: -40%; right: -12%; width: 65%; height: 140%; background: radial-gradient(ellipse, rgba(244,185,66,0.28), transparent 62%); pointer-events: none; }
+.cta-premium {
+  position: relative; overflow: hidden; border-radius: 32px;
+  background: linear-gradient(180deg, rgba(16,9,24,0.70) 0%, rgba(16,9,24,0.84) 55%, rgba(16,9,24,0.90) 100%), url('hero-phenix.png') center/cover no-repeat;
+  max-width: var(--maxw); margin: 0 auto; padding: 96px 56px; text-align: center;
+}
 .cta-premium > * { position: relative; }
 .cta-premium .eyebrow { color: #F4B942; justify-content: center; }
 .cta-premium h2 { color: #fff; font-size: clamp(34px,4.6vw,58px); margin-bottom: 18px; line-height: 1.08; }
