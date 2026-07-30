@@ -28,6 +28,8 @@
 .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
 .hero-content > *:nth-child(4) { animation-delay: 0.35s; }
 @media (prefers-reduced-motion: reduce) { .hero-content > * { animation: none; } }
+/* Séparation du texte au scroll (voir script en bas de page) */
+.hero-split-l, .hero-split-r { display: inline-block; }
 
 /* ===== TRUST STRIP ===== */
 .trust { background: var(--ink); padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
@@ -232,11 +234,11 @@
 <section class="hero">
   <!-- HERO : déposez « hero.jpg » dans le dossier et il remplacera la photo ci-dessous automatiquement -->
   <div class="hero-img" style="background-image:url('hero.jpg'), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg');"></div>
-  <div class="hero-content">
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
-    <h1>Chaque semaine, on est là.</h1>
-    <p class="hero-sub">Nourrir, habiller et accompagner les personnes en situation d'itinérance au Québec. 100 % bénévole, sur le terrain depuis 2022.</p>
-    <div class="hero-btns">
+  <div class="hero-content" id="hero-content">
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip hero-split-up" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
+    <h1><span class="hero-split-l">Chaque semaine,</span> <span class="hero-split-r">on est là.</span></h1>
+    <p class="hero-sub hero-split-down">Nourrir, habiller et accompagner les personnes en situation d'itinérance au Québec. 100 % bénévole, sur le terrain depuis 2022.</p>
+    <div class="hero-btns hero-split-down">
       <a href="faire-un-don.html" class="btn btn-primary btn-lg">Faire un don</a>
       <a href="benevole.html" class="btn btn-ghost btn-lg">Devenir bénévole</a>
     </div>
@@ -491,6 +493,42 @@
 </div>
 
 <script src="nav.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+/* Hero — le texte se sépare et s'efface pendant que la page est bloquée, la photo reste fixe */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.gsap || !window.ScrollTrigger) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.hero-content > *').forEach(function (el) {
+    el.addEventListener('animationend', function () { el.style.animation = 'none'; }, { once: true });
+  });
+
+  // Attend la fin de l'animation d'entrée du hero avant d'attacher le scroll,
+  // sinon les deux animations se battent sur les mêmes propriétés au chargement.
+  setTimeout(function () {
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: '+=70%',
+        scrub: true,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+
+    tl.to('.hero-split-up', { y: -60, opacity: 0, ease: 'none' }, 0)
+      .to('.hero-split-l', { x: -220, opacity: 0, ease: 'none' }, 0)
+      .to('.hero-split-r', { x: 220, opacity: 0, ease: 'none' }, 0)
+      .to('.hero-split-down', { y: 60, opacity: 0, ease: 'none' }, 0);
+  }, 1300);
+})();
+</script>
 <script>
 /* Défileur vertical des régions — une ville à la fois, mouvement lent et discret */
 (function () {
