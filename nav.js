@@ -58,9 +58,12 @@
   if (counters.length && 'IntersectionObserver' in window) {
     const co = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        co.unobserve(e.target);
-        const el     = e.target;
+        const el = e.target;
+        // Sortie d'écran : on réarme pour que le compte reparte au prochain passage
+        if (!e.isIntersecting) { el.dataset.counting = ''; return; }
+        // Déjà en cours ou terminé pendant cette visite : on ne relance pas
+        if (el.dataset.counting === '1') return;
+        el.dataset.counting = '1';
         const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || '';
         const prefix = el.dataset.prefix || '';
