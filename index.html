@@ -10,47 +10,34 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="design-system.css">
 <style>
-/* ===== HERO ===== */
-.hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; background: #111; }
-.hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 30%; }
-.hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.8) 100%); }
-.hero-content { position: relative; z-index: 2; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 40px 92px; }
+/* ===== HERO — animation du logo plein écran ===== */
+.intro-phenix { position: relative; height: 100vh; background: #140c1e; overflow: hidden; }
+.intro-phenix canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Vidéo paysage sur écran portrait : on garde le cadre entier, le fond sombre comble le reste */
+/* remontée vers le haut du cadre pour laisser le bas libre au titre et aux boutons */
+@media (max-aspect-ratio: 1/1) { .intro-phenix canvas { object-fit: contain; object-position: 50% 15%; } }
+.intro-phenix-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(20,12,30,0) 34%, rgba(20,12,30,0.62) 70%, rgba(20,12,30,0.94) 100%); }
+.intro-phenix-hint {
+  position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); z-index: 4;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.hero-content { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 40px 92px; }
 .hero-content h1 { color: #fff; margin: 14px 0 22px; max-width: 720px; }
 .hero-sub { font-size: 19px; color: rgba(255,255,255,0.86); max-width: 520px; line-height: 1.6; margin-bottom: 36px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-btns .btn-ghost { border-color: rgba(255,255,255,0.45); color: #fff; }
 .hero-btns .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
-/* Entrée animée du hero au chargement */
-@keyframes heroUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-.hero-content > * { animation: heroUp 0.85s cubic-bezier(0.16,1,0.3,1) both; }
-.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
-.hero-content > *:nth-child(2) { animation-delay: 0.15s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.25s; }
-.hero-content > *:nth-child(4) { animation-delay: 0.35s; }
-@media (prefers-reduced-motion: reduce) { .hero-content > * { animation: none; } }
-/* Séparation du texte au scroll (voir script en bas de page) */
-.hero-split-l, .hero-split-r { display: inline-block; }
 
-/* Ouverture — animation du logo au scroll */
-.intro-phenix {
-  position: relative; height: 100vh; background: #140c1e;
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
-.intro-phenix-inner { width: min(760px, 88vw); }
-.intro-phenix canvas {
-  display: block; width: 100%; height: auto; border-radius: 20px;
-  box-shadow: 0 40px 90px rgba(0,0,0,0.55);
-}
-.intro-phenix-hint {
-  position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
-  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(255,255,255,0.5); transition: opacity 0.3s;
-}
+/* Animation au scroll active : le texte et la barre du haut n'apparaissent qu'à la fin.
+   Sans JS ou en mouvement réduit, la classe n'est pas posée et tout reste visible. */
+body.hero-anim .hero-content,
+body.hero-anim .intro-phenix-scrim { opacity: 0; }
+body.hero-anim .site-header { opacity: 0; pointer-events: none; }
+body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transition: opacity 0.7s ease; }
+
 @media (max-width: 640px) {
-  .intro-phenix-inner { width: 92vw; }
-  .intro-phenix canvas { border-radius: 14px; }
-  /* remonté au-dessus de la barre de don fixe */
   .intro-phenix-hint { bottom: 96px; }
 }
 
@@ -270,29 +257,22 @@
   </div>
 </header>
 
-<!-- OUVERTURE — animation du logo pilotée par le scroll (séquence d'images sur canvas) -->
+<!-- HERO — animation du logo plein écran, pilotée par le scroll (séquence d'images sur canvas) -->
 <section class="intro-phenix" id="intro-phenix">
-  <div class="intro-phenix-inner">
-    <canvas id="phenix-canvas" width="764" height="496" aria-label="Animation du logo Phé-Nix"></canvas>
+  <canvas id="phenix-canvas" width="1280" height="830" aria-label="Animation du logo Phé-Nix"></canvas>
+  <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>
+  <div class="hero-content" id="hero-content">
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
+    <h1>Chaque semaine, on est là.</h1>
+    <p class="hero-sub">Nourrir, habiller et accompagner les personnes en situation d'itinérance au Québec. 100 % bénévole, sur le terrain depuis 2022.</p>
+    <div class="hero-btns">
+      <a href="faire-un-don.html" class="btn btn-primary btn-lg">Faire un don</a>
+      <a href="benevole.html" class="btn btn-ghost btn-lg">Devenir bénévole</a>
+    </div>
   </div>
   <div class="intro-phenix-hint" id="intro-phenix-hint">
     <span>Défilez</span>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
-</section>
-
-<!-- HERO -->
-<section class="hero">
-  <!-- HERO : déposez « hero.jpg » dans le dossier et il remplacera la photo ci-dessous automatiquement -->
-  <div class="hero-img" style="background-image:url('hero.jpg'), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg');"></div>
-  <div class="hero-content" id="hero-content">
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip hero-split-up" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
-    <h1><span class="hero-split-l">Chaque semaine,</span> <span class="hero-split-r">on est là.</span></h1>
-    <p class="hero-sub hero-split-down">Nourrir, habiller et accompagner les personnes en situation d'itinérance au Québec. 100 % bénévole, sur le terrain depuis 2022.</p>
-    <div class="hero-btns hero-split-down">
-      <a href="faire-un-don.html" class="btn btn-primary btn-lg">Faire un don</a>
-      <a href="benevole.html" class="btn btn-ghost btn-lg">Devenir bénévole</a>
-    </div>
   </div>
 </section>
 
@@ -334,7 +314,7 @@
       <p>Chaque semaine, on distribue nourriture, vêtements chauds, couvertures et écoute sincère — et on accompagne vers la thérapie ceux qui veulent reconstruire leur vie.</p>
     </div>
     <div class="reveal-right">
-      <img src="img-equipe-2.jpg" alt="L'équipe bénévole Phé-Nix sur le terrain" onerror="this.src='https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1200,h_960,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg'">
+      <img src="hero.jpg" alt="L'équipe bénévole Phé-Nix devant le camion">
     </div>
   </div>
 </section>
@@ -612,13 +592,20 @@
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || !window.gsap || !window.ScrollTrigger) {
-    // Sans animation : on montre simplement la dernière image (le lettrage).
+    // Sans animation : on montre la dernière image (le lettrage), texte et menu déjà visibles.
     var last = new Image();
     last.onload = function () { ctx.drawImage(last, 0, 0, canvas.width, canvas.height); };
     last.src = src(TOTAL - 1);
     if (hint) hint.style.display = 'none';
     return;
   }
+
+  // À partir d'ici l'animation pilote l'affichage : on masque texte + menu jusqu'à la fin.
+  document.body.classList.add('hero-anim');
+
+  var header = document.getElementById('site-header');
+  var content = document.getElementById('hero-content');
+  var scrim = document.getElementById('intro-phenix-scrim');
 
   gsap.registerPlugin(ScrollTrigger);
   var state = { f: 0 };
@@ -630,7 +617,12 @@
       end: '+=180%',
       scrub: true,
       pin: true,
-      anticipatePin: 1
+      anticipatePin: 1,
+      // le menu réapparaît dès qu'on a dépassé les trois quarts de la séquence
+      onUpdate: function (self) {
+        if (!header) return;
+        header.classList.toggle('revealed', self.progress > 0.75);
+      }
     }
   });
 
@@ -641,43 +633,12 @@
     onUpdate: function () { draw(Math.round(state.f)); }
   }, 0);
 
-  if (hint) {
-    tl.to(hint, { opacity: 0, ease: 'none', duration: 0.12 }, 0);
-  }
+  if (hint) tl.to(hint, { opacity: 0, ease: 'none', duration: 0.12 }, 0);
+  // Le voile puis le texte se révèlent sur le dernier quart, une fois le phénix envolé.
+  if (scrim) tl.to(scrim, { opacity: 1, ease: 'none', duration: 0.25 }, 0.7);
+  if (content) tl.to(content, { opacity: 1, ease: 'none', duration: 0.22 }, 0.78);
 })();
 
-/* Hero — le texte se sépare et s'efface pendant que la page est bloquée, la photo reste fixe */
-(function () {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.gsap || !window.ScrollTrigger) return;
-  var hero = document.querySelector('.hero');
-  if (!hero) return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll('.hero-content > *').forEach(function (el) {
-    el.addEventListener('animationend', function () { el.style.animation = 'none'; }, { once: true });
-  });
-
-  // Attend la fin de l'animation d'entrée du hero avant d'attacher le scroll,
-  // sinon les deux animations se battent sur les mêmes propriétés au chargement.
-  setTimeout(function () {
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: hero,
-        start: 'top top',
-        end: '+=70%',
-        scrub: true,
-        pin: true,
-        anticipatePin: 1
-      }
-    });
-
-    tl.to('.hero-split-up', { y: -60, opacity: 0, ease: 'none' }, 0)
-      .to('.hero-split-l', { x: -220, opacity: 0, ease: 'none' }, 0)
-      .to('.hero-split-r', { x: 220, opacity: 0, ease: 'none' }, 0)
-      .to('.hero-split-down', { y: 60, opacity: 0, ease: 'none' }, 0);
-  }, 1300);
-})();
 </script>
 <script>
 /* Défileur vertical des régions — une ville à la fois, mouvement lent et discret */
