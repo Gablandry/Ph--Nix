@@ -108,7 +108,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 .parcours-rail { position: absolute; top: 27px; left: 16.667%; right: 16.667%; height: 2px; background: var(--hairline); border-radius: 2px; overflow: hidden; }
 .parcours-jauge { display: block; width: 0; height: 100%; border-radius: 2px; background: linear-gradient(90deg, #D63FA3 0%, #FF5C1A 55%, #F4B942 100%); transition: width 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s; }
 .parcours.actif .parcours-jauge { width: 100%; }
-.parcours-etapes { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
+/* z-index : les jalons passent au-dessus du trait, qui vient s'y raccorder au lieu de le traverser */
+.parcours-etapes { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
 .parcours-etape { text-align: center; padding: 0 10px; }
 .parcours-noeud {
   width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 20px;
@@ -168,7 +169,18 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 
 /* ===== GALERIE uniforme + zoom ===== */
 .galerie-head { display: flex; justify-content: space-between; align-items: flex-end; max-width: var(--maxw); margin: 0 auto 44px; gap: 16px; flex-wrap: wrap; }
-.galerie { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; max-width: var(--maxw); margin: 0 auto; }
+/* Ruban qui défile en continu — les bords s'estompent pour éviter une coupe nette */
+.galerie-piste {
+  overflow: hidden; max-width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+.galerie { display: flex; width: max-content; animation: galerieDefile 55s linear infinite; }
+/* marge (et non gap) pour que la boucle à -50 % soit exactement raccord */
+.galerie > * { flex: 0 0 340px; margin-right: 16px; }
+.galerie-piste:hover .galerie { animation-play-state: paused; }
+@keyframes galerieDefile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .galerie { animation: none; } }
 .galerie-img-wrap { overflow: hidden; border-radius: 16px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
 .galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
 .galerie-img-wrap:hover img { transform: scale(1.05); }
@@ -248,7 +260,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   .steps { gap: 16px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
-  .galerie { grid-template-columns: 1fr 1fr; }
+  .galerie > * { flex-basis: 290px; }
   .cta-premium { padding: 56px 28px; border-radius: 24px; }
   .home-contacts { grid-template-columns: repeat(3,1fr); gap: 8px; max-width: 100%; }
   .hc-card { padding: 16px 6px; border-radius: 14px; }
@@ -273,14 +285,9 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 }
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
-  /* Galerie : carrousel horizontal qui glisse, plus compact qu'un empilement vertical */
-  .galerie {
-    display: flex; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory;
-    gap: 12px; max-width: 100%; padding: 0 24px 6px; margin: 0 -24px;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none;
-  }
-  .galerie::-webkit-scrollbar { display: none; }
-  .galerie-img-wrap, .gvid { flex: 0 0 78%; scroll-snap-align: center; }
+  /* Ruban plus étroit et un peu plus rapide sur petit écran */
+  .galerie > * { flex-basis: 250px; margin-right: 12px; }
+  .galerie { animation-duration: 38s; }
 }
 </style>
 </head>
@@ -302,7 +309,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     <div class="nav-ctas">
       <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span class="ham-lignes"><span></span><span></span><span></span></span><span class="ham-txt">Menu</span></button>
   </nav>
   <div class="nav-mobile-panel" id="nav-mobile-panel">
     <a href="index.html" class="active">Accueil</a>
@@ -442,19 +449,19 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
         <div class="parcours-rail"><span class="parcours-jauge"></span></div>
         <div class="parcours-etapes">
           <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.51a2.12 2.12 0 0 0-.09-3.67z"/><path d="M3.09 8.84v12.81L12 16.85"/></svg></div>
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
             <div class="parcours-num">Étape 01</div>
             <h3>On collecte</h3>
             <p>Dons en argent, nourriture, vêtements et articles d'hygiène — de citoyens et de plus de 80 commanditaires.</p>
           </div>
           <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
             <div class="parcours-num">Étape 02</div>
             <h3>On prépare</h3>
             <p>L'équipe trie, cuisine et prépare des centaines de repas chauds et de sacs essentiels chaque semaine.</p>
           </div>
           <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <div class="parcours-num">Étape 03</div>
             <h3>On distribue</h3>
             <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
@@ -495,7 +502,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <section class="section section-soft">
   <div class="statement reveal">
     <div class="eyebrow" style="justify-content:center;">Ce qu'on est</div>
-    <p>Personne ici ne vient d'ailleurs pour aider.<br>C'est <span>la communauté qui prend soin<br>de la communauté</span> — un voisin à la fois.</p>
+    <p>Une action citoyenne,<br><span>par des citoyens, pour des citoyens.</span><br>Pas d'intermédiaire. Juste du monde qui agit.</p>
   </div>
 </section>
 
@@ -518,7 +525,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     <div><div class="eyebrow">Sur le terrain</div><h2>Nos actions, semaine après semaine.</h2></div>
     <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;">Voir plus sur Facebook →</a>
   </div>
-  <div class="galerie">
+  <div class="galerie-piste">
+  <div class="galerie" id="galerie-ruban">
     <!-- Rangée 1 : photos -->
     <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg"><img src="https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg" alt="Distribution de repas Phé-Nix"></div>
     <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="L'équipe bénévole Phé-Nix"></div>
@@ -527,6 +535,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     <div class="gvid"><video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg"><source src="terrain-1.mp4" type="video/mp4"></video></div>
     <div class="gvid"><video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg"><source src="terrain-2.mp4" type="video/mp4"></video></div>
     <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
+  </div>
   </div>
 </section>
 
@@ -606,6 +615,18 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
+/* Galerie « Sur le terrain » — on double les éléments pour que le défilement boucle sans coupure */
+(function () {
+  var ruban = document.getElementById('galerie-ruban');
+  if (!ruban) return;
+  var originaux = Array.prototype.slice.call(ruban.children);
+  originaux.forEach(function (el) {
+    var copie = el.cloneNode(true);
+    copie.setAttribute('aria-hidden', 'true');
+    ruban.appendChild(copie);
+  });
+})();
+
 /* Entrevue — on ne charge YouTube qu'au clic sur la miniature */
 (function () {
   var btn = document.getElementById('testi-facade');
