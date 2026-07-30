@@ -51,6 +51,39 @@
 .contact-commandite p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin: 0 auto 36px; }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+/* ===== COMMENT S'IMPLIQUER — accordion image ===== */
+.acc { display: flex; gap: 12px; max-width: 1180px; height: 70vh; min-height: 460px; margin: 40px auto 0; }
+.acc-panel {
+  position: relative; flex: 1; min-width: 64px; border-radius: 22px; overflow: hidden;
+  background-size: cover; background-position: center; text-decoration: none; color: #fff;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.acc-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.82) 100%); pointer-events: none; }
+.acc-panel:hover { flex: 3.4; }
+.acc-ic { position: absolute; top: 22px; left: 22px; z-index: 1; width: 42px; height: 42px; background: rgba(255,255,255,0.16); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.acc-collapsed { position: relative; z-index: 1; padding: 24px 14px; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap; transition: opacity 0.25s; }
+.acc-panel:hover .acc-collapsed { opacity: 0; }
+.acc-expanded { position: absolute; inset: 0; z-index: 1; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0; transition: opacity 0.3s 0.1s; pointer-events: none; }
+.acc-panel:hover .acc-expanded { opacity: 1; }
+.acc-expanded h3 { font-size: 19px; color: #fff; margin-bottom: 8px; line-height: 1.25; }
+.acc-expanded p { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.55; margin-bottom: 14px; }
+.acc-benefits { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.acc-benefits li { position: relative; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.45; }
+.acc-benefits li::before { content: '✓'; position: absolute; left: 0; color: #F4B942; font-weight: 700; }
+.acc-go { font-size: 13px; font-weight: 600; color: #fff; display: inline-flex; align-items: center; gap: 6px; }
+
+@media (max-width: 768px) {
+  .acc { flex-direction: column; height: auto; min-height: 0; gap: 14px; }
+  /* hauteur libre : les avantages sont toujours visibles, la carte s'adapte au contenu */
+  .acc-panel { flex: none !important; height: auto; min-height: 300px; }
+  /* voile plus dense : le texte couvre toute la carte, pas seulement le bas */
+  .acc-panel::after { background: linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.72) 100%); }
+  .acc-collapsed { display: none; }
+  /* padding haut : dégage l'icône positionnée en absolu dans le coin */
+  .acc-expanded { opacity: 1; pointer-events: auto; position: relative; inset: auto; height: auto; padding: 84px 22px 24px; }
+}
+
 /* ===== MUR DES PARTENAIRES (anonyme) ===== */
 .mur-cats { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; max-width: 880px; margin: 56px auto 0; }
 .mur-cat { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 28px 18px; text-align: center; }
@@ -162,45 +195,51 @@
     <h2 style="color:var(--ink);">Plusieurs façons<br>de faire une différence.</h2>
     <p style="color:var(--ink-soft); font-size:16px; max-width:540px; margin:16px auto 0;">Être partenaire de Phé-Nix, c'est contribuer à votre façon — on s'adapte à ce que vous pouvez offrir. Aucun montant minimum, aucune pression.</p>
   </div>
-  <div class="tiers-grid">
-    <div class="tier-card reveal reveal-d1">
-      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-      <span class="tier-badge badge-bronze">Contributions matérielles</span>
-      <h3>Nourriture, vêtements<br>et fournitures</h3>
-      <p class="tier-desc">Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Impact direct et immédiat sur le terrain</div>
-        <div class="tier-benefit">Reconnaissance sur nos réseaux sociaux</div>
-        <div class="tier-benefit">Reçu fiscal — bientôt disponible</div>
+  <div class="acc reveal">
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="acc-panel" style="background-image:url('prog-vetements.jpg')">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <span class="acc-collapsed">Contributions matérielles</span>
+      <div class="acc-expanded">
+        <h3>Nourriture, vêtements et fournitures</h3>
+        <p>Vous nous fournissez directement ce dont nous avons besoin. Chaque article se retrouve entre les mains d'une personne dans le besoin.</p>
+        <ul class="acc-benefits">
+          <li>Impact direct et immédiat sur le terrain</li>
+          <li>Reconnaissance sur nos réseaux sociaux</li>
+          <li>Reçu fiscal — bientôt disponible</li>
+        </ul>
+        <span class="acc-go">Nous contacter →</span>
       </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
-    <div class="tier-card featured reveal reveal-d2">
-      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-      <span class="tier-badge badge-argent">Commandite</span>
-      <h3>Soutien financier<br>à notre mission</h3>
-      <p class="tier-desc">Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Logo sur le site web de Phé-Nix</div>
-        <div class="tier-benefit">Mentions lors de nos distributions</div>
-        <div class="tier-benefit">Publication dédiée sur nos réseaux sociaux</div>
-        <div class="tier-benefit">Reçu fiscal — bientôt disponible</div>
+    </a>
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="acc-panel" style="background-image:url('terrain-legumes.jpg')">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <span class="acc-collapsed">Commandite</span>
+      <div class="acc-expanded">
+        <h3>Soutien financier à notre mission</h3>
+        <p>Votre contribution finance nos achats et notre logistique. Votre marque, visible là où ça compte vraiment.</p>
+        <ul class="acc-benefits">
+          <li>Logo sur le site web de Phé-Nix</li>
+          <li>Mentions lors de nos distributions</li>
+          <li>Publication dédiée sur nos réseaux sociaux</li>
+          <li>Reçu fiscal — bientôt disponible</li>
+        </ul>
+        <span class="acc-go">Nous contacter →</span>
       </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
-    <div class="tier-card reveal reveal-d3">
-      <div class="tier-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <span class="tier-badge badge-or">Mobilisation</span>
-      <h3>Votre équipe<br>sur le terrain</h3>
-      <p class="tier-desc">Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
-      <div class="tier-benefits">
-        <div class="tier-benefit">Encadrement complet par notre équipe</div>
-        <div class="tier-benefit">Contenu photo et vidéo pour vos réseaux</div>
-        <div class="tier-benefit">Association de votre marque à notre mission</div>
-        <div class="tier-benefit">Expérience terrain inoubliable</div>
+    </a>
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="acc-panel" style="background-image:url('hero.jpg')">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="acc-collapsed">Mobilisation</span>
+      <div class="acc-expanded">
+        <h3>Votre équipe sur le terrain</h3>
+        <p>Vos employés participent à nos distributions — un team building authentique avec un impact humain réel dans votre communauté.</p>
+        <ul class="acc-benefits">
+          <li>Encadrement complet par notre équipe</li>
+          <li>Contenu photo et vidéo pour vos réseaux</li>
+          <li>Association de votre marque à notre mission</li>
+          <li>Expérience terrain inoubliable</li>
+        </ul>
+        <span class="acc-go">Nous contacter →</span>
       </div>
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-ghost-dark" style="width:100%;display:block;text-align:center;margin-top:auto;">Nous contacter</a>
-    </div>
+    </a>
   </div>
 </section>
 
