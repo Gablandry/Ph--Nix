@@ -236,19 +236,27 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 /* Barre de navigation du bas (mobile) — reprend les sections du menu du haut */
 .mobile-nav-bar {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 995;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 7px 4px calc(5px + env(safe-area-inset-bottom));
+  grid-template-columns: repeat(5, 1fr);
+  padding: 7px 3px calc(5px + env(safe-area-inset-bottom));
   background: rgba(255,255,255,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--hairline);
 }
 .mobile-nav-bar a {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   text-decoration: none; color: var(--ink-soft);
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: -0.01em;
-  padding: 6px 2px; border-radius: 12px; transition: color 0.2s, background 0.2s;
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: -0.01em;
+  padding: 6px 1px; border-radius: 12px; transition: color 0.2s, background 0.2s;
 }
-.mobile-nav-bar a svg { width: 21px; height: 21px; flex-shrink: 0; }
+.mobile-nav-bar a svg { width: 20px; height: 20px; flex-shrink: 0; }
 .mobile-nav-bar a.active { color: var(--accent); background: var(--accent-soft); }
+/* Case « Don » : pastille orange pleine, le chemin de don reste visible en tout temps */
+.mobile-nav-bar a.nav-don { color: var(--accent); font-weight: 700; }
+.mobile-nav-bar a.nav-don svg {
+  width: 34px; height: 34px; padding: 7px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  box-shadow: 0 3px 10px rgba(232,80,14,0.40);
+}
+.mobile-nav-bar a.nav-don.active { background: transparent; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
@@ -265,8 +273,9 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   .site-footer { padding: 56px 24px 32px; }
   .page-hero { padding: 120px 24px 64px; }
   .mobile-nav-bar { display: grid; }
-  /* on laisse la place à la barre du bas pour ne rien masquer en fin de page */
-  body { padding-bottom: 66px; }
+  /* l'espace est pris dans le bas de page : son fond foncé passe derrière la barre,
+     au lieu d'une bande blanche qu'aurait créée une marge sur le corps */
+  .site-footer { padding-bottom: calc(36px + 86px); }
   /* CTA pleine largeur sur mobile — plus « app », plus pro */
   .btn-lg { width: 100%; }
 }
