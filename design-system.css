@@ -149,28 +149,40 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .page-hero-content h1 { color: #fff; margin: 18px 0 22px; }
 .page-hero-content p { color: rgba(255,255,255,0.82); font-size: 18px; line-height: 1.6; }
 
-/* ===== FOOTER (clair) ===== */
-.site-footer { background: var(--bg-soft); border-top: 1px solid var(--hairline); padding: 72px 40px 36px; }
+/* ===== FOOTER (foncé — image du phénix en fond, assombrie) ===== */
+.site-footer {
+  position: relative; isolation: isolate;
+  background: #140c1e center/cover no-repeat;
+  background-image: url('hero-phenix.png');
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding: 72px 40px 36px;
+}
+/* Voile sombre : garde les lueurs violet/orangé, atténue le phénix pour la lisibilité */
+.site-footer::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(16,9,24,0.90) 0%, rgba(16,9,24,0.94) 100%);
+}
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; max-width: var(--maxw); margin: 0 auto 48px; }
 .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 18px; }
-.footer-logo span { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px; color: var(--ink); }
-.footer-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 22px; max-width: 320px; }
+.footer-logo span { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px; color: #fff; }
+.footer-desc { font-size: 14px; color: rgba(255,255,255,0.68); line-height: 1.6; margin-bottom: 22px; max-width: 320px; }
 .footer-socials { display: flex; gap: 10px; }
 .social-icon {
-  width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--hairline);
-  display: flex; align-items: center; justify-content: center; color: var(--ink-soft);
+  width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.20);
+  display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.72);
   text-decoration: none; transition: all 0.2s;
 }
-.social-icon { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.2s, color 0.2s; }
-.social-icon:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
-.footer-col h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 18px; }
+.social-icon { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.2s, color 0.2s, background 0.2s; }
+.social-icon:hover { border-color: var(--accent); color: #fff; background: var(--accent); transform: translateY(-3px); }
+.footer-col h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 18px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
-.footer-col a { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-soft); text-decoration: none; transition: color 0.2s, transform 0.2s; display: inline-block; }
-.footer-col a:hover { color: var(--accent); transform: translateX(3px); }
+.footer-col a { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.68); text-decoration: none; transition: color 0.2s, transform 0.2s; display: inline-block; }
+.footer-col a:hover { color: #fff; transform: translateX(3px); }
+.footer-place { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.45); }
 .footer-bottom {
   max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
-  padding-top: 28px; border-top: 1px solid var(--hairline);
-  font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-soft);
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.12);
+  font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55);
 }
 
 /* ===== SCROLL REVEAL (subtil) ===== */
