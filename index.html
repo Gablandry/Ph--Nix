@@ -103,6 +103,32 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 .step h3 { font-size: 19px; margin-bottom: 10px; }
 .step p { font-size: 14.5px; line-height: 1.6; }
 
+/* ===== PARCOURS — ligne de progression (Du don à la rue) ===== */
+.parcours { position: relative; max-width: var(--maxw); margin: 58px auto 0; }
+.parcours-rail { position: absolute; top: 27px; left: 16.667%; right: 16.667%; height: 2px; background: var(--hairline); border-radius: 2px; overflow: hidden; }
+.parcours-jauge { display: block; width: 0; height: 100%; border-radius: 2px; background: linear-gradient(90deg, #D63FA3 0%, #FF5C1A 55%, #F4B942 100%); transition: width 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s; }
+.parcours.actif .parcours-jauge { width: 100%; }
+.parcours-etapes { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
+.parcours-etape { text-align: center; padding: 0 10px; }
+.parcours-noeud {
+  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 20px;
+  background: var(--bg); border: 2px solid var(--hairline); color: var(--ink-soft);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.55s, color 0.55s, background 0.55s, transform 0.55s;
+}
+/* les jalons s'allument dans l'ordre, au rythme du remplissage du trait */
+.parcours-etape:nth-child(1) .parcours-noeud { transition-delay: 0.25s; }
+.parcours-etape:nth-child(2) .parcours-noeud { transition-delay: 0.8s; }
+.parcours-etape:nth-child(3) .parcours-noeud { transition-delay: 1.35s; }
+.parcours.actif .parcours-noeud { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); transform: scale(1.06); }
+.parcours-num { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
+.parcours-etape h3 { font-size: 19px; margin-bottom: 10px; color: var(--ink); }
+.parcours-etape p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); max-width: 300px; margin: 0 auto; }
+@media (prefers-reduced-motion: reduce) {
+  .parcours-jauge { transition: none; width: 100%; }
+  .parcours-noeud { transition: none; }
+}
+
 /* ===== PROGRAMMES (4 cartes) ===== */
 .progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
 .prog { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; text-align: left; }
@@ -230,6 +256,16 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 }
 @media (max-width: 700px) {
   .steps { grid-template-columns: 1fr; max-width: 460px; }
+  /* Parcours en colonne : le trait devient vertical et se remplit de haut en bas */
+  .parcours { max-width: 460px; }
+  .parcours-etapes { grid-template-columns: 1fr; gap: 34px; }
+  .parcours-rail { top: 28px; bottom: 28px; left: 27px; right: auto; width: 2px; height: auto; }
+  .parcours-jauge { width: 100%; height: 0; transition: height 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s; }
+  .parcours.actif .parcours-jauge { height: 100%; }
+  .parcours-etape { text-align: left; padding: 0 0 0 78px; position: relative; min-height: 56px; }
+  .parcours-noeud { position: absolute; left: 0; top: 0; margin: 0; }
+  .parcours-etape p { margin: 0; max-width: none; }
+  @media (prefers-reduced-motion: reduce) { .parcours-jauge { height: 100%; } }
 }
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
@@ -397,24 +433,28 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
       <div class="eyebrow" style="justify-content:center;">Comment on agit</div>
       <h3 style="font-size:clamp(26px,3vw,38px); font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:8px;">Du don à la rue, en 3 étapes.</h3>
       <p class="lead" style="margin-bottom:0;">Une chaîne simple et directe — sans intermédiaire, sans frais d'administration.</p>
-      <div class="steps">
-        <div class="step reveal reveal-d1" style="text-align:left;">
-          <div class="step-no">Étape 01</div>
-          <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.51a2.12 2.12 0 0 0-.09-3.67z"/><path d="M3.09 8.84v12.81L12 16.85"/></svg></div>
-          <h3>On collecte</h3>
-          <p>Dons en argent, nourriture, vêtements et articles d'hygiène — de citoyens et de plus de 80 commanditaires.</p>
-        </div>
-        <div class="step reveal reveal-d2" style="text-align:left;">
-          <div class="step-no">Étape 02</div>
-          <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-          <h3>On prépare</h3>
-          <p>L'équipe trie, cuisine et prépare des centaines de repas chauds et de sacs essentiels chaque semaine.</p>
-        </div>
-        <div class="step reveal reveal-d3" style="text-align:left;">
-          <div class="step-no">Étape 03</div>
-          <div class="step-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>On distribue</h3>
-          <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
+      <!-- Ligne de progression : le trait se remplit et les jalons s'allument un à un -->
+      <div class="parcours" data-replay>
+        <div class="parcours-rail"><span class="parcours-jauge"></span></div>
+        <div class="parcours-etapes">
+          <div class="parcours-etape">
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.91 8.84L8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.51a2.12 2.12 0 0 0-.09-3.67z"/><path d="M3.09 8.84v12.81L12 16.85"/></svg></div>
+            <div class="parcours-num">Étape 01</div>
+            <h3>On collecte</h3>
+            <p>Dons en argent, nourriture, vêtements et articles d'hygiène — de citoyens et de plus de 80 commanditaires.</p>
+          </div>
+          <div class="parcours-etape">
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <div class="parcours-num">Étape 02</div>
+            <h3>On prépare</h3>
+            <p>L'équipe trie, cuisine et prépare des centaines de repas chauds et de sacs essentiels chaque semaine.</p>
+          </div>
+          <div class="parcours-etape">
+            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="parcours-num">Étape 03</div>
+            <h3>On distribue</h3>
+            <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
+          </div>
         </div>
       </div>
     </div>

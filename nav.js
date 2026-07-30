@@ -53,6 +53,17 @@
     revealEls.forEach(el => el.classList.add('visible'));
   }
 
+  // ===== ANIMATIONS REJOUABLES (se relancent à chaque passage à l'écran) =====
+  const replayEls = document.querySelectorAll('[data-replay]');
+  if (replayEls.length && 'IntersectionObserver' in window) {
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.target.classList.toggle('actif', e.isIntersecting));
+    }, { threshold: 0.25 });
+    replayEls.forEach(el => ro.observe(el));
+  } else {
+    replayEls.forEach(el => el.classList.add('actif'));
+  }
+
   // ===== COUNTER ANIMATION =====
   const counters = document.querySelectorAll('[data-counter]');
   if (counters.length && 'IntersectionObserver' in window) {
