@@ -51,9 +51,32 @@
 .contact-commandite p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin: 0 auto 36px; }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+/* ===== MUR DES PARTENAIRES (anonyme) ===== */
+.mur-cats { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; max-width: 880px; margin: 56px auto 0; }
+.mur-cat { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 28px 18px; text-align: center; }
+.mur-cat-n { font-weight: 700; font-size: 42px; line-height: 1; letter-spacing: -0.03em; color: var(--accent); margin-bottom: 10px; }
+.mur-cat-l { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
+
+.mur-tuiles {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 9px;
+  max-width: 720px; margin: 44px auto 0;
+}
+.mur-tuile {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: linear-gradient(150deg, #D63FA3, #FF5C1A 55%, #F4B942);
+  opacity: 0.46; transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.mur-tuiles:hover .mur-tuile { opacity: 0.85; transform: translateY(-2px); }
+.mur-note { text-align: center; font-size: 13.5px; color: var(--ink-soft); margin: 26px auto 0; max-width: 460px; line-height: 1.6; }
+
 @media (max-width: 860px) {
   .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
   .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 24px; padding-right: 24px; }
+  .mur-cats { grid-template-columns: repeat(2,1fr); gap: 12px; max-width: 380px; }
+  .mur-cat { padding: 22px 12px; }
+  .mur-cat-n { font-size: 34px; }
+  .mur-tuiles { gap: 7px; max-width: 320px; }
+  .mur-tuile { width: 24px; height: 24px; border-radius: 6px; }
 }
 </style>
 </head>
@@ -97,13 +120,37 @@
   </div>
 </section>
 
-<!-- MOT DE REMERCIEMENT -->
-<section style="background:var(--bg-warm); padding:110px 40px;">
+<!-- MOT DE REMERCIEMENT + MUR DES PARTENAIRES (anonyme — la liste est privée) -->
+<section style="background:var(--bg-warm); padding:88px 40px 96px;">
   <div style="max-width:780px; margin:0 auto; text-align:center;">
     <div class="eyebrow" style="justify-content:center;">Un immense merci</div>
     <h2 style="margin-bottom:22px;">Sans vous, rien de tout ça<br>ne serait possible.</h2>
     <p style="font-size:18px; color:var(--ink-soft); line-height:1.7;">Chaque repas chaud, chaque manteau d'hiver, chaque personne accompagnée vers la thérapie existe grâce à la générosité de plus de 80 commerces, organismes et citoyens. Vous transformez des dons en gestes concrets, semaine après semaine. Du fond du cœur : merci.</p>
   </div>
+
+  <!-- Répartition par catégorie -->
+  <div class="mur-cats reveal">
+    <div class="mur-cat">
+      <div class="mur-cat-n">35</div>
+      <div class="mur-cat-l">Alimentation<br>&amp; restauration</div>
+    </div>
+    <div class="mur-cat">
+      <div class="mur-cat-n">23</div>
+      <div class="mur-cat-l">Commerce<br>&amp; services</div>
+    </div>
+    <div class="mur-cat">
+      <div class="mur-cat-n">10</div>
+      <div class="mur-cat-l">Organismes<br>&amp; institutions</div>
+    </div>
+    <div class="mur-cat">
+      <div class="mur-cat-n">5</div>
+      <div class="mur-cat-l">Sports<br>&amp; bien-être</div>
+    </div>
+  </div>
+
+  <!-- Une tuile par partenaire — volontairement sans nom, la liste reste privée -->
+  <div class="mur-tuiles reveal" id="mur-tuiles" aria-hidden="true"></div>
+  <p class="mur-note">Chaque tuile représente un partenaire. Par respect pour eux, nous ne publions pas leurs noms.</p>
 </section>
 
 <!-- (Bloc « Votre impact » + répartition déplacé vers faire-un-don.html) -->
@@ -178,16 +225,6 @@
   </div>
 </section>
 
-<!-- REMERCIEMENT GLOBAL (sans noms — liste privée) -->
-<section class="commanditaires-grid-section">
-  <div style="max-width:640px; margin:0 auto; text-align:center;">
-    <div class="valeur-ic" style="margin:0 auto 22px; width:56px; height:56px; background:var(--accent-soft); border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--accent);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-    <div class="eyebrow" style="justify-content:center;">Nos partenaires</div>
-    <h2 style="color:var(--ink);">Plus de 80 commerces,<br>organismes et citoyens.</h2>
-    <p style="color:var(--ink-soft); font-size:16px; margin-top:16px; line-height:1.75;">De la fromagerie du coin au grand détaillant, chacun a choisi de croire en notre mission. Merci à chacun d'entre vous — votre générosité, semaine après semaine, rend tout ça possible.</p>
-  </div>
-</section>
-
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand"><div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="28" height="28"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.85"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div><p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p><div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div></div>
@@ -205,5 +242,22 @@
   <a href="faire-un-don.html" class="btn btn-primary">Faire un don →</a>
 </div>
 <script src="nav.js"></script>
+<script>
+/* Mur des partenaires — une tuile par partenaire, sans aucun nom (la liste est privée) */
+(function () {
+  var mur = document.getElementById('mur-tuiles');
+  if (!mur) return;
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < 80; i++) {
+    var t = document.createElement('span');
+    t.className = 'mur-tuile';
+    // léger décalage de teinte et de délai pour éviter un damier trop régulier
+    t.style.filter = 'hue-rotate(' + (i % 7 * 4 - 12) + 'deg)';
+    t.style.transitionDelay = (i % 12 * 14) + 'ms';
+    frag.appendChild(t);
+  }
+  mur.appendChild(frag);
+})();
+</script>
 </body>
 </html>
