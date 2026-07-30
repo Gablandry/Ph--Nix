@@ -151,6 +151,28 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   .parcours-noeud { transition: none; }
 }
 
+/* ===== CARTES EMPILÉES — les 4 services ===== */
+.pile { max-width: var(--maxw); margin: 56px auto 0; }
+.pile-carte {
+  position: sticky; top: 96px;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
+  background: var(--bg); border: 1px solid var(--hairline); border-radius: 26px;
+  overflow: hidden; text-decoration: none; margin-bottom: 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.10);
+}
+/* chaque carte passe au-dessus de la précédente et descend un peu plus bas */
+.pile-carte:nth-child(1) { z-index: 1; top: 96px; }
+.pile-carte:nth-child(2) { z-index: 2; top: 112px; }
+.pile-carte:nth-child(3) { z-index: 3; top: 128px; }
+.pile-carte:nth-child(4) { z-index: 4; top: 144px; }
+.pile-carte img { width: 100%; height: 100%; min-height: 340px; object-fit: cover; display: block; }
+.pile-txt { padding: 46px 44px; display: flex; flex-direction: column; justify-content: center; }
+.pile-no { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; }
+.pile-txt h3 { font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+.pile-txt p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 22px; }
+.pile-go { font-size: 14px; font-weight: 600; color: var(--accent); }
+.pile-carte:hover .pile-go { text-decoration: underline; }
+
 /* ===== PROGRAMMES (4 cartes) ===== */
 .progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
 .prog { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; text-align: left; }
@@ -285,6 +307,14 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   .founders .founder:nth-child(2) { margin-top: 0; }
   .founder { transform: none !important; }
   .steps { gap: 16px; }
+  /* cartes empilées : une colonne, image au-dessus du texte */
+  .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
+  .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
+  .pile-txt { padding: 28px 24px 30px; }
+  .pile-carte:nth-child(1) { top: 78px; }
+  .pile-carte:nth-child(2) { top: 88px; }
+  .pile-carte:nth-child(3) { top: 98px; }
+  .pile-carte:nth-child(4) { top: 108px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
   .galerie > * { flex-basis: 290px; }
@@ -549,27 +579,52 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <!-- CE QU'ON FAIT (programmes + étapes) -->
 <section class="section">
   <div class="wrap center">
-    <div class="eyebrow" style="justify-content:center;">Nos programmes</div>
+    <div class="eyebrow" style="justify-content:center;">Nos services</div>
     <h2>Ce qu'on fait, concrètement.</h2>
-    <p class="lead">Quatre façons d'agir, chaque semaine, auprès des plus démunis.</p>
-    <div class="progs">
-      <div class="prog reveal reveal-d1">
-        <img src="prog-repas.jpg" alt="Repas frais préparés pour la distribution Phé-Nix">
-        <div class="prog-body"><h3>Repas &amp; nourriture</h3><p>Des centaines de repas chauds, fruits et légumes distribués chaque semaine.</p></div>
+    <p class="lead">Quatre services, chaque semaine, auprès des plus démunis.</p>
+  </div>
+
+  <!-- Cartes empilées : chaque service se pose par-dessus le précédent au défilement -->
+  <div class="pile">
+    <a href="distribution-alimentaire.html" class="pile-carte">
+      <img src="terrain-legumes.jpg" alt="Camion rempli de denrées pour la distribution">
+      <div class="pile-txt">
+        <span class="pile-no">Service 01</span>
+        <h3>Distribution alimentaire dans les rues</h3>
+        <p>Des repas chauds remis en mains propres, chaque semaine, peu importe la météo — à Montréal, Longueuil, Saint-Jean-sur-Richelieu, en Montérégie, à Gatineau et à Trois-Rivières.</p>
+        <span class="pile-go">En savoir plus →</span>
       </div>
-      <div class="prog reveal reveal-d2">
-        <img src="prog-vetements.jpg" alt="Dons de vêtements et de couvertures">
-        <div class="prog-body"><h3>Vêtements &amp; couvertures</h3><p>Manteaux d'hiver, tuques, gants et couvertures pour affronter le froid.</p></div>
+    </a>
+    <a href="depannage-alimentaire.html" class="pile-carte">
+      <img src="depannage-denrees.jpg" alt="Denrées préparées pour un dépannage alimentaire">
+      <div class="pile-txt">
+        <span class="pile-no">Service 02</span>
+        <h3>Dépannage alimentaire</h3>
+        <p>Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.</p>
+        <span class="pile-go">En savoir plus →</span>
       </div>
-      <div class="prog reveal reveal-d3">
-        <img src="prog-ecoute.jpg" alt="Une main tendue en signe de soutien">
-        <div class="prog-body"><h3>Écoute &amp; support moral</h3><p>Être présent, regarder dans les yeux, écouter sans juger. Parfois, c'est le plus précieux.</p></div>
+    </a>
+    <a href="reference-therapie.html" class="pile-carte">
+      <img src="therapie-mains-soutien.jpg" alt="Une main posée sur une autre en signe de soutien">
+      <div class="pile-txt">
+        <span class="pile-no">Service 03</span>
+        <h3>Référencement pour thérapie</h3>
+        <p>Habituellement en 72 heures, on vous met en contact avec une ressource adaptée à votre réalité — pour vous ou pour un proche. On connaît le milieu, on oriente vers la bonne porte.</p>
+        <span class="pile-go">En savoir plus →</span>
       </div>
-      <div class="prog reveal reveal-d4">
-        <img src="prog-transport.jpg" alt="La route vers un nouveau départ">
-        <div class="prog-body"><h3>Transport vers la thérapie</h3><p>On accompagne et on transporte vers les centres ceux qui veulent reconstruire leur vie.</p></div>
+    </a>
+    <a href="transport-therapie.html" class="pile-carte">
+      <img src="therapie-route-voiture.jpg" alt="La route vers un nouveau départ">
+      <div class="pile-txt">
+        <span class="pile-no">Service 04</span>
+        <h3>Transport vers la thérapie</h3>
+        <p>Une fois la bonne ressource trouvée, on s'occupe de vous y amener. Le manque de transport ne doit jamais être ce qui vous arrête.</p>
+        <span class="pile-go">En savoir plus →</span>
       </div>
-    </div>
+    </a>
+  </div>
+
+  <div class="wrap center">
 
     <!-- Les 3 étapes, intégrées sous les programmes -->
     <div style="margin-top:96px;">
