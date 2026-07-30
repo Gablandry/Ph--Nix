@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dépannage alimentaire | Phé-Nix</title>
+<meta name="description" content="Un soutien ponctuel en denrées pour les personnes ou familles dans le besoin. Aucune enquête de crédit. Service offert à Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="design-system.css">
+<style>
+.section { padding: 110px 40px; }
+.section-soft { background: var(--bg-soft); }
+.section-warm { background: var(--bg-warm); }
+.center { text-align: center; }
+.lead { font-size: 18px; color: var(--ink-soft); max-width: 620px; margin: 16px auto 0; line-height: 1.7; }
+.service-body { max-width: 720px; margin: 0 auto; text-align: left; }
+.service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
+
+/* Conditions */
+.conditions { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 760px; margin: 48px auto 0; text-align: left; }
+.condition { background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; }
+.condition-ic { width: 38px; height: 38px; background: var(--accent-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 14px; }
+.condition h3 { font-size: 15.5px; margin-bottom: 6px; }
+.condition p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+
+/* Contact */
+.contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
+.contact-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.07); }
+.contact-card .ic { width: 48px; height: 48px; background: var(--accent-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin: 0 auto 16px; }
+.contact-card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
+.contact-card .val { font-family: 'Inter',sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); word-break: break-word; }
+
+@media (max-width: 860px) {
+  .section { padding: 72px 24px; }
+  .conditions { grid-template-columns: 1fr; max-width: 440px; }
+  .contacts { grid-template-columns: 1fr; max-width: 360px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 44 44" fill="none" width="30" height="30"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#g1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#g2)" opacity="0.85"/><defs><linearGradient id="g1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="g2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg>
+      <span class="nav-logo-text">Phé-Nix</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="aider.html">Aider</a></li>
+      <li><a href="commanditaires.html">Merci</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="faire-un-don.html" class="btn btn-primary btn-sm">Faire un don</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="aider.html">Aider</a>
+    <a href="commanditaires.html">Merci à nos commanditaires</a>
+    <div class="nav-mobile-ctas">
+      <a href="benevole.html" class="btn btn-ghost">Bénévole</a>
+      <a href="faire-un-don.html" class="btn btn-primary">Faire un don</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.62)), url('https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg') center 40%/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center; color:#fff;">Nos services</div>
+    <h1>Dépannage alimentaire.</h1>
+    <p>Un soutien ponctuel en denrées pour les personnes ou familles qui ont besoin d'un coup de main pour se nourrir.</p>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="section">
+  <div class="service-body">
+    <div class="eyebrow">Comment ça fonctionne</div>
+    <h2>Un don, sans complications.</h2>
+    <p>Le dépannage alimentaire comprend 1 à 2 boîtes de denrées, offertes en don aux personnes qui ont besoin de soutien alimentaire. <strong style="color:var(--ink);">Aucune enquête de crédit n'est requise.</strong></p>
+    <p>Le service est offert exclusivement dans les secteurs de <strong style="color:var(--ink);">Montréal Sud-Ouest</strong>, <strong style="color:var(--ink);">Saint-Jean-sur-Richelieu</strong> et <strong style="color:var(--ink);">Longueuil</strong>.</p>
+  </div>
+
+  <div class="conditions">
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>2 à 3 dépannages par année</h3>
+      <p>Maximum par personne ou par famille, sauf cas exceptionnel.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+      <h3>1 à 2 boîtes</h3>
+      <p>Selon les besoins, remises directement à la personne ou à la famille.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h3>Secteurs desservis</h3>
+      <p>Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Frais de déplacement</h3>
+      <p>10 $ à 15 $ peuvent s'appliquer, seulement si une livraison est nécessaire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Faire une demande</div>
+  <h2>Parlons-nous.</h2>
+  <p class="lead">Contactez-nous directement pour faire une demande de dépannage alimentaire.</p>
+  <div class="contacts">
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="lbl">Courriel</div>
+      <div class="val">phenixactioncitoyenne<br>@gmail.com</div>
+    </a>
+    <a href="tel:4385263889" class="contact-card">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div class="lbl">Téléphone</div>
+      <div class="val">(438) 526-3889</div>
+    </a>
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="contact-card">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+      <div class="lbl">Facebook</div>
+      <div class="val">Suivez la mission</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg viewBox="0 0 44 44" fill="none" width="28" height="28"><path d="M22 4C22 4 10 14 10 24C10 31 15.4 37 22 37C28.6 37 34 31 34 24C34 14 22 4 22 4Z" fill="url(#fg1)"/><path d="M22 37C22 37 18 32 18 27C18 23.7 19.8 21 22 21C24.2 21 26 23.7 26 27C26 32 22 37 22 37Z" fill="url(#fg2)" opacity="0.85"/><defs><linearGradient id="fg1" x1="10" y1="4" x2="34" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#D63FA3"/><stop offset="0.5" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient><linearGradient id="fg2" x1="18" y1="21" x2="26" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs></svg><span>Phé-Nix</span></div>
+      <p class="footer-desc">Organisme à but non lucratif qui nourrit, habille et soutient les personnes en situation d'itinérance au Québec depuis 2022.</p>
+      <div class="footer-socials"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="services.html">Services</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
+    <div class="footer-col"><h4>Aider</h4><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Contributions matérielles</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li style="color:var(--ink-soft);">Montréal · Rive-Sud</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="nav.js"></script>
+</body>
+</html>
