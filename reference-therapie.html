@@ -17,6 +17,21 @@
 .service-body { max-width: 720px; margin: 0 auto; text-align: left; }
 .service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
 
+/* Points clés */
+.conditions { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 760px; margin: 48px auto 0; text-align: left; }
+.condition { background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; }
+.condition-ic { width: 38px; height: 38px; background: var(--accent-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 14px; }
+.condition h3 { font-size: 15.5px; margin-bottom: 6px; }
+.condition p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+
+/* Foire aux questions (même modèle que la page Faire un don) */
+.faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 320px; padding-bottom: 22px; }
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
 .contact-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
@@ -27,6 +42,7 @@
 
 @media (max-width: 860px) {
   .section { padding: 72px 24px; }
+  .conditions { grid-template-columns: 1fr; max-width: 440px; }
   .contacts { grid-template-columns: 1fr; max-width: 360px; }
 }
 </style>
@@ -64,7 +80,7 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.62)), url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg') center 30%/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.png') center/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Nos services</div>
     <h1>Référencement pour thérapie.</h1>
@@ -80,10 +96,62 @@
     <p>Habituellement en <strong style="color:var(--ink);">72 heures</strong>, nous vous mettons en contact avec des services de thérapie adaptés à votre situation.</p>
     <p>On connaît les bonnes ressources et on prend le temps de vous orienter vers celle qui correspond réellement à votre contexte et à votre réalité.</p>
   </div>
+
+  <div class="conditions">
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Habituellement en 72 h</h3>
+      <p>Le délai courant pour vous mettre en contact avec une ressource.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Adapté à votre réalité</h3>
+      <p>On oriente selon votre contexte, pas selon une liste générique.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+      <h3>Pour vous ou un proche</h3>
+      <p>La demande peut être faite pour soi-même ou pour quelqu'un d'autre.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Le transport suit</h3>
+      <p>Une fois la ressource trouvée, on s'occupe de vous y amener.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOIRE AUX QUESTIONS -->
+<section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
+  <h2>Vos questions.</h2>
+  <p class="lead">Ce qu'il faut savoir avant de nous contacter.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Combien de temps avant d'avoir une réponse ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Habituellement 72 heures. C'est le délai courant pour vous mettre en contact avec une ressource adaptée à votre situation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Puis-je faire une demande pour quelqu'un d'autre ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Oui. Beaucoup de demandes viennent d'un proche, d'un membre de la famille ou d'un ami. Contactez-nous et parlez-nous de la situation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Comment choisissez-vous la ressource ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">On connaît les ressources du milieu et on prend le temps de comprendre votre contexte avant d'orienter. L'objectif n'est pas de vous donner un numéro au hasard, mais de trouver l'endroit qui correspond réellement à votre réalité.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Et une fois que la ressource est trouvée ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">On ne vous laisse pas là. Notre service de <a href="transport-therapie.html" style="color:var(--accent);text-decoration:none;">transport vers la thérapie</a> prend le relais pour vous amener à vos rendez-vous.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Comment faire la demande ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Par courriel, par téléphone ou par Facebook — les coordonnées sont juste en dessous. Écrivez-nous et on prend le relais.</div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section section-soft center">
+<section class="section center">
   <div class="eyebrow" style="justify-content:center;">Une question ?</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">Contactez-nous directement pour être mis en contact avec une ressource adaptée.</p>

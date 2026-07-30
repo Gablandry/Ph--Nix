@@ -17,6 +17,21 @@
 .service-body { max-width: 720px; margin: 0 auto; text-align: left; }
 .service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
 
+/* Points clés */
+.conditions { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 760px; margin: 48px auto 0; text-align: left; }
+.condition { background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; }
+.condition-ic { width: 38px; height: 38px; background: var(--accent-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 14px; }
+.condition h3 { font-size: 15.5px; margin-bottom: 6px; }
+.condition p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+
+/* Foire aux questions (même modèle que la page Faire un don) */
+.faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 320px; padding-bottom: 22px; }
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
 .contact-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
@@ -27,6 +42,7 @@
 
 @media (max-width: 860px) {
   .section { padding: 72px 24px; }
+  .conditions { grid-template-columns: 1fr; max-width: 440px; }
   .contacts { grid-template-columns: 1fr; max-width: 360px; }
 }
 </style>
@@ -80,10 +96,62 @@
     <p>Notre équipe de bénévoles va à la rencontre des personnes en situation d'itinérance pour leur offrir un repas chaud, directement sur le terrain — peu importe la météo.</p>
     <p>Les distributions ont lieu dans plusieurs villes du Québec : Montréal, Longueuil, Saint-Jean-sur-Richelieu, en Montérégie, à Gatineau et à Trois-Rivières. Le tout est réalisé 100 % par des bénévoles.</p>
   </div>
+
+  <div class="conditions">
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <h3>Chaque semaine</h3>
+      <p>Des distributions régulières, semaine après semaine, depuis 2022.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <h3>Des repas chauds</h3>
+      <p>Remis en mains propres, directement sur le terrain.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>6 villes desservies</h3>
+      <p>Montréal, Longueuil, Saint-Jean-sur-Richelieu, Montérégie, Gatineau et Trois-Rivières.</p>
+    </div>
+    <div class="condition">
+      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+      <h3>100 % bénévole</h3>
+      <p>Aucun salaire — tout le travail est fait par des bénévoles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOIRE AUX QUESTIONS -->
+<section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
+  <h2>Vos questions.</h2>
+  <p class="lead">Ce qu'il faut savoir sur nos distributions dans la rue.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Faut-il s'inscrire ou prendre rendez-vous ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Non. Nos bénévoles vont directement à la rencontre des personnes sur le terrain. Il n'y a aucun formulaire à remplir, aucune inscription, aucune condition.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Où ont lieu les distributions ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">À Montréal, Longueuil et Saint-Jean-sur-Richelieu, ainsi qu'en Montérégie, à Gatineau et à Trois-Rivières.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Comment savoir quand vous passez près de chez moi ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Les prochaines distributions sont annoncées sur notre <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">groupe Facebook</a>. Vous pouvez aussi nous écrire ou nous appeler.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Est-ce que vous sortez même par mauvais temps ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Oui — peu importe la météo. C'est souvent quand les conditions sont les plus dures que le besoin est le plus grand.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Je voudrais aider lors d'une distribution. <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Avec plaisir. Aucune expérience n'est requise — rendez-vous sur la page <a href="benevole.html" style="color:var(--accent);text-decoration:none;">Devenir bénévole</a> ou écrivez-nous directement.</div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section section-soft center">
+<section class="section center">
   <div class="eyebrow" style="justify-content:center;">Une question ?</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">On répond à tous les messages, généralement sous 24 à 48 h.</p>
