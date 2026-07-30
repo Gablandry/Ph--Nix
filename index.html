@@ -102,9 +102,14 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 .split h2 { margin: 18px 0 22px; }
 .split p { margin-bottom: 18px; }
 
-/* FONDATEURS */
-.founders { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 920px; margin: 60px auto 0; }
-.founder { text-align: center; }
+/* FONDATEURS — grille décalée : le texte reste fixe pendant que les photos défilent */
+.fondation { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 60px; max-width: var(--maxw); margin: 0 auto; align-items: start; }
+.fondation-texte { position: sticky; top: 108px; text-align: left; }
+.fondation-texte .lead { margin-left: 0; margin-right: 0; max-width: 400px; }
+.founders { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+/* le second portrait descend : c'est ce décalage qui casse l'alignement figé */
+.founders .founder:nth-child(2) { margin-top: 92px; }
+.founder { text-align: center; will-change: transform; }
 .founder-photo { position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, var(--accent-soft), rgba(214,63,163,0.06)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--hairline); }
 .founder-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .founder-name { font-size: 22px; font-weight: 700; color: var(--ink); margin: 24px 0 4px; }
@@ -272,7 +277,13 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   .trust { gap: 18px 28px; padding: 16px 24px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
-  .founders { grid-template-columns: 1fr; max-width: 420px; gap: 44px; }
+  /* sur petit écran : une colonne, plus de décalage ni de texte fixe */
+  .fondation { grid-template-columns: 1fr; gap: 40px; }
+  .fondation-texte { position: static; text-align: center; }
+  .fondation-texte .lead { margin-left: auto; margin-right: auto; }
+  .founders { grid-template-columns: 1fr; max-width: 420px; gap: 44px; margin: 0 auto; }
+  .founders .founder:nth-child(2) { margin-top: 0; }
+  .founder { transform: none !important; }
   .steps { gap: 16px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
@@ -508,12 +519,14 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 
 <!-- FONDATEURS -->
 <section class="section section-warm">
-  <div class="wrap center">
-    <div class="eyebrow" style="justify-content:center;">La fondation</div>
-    <h2>Une histoire de famille.</h2>
-    <p class="lead">Phé-Nix, c'est d'abord l'histoire d'un fils et de son père qui ont décidé de ne plus détourner le regard.</p>
+  <div class="fondation">
+    <div class="fondation-texte">
+      <div class="eyebrow">La fondation</div>
+      <h2>Une histoire de famille.</h2>
+      <p class="lead">Phé-Nix, c'est d'abord l'histoire d'un fils et de son père qui ont décidé de ne plus détourner le regard.</p>
+    </div>
     <div class="founders">
-      <div class="founder reveal reveal-d1">
+      <div class="founder reveal reveal-d1" data-parallax="0.10">
         <div class="founder-photo">
           <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
         </div>
@@ -521,7 +534,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
         <div class="founder-role">Président-fondateur</div>
         <p class="founder-desc">C'est sa conviction qui a tout lancé en 2022 : l'itinérance n'est pas une fatalité. On le retrouve sur le terrain chaque semaine, là où les besoins sont les plus criants.</p>
       </div>
-      <div class="founder reveal reveal-d2">
+      <div class="founder reveal reveal-d2" data-parallax="-0.06">
         <div class="founder-photo">
           <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
         </div>
@@ -729,6 +742,32 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
+/* Fondateurs — les deux portraits défilent à des vitesses très légèrement différentes.
+   C'est ce décalage, à peine perceptible, qui donne l'impression de profondeur. */
+(function () {
+  var els = document.querySelectorAll('[data-parallax]');
+  if (!els.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia && window.matchMedia('(max-width: 860px)').matches) return;
+
+  var enAttente = false;
+  function placer() {
+    var milieu = window.innerHeight / 2;
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var centre = r.top + r.height / 2;
+      var decalage = (centre - milieu) * parseFloat(el.dataset.parallax);
+      el.style.transform = 'translateY(' + decalage.toFixed(1) + 'px)';
+    });
+    enAttente = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!enAttente) { enAttente = true; requestAnimationFrame(placer); }
+  }, { passive: true });
+  placer();
+})();
+
 /* Galerie « Sur le terrain » — on double les éléments pour que le défilement boucle sans coupure */
 (function () {
   var ruban = document.getElementById('galerie-ruban');
