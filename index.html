@@ -12,18 +12,18 @@
 <style>
 /* ===== HERO — animation du logo plein écran ===== */
 .intro-phenix { position: relative; height: 100vh; background: #140c1e; overflow: hidden; }
-.intro-phenix canvas { position: absolute; display: block; }
+.intro-phenix img { position: absolute; display: block; }
 /* Le décor flouté remplit toujours l'écran, quel que soit le format. */
 #phenix-bg {
   inset: 0; width: 100%; height: 100%; object-fit: cover;
   filter: blur(46px) saturate(1.25) brightness(0.8);
   transform: scale(1.25);
 }
-/* L'animation nette garde son cadre entier — jamais recadrée, jamais coupée —
+/* Le logo garde son cadre entier — jamais recadré, jamais coupé —
    et ses quatre bords se fondent dans le décor flouté. */
-#phenix-canvas {
+#phenix-logo {
   top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: min(100%, calc(100vh * 1024 / 664)); height: auto;
+  width: min(100%, calc(100vh * 1600 / 1038)); height: auto;
   -webkit-mask-image:
     linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%),
     linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
@@ -34,7 +34,7 @@
   mask-composite: intersect;
 }
 /* En portrait, l'animation remonte pour laisser le bas au titre et aux boutons */
-@media (max-aspect-ratio: 1/1) { #phenix-canvas { top: 21%; } }
+@media (max-aspect-ratio: 1/1) { #phenix-logo { top: 21%; } }
 .intro-phenix-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(20,12,30,0) 34%, rgba(20,12,30,0.62) 70%, rgba(20,12,30,0.94) 100%); }
 /* Indice de défilement : deux chevrons qui s'allument en cascade vers le bas.
    Pas d'encadré — c'est le mouvement descendant qui porte le message. */
@@ -480,11 +480,11 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   </div>
 </header>
 
-<!-- HERO — animation du logo plein écran, pilotée par le scroll (séquence d'images sur canvas) -->
+<!-- HERO — logo fixe ; le texte et les boutons se révèlent au scroll -->
 <section class="intro-phenix" id="intro-phenix">
   <!-- fond flouté tiré de la même image : remplit l'écran en portrait, sans rien couper -->
-  <canvas id="phenix-bg" width="1024" height="664" aria-hidden="true"></canvas>
-  <canvas id="phenix-canvas" width="1024" height="664" aria-label="Animation du logo Phé-Nix"></canvas>
+  <img id="phenix-bg" src="hero-logo.jpg" alt="" aria-hidden="true">
+  <img id="phenix-logo" src="hero-logo.jpg" alt="Phé-Nix — Action communautaire citoyenne" fetchpriority="high">
   <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>
   <div class="hero-content" id="hero-content">
     <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
@@ -867,64 +867,20 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   });
 })();
 
-/* Ouverture — séquence d'images du logo dessinée sur canvas, pilotée par le scroll.
-   On dessine des images plutôt que de piloter une vidéo : le défilement image par image
-   d'une balise <video> saccade sur Safari et iOS. */
+/* Hero — le logo reste fixe ; le texte, les boutons et le menu se révèlent au scroll. */
 (function () {
-  var TOTAL = 99;
-  var canvas = document.getElementById('phenix-canvas');
   var section = document.getElementById('intro-phenix');
   var hint = document.getElementById('intro-phenix-hint');
-  if (!canvas || !section) return;
-
-  var ctx = canvas.getContext('2d');
-  var bg = document.getElementById('phenix-bg');
-  var bgCtx = bg ? bg.getContext('2d') : null;
-  var frames = new Array(TOTAL);
-  var ready = new Array(TOTAL);
-  var current = -1;
-
-  function src(i) {
-    return 'hero-frames/f' + String(i + 1).padStart(3, '0') + '.jpg';
-  }
-
-  // Dessine l'image demandée, ou la plus proche déjà chargée si elle ne l'est pas encore.
-  function draw(i) {
-    var pick = -1;
-    for (var d = 0; d < TOTAL; d++) {
-      if (i - d >= 0 && ready[i - d]) { pick = i - d; break; }
-      if (i + d < TOTAL && ready[i + d]) { pick = i + d; break; }
-    }
-    if (pick === -1 || pick === current) return;
-    current = pick;
-    ctx.drawImage(frames[pick], 0, 0, canvas.width, canvas.height);
-    // même image dans le canevas de fond ; le flou et le cadrage sont faits en CSS
-    if (bgCtx) bgCtx.drawImage(frames[pick], 0, 0, bg.width, bg.height);
-  }
-
-  for (var i = 0; i < TOTAL; i++) {
-    (function (idx) {
-      var img = new Image();
-      img.onload = function () {
-        ready[idx] = true;
-        if (idx === 0 && current === -1) draw(0);
-      };
-      img.src = src(idx);
-      frames[idx] = img;
-    })(i);
-  }
+  if (!section) return;
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || !window.gsap || !window.ScrollTrigger) {
-    // Sans animation : on montre la dernière image (le lettrage), texte et menu déjà visibles.
-    var last = new Image();
-    last.onload = function () { ctx.drawImage(last, 0, 0, canvas.width, canvas.height); };
-    last.src = src(TOTAL - 1);
+    // Sans animation : tout est visible d'emblée.
     if (hint) hint.style.display = 'none';
     return;
   }
 
-  // À partir d'ici l'animation pilote l'affichage : on masque texte + menu jusqu'à la fin.
+  // À partir d'ici le scroll pilote l'affichage : on masque texte + menu au départ.
   document.body.classList.add('hero-anim');
 
   var header = document.getElementById('site-header');
@@ -932,35 +888,24 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
   var scrim = document.getElementById('intro-phenix-scrim');
 
   gsap.registerPlugin(ScrollTrigger);
-  var state = { f: 0 };
 
   var tl = gsap.timeline({
     scrollTrigger: {
       trigger: section,
       start: 'top top',
-      end: '+=180%',
+      end: '+=85%',
       scrub: true,
       pin: true,
       anticipatePin: 1,
-      // le menu réapparaît dès qu'on a dépassé les trois quarts de la séquence
       onUpdate: function (self) {
-        if (!header) return;
-        header.classList.toggle('revealed', self.progress > 0.75);
+        if (header) header.classList.toggle('revealed', self.progress > 0.45);
       }
     }
   });
 
-  tl.to(state, {
-    f: TOTAL - 1,
-    ease: 'none',
-    duration: 1,
-    onUpdate: function () { draw(Math.round(state.f)); }
-  }, 0);
-
-  if (hint) tl.to(hint, { opacity: 0, ease: 'none', duration: 0.12 }, 0);
-  // Le voile puis le texte se révèlent sur le dernier quart, une fois le phénix envolé.
-  if (scrim) tl.to(scrim, { opacity: 1, ease: 'none', duration: 0.25 }, 0.7);
-  if (content) tl.to(content, { opacity: 1, ease: 'none', duration: 0.22 }, 0.78);
+  if (hint) tl.to(hint, { opacity: 0, ease: 'none', duration: 0.25 }, 0);
+  if (scrim) tl.to(scrim, { opacity: 1, ease: 'none', duration: 0.45 }, 0.15);
+  if (content) tl.to(content, { opacity: 1, ease: 'none', duration: 0.4 }, 0.4);
 })();
 
 </script>
