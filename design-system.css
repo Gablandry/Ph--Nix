@@ -233,13 +233,22 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .scroll-top-btn:hover { border-color: var(--ink); }
 
 /* ===== BARRE DON MOBILE ===== */
-.mobile-donate-bar {
-  display: none; position: fixed; bottom: 0; left: 0; right: 0;
-  padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(255,255,255,0.94); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid var(--hairline); z-index: 995;
+/* Barre de navigation du bas (mobile) — reprend les sections du menu du haut */
+.mobile-nav-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 995;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 7px 4px calc(5px + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid var(--hairline);
 }
-.mobile-donate-bar a { display: block; text-align: center; }
+.mobile-nav-bar a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  text-decoration: none; color: var(--ink-soft);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: -0.01em;
+  padding: 6px 2px; border-radius: 12px; transition: color 0.2s, background 0.2s;
+}
+.mobile-nav-bar a svg { width: 21px; height: 21px; flex-shrink: 0; }
+.mobile-nav-bar a.active { color: var(--accent); background: var(--accent-soft); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
@@ -255,7 +264,9 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
   .site-footer { padding: 56px 24px 32px; }
   .page-hero { padding: 120px 24px 64px; }
-  .mobile-donate-bar { display: block; }
+  .mobile-nav-bar { display: grid; }
+  /* on laisse la place à la barre du bas pour ne rien masquer en fin de page */
+  body { padding-bottom: 66px; }
   /* CTA pleine largeur sur mobile — plus « app », plus pro */
   .btn-lg { width: 100%; }
 }
