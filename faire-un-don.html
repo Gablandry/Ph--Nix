@@ -13,9 +13,11 @@
 .section { padding: 110px 40px; }
 .center { text-align: center; }
 
-/* ===== LE GRAND BLOC DON (tranche avec le reste du site) ===== */
-.dongive { position: relative; overflow: hidden; background: linear-gradient(165deg, #1E140E 0%, #3A1C0F 55%, #5A2410 108%); padding: 110px 40px; }
-.dongive::before { content: ''; position: absolute; top: -20%; right: -12%; width: 60%; height: 150%; background: radial-gradient(ellipse, rgba(244,185,66,0.16), transparent 62%); pointer-events: none; }
+/* ===== LE GRAND BLOC DON — décor du phénix, comme le reste du site ===== */
+.dongive {
+  position: relative; overflow: hidden; padding: 88px 40px;
+  background: linear-gradient(180deg, rgba(16,9,24,0.86) 0%, rgba(16,9,24,0.92) 55%, rgba(16,9,24,0.95) 100%), url('hero-phenix.png') center/cover no-repeat;
+}
 .dongive-inner { position: relative; max-width: 900px; margin: 0 auto; text-align: center; }
 .dongive .eyebrow { color: #F4B942; justify-content: center; }
 .dongive h2 { color: #fff; font-size: clamp(32px,4.4vw,54px); line-height: 1.1; margin-bottom: 22px; }
@@ -71,15 +73,24 @@
 .eyebrow-c { justify-content: center; }
 
 @media (max-width: 860px) {
-  .section { padding: 72px 24px; }
-  .dongive { padding: 80px 24px; }
-  .montants2 { grid-template-columns: 1fr 1fr; }
+  .section { padding: 56px 20px; }
+  .dongive { padding: 56px 20px; }
+  .montants2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .montant2 { padding: 20px 12px; }
+  .montant2 .amt { font-size: 28px; margin-bottom: 8px; }
+  .montant2 .txt { font-size: 12.5px; }
   .repart-label { min-width: 150px; font-size: 13px; }
-  .interac-final { padding: 34px 24px; }
+  .interac-final { padding: 30px 22px; margin-top: 34px; border-radius: 22px; }
+  /* on resserre l'espace entre les blocs, la page était très longue au doigt */
+  .block { margin-top: 48px; }
+  .trust-row { margin-top: 24px; gap: 10px 20px; }
+  .dongive .intro { font-size: 16.5px; }
+  .faq { margin-top: 32px; }
 }
 @media (max-width: 480px) {
-  .montants2 { grid-template-columns: 1fr; max-width: 320px; }
-  .repart-label { min-width: 120px; }
+  /* on garde 2 colonnes : une seule colonne doublait la hauteur de la section */
+  .repart-label { min-width: 108px; font-size: 12.5px; }
+  .repart-row { gap: 10px; margin-bottom: 13px; }
 }
 </style>
 </head>
@@ -116,7 +127,7 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.62)), url('https://static.wixstatic.com/media/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/57e184_645097f79d074fc69caabee8529052e7~mv2.jpg') center 30%/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.png') center/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Faire un don</div>
     <h1>Votre don, c'est<br>un repas chaud ce soir.</h1>
