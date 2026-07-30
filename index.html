@@ -156,6 +156,10 @@
 .testi-quote { font-weight: 700; font-size: clamp(28px,4vw,46px); line-height: 1.3; letter-spacing: -0.02em; color: #fff; }
 .testi-quote em { color: #F4B942; font-style: normal; }
 .testi-by { color: rgba(255,255,255,0.82); font-size: 15px; margin-top: 24px; }
+.testi-video { position: relative; width: 100%; max-width: 760px; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; margin: 34px auto 0; box-shadow: 0 30px 70px rgba(0,0,0,0.5); }
+.testi-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.testi-yt-link { display: inline-block; margin-top: 22px; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; }
+.testi-yt-link:hover { color: #fff; }
 
 @media (max-width: 980px) {
   .progs { grid-template-columns: 1fr 1fr; }
@@ -437,13 +441,16 @@
   </div>
 </section>
 
-<!-- TÉMOIGNAGES IMMERSIF (juste avant le footer) -->
+<!-- ENTREVUE DU FONDATEUR (juste avant le footer) -->
 <section class="testi">
   <div class="testi-inner reveal">
-    <div class="eyebrow">Des histoires vraies</div>
+    <div class="eyebrow">L'entrevue</div>
     <p class="testi-quote">"Ce que nous partageons tous, c'est un <em>investissement absolu</em> envers les sans-abris et les plus démunis."</p>
     <div class="testi-by">Michel Couture « Mike » · Président-fondateur</div>
-    <div style="margin-top:38px;"><a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-on-dark">Rencontrez celles et ceux qu'on aide →</a></div>
+    <div class="testi-video">
+      <iframe src="https://www.youtube-nocookie.com/embed/OJ-6xagkNmM?start=947&rel=0" title="Entrevue avec Michel Couture, fondateur de Phé-Nix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <a href="https://youtu.be/OJ-6xagkNmM?t=947" target="_blank" rel="noopener noreferrer" class="testi-yt-link">Voir directement sur YouTube →</a>
   </div>
 </section>
 
