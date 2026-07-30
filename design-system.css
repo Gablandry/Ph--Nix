@@ -162,7 +162,7 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .site-footer {
   position: relative; isolation: isolate;
   background: #140c1e center/cover no-repeat;
-  background-image: url('hero-phenix.png');
+  background-image: url('hero-phenix.jpg');
   border-top: 1px solid rgba(255,255,255,0.10);
   padding: 72px 40px 36px;
 }

@@ -214,7 +214,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 /* ===== CTA PREMIUM ===== */
 .cta-premium {
   position: relative; overflow: hidden; border-radius: 32px;
-  background: linear-gradient(180deg, rgba(16,9,24,0.70) 0%, rgba(16,9,24,0.84) 55%, rgba(16,9,24,0.90) 100%), url('hero-phenix.png') center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(16,9,24,0.70) 0%, rgba(16,9,24,0.84) 55%, rgba(16,9,24,0.90) 100%), url('hero-phenix.jpg') center/cover no-repeat;
   max-width: var(--maxw); margin: 0 auto; padding: 96px 56px; text-align: center;
 }
 .cta-premium > * { position: relative; }
@@ -247,7 +247,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 /* Miniature aux couleurs Phé-Nix, remplacée par le lecteur au clic */
 .testi-facade {
   position: absolute; inset: 0; width: 100%; height: 100%; border: none; cursor: pointer;
-  background: linear-gradient(rgba(10,6,16,0.32), rgba(10,6,16,0.52)), url('hero-phenix.png') center/cover no-repeat;
+  background: linear-gradient(rgba(10,6,16,0.32), rgba(10,6,16,0.52)), url('hero-phenix.jpg') center/cover no-repeat;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
@@ -312,7 +312,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
 <!-- HEADER -->
 <header class="site-header" id="site-header">
   <nav class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Phé-Nix — accueil"><img src="logo-phenix.png" alt="Phé-Nix, action communautaire citoyenne"></a>
+    <a href="index.html" class="nav-logo" aria-label="Phé-Nix — accueil"><img src="logo-phenix.webp" alt="Phé-Nix, action communautaire citoyenne"></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
       <li><a href="services.html">Services</a></li>
@@ -374,7 +374,7 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     <div class="eyebrow" style="justify-content:center;">Sur la route, chaque semaine</div>
     <h2>Reconnaissable entre tous.</h2>
     <p class="lead">Notre camion sillonne le Québec pour transporter repas, vêtements et espoir jusqu'à ceux qui en ont besoin.</p>
-    <img src="camion-phenix.png" alt="Le camion Phé-Nix Action Communautaire Citoyenne" class="camion-img reveal-left">
+    <img src="camion-phenix.webp" alt="Le camion Phé-Nix Action Communautaire Citoyenne" class="camion-img reveal-left">
   </div>
 </section>
 
@@ -547,8 +547,8 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     <div class="galerie-img-wrap" data-src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg"><img src="https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg" alt="L'équipe bénévole Phé-Nix"></div>
     <div class="galerie-img-wrap" data-src="terrain-legumes.jpg"><img src="terrain-legumes.jpg" alt="Pick-up rempli de boîtes de légumes frais pour la distribution"></div>
     <!-- Rangée 2 : vidéos en boucle (déposer terrain-1/2/3.mp4 pour les activer ; sinon la photo s'affiche) -->
-    <div class="gvid"><video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_0347af3ad75f4138bcbea35cda57da09f000.jpg"><source src="terrain-1.mp4" type="video/mp4"></video></div>
-    <div class="gvid"><video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/57e184_e52bd2d3de7f4817a9f43c7cfc6de0c2f000.jpg"><source src="terrain-2.mp4" type="video/mp4"></video></div>
+    <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
+    <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
     <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
   </div>
   </div>
@@ -636,6 +636,24 @@ body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transit
     copie.setAttribute('aria-hidden', 'true');
     ruban.appendChild(copie);
   });
+
+  // Les vidéos ne se téléchargent qu'à l'approche de la galerie : ceux qui ne
+  // descendent pas jusqu'ici n'en paient jamais le poids.
+  function activerVideos() {
+    ruban.querySelectorAll('video[data-src]').forEach(function (v) {
+      v.src = v.dataset.src;
+      v.removeAttribute('data-src');
+      v.play().catch(function () {});
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { activerVideos(); io.disconnect(); }
+    }, { rootMargin: '300px' });
+    io.observe(ruban);
+  } else {
+    activerVideos();
+  }
 })();
 
 /* Entrevue — on ne charge YouTube qu'au clic sur la miniature */
