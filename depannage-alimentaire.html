@@ -25,6 +25,15 @@
 .condition h3 { font-size: 15.5px; margin-bottom: 6px; }
 .condition p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
 
+/* Foire aux questions (même modèle que la page Faire un don) */
+.faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+.faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
+
 /* Contact */
 .contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
 .contact-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
@@ -73,7 +82,7 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.62)), url('https://static.wixstatic.com/media/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/11062b_581fc060efee43048e826cc90a31186d~mv2.jpeg') center 40%/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.png') center/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Nos services</div>
     <h1>Dépannage alimentaire.</h1>
@@ -114,8 +123,41 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- FOIRE AUX QUESTIONS -->
 <section class="section section-soft center">
+  <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
+  <h2>Vos questions.</h2>
+  <p class="lead">Tout ce qu'il faut savoir avant de faire une demande.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Qui peut faire une demande ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Toute personne ou famille qui a besoin d'un coup de main pour se nourrir. Aucune enquête de crédit n'est requise — on ne vous demandera pas de prouver vos revenus.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Combien de fois par année puis-je y avoir droit ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">De 2 à 3 dépannages par année, par personne ou par famille. Dans des situations exceptionnelles, il est possible d'en recevoir davantage — parlez-nous de votre situation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que je reçois exactement ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">De 1 à 2 boîtes de denrées selon les besoins, remises directement à la personne ou à la famille.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Est-ce que ça coûte quelque chose ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Les denrées sont un don, elles ne se paient pas. Des frais de 10 $ à 15 $ peuvent s'appliquer uniquement si une livraison est nécessaire pour vous les apporter.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Dans quels secteurs le service est-il offert ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Exclusivement à Montréal Sud-Ouest, à Saint-Jean-sur-Richelieu et à Longueuil pour le moment.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Comment fait-on la demande ? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Par courriel, par téléphone ou par Facebook — les coordonnées se trouvent juste en dessous. Écrivez-nous ou appelez-nous, et on prend le relais.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section center">
   <div class="eyebrow" style="justify-content:center;">Faire une demande</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">Contactez-nous directement pour faire une demande de dépannage alimentaire.</p>
