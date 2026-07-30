@@ -79,8 +79,9 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   display: flex; align-items: center; width: 100%;
   max-width: 1320px; margin: 0 auto; padding: 0 40px;
 }
-.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; flex-shrink: 0; margin-right: 32px; }
-.nav-logo-text { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px; color: var(--ink); letter-spacing: -0.02em; }
+.nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 32px; }
+/* le logo porte déjà le lettrage : pas de texte à côté */
+.nav-logo img { height: 46px; width: auto; display: block; }
 
 .nav-links { display: flex; align-items: center; flex: 1; justify-content: center; }
 .nav-links a {
