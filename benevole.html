@@ -27,7 +27,11 @@
 .step p { font-size: 14px; line-height: 1.55; }
 
 @media (max-width: 980px) { .steps { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 860px) { .section { padding: 72px 24px; } }
+@media (max-width: 860px) {
+  .section { padding: 56px 20px; }
+  .step { padding: 22px 20px; }
+  .steps { gap: 12px; }
+}
 @media (max-width: 540px) { .steps { grid-template-columns: 1fr; max-width: 400px; } }
 </style>
 </head>
@@ -64,7 +68,7 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('https://static.wixstatic.com/media/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/8430fc_212019a59faa49fabd330a39ca0646ce~mv2.jpg') center 30%/cover no-repeat;">
+<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.png') center/cover no-repeat;">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Devenir bénévole</div>
     <h1>Votre présence<br>change une vie.</h1>
