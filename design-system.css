@@ -279,8 +279,11 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 /* Dès que le menu du haut se replie, la barre du bas prend le relais —
    sinon les tablettes se retrouvaient sans navigation visible. */
 @media (max-width: 860px) {
-  .nav-links, .nav-ctas { display: none; }
-  .nav-hamburger { display: flex; }
+  /* La navigation passe entièrement par la barre du bas : le bouton « Menu »
+     faisait doublon et encombrait la barre du haut. */
+  .nav-links, .nav-hamburger, .nav-mobile-panel { display: none; }
+  /* sur tablette il reste de la place pour l'appel au don en haut */
+  .nav-ctas { display: block; margin-left: auto; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
   /* Évite tout débordement horizontal des animations sur mobile */
   .reveal-left, .reveal-right { transform: translateY(28px); }
