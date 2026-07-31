@@ -101,6 +101,22 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: 32px; }
 
 /* HAMBURGER — bouton visible avec fond et pulsation d'attention */
+/* Sélecteur de langue — visible en tout temps, sur tous les formats */
+.lang-switch {
+  display: flex; align-items: center; gap: 2px; flex-shrink: 0;
+  margin-left: 14px; padding: 3px;
+  background: rgba(0,0,0,0.05); border-radius: 999px;
+}
+.lang-btn {
+  border: none; background: none; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.03em; color: var(--ink-soft);
+  padding: 5px 10px; border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-btn:hover { color: var(--ink); }
+.lang-btn.actif { background: var(--accent); color: #fff; }
+
 /* Bouton menu : pastille avec le mot « Menu » — une icône seule ne dit pas
    au visiteur qu'il y a d'autres pages derrière. */
 .nav-hamburger {
