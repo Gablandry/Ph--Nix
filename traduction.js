@@ -5,7 +5,7 @@ var DICO = {
  "& institutions": "& institutions",
  "& restauration": "& restaurants",
  "& services": "& services",
- ", de l'": ", of ",
+ ", de l'": ", ",
  ", nous vous mettons en contact avec des services de thérapie adaptés à votre situation.": ", we connect you with treatment services suited to your situation.",
  ", on assure le transport vers vos rendez-vous — pour que rien ne vous empêche de vous y rendre.": ", we provide rides to your appointments — so nothing stops you from getting there.",
  ", ou contactez-nous pour organiser un dépôt.": ", or contact us to arrange a drop-off.",
