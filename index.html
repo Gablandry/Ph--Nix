@@ -17,6 +17,13 @@
 .intro-phenix picture { position: absolute; inset: 0; display: block; }
 #phenix-logo { width: 100%; height: 100%; object-fit: cover; display: block; }
 .intro-phenix-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(20,12,30,0) 34%, rgba(20,12,30,0.62) 70%, rgba(20,12,30,0.94) 100%); }
+/* Sur écran non paysage, le texte se pose plus haut : le voile doit monter avec lui,
+   sinon le titre se perd dans les plumes du logo. */
+@media (max-aspect-ratio: 6/5) {
+  .intro-phenix-scrim {
+    background: linear-gradient(180deg, rgba(20,12,30,0) 22%, rgba(20,12,30,0.55) 46%, rgba(20,12,30,0.88) 68%, rgba(20,12,30,0.96) 100%);
+  }
+}
 /* Indice de défilement : deux chevrons qui s'allument en cascade vers le bas.
    Pas d'encadré — c'est le mouvement descendant qui porte le message. */
 .intro-phenix-hint {
@@ -477,7 +484,8 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   <!-- deux cadrages de la même image : paysage sur grand écran, portrait sur téléphone.
        Chacun remplit son format sans flou de remplissage et sans rien couper. -->
   <picture>
-    <source media="(max-aspect-ratio: 1/1)" srcset="hero-logo-portrait.jpg">
+    <source media="(max-aspect-ratio: 3/5)" srcset="hero-logo-portrait.jpg">
+    <source media="(max-aspect-ratio: 6/5)" srcset="hero-logo-carre.jpg">
     <img id="phenix-logo" src="hero-logo-large.jpg" alt="Phé-Nix — Action communautaire citoyenne" fetchpriority="high">
   </picture>
   <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>

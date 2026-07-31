@@ -382,6 +382,7 @@ var DICO = {
  "Vêtements & couvertures": "Clothing & blankets",
  "Vêtements chauds": "Warm clothing",
  "Vêtements, nourriture, articles d'hygiène — à déposer dans un de nos 3 points de collecte.": "Clothing, food, hygiene products — drop them at one of our 3 collection points.",
+ "ans": "years",
  "aucun salaire": "no salaries",
  "change une vie.": "changes a life.",
  "chaque année": "each year",
@@ -437,7 +438,7 @@ var DICO = {
    =========================================================== */
 (function () {
   var CLE = 'phenix-langue';
-  var ATTRS = ['alt', 'aria-label', 'title', 'placeholder'];
+  var ATTRS = ['alt', 'aria-label', 'title', 'placeholder', 'data-suffix'];
   var originaux = null;   // rempli au premier passage
 
   function norm(t) { return t.replace(/\s+/g, ' ').trim(); }
