@@ -798,8 +798,10 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </button>
 
 <script src="nav.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<!-- GSAP 3.15.0 héberge ici plutôt que sur un CDN externe : le site ne
+     dépend plus d'un serveur tiers qui pourrait changer ou être compromis. -->
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
 <script>
 /* Fondateurs — les deux portraits défilent à des vitesses très légèrement différentes.
    C'est ce décalage, à peine perceptible, qui donne l'impression de profondeur. */
