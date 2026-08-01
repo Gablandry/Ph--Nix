@@ -195,100 +195,10 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
   }
 
-  // ===== ÉVÉNEMENTS DYNAMIQUES (modifiez events.json pour mettre à jour) =====
-  const eventsContainer = document.getElementById('events-container');
-  if (eventsContainer) {
-    const pinSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
-    const clockSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-    fetch('events.json')
-      .then(r => r.json())
-      .then(events => {
-        if (!events.length) {
-          eventsContainer.innerHTML = '<p style="color:rgba(0,0,0,0.4);text-align:center;font-family:Inter,sans-serif;padding:40px;grid-column:1/-1;">Aucun événement à venir pour le moment. Revenez bientôt !</p>';
-          return;
-        }
-        eventsContainer.innerHTML = events.map((e, i) => {
-          const spots = e.complet
-            ? '<span class="spots-badge spots-low">Complet</span>'
-            : e.placesRestantes <= 5
-              ? `<span class="spots-badge spots-low">${e.placesRestantes} places restantes</span>`
-              : `<span class="spots-badge">${e.placesRestantes} places disponibles</span>`;
-          const titre = `Distribution ${e.ville}`;
-          const titreComplet = `${titre} — ${e.jour} ${e.mois}`;
-          return `<div class="event-card reveal reveal-d${(i % 4) + 1}">
-            <div class="event-date-badge">
-              <div class="event-month">${e.mois}</div>
-              <div class="event-day">${e.jour}</div>
-            </div>
-            <div class="event-body">
-              <div class="event-region-tag">${e.ville}</div>
-              <h3>${titre} — ${e.quartier.split(',')[0]}</h3>
-              <div class="event-meta">
-                <span>${pinSvg}${e.quartier}</span>
-                <span>${clockSvg}${e.heureDebut} – ${e.heureFin}</span>
-              </div>
-              ${spots}
-            </div>
-            <button class="btn btn-primary event-participe-btn"
-              ${e.complet ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : `onclick="selectEvent('${titreComplet}')"`}>
-              ${e.complet ? 'Complet' : 'Je participe →'}
-            </button>
-          </div>`;
-        }).join('');
-        eventsContainer.querySelectorAll('.reveal').forEach(el => {
-          setTimeout(() => el.classList.add('visible'), 80);
-        });
-      })
-      .catch(() => {
-        eventsContainer.innerHTML = '<p style="color:rgba(0,0,0,0.35);text-align:center;font-family:Inter,sans-serif;padding:40px;grid-column:1/-1;">Chargement des événements...</p>';
-      });
-  }
-
-  // ===== CONTACT FORM =====
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const card = contactForm.closest('.form-card, [class*="form"]');
-      const successEl = document.getElementById('contact-success');
-      if (successEl) {
-        contactForm.style.display = 'none';
-        successEl.classList.add('show');
-      }
-    });
-  }
-
-  // ===== LOGO RÉEL PHÉ-NIX =====
-  // Remplace le SVG placeholder par la vraie image logo si elle est disponible
-  document.querySelectorAll('.nav-logo').forEach(function(navLogo) {
-    var svg = navLogo.querySelector('svg');
-    if (!svg) return;
-    var img = document.createElement('img');
-    img.src = 'logo-phenix.png';
-    img.alt = 'Phé-Nix';
-    img.width = 40;
-    img.height = 40;
-    img.style.cssText = 'border-radius:6px;object-fit:cover;flex-shrink:0;';
-    img.onerror = function() { this.remove(); navLogo.insertBefore(svg, navLogo.firstChild); };
-    navLogo.replaceChild(img, svg);
-  });
-
-  // ===== BLOG FILTERS =====
-  const filterBtns = document.querySelectorAll('.filter-btn[data-cat]');
-  if (filterBtns.length) {
-    const blogCards = document.querySelectorAll('.blog-card[data-cat], .blog-featured[data-cat]');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.cat;
-        blogCards.forEach(card => {
-          const match = cat === 'tous' || card.dataset.cat === cat;
-          card.style.display = match ? '' : 'none';
-          card.style.opacity = match ? '1' : '0';
-        });
-      });
-    });
-  }
+  /* Retirés : calendrier d'événements, formulaire de contact, remplacement du
+     logo et filtres du blogue. Plus aucune page ne les utilisait depuis la
+     simplification du site. Le calendrier fabriquait du HTML à partir d'un
+     fichier externe (events.json), ce qui aurait permis d'injecter du code
+     dans la page si ce fichier avait un jour été modifié. */
 
 })();
