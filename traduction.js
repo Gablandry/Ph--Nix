@@ -1,5 +1,7 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "Une boîte de denrées préparée pour un dépannage alimentaire": "A box of food prepared for an emergency food package",
+ "Un repas chaud remis en mains propres dans la rue": "A hot meal handed over in person on the street",
  "\"Ce que nous partageons tous, c'est un": "\"What we all share is an",
  "& bien-être": "& wellness",
  "& institutions": "& institutions",
@@ -46,7 +48,6 @@ var DICO = {
  "Bénévole,": "Volunteer-run,",
  "C'est sa conviction qui a tout lancé en 2022 : l'itinérance n'est pas une fatalité. On le retrouve sur le terrain chaque semaine, là où les besoins sont les plus criants.": "His conviction started it all in 2022: homelessness is not inevitable. He's out in the field every week, where the need is greatest.",
  "Caisses de légumes frais triés avant la distribution": "Crates of fresh vegetables sorted before distribution",
- "Camion rempli de denrées pour la distribution": "Truck loaded with food for distribution",
  "Ce qu'il faut savoir avant de nous contacter.": "What to know before you contact us.",
  "Ce qu'il faut savoir sur le transport vers la thérapie.": "What to know about rides to treatment.",
  "Ce qu'il faut savoir sur nos distributions dans la rue.": "What to know about our street distributions.",
@@ -97,7 +98,6 @@ var DICO = {
  "De 1 à 2 boîtes de denrées selon les besoins, remises directement à la personne ou à la famille.": "One to two boxes of food depending on need, handed directly to the person or family.",
  "De 2 à 3 dépannages par année, par personne ou par famille. Dans des situations exceptionnelles, il est possible d'en recevoir davantage — parlez-nous de votre situation.": "Two to three packages per year, per person or family. In exceptional situations more may be possible — tell us about your circumstances.",
  "De l'eau et des fruits frais pour une distribution.": "Water and fresh fruit for one distribution.",
- "Denrées préparées pour un dépannage alimentaire": "Food prepared for an emergency package",
  "Des bénévoles de l'équipe Phé-Nix, comme pour tout ce qu'on fait.": "Volunteers from the Phé-Nix team, as with everything we do.",
  "Des chiffres qui parlent.": "Numbers that speak.",
  "Des distributions régulières, semaine après semaine, depuis 2022.": "Regular distributions, week after week, since 2022.",
