@@ -84,6 +84,14 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .section { padding: 120px 40px; }
 .section-soft { background: var(--bg-soft); }
 .section-warm { background: var(--bg-warm); }
+/* deux tons chauds plus affirmés : les trois teintes claires d'origine
+   (blanc, gris, pêche) se ressemblaient trop pour qu'on sente les sections */
+.section-sable { background: var(--bg-sable); }
+.section-terre { background: var(--bg-terre); }
+/* ces fonds sont plus fonces que le gris qu'ils remplacent : le texte
+   secondaire doit foncer aussi pour rester lisible */
+.section-sable .stat-lbl, .section-terre .stat-lbl,
+.section-sable .lead,     .section-terre .lead { color: var(--ink-soft-warm); }
 
 /* ===== BLOC SOMBRE — ponctue le défilement pour qu'on sente une progression
    plutôt qu'une seule longue page claire. Réutilisable sur d'autres sections. */
@@ -573,7 +581,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- STATS -->
-<section class="section section-soft">
+<section class="section section-sable">
   <div class="stats-grid">
     <div class="stat reveal"><div class="stat-num" data-counter data-target="3" data-suffix=" ans">3 ans</div><div class="stat-lbl">Sur le terrain,<br>semaine après semaine</div></div>
     <div class="stat reveal reveal-d1"><div class="stat-num" data-counter data-target="5">5</div><div class="stat-lbl">Régions du Québec<br>couvertes</div></div>
@@ -744,7 +752,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- CTA PREMIUM — Faire partie du mouvement -->
-<section class="section">
+<section class="section section-terre">
   <div class="cta-premium reveal">
     <div class="eyebrow">Faire partie du mouvement</div>
     <h2>Un geste suffit<br>pour changer une vie.</h2>

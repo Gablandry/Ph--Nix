@@ -11,6 +11,10 @@
   --accent-deep: #C7440B;   /* hover */
   --accent-soft: rgba(232,80,14,0.08);
   --bg-warm:     #FBF4EF;   /* pêche très clair — chaleur entre les blancs */
+  --bg-sable:    #F3E3D3;   /* sable chaud — sépare deux sections blanches */
+  --bg-terre:    #E8D5C4;   /* terre douce — le ton le plus affirmé du clair */
+  --ink-soft-warm: #59595E; /* texte secondaire sur sable/terre : --ink-soft n'y
+                               atteint que 4.04, sous le seuil d'accessibilité */
   --warm-line:   #EDE0D7;   /* filet chaud */
   --radius:      14px;
   --maxw:        1080px;
