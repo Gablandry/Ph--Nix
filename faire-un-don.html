@@ -14,6 +14,26 @@
 .section { padding: 110px 40px; }
 .center { text-align: center; }
 
+/* ===== HÉROS DE LA PAGE DON =====
+   Aux couleurs du phénix plutôt qu'en noir : le héros se distingue ainsi du
+   grand bloc sombre qui le suit juste en dessous, au lieu de s'y fondre. */
+.don-hero {
+  background: linear-gradient(145deg, #2B0F3D 0%, #6B1B52 34%, #C43F2B 68%, #E8730E 100%);
+}
+/* le phénix, grand et discret, occupe le fond du héros */
+.don-hero::before {
+  content: ''; position: absolute; z-index: 1; pointer-events: none;
+  left: 50%; top: 52%; transform: translate(-50%,-50%);
+  width: min(720px, 88vw); aspect-ratio: 1/1;
+  background: url('phenix-filigrane.png') center/contain no-repeat;
+  opacity: 0.16;
+}
+/* voile sombre au centre : garantit la lisibilité du titre par-dessus */
+.don-hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(78% 62% at 50% 50%, rgba(20,10,28,0.60), rgba(20,10,28,0.14) 72%, transparent);
+}
+
 /* ===== LE GRAND BLOC DON — décor du phénix, comme le reste du site ===== */
 .dongive {
   position: relative; overflow: hidden; padding: 88px 40px;
@@ -138,7 +158,7 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.jpg') center/cover no-repeat;">
+<section class="page-hero don-hero">
   <div class="page-hero-content">
     <div class="eyebrow" style="justify-content:center; color:#fff;">Faire un don</div>
     <h1>Votre don, c'est<br>un repas chaud ce soir.</h1>
