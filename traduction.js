@@ -1,5 +1,6 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "Un appel passé pour trouver la bonne ressource, et le nom noté dans un carnet": "A call made to find the right resource, and the name written down in a notebook",
  "Une boîte de denrées préparée pour un dépannage alimentaire": "A box of food prepared for an emergency food package",
  "Un repas chaud remis en mains propres dans la rue": "A hot meal handed over in person on the street",
  "\"Ce que nous partageons tous, c'est un": "\"What we all share is an",
@@ -354,7 +355,6 @@ var DICO = {
  "Une fois la bonne ressource trouvée, on s'occupe de vous y amener. Le manque de transport ne doit jamais être ce qui vous arrête.": "Once the right resource is found, we take care of getting you there. Lack of transportation should never be what stops you.",
  "Une fois la ressource trouvée, on s'occupe de vous y amener.": "Once the resource is found, we take care of getting you there.",
  "Une histoire de famille.": "A family story.",
- "Une main posée sur une autre en signe de soutien": "One hand resting on another in support",
  "Une question ?": "Have a question?",
  "Une question ? On est là.": "Have a question? We're here.",
  "Une question sur la commandite ?": "A question about sponsorship?",

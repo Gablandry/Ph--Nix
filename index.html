@@ -109,6 +109,15 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   background: linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
 }
+/* section centrée : le phénix se place derrière le contenu, pas sur le côté */
+.section-sombre.center::before { left: 50%; transform: translate(-50%,-50%); width: min(760px, 78vw); opacity: 0.15; }
+.section-sombre.center::after { background: radial-gradient(90% 70% at 50% 50%, rgba(232,80,14,0.20), transparent 65%); }
+/* l'orange du site est trop sombre sur fond noir : on monte en luminosité */
+.section-sombre .impact-num { color: #FF8A3D; }
+.section-sombre .impact-lbl { color: rgba(255,255,255,0.68); }
+.section-sombre .regions-ticker { color: #fff; }
+.section-sombre .ticker-label { color: rgba(255,255,255,0.60); }
+.section-sombre .ticker-list span { color: #F4B942; }
 .wrap { max-width: var(--maxw); margin: 0 auto; }
 .center { text-align: center; }
 .lead { font-size: 19px; color: var(--ink-soft); max-width: 620px; margin: 18px auto 0; line-height: 1.6; }
@@ -646,7 +655,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
       </div>
     </a>
     <a href="reference-therapie.html" class="pile-carte">
-      <img src="therapie-mains-large.jpg" alt="Une main posée sur une autre en signe de soutien">
+      <img src="reference-appel.jpg" alt="Un appel passé pour trouver la bonne ressource, et le nom noté dans un carnet">
       <div class="pile-txt">
         <span class="pile-no">Service 03</span>
         <h3>Référencement pour thérapie</h3>
@@ -703,7 +712,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 <!-- (Section services déplacée vers services.html) -->
 
 <!-- IMPACT + RÉGIONS -->
-<section class="section section-warm center">
+<section class="section section-sombre center">
   <div class="eyebrow" style="justify-content:center;">Notre impact depuis 2022</div>
   <h2>Des chiffres qui parlent.</h2>
   <div class="impact">
