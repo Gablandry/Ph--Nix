@@ -84,6 +84,31 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .section { padding: 120px 40px; }
 .section-soft { background: var(--bg-soft); }
 .section-warm { background: var(--bg-warm); }
+
+/* ===== BLOC SOMBRE — ponctue le défilement pour qu'on sente une progression
+   plutôt qu'une seule longue page claire. Réutilisable sur d'autres sections. */
+.section-sombre { position: relative; isolation: isolate; overflow: hidden; background: #150D20; padding-top: 96px; padding-bottom: 96px; }
+/* le phénix en filigrane occupe l'espace que la colonne de texte laissait vide */
+.section-sombre::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  left: -70px; top: 50%; transform: translateY(-50%);
+  width: min(660px, 50vw); aspect-ratio: 1/1;
+  background: url('phenix-filigrane.png') left center/contain no-repeat;
+  opacity: 0.13;
+}
+/* halo chaud très diffus : évite que le sombre paraisse plat et mort */
+.section-sombre::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(115% 75% at 14% 50%, rgba(232,80,14,0.17), transparent 62%);
+}
+.section-sombre h2, .section-sombre .founder-name { color: #fff; }
+.section-sombre .lead, .section-sombre .founder-desc { color: rgba(255,255,255,0.72); }
+.section-sombre .eyebrow { color: #F4B942; }
+.section-sombre .founder-photo {
+  border-color: rgba(255,255,255,0.16);
+  background: linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+}
 .wrap { max-width: var(--maxw); margin: 0 auto; }
 .center { text-align: center; }
 .lead { font-size: 19px; color: var(--ink-soft); max-width: 620px; margin: 18px auto 0; line-height: 1.6; }
@@ -102,12 +127,16 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .split p { margin-bottom: 18px; }
 
 /* FONDATEURS — grille décalée : le texte reste fixe pendant que les photos défilent */
-.fondation { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 60px; max-width: var(--maxw); margin: 0 auto; align-items: start; }
-.fondation-texte { position: sticky; top: 108px; text-align: left; }
+/* colonne de texte resserrée au profit des portraits, qui étaient trop petits
+   (287 px) pour la place occupée par la section */
+.fondation { display: grid; grid-template-columns: 0.62fr 1.38fr; gap: 52px; max-width: var(--maxw); margin: 0 auto; align-items: center; }
+/* plus de position: sticky — c'est elle qui laissait 380 px de vide sous le
+   texte pendant que la colonne des portraits défilait */
+.fondation-texte { text-align: left; }
 .fondation-texte .lead { margin-left: 0; margin-right: 0; max-width: 400px; }
 .founders { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 /* le second portrait descend : c'est ce décalage qui casse l'alignement figé */
-.founders .founder:nth-child(2) { margin-top: 92px; }
+.founders .founder:nth-child(2) { margin-top: 40px; }
 .founder { text-align: center; will-change: transform; }
 .founder-photo { position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, var(--accent-soft), rgba(214,63,163,0.06)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--hairline); }
 .founder-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -298,6 +327,11 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 }
 @media (max-width: 860px) {
   .section { padding: 80px 24px; }
+  .section-sombre { padding-top: 72px; padding-bottom: 72px; }
+  /* en une seule colonne, le filigrane calé à gauche serait coupé :
+     on le centre en haut, où il fait office de texture derrière le titre */
+  .section-sombre::before { left: 50%; top: 22%; transform: translate(-50%,-50%); width: min(460px, 92vw); }
+  .section-sombre::after { background: radial-gradient(105% 55% at 50% 22%, rgba(232,80,14,0.20), transparent 65%); }
   .trust { gap: 18px 28px; padding: 16px 24px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
@@ -555,7 +589,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- FONDATEURS -->
-<section class="section section-warm">
+<section class="section section-sombre">
   <div class="fondation">
     <div class="fondation-texte">
       <div class="eyebrow">La fondation</div>
