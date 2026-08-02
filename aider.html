@@ -26,6 +26,22 @@
   transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 .acc-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.82) 100%); pointer-events: none; }
+
+/* ===== PANNEAU DE MARQUE — « Faire un don » =====
+   Un don en argent n'a pas de photo honnête : billets, pièces et pots sont
+   tous des clichés. On assume les couleurs du phénix à la place. Le panneau
+   tranche ainsi avec les deux autres, qui restent des photos — ce qui sert
+   le don, l'action la plus importante de la page. */
+.acc-panel-marque { background: linear-gradient(150deg, #2B0F3D 0%, #6B1B52 40%, #C43F2B 76%, #E8730E 100%); }
+.acc-panel-marque::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: url('phenix-filigrane.png') no-repeat center 40%;
+  background-size: 62% auto;
+  opacity: 0.22;
+}
+/* le voile commun n'est qu'à 5 % en haut, ce qui suffit sur une photo sombre
+   mais pas sur l'orange du dégradé : on l'assombrit pour l'étiquette verticale */
+.acc-panel-marque::after { background: linear-gradient(180deg, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0.30) 45%, rgba(0,0,0,0.84) 100%); }
 .acc-panel:hover { flex: 3.4; }
 .acc-ic { position: absolute; top: 22px; left: 22px; z-index: 1; width: 42px; height: 42px; background: rgba(255,255,255,0.16); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 .acc-collapsed { position: relative; z-index: 1; padding: 24px 14px; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap; transition: opacity 0.25s; }
@@ -113,7 +129,7 @@
   <div class="eyebrow" style="justify-content:center;">3 façons de faire une différence</div>
   <h2>Choisissez la vôtre.</h2>
   <div class="acc reveal">
-    <a href="faire-un-don.html" class="acc-panel" style="background-image:url('don-pot.jpg')">
+    <a href="faire-un-don.html" class="acc-panel acc-panel-marque">
       <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
       <span class="acc-collapsed">Faire un don</span>
       <div class="acc-expanded">
