@@ -33,11 +33,13 @@
    tranche ainsi avec les deux autres, qui restent des photos — ce qui sert
    le don, l'action la plus importante de la page. */
 .acc-panel-marque { background: linear-gradient(150deg, #2B0F3D 0%, #6B1B52 40%, #C43F2B 76%, #E8730E 100%); }
+/* le vrai fichier du logo, pas le filigrane : celui-ci avait ete agrandi
+   depuis un decoupage de 325 px et rendait flou. On dimensionne en hauteur
+   pour rester sous les 492 px natifs du fichier, donc toujours net. */
 .acc-panel-marque::before {
   content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: url('phenix-filigrane.png') no-repeat center 40%;
-  background-size: 62% auto;
-  opacity: 0.22;
+  background: url('logo-phenix.webp') no-repeat center 34%;
+  background-size: auto 46%;
 }
 /* le voile commun n'est qu'à 5 % en haut, ce qui suffit sur une photo sombre
    mais pas sur l'orange du dégradé : on l'assombrit pour l'étiquette verticale */
