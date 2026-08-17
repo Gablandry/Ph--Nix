@@ -30,6 +30,51 @@
   }
 
   // FAQ accordion (partagé)
+  /* « Comment on agit » : la ligne se trace en 3,5 s et chaque etape
+     s'ecrit au moment ou le trace l'atteint. Sur ordinateur on calcule la
+     fraction de longueur correspondant au x du jalon, donc le minutage
+     suit la geometrie reelle de la courbe et non des delais devines.
+     Sur telephone la liste est verticale : on repartit en tiers. */
+  const proc = document.querySelector('.proc');
+  if (proc) {
+    const DUREE = 3500;
+    const trace = proc.querySelector('.proc-trace');
+    const etapes = Array.prototype.slice.call(proc.querySelectorAll('.proc-etape'));
+    let minuteries = [];
+
+    function fractionAuX(x) {
+      const L = trace.getTotalLength();
+      let bas = 0, haut = L;
+      for (let i = 0; i < 22; i++) {
+        const mid = (bas + haut) / 2;
+        if (trace.getPointAtLength(mid).x < x) bas = mid; else haut = mid;
+      }
+      return bas / L;
+    }
+
+    function lancer() {
+      const courbe = window.matchMedia('(min-width: 861px)').matches;
+      etapes.forEach(function (e, i) {
+        const t = courbe
+          ? fractionAuX(parseFloat(e.dataset.x)) * DUREE
+          : (i / etapes.length) * DUREE;
+        minuteries.push(setTimeout(function () { e.classList.add('ecrit'); }, t));
+      });
+    }
+    function remettre() {
+      minuteries.forEach(clearTimeout); minuteries = [];
+      etapes.forEach(function (e) { e.classList.remove('ecrit'); });
+    }
+
+    // le meme observateur que les autres blocs rejouables pilote la sequence
+    const obsProc = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (en) {
+        if (en.isIntersecting) lancer(); else remettre();
+      });
+    }, { threshold: 0.3 });
+    obsProc.observe(proc);
+  }
+
   // barre de confiance : sur telephone elle defile en boucle. On duplique
   // les mentions pour que le retour a zero (-50%) soit invisible.
   const trust = document.querySelector('.trust-piste .trust');
