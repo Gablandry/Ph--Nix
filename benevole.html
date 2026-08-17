@@ -34,6 +34,38 @@
   .steps { gap: 12px; }
 }
 @media (max-width: 540px) { .steps { grid-template-columns: 1fr; max-width: 400px; } }
+/* ===== PAGE BENEVOLE — colonne fixe a gauche =====
+   Meme disposition que les pages de service : le titre et le bouton pour
+   ecrire restent accroches pendant qu'on lit les etapes. Sur une page dont
+   tout l'enjeu est d'obtenir un courriel, garder le bouton visible compte. */
+.svc { padding: 0 40px 90px; }
+.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
+             max-width: var(--maxw); margin: 0 auto; align-items: start; }
+.svc-side { position: sticky; top: 108px; padding-top: 92px; }
+.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
+.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 26px; max-width: 400px; }
+.svc-side .eyebrow { justify-content: flex-start; }
+.svc-side .benevole-btns { justify-content: flex-start; margin-top: 0; gap: 10px; }
+.svc-side .benevole-btns .btn { width: 100%; justify-content: center; }
+.svc-side .note { font-size: 13px; color: var(--ink-soft); margin-top: 16px; max-width: 380px; line-height: 1.55; }
+.svc-flow { padding-top: 92px; display: grid; gap: 50px; }
+.svc-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 22px; display: block; }
+.svc-bloc h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 16px; }
+.svc-bloc p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin: 0; }
+.svc-bloc .eyebrow { justify-content: flex-start; }
+.svc-etapes .eyebrow { justify-content: flex-start; }
+.svc-etapes h2 { font-size: clamp(24px, 2.4vw, 30px); margin-bottom: 22px; }
+.svc-etapes .steps { grid-template-columns: 1fr 1fr; margin-top: 0; gap: 16px; }
+
+@media (max-width: 900px) {
+  .svc { padding: 0 24px 60px; }
+  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
+  .svc-side { position: static; padding-top: 46px; }
+  .svc-side .lead, .svc-side .note { max-width: none; }
+  .svc-flow { padding-top: 0; gap: 38px; }
+  .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
+  .svc-etapes .steps { grid-template-columns: 1fr; }
+}
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/benevole.html">
 <meta property="og:type" content="website">
@@ -79,33 +111,33 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.jpg') center/cover no-repeat;">
-  <div class="page-hero-content">
-    <div class="eyebrow" style="justify-content:center; color:#fff;">Devenir bénévole</div>
-    <h1>Votre présence<br>change une vie.</h1>
-    <p>Aucune expérience requise, aucun équipement à prévoir. Juste l'envie d'agir, un samedi à la fois.</p>
-  </div>
-</section>
+<section class="svc">
+  <div class="svc-inner">
 
-<!-- INTRO + CTA -->
-<section class="section center">
-  <div style="max-width:720px; margin:0 auto;">
-    <div class="eyebrow" style="justify-content:center;">Rejoignez l'équipe</div>
-    <h2>On s'occupe de tout le reste.</h2>
-    <p class="lead">Écrivez-nous votre région et vos disponibilités. On vous recontacte pour vous expliquer les étapes, puis vous êtes assigné à une équipe de distribution selon les besoins du moment. L'équipe vous accueille et vous guide sur le terrain.</p>
-    <div class="benevole-btns">
+    <aside class="svc-side">
+      <div class="eyebrow">Devenir bénévole</div>
+      <h1>Votre présence<br>change une vie.</h1>
+      <p class="lead">Aucune expérience requise, aucun équipement à prévoir. Juste l'envie d'agir, un samedi à la fois.</p>
+      <div class="benevole-btns">
       <a href="mailto:phenixactioncitoyenne@gmail.com?subject=Je%20veux%20devenir%20b%C3%A9n%C3%A9vole&body=Bonjour%20Ph%C3%A9-Nix%2C%0A%0AJe%20souhaite%20devenir%20b%C3%A9n%C3%A9vole.%0A%0APr%C3%A9nom%20et%20nom%20%3A%0AR%C3%A9gion%20%3A%0ADisponibilit%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20(optionnel)%20%3A%0A%0AMerci%20!" class="btn btn-primary btn-lg">Écrire pour devenir bénévole →</a>
       <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Voir les événements sur Facebook</a>
     </div>
-    <p style="font-size:13px; color:var(--ink-soft); margin-top:22px;">Le bouton ouvre votre courriel avec un message déjà préparé. Vous n'avez qu'à compléter et envoyer.</p>
-  </div>
-</section>
+      <p class="note">Le bouton ouvre votre courriel avec un message déjà préparé. Vous n'avez qu'à compléter et envoyer.</p>
+    </aside>
 
-<!-- ÉTAPES -->
-<section class="section section-warm center">
-  <div class="eyebrow" style="justify-content:center;">Comment ça marche</div>
-  <h2>Quatre étapes, c'est tout.</h2>
-  <div class="steps">
+    <div class="svc-flow">
+      <img class="svc-photo" src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution">
+
+      <div class="svc-bloc">
+        <div class="eyebrow">Rejoignez l'équipe</div>
+        <h2>On s'occupe de tout le reste.</h2>
+        <p>Écrivez-nous votre région et vos disponibilités. On vous recontacte pour vous expliquer les étapes, puis vous êtes assigné à une équipe de distribution selon les besoins du moment. L'équipe vous accueille et vous guide sur le terrain.</p>
+      </div>
+
+      <div class="svc-etapes">
+        <div class="eyebrow">Comment ça marche</div>
+        <h2>Quatre étapes, c'est tout.</h2>
+        <div class="steps">
     <div class="step reveal reveal-d1">
       <div class="step-no">Étape 01</div>
       <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -131,9 +163,12 @@
       <p>Sur le terrain. Aucun équipement requis, l'équipe prend soin de tout.</p>
     </div>
   </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
