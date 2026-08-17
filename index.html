@@ -406,12 +406,19 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 /* grille plutot que ruban defilant : les photos sont des preuves du travail,
    elles meritent d'etre regardees, pas de defiler. Le masque en degrade qui
    effacait les bords disparait avec le defilement. */
-.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--maxw); margin: 0 auto; }
+/* grille decalee : la deuxieme rangee est poussee vers la droite, ce qui
+   casse l'effet tableur d'une grille reguliere. La grille est retrecie de
+   la valeur du decalage, donc l'ensemble tient exactement dans la largeur
+   habituelle et ne deborde jamais. */
+.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+           max-width: calc(var(--maxw) - 52px); margin: 0 auto; }
+.galerie > *:nth-child(n+4):nth-child(-n+6) { transform: translateX(52px); }
+.galerie > *:nth-child(n+10):nth-child(-n+12) { transform: translateX(52px); }
 /* marge (et non gap) pour que la boucle à -50 % soit exactement raccord */
-.galerie-img-wrap { overflow: hidden; border-radius: 16px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
+.galerie-img-wrap { overflow: hidden; border-radius: 22px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
 .galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
 .galerie-img-wrap:hover img { transform: scale(1.05); }
-.gvid { overflow: hidden; border-radius: 16px; position: relative; aspect-ratio: 4/3; }
+.gvid { overflow: hidden; border-radius: 22px; position: relative; aspect-ratio: 4/3; }
 .gvid video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .galerie-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 55%); opacity: 0; transition: opacity 0.3s; }
 .galerie-img-wrap:hover::after { opacity: 1; }
@@ -509,7 +516,9 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   /* cartes empilées : une colonne, image au-dessus du texte */
   .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
   .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
-  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 100%; }
+  .galerie > * { transform: none !important; }
+  .galerie-img-wrap, .gvid { border-radius: 16px; }
   .pile-txt { padding: 28px 24px 30px; }
   /* la description est retiree sur telephone : photo, titre et bouton
      suffisent, et la carte respire beaucoup plus */
