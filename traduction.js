@@ -1,5 +1,7 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "Lire moins": "Read less",
+ "Lire plus": "Read more",
  "Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.": "He has never stopped since. Every week: food, season-appropriate clothing, blankets, a listening ear — and support toward treatment for those who want a way out.",
  "Ce jour-là, Mike est frappé par la réalité : il y a là un vrai problème, que beaucoup préfèrent ignorer. Lui décide d'arrêter de l'ignorer.": "That day, Mike is struck by the reality of it: there is a real problem here, one many would rather ignore. He decides to stop ignoring it.",
  "Un an plus tard, à sa mémoire, Mike réunit neuf proches. Vingt dollars chacun. Ensemble, ils préparent des repas et vont les distribuer.": "A year later, in his memory, Mike gathers nine people close to him. Twenty dollars each. Together they prepare meals and go out to hand them out.",

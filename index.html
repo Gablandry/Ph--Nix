@@ -94,21 +94,55 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .section-sable .lead,     .section-terre .lead { color: var(--ink-soft-warm); }
 
 /* ===== RECIT FONDATEUR — mission et origine reunies =====
-   Un seul bloc narratif plutot que deux sections : sur telephone, la
-   chronologie verticale faisait beaucoup trop de lignes. */
+   Image en haut, titre, texte repliable, puis les personnes du premier soir. */
 .recit { max-width: 760px; margin: 0 auto; }
-.recit h2 { margin-bottom: 24px; }
+
+/* ESPACE RESERVE pour la photo de la premiere distribution.
+   Des que Mike la fournit : remplacer le fond par url('...') center/cover
+   et supprimer la regle .recit-media::before juste en dessous. */
+.recit-media {
+  position: relative; overflow: hidden; border-radius: 22px; margin-bottom: 30px;
+  aspect-ratio: 16/10;
+  background: linear-gradient(150deg, #2B0F3D 0%, #6B1B52 40%, #C43F2B 76%, #E8730E 100%);
+}
+.recit-media::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('logo-phenix.webp') no-repeat center/auto 52%;
+  opacity: 0.92;
+}
+
+.recit h2 { margin-bottom: 20px; }
 .recit p { font-size: 16.5px; line-height: 1.75; color: var(--ink-soft-warm); margin-bottom: 18px; }
 .recit p:last-child { margin-bottom: 0; }
 .recit-fort { font-size: 19px !important; color: var(--ink) !important; font-weight: 500; }
-/* le jalon : la date detachee en couleur, le reste suit */
 .recit-jalon { border-left: 3px solid #B23C09; padding-left: 20px; }
 .recit-jalon span { display: block; font-weight: 700; color: #B23C09; margin-bottom: 4px; }
+
+/* texte repliable : on montre l'amorce, le reste se deplie au clic */
+.recit-texte { position: relative; overflow: hidden; max-height: 210px; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
+.recit-texte::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(251,244,239,0), var(--bg-warm));
+  transition: opacity .35s;
+}
+.recit.ouvert .recit-texte { max-height: 1400px; }
+.recit.ouvert .recit-texte::after { opacity: 0; }
+.recit-plus {
+  margin-top: 16px; background: none; border: none; padding: 0; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: #B23C09;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.recit-plus:hover { text-decoration: underline; }
+.recit-plus svg { transition: transform .3s; }
+.recit.ouvert .recit-plus svg { transform: rotate(180deg); }
+
 @media (max-width: 860px) {
   .recit p { font-size: 15.5px; margin-bottom: 15px; }
   .recit-fort { font-size: 17.5px !important; }
-  .recit h2 { margin-bottom: 18px; }
+  .recit h2 { margin-bottom: 16px; }
   .recit-jalon { padding-left: 16px; }
+  .recit-media { margin-bottom: 24px; border-radius: 18px; }
+  .recit-texte { max-height: 176px; }
 }
 
 /* ===== BLOC SOMBRE — ponctue le défilement pour qu'on sente une progression
@@ -612,15 +646,34 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 <!-- MISSION + ORIGINE — le recit fondateur, condense -->
 <section class="section section-warm">
   <div class="recit reveal">
+    <!-- ESPACE RESERVE : photo de la premiere distribution, a venir de Mike -->
+    <div class="recit-media" role="img" aria-label="Phé-Nix — Action communautaire citoyenne"></div>
+
     <div class="eyebrow">Notre mission</div>
     <h2>En mémoire d'un ami.</h2>
-    <p class="recit-fort">Phé-Nix est né d'un sentiment d'impuissance. En 2021, un ami de Mike décède dans la rue — et il reste cette impression de n'avoir rien pu faire.</p>
-    <p>Un an plus tard, à sa mémoire, Mike réunit neuf proches. Vingt dollars chacun. Ensemble, ils préparent des repas et vont les distribuer.</p>
-    <p class="recit-jalon"><span>16 décembre 2022</span>La première distribution, en sa mémoire.</p>
-    <p>Ce jour-là, Mike est frappé par la réalité : il y a là un vrai problème, que beaucoup préfèrent ignorer. Lui décide d'arrêter de l'ignorer.</p>
-    <p>Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.</p>
+
+    <div class="recit-texte" id="recit-texte">
+      <p class="recit-fort">Phé-Nix est né d'un sentiment d'impuissance. En 2021, un ami de Mike décède dans la rue — et il reste cette impression de n'avoir rien pu faire.</p>
+      <p>Un an plus tard, à sa mémoire, Mike réunit neuf proches. Vingt dollars chacun. Ensemble, ils préparent des repas et vont les distribuer.</p>
+      <p class="recit-jalon"><span>16 décembre 2022</span>La première distribution, en sa mémoire.</p>
+      <p>Ce jour-là, Mike est frappé par la réalité : il y a là un vrai problème, que beaucoup préfèrent ignorer. Lui décide d'arrêter de l'ignorer.</p>
+      <p>Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.</p>
+    </div>
+
+    <button class="recit-plus" type="button" aria-expanded="false" aria-controls="recit-texte" onclick="toggleRecit(this)">
+      <span>Lire plus</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+
+    <!-- LES NEUF — a activer des que Mike fournit prenoms et photos.
+         Structure prete : dupliquer un .neuf-carte par personne.
+    <h3 class="neuf-titre">Les neuf du premier soir</h3>
+    <div class="neuf">
+      <div class="neuf-carte"><img src="" alt=""><span>Prénom</span></div>
+    </div>
+    -->
   </div>
-</section>
+  </section>
 
 <!-- FONDATEURS -->
 <section class="section section-sombre">

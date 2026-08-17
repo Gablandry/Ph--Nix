@@ -30,6 +30,14 @@
   }
 
   // FAQ accordion (partagé)
+  // texte du recit fondateur : deplie sur place, sans changer de page
+  window.toggleRecit = function (btn) {
+    const bloc = btn.closest('.recit');
+    const ouvert = bloc.classList.toggle('ouvert');
+    btn.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    btn.querySelector('span').textContent = ouvert ? 'Lire moins' : 'Lire plus';
+  };
+
   window.toggleFaq = function (btn) {
     const item    = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
