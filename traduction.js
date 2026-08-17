@@ -1,5 +1,6 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "Un bénévole de Phé-Nix tend la main à une personne allongée sur un banc, dans la neige": "A Phé-Nix volunteer reaches out to a person lying on a bench, in the snow",
  "Tout est trié puis entreposé : les repas sont congelés à l'avance, les vêtements et le matériel sont classés, prêts pour la prochaine sortie.": "Everything is sorted then stored: meals are frozen ahead of time, clothing and supplies are organized, ready for the next outing.",
  "On entrepose": "We store",
  "Navigation": "Navigation",

@@ -97,18 +97,12 @@ body.hero-anim.nav-visible .mobile-nav-bar {
    Image en haut, titre, texte repliable, puis les personnes du premier soir. */
 .recit { max-width: 760px; margin: 0 auto; }
 
-/* ESPACE RESERVE pour la photo de la premiere distribution.
-   Des que Mike la fournit : remplacer le fond par url('...') center/cover
-   et supprimer la regle .recit-media::before juste en dessous. */
+/* la photo est verticale a l'origine : le cadre est en 4:3 plutot qu'en
+   16:10, sinon le recadrage coupait la scene */
 .recit-media {
-  position: relative; overflow: hidden; border-radius: 22px; margin-bottom: 30px;
-  aspect-ratio: 16/10;
-  background: linear-gradient(150deg, #2B0F3D 0%, #6B1B52 40%, #C43F2B 76%, #E8730E 100%);
-}
-.recit-media::before {
-  content: ''; position: absolute; inset: 0;
-  background: url('logo-phenix.webp') no-repeat center/auto 52%;
-  opacity: 0.92;
+  overflow: hidden; border-radius: 22px; margin-bottom: 30px;
+  aspect-ratio: 4/3;
+  background: url('premiere-distribution.jpg') center/cover no-repeat;
 }
 
 .recit h2 { margin-bottom: 20px; }
@@ -646,8 +640,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 <!-- MISSION + ORIGINE — le recit fondateur, condense -->
 <section class="section section-warm">
   <div class="recit reveal">
-    <!-- ESPACE RESERVE : photo de la premiere distribution, a venir de Mike -->
-    <div class="recit-media" role="img" aria-label="Phé-Nix, action communautaire citoyenne"></div>
+    <div class="recit-media" role="img" aria-label="Un bénévole de Phé-Nix tend la main à une personne allongée sur un banc, dans la neige"></div>
 
     <div class="eyebrow">Notre mission</div>
     <h2>En mémoire d'un ami.</h2>
