@@ -40,6 +40,13 @@
   .depots { grid-template-columns: 1fr; max-width: 400px; }
   .give { grid-template-columns: 1fr 1fr; max-width: 440px; }
 }
+
+/* lien d'itineraire : une carte integree enverrait les donnees des visiteurs
+   a un tiers sur chaque page vue, et la politique de securite du site
+   l'interdit. Un lien ouvre la carte native du telephone. */
+.point-map { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; font-size: 13.5px; font-weight: 600; color: #B23C09; text-decoration: none; }
+.point-map:hover { text-decoration: underline; }
+.point-map svg { flex-shrink: 0; }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/dons-materiels.html">
 <meta property="og:type" content="website">
@@ -100,7 +107,7 @@
   <div class="give">
     <div class="give-item">
       <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
-      <h3>Vêtements chauds</h3>
+      <h3>Vêtements adaptés à la saison</h3>
       <p>Manteaux, tuques, gants, bottes, couvertures.</p>
     </div>
     <div class="give-item">
@@ -111,12 +118,12 @@
     <div class="give-item">
       <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
       <h3>Articles d'hygiène</h3>
-      <p>Savon, brosses à dents, produits de soin.</p>
+      <p>Savon, brosses à dents, produits de soin, produits d'hygiène féminine.</p>
     </div>
     <div class="give-item">
       <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <h3>Soins personnels</h3>
-      <p>Trousses, articles de première nécessité.</p>
+      <p>Trousses, articles de première nécessité, maquillage.</p>
     </div>
   </div>
 </section>
@@ -134,18 +141,21 @@
       <div class="depot-num">Point 01</div>
       <h3>Cantine BB-LOO</h3>
       <p>349, rue Jacques-Cartier Sud<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Eugène)</span></p>
+      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
     </div>
     <div class="depot">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div class="depot-num">Point 02</div>
       <h3>Clinique Accès Santé</h3>
       <p>268, boul. Saint-Luc<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Luc)</span></p>
+      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
     </div>
     <div class="depot">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <div class="depot-num">Point 03</div>
       <h3>Mangeons Maison</h3>
       <p>353, rue Saint-Jacques<br>Napierville</p>
+      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
     </div>
   </div>
   <p style="font-size:13px; color:var(--ink-soft); text-align:center; margin-top:30px;">Pour un dépôt spécial ou une collecte, <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent);text-decoration:none;">écrivez-nous</a>.</p>

@@ -44,7 +44,7 @@
 .block .block-sub { color: rgba(255,255,255,0.6); font-size: 15px; }
 
 /* Montants sur fond foncé */
-.montants2 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 900px; margin: 30px auto 0; }
+.montants2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 900px; margin: 30px auto 0; }
 .montant2 { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 30px 18px; text-align: center; transition: transform 0.25s, border-color 0.25s; }
 .montant2:hover { transform: translateY(-4px); border-color: rgba(244,185,66,0.5); }
 .montant2 .amt { font-weight: 700; font-size: 36px; color: #F4B942; line-height: 1; margin-bottom: 12px; letter-spacing: -0.02em; }
@@ -162,7 +162,7 @@
     <!-- POURQUOI -->
     <div class="eyebrow">Un don qui a vraiment du sens</div>
     <h2>Votre argent ne paie pas<br>des bureaux. Il nourrit du monde.</h2>
-    <p class="intro">Pas de salaires. Pas de loyer. Pas de frais cachés.<br>Chaque dollar que vous donnez achète de la <strong>nourriture</strong>, de l'<strong>eau</strong> et des <strong>vêtements chauds</strong> — et les met, cette semaine, entre les mains de quelqu'un qui en a besoin.</p>
+    <p class="intro">Pas de salaires. Pas de loyer. Pas de frais cachés.<br>La nourriture et les vêtements nous sont <strong>donnés</strong>. Votre argent finance ce qui manque : les <strong>achats</strong> et la <strong>logistique</strong> qui amènent tout ça sur le terrain, cette semaine.</p>
     <div class="trust-row">
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % sur le terrain</span>
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aidé près de chez vous</span>
@@ -171,13 +171,21 @@
 
     <!-- IMPACT CONCRET (montants) -->
     <div class="block">
-      <div class="block-label">Ce que vous offrez</div>
-      <h3 class="block-title">Concrètement, votre montant donne :</h3>
+      <div class="block-label">Ce que votre don permet</div>
+      <h3 class="block-title">À peu près, voici ce que votre don permet :</h3>
       <div class="montants2">
-        <div class="montant2"><div class="amt">10 $</div><div class="txt">De l'eau et des fruits frais pour une distribution.</div></div>
-        <div class="montant2"><div class="amt">25 $</div><div class="txt">Une tuque, des gants et un manteau contre le froid.</div></div>
-        <div class="montant2"><div class="amt">50 $</div><div class="txt">Le transport d'une personne vers sa thérapie.</div></div>
-        <div class="montant2"><div class="amt">100 $</div><div class="txt">Une distribution complète : 10 à 15 personnes nourries.</div></div>
+        <div class="montant2">
+          <div class="amt">≈ 50 $</div>
+          <div class="txt">Le transport d'une personne vers sa thérapie.</div>
+        </div>
+        <div class="montant2">
+          <div class="amt">≈ 100 $</div>
+          <div class="txt">Une distribution complète, de la préparation jusqu'à la rue.</div>
+        </div>
+        <div class="montant2">
+          <div class="amt">Du matériel</div>
+          <div class="txt">Vous pouvez aussi donner directement des vêtements adaptés à la saison, de la nourriture ou des articles d'hygiène.</div>
+        </div>
       </div>
     </div>
 
