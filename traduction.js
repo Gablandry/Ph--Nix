@@ -1,5 +1,6 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution": "The Phé-Nix volunteer team in front of the pickup truck, before a distribution",
  "sans arrêt": "without a break",
  "Sur le terrain,": "In the field,",
  "Régions": "Regions",
@@ -214,7 +215,6 @@ var DICO = {
  "Je voudrais aider lors d'une distribution.": "I'd like to help at a distribution.",
  "L'entrevue": "The interview",
  "L'équipe assure le déplacement jusqu'à vos rendez-vous.": "The team handles the trip to your appointments.",
- "L'équipe bénévole Phé-Nix": "The Phé-Nix volunteer team",
  "La bonne ressource, rapidement.": "The right resource, fast.",
  "La demande peut être faite pour soi-même ou pour quelqu'un d'autre.": "A request can be made for yourself or for someone else.",
  "La fondation": "The founding",
