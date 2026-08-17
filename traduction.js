@@ -1,9 +1,10 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
- "Il n'y a jamais eu de dernière fois. Depuis, chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.": "There was never a last time. Since then, every week: food, season-appropriate clothing, blankets, a listening ear — and support toward treatment for those who want a way out.",
+ "Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.": "He has never stopped since. Every week: food, season-appropriate clothing, blankets, a listening ear — and support toward treatment for those who want a way out.",
+ "Ce jour-là, Mike est frappé par la réalité : il y a là un vrai problème, que beaucoup préfèrent ignorer. Lui décide d'arrêter de l'ignorer.": "That day, Mike is struck by the reality of it: there is a real problem here, one many would rather ignore. He decides to stop ignoring it.",
+ "Un an plus tard, à sa mémoire, Mike réunit neuf proches. Vingt dollars chacun. Ensemble, ils préparent des repas et vont les distribuer.": "A year later, in his memory, Mike gathers nine people close to him. Twenty dollars each. Together they prepare meals and go out to hand them out.",
+ "Phé-Nix est né d'un sentiment d'impuissance. En 2021, un ami de Mike meurt dans la rue — et il reste cette impression de n'avoir rien pu faire.": "Phé-Nix was born out of a feeling of helplessness. In 2021, a friend of Mike's dies on the street — and what remains is the sense of having been able to do nothing.",
  "La première distribution, en sa mémoire.": "The first distribution, in his memory.",
- "Un an plus tard, plutôt que de laisser cette date passer en silence, Mike propose quelque chose. Neuf personnes embarquent. Vingt dollars chacune. Assez pour préparer des repas et aller les porter à ceux qui passent l'hiver dehors.": "A year later, rather than let the date pass in silence, Mike suggests something. Nine people join in. Twenty dollars each. Enough to prepare meals and carry them out to those spending the winter outside.",
- "En 2021, un ami de Mike meurt dans la rue. Il y a le chagrin. Et il y a cette impression, tenace, de n'avoir rien pu faire.": "In 2021, a friend of Mike's dies on the street. There is the grief. And there is that nagging sense of having been able to do nothing.",
  "En mémoire d'un ami.": "In memory of a friend.",
  "Téléphone": "Phone",
  "Courriel": "Email",
