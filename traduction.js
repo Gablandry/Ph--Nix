@@ -3,7 +3,7 @@ var DICO = {
  "Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute — et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.": "He has never stopped since. Every week: food, season-appropriate clothing, blankets, a listening ear — and support toward treatment for those who want a way out.",
  "Ce jour-là, Mike est frappé par la réalité : il y a là un vrai problème, que beaucoup préfèrent ignorer. Lui décide d'arrêter de l'ignorer.": "That day, Mike is struck by the reality of it: there is a real problem here, one many would rather ignore. He decides to stop ignoring it.",
  "Un an plus tard, à sa mémoire, Mike réunit neuf proches. Vingt dollars chacun. Ensemble, ils préparent des repas et vont les distribuer.": "A year later, in his memory, Mike gathers nine people close to him. Twenty dollars each. Together they prepare meals and go out to hand them out.",
- "Phé-Nix est né d'un sentiment d'impuissance. En 2021, un ami de Mike meurt dans la rue — et il reste cette impression de n'avoir rien pu faire.": "Phé-Nix was born out of a feeling of helplessness. In 2021, a friend of Mike's dies on the street — and what remains is the sense of having been able to do nothing.",
+ "Phé-Nix est né d'un sentiment d'impuissance. En 2021, un ami de Mike décède dans la rue — et il reste cette impression de n'avoir rien pu faire.": "Phé-Nix was born out of a feeling of helplessness. In 2021, a friend of Mike's passes away on the street — and what remains is the sense of having been able to do nothing.",
  "La première distribution, en sa mémoire.": "The first distribution, in his memory.",
  "En mémoire d'un ami.": "In memory of a friend.",
  "Téléphone": "Phone",
