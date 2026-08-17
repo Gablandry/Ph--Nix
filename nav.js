@@ -30,6 +30,17 @@
   }
 
   // FAQ accordion (partagé)
+  // barre de confiance : sur telephone elle defile en boucle. On duplique
+  // les mentions pour que le retour a zero (-50%) soit invisible.
+  const trust = document.querySelector('.trust-piste .trust');
+  if (trust && !trust.dataset.double) {
+    trust.dataset.double = '1';
+    trust.innerHTML += trust.innerHTML;
+    trust.querySelectorAll('.trust-item').forEach(function (el, i, tous) {
+      if (i >= tous.length / 2) el.setAttribute('aria-hidden', 'true');
+    });
+  }
+
   // texte du recit fondateur : deplie sur place, sans changer de page
   window.toggleRecit = function (btn) {
     const bloc = btn.closest('.recit');

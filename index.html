@@ -76,7 +76,11 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 }
 
 /* ===== TRUST STRIP ===== */
-.trust { background: var(--ink); padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.trust-piste { background: var(--ink); overflow: hidden; }
+/* les mentions dupliquees ne servent qu'a la boucle du defilement mobile :
+   sur ordinateur elles feraient passer la barre sur deux lignes */
+.trust-item[aria-hidden="true"] { display: none; }
+.trust { padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,0.7); white-space: nowrap; }
 .trust-item svg { color: var(--accent); flex-shrink: 0; }
 
@@ -317,8 +321,11 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .pile-no { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; }
 .pile-txt h3 { font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
 .pile-txt p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 22px; }
-.pile-go { font-size: 14px; font-weight: 600; color: var(--accent); }
-.pile-carte:hover .pile-go { text-decoration: underline; }
+.pile-go { display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; background: var(--accent); color: #fff;
+           font-size: 14.5px; font-weight: 600; padding: 12px 22px; border-radius: 999px;
+           transition: background .25s, transform .25s; }
+.pile-carte:hover .pile-go { background: var(--accent-deep); transform: translateY(-2px); }
+
 
 /* ===== PROGRAMMES (4 cartes) ===== */
 .progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
@@ -448,7 +455,17 @@ body.hero-anim.nav-visible .mobile-nav-bar {
      on le centre en haut, où il fait office de texture derrière le titre */
   .section-sombre::before { left: 50%; top: 22%; transform: translate(-50%,-50%); width: min(460px, 92vw); }
   .section-sombre::after { background: radial-gradient(105% 55% at 50% 22%, rgba(232,80,14,0.20), transparent 65%); }
-  .trust { gap: 18px 28px; padding: 16px 24px; }
+  /* sur telephone les 4 mentions passaient chacune a la ligne, ce qui
+     donnait un gros bloc noir. Elles defilent maintenant sur une seule
+     ligne, comme la galerie et le bandeau des villes. */
+  .trust-item[aria-hidden="true"] { display: flex; }
+  .trust { flex-wrap: nowrap; justify-content: flex-start; width: max-content; gap: 30px; padding: 14px 0;
+           animation: trustDefile 26s linear infinite; }
+  .trust-piste:hover .trust, .trust-piste:active .trust { animation-play-state: paused; }
+  @keyframes trustDefile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .trust { animation: none; overflow-x: auto; width: auto; padding-left: 24px; padding-right: 24px; }
+  }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   /* sur petit écran : une colonne, plus de décalage ni de texte fixe */
@@ -463,6 +480,10 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
   .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
   .pile-txt { padding: 28px 24px 30px; }
+  /* la description est retiree sur telephone : photo, titre et bouton
+     suffisent, et la carte respire beaucoup plus */
+  .pile-txt p { display: none; }
+  .pile-txt h3 { margin-bottom: 20px; }
   .pile-carte:nth-child(1) { top: 78px; }
   .pile-carte:nth-child(2) { top: 88px; }
   .pile-carte:nth-child(3) { top: 98px; }
@@ -662,11 +683,13 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- TRUST STRIP -->
-<div class="trust">
-  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré au Québec</div>
-  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % bénévole, aucun salaire</div>
-  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reçu fiscal : bientôt disponible</div>
-  <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sur le terrain depuis 2022</div>
+<div class="trust-piste">
+  <div class="trust">
+    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré au Québec</div>
+    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % bénévole, aucun salaire</div>
+    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reçu fiscal : bientôt disponible</div>
+    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sur le terrain depuis 2022</div>
+  </div>
 </div>
 
 <!-- CAMION PHÉ-NIX -->
