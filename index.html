@@ -93,6 +93,31 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .section-sable .stat-lbl, .section-terre .stat-lbl,
 .section-sable .lead,     .section-terre .lead { color: var(--ink-soft-warm); }
 
+/* ===== ORIGINE — chronologie verticale =====
+   Volontairement differente du .parcours horizontal deja present plus haut
+   sur la page : ici c'est un recit date, pas des etapes de processus. */
+.origine { max-width: 780px; margin: 46px auto 0; list-style: none; padding: 0; position: relative; }
+.origine::before { content: ''; position: absolute; left: 92px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(180deg, #D63FA3, #FF5C1A 55%, #F4B942); opacity: 0.35; }
+.origine-moment { position: relative; display: grid; grid-template-columns: 92px 1fr; gap: 30px; padding-bottom: 34px; }
+.origine-moment:last-child { padding-bottom: 0; }
+/* l'orange de marque n'atteint que 3.0 sur le sable : on le fonce pour
+   ce petit texte, tout en restant dans la meme famille */
+.origine-date { text-align: right; font-weight: 700; font-size: 15px; line-height: 1.35; color: #B23C09; padding-top: 2px; }
+.origine-corps { position: relative; padding-left: 26px; }
+/* le point sur la ligne */
+.origine-corps::before { content: ''; position: absolute; left: -7px; top: 7px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg-sable); }
+.origine-corps h3 { font-size: 18px; color: var(--ink); margin-bottom: 7px; line-height: 1.3; }
+.origine-corps p { font-size: 15.5px; color: var(--ink-soft-warm); line-height: 1.7; }
+.origine-fin { max-width: 780px; margin: 34px auto 0; padding-left: 148px; font-size: 15.5px; color: var(--ink-soft-warm); line-height: 1.7; }
+@media (max-width: 860px) {
+  .origine::before { left: 7px; }
+  .origine-moment { grid-template-columns: 1fr; gap: 0; padding-left: 34px; padding-bottom: 30px; }
+  .origine-date { text-align: left; margin-bottom: 5px; }
+  .origine-corps { padding-left: 0; }
+  .origine-corps::before { left: -34px; top: 4px; }
+  .origine-fin { padding-left: 34px; }
+}
+
 /* ===== BLOC SOMBRE — ponctue le défilement pour qu'on sente une progression
    plutôt qu'une seule longue page claire. Réutilisable sur d'autres sections. */
 .section-sombre { position: relative; isolation: isolate; overflow: hidden; background: #150D20; padding-top: 96px; padding-bottom: 96px; }
@@ -605,6 +630,41 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   </div>
 </section>
 
+<!-- ORIGINE — comment tout a commence -->
+<section class="section section-sable">
+  <div class="wrap">
+    <div class="eyebrow">Comment ça a démarré</div>
+    <h2>Tout a commencé par un deuil.</h2>
+    <p class="lead" style="margin-left:0;">Phé-Nix n'est pas né d'un plan. C'est né d'un sentiment d'impuissance, et du refus de le garder pour soi.</p>
+
+    <ol class="origine" data-replay>
+      <li class="origine-moment">
+        <div class="origine-date">2021</div>
+        <div class="origine-corps">
+          <h3>Un ami meurt dans la rue</h3>
+          <p>Mike perd un ami, mort dehors. De ce vide naît une conviction : l'itinérance n'est pas une fatalité, c'est un problème auquel trop peu de gens s'attaquent.</p>
+        </div>
+      </li>
+      <li class="origine-moment">
+        <div class="origine-date">2022</div>
+        <div class="origine-corps">
+          <h3>Neuf personnes, 20 $ chacune</h3>
+          <p>Mike décide d'agir à sa mémoire. Il réunit neuf personnes autour de lui : chacune met 20 $. Avec ces 180 $, ils achètent des sandwichs.</p>
+        </div>
+      </li>
+      <li class="origine-moment">
+        <div class="origine-date">16 septembre<br>2022</div>
+        <div class="origine-corps">
+          <h3>La première distribution</h3>
+          <p>Un an après le décès de son ami, la petite équipe descend dans la rue distribuer ces sandwichs. C'est la première distribution de Phé-Nix — et sa date de naissance officielle.</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="origine-fin">Ce qui devait être un hommage d'une journée ne s'est jamais arrêté.</p>
+  </div>
+</section>
+
 <!-- FONDATEURS -->
 <section class="section section-sombre">
   <div class="fondation">
@@ -697,7 +757,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
             <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
             <div class="parcours-num">Étape 01</div>
             <h3>On collecte</h3>
-            <p>Dons en argent, nourriture, vêtements et articles d'hygiène — de citoyens et de plus de 70 commanditaires.</p>
+            <p>Dons en argent, nourriture, vêtements et articles d'hygiène, dont des produits d'hygiène féminine — de citoyens et de plus de 100 commanditaires.</p>
           </div>
           <div class="parcours-etape">
             <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
@@ -727,7 +787,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
     <div class="impact-item reveal"><div class="impact-num" data-counter data-target="312000" data-suffix="+">312 000+</div><div class="impact-lbl">Repas distribués<br>chaque année</div></div>
     <div class="impact-item reveal reveal-d1"><div class="impact-num" data-counter data-target="100" data-suffix="+">100+</div><div class="impact-lbl">Personnes aidées<br>chaque semaine</div></div>
     <div class="impact-item reveal reveal-d2"><div class="impact-num" data-counter data-target="57">57</div><div class="impact-lbl">Vies accompagnées<br>vers la thérapie</div></div>
-    <div class="impact-item reveal reveal-d3"><div class="impact-num" data-counter data-target="70" data-suffix="+">70+</div><div class="impact-lbl">Commanditaires<br>engagés</div></div>
+    <div class="impact-item reveal reveal-d3"><div class="impact-num" data-counter data-target="100" data-suffix="+">100+</div><div class="impact-lbl">Commanditaires<br>engagés</div></div>
   </div>
   <div class="regions-ticker">
     <span class="ticker-label">Présents à</span>
@@ -747,7 +807,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 <section class="section section-soft">
   <div class="statement reveal">
     <div class="eyebrow" style="justify-content:center;">Ce qu'on est</div>
-    <p>Une action citoyenne,<br><span>par des citoyens, pour des citoyens.</span><br>Pas d'intermédiaire. Juste du monde qui agit.</p>
+    <p>Une action communautaire,<br><span>par la communauté, pour la communauté.</span><br>Tout a commencé comme une aventure à la mémoire d'un ami. Aujourd'hui ça a pris de l'ampleur, mais l'esprit n'a pas changé.</p>
   </div>
 </section>
 
