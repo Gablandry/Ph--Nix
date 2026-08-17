@@ -147,6 +147,13 @@
         // Déjà en cours ou terminé pendant cette visite : on ne relance pas
         if (el.dataset.counting === '1') return;
         el.dataset.counting = '1';
+        /* On fige d'abord la largeur du nombre a sa valeur finale. Sans ca,
+           « 0 » puis « 12 » puis « 312 000 » n'ont pas la meme largeur : le
+           bloc s'elargit a chaque image et tout le texte autour tremble. */
+        if (!el.dataset.largeurFigee) {
+          el.style.minWidth = Math.ceil(el.getBoundingClientRect().width) + 'px';
+          el.dataset.largeurFigee = '1';
+        }
         const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || '';
         const prefix = el.dataset.prefix || '';
