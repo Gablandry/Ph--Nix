@@ -216,27 +216,80 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .step p { font-size: 14.5px; line-height: 1.6; }
 
 /* ===== PARCOURS — ligne de progression (Du don à la rue) ===== */
-.parcours { position: relative; max-width: var(--maxw); margin: 58px auto 0; }
-.parcours-rail { position: absolute; top: 27px; left: 16.667%; right: 16.667%; height: 2px; background: var(--hairline); border-radius: 2px; overflow: hidden; }
-.parcours-jauge { display: block; width: 0; height: 100%; border-radius: 2px; background: linear-gradient(90deg, #D63FA3 0%, #FF5C1A 55%, #F4B942 100%); transition: width 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s; }
-.parcours.actif .parcours-jauge { width: 100%; }
-/* z-index : les jalons passent au-dessus du trait, qui vient s'y raccorder au lieu de le traverser */
-.parcours-etapes { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
-.parcours-etape { text-align: center; padding: 0 10px; }
-.parcours-noeud {
-  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 20px;
-  background: var(--bg); border: 2px solid var(--hairline); color: var(--ink-soft);
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.55s, color 0.55s, background 0.55s, transform 0.55s;
+/* ===== COMMENT ON AGIT — parcours en courbe =====
+   La ligne se trace, les jalons s'allument et les textes montent, le tout
+   en 1,5 s. pathLength="1" normalise la longueur du trace : le dasharray
+   fonctionne quelle que soit la geometrie reelle de la courbe. */
+.proc { position: relative; max-width: var(--maxw); margin: 54px auto 0; height: 360px; }
+.proc-ligne { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.proc-trace {
+  fill: none; stroke: url(#procDegrade); stroke-width: 3; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.5s cubic-bezier(.45,.05,.35,1);
 }
-/* les jalons s'allument dans l'ordre, au rythme du remplissage du trait */
-.parcours-etape:nth-child(1) .parcours-noeud { transition-delay: 0.25s; }
-.parcours-etape:nth-child(2) .parcours-noeud { transition-delay: 0.8s; }
-.parcours-etape:nth-child(3) .parcours-noeud { transition-delay: 1.35s; }
-.parcours.actif .parcours-noeud { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); transform: scale(1.06); }
-.parcours-num { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
-.parcours-etape h3 { font-size: 19px; margin-bottom: 10px; color: var(--ink); }
-.parcours-etape p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); max-width: 300px; margin: 0 auto; }
+.proc.actif .proc-trace { stroke-dashoffset: 0; }
+.proc-fond { fill: none; stroke: var(--hairline); stroke-width: 2; }
+
+.proc-etapes { position: relative; height: 100%; display: grid; grid-template-columns: repeat(3,1fr); }
+.proc-etape { position: relative; }
+
+/* le gros chiffre en filigrane, derriere tout */
+.proc-chiffre {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  font-weight: 700; font-size: 132px; line-height: 1; color: rgba(29,29,31,0.07);
+  letter-spacing: -0.04em; user-select: none; pointer-events: none;
+}
+.proc-1 .proc-chiffre { top: 96px; }
+.proc-2 .proc-chiffre { top: 8px; }
+.proc-3 .proc-chiffre { top: 46px; }
+
+/* le jalon, pose exactement sur la courbe */
+.proc-noeud {
+  position: absolute; left: 50%; width: 52px; height: 52px; margin-left: -26px;
+  border-radius: 50%; background: var(--bg); box-shadow: 0 6px 20px rgba(178,60,9,.22);
+  display: flex; align-items: center; justify-content: center; color: #B23C09;
+  opacity: 0; transform: scale(.5);
+  transition: opacity .45s ease, transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.proc-1 .proc-noeud { top: 224px; }
+.proc-2 .proc-noeud { top:  84px; }
+.proc-3 .proc-noeud { top: 164px; }
+.proc.actif .proc-noeud { opacity: 1; transform: scale(1); }
+.proc.actif .proc-1 .proc-noeud { transition-delay: .18s; }
+.proc.actif .proc-2 .proc-noeud { transition-delay: .72s; }
+.proc.actif .proc-3 .proc-noeud { transition-delay: 1.16s; }
+
+.proc-txt { position: absolute; left: 8px; right: 8px; opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.proc-1 .proc-txt { top:  56px; }
+.proc-2 .proc-txt { top: 158px; }
+.proc-3 .proc-txt { top: 238px; }
+.proc.actif .proc-txt { opacity: 1; transform: none; }
+.proc.actif .proc-1 .proc-txt { transition-delay: .30s; }
+.proc.actif .proc-2 .proc-txt { transition-delay: .84s; }
+.proc.actif .proc-3 .proc-txt { transition-delay: 1.28s; }
+
+.proc-num { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #B23C09; margin-bottom: 7px; }
+.proc-etape h3 { font-size: 19px; margin-bottom: 9px; color: var(--ink); }
+.proc-etape p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+
+/* en colonne sous 860 px : la courbe ne tient pas, on passe a une ligne verticale */
+@media (max-width: 860px) {
+  .proc { height: auto; }
+  .proc-ligne { display: none; }
+  .proc-etapes { display: block; }
+  .proc-etape { padding: 0 0 30px 62px; }
+  .proc-etape:last-child { padding-bottom: 0; }
+  /* le trait vertical qui relie les jalons */
+  .proc-etape:not(:last-child)::before {
+    content: ''; position: absolute; left: 25px; top: 46px; bottom: 8px; width: 2px;
+    background: linear-gradient(180deg, #D63FA3, #FF5C1A);
+    opacity: 0; transition: opacity .5s ease;
+  }
+  .proc.actif .proc-etape::before { opacity: .4; }
+  .proc-chiffre { display: none; }
+  .proc-noeud, .proc-1 .proc-noeud, .proc-2 .proc-noeud, .proc-3 .proc-noeud { top: 0; left: 0; margin-left: 0; width: 44px; height: 44px; }
+  .proc-txt, .proc-1 .proc-txt, .proc-2 .proc-txt, .proc-3 .proc-txt { position: relative; top: 0; left: 0; right: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
   .parcours-jauge { transition: none; width: 100%; }
   .parcours-noeud { transition: none; }
@@ -753,26 +806,43 @@ body.hero-anim.nav-visible .mobile-nav-bar {
       <h3 style="font-size:clamp(26px,3vw,38px); font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:8px;">Du don à la rue, en 3 étapes.</h3>
       <p class="lead" style="margin-bottom:0;">Une chaîne simple et directe, sans intermédiaire ni frais d'administration.</p>
       <!-- Ligne de progression : le trait se remplit et les jalons s'allument un à un -->
-      <div class="parcours" data-replay>
-        <div class="parcours-rail"><span class="parcours-jauge"></span></div>
-        <div class="parcours-etapes">
-          <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
-            <div class="parcours-num">Étape 01</div>
-            <h3>On collecte</h3>
-            <p>Dons en argent, nourriture, vêtements et articles d'hygiène, dont des produits d'hygiène féminine, de citoyens et de plus de 100 commanditaires.</p>
+      <div class="proc" data-replay>
+        <svg class="proc-ligne" viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="procDegrade" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#D63FA3"/><stop offset="0.55" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/>
+            </linearGradient>
+          </defs>
+          <path class="proc-fond" d="M 0 250 L 170 250 C 300 250, 380 110, 600 110 C 790 110, 840 190, 1000 190 L 1200 190"/>
+          <path class="proc-trace" pathLength="1" d="M 0 250 L 170 250 C 300 250, 380 110, 600 110 C 790 110, 840 190, 1000 190 L 1200 190"/>
+        </svg>
+        <div class="proc-etapes">
+          <div class="proc-etape proc-1">
+            <span class="proc-chiffre" aria-hidden="true">1</span>
+            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+            <div class="proc-txt">
+              <div class="proc-num">Étape 01</div>
+              <h3>On collecte</h3>
+              <p>Dons en argent, nourriture, vêtements et articles d'hygiène, dont des produits d'hygiène féminine, de citoyens et de plus de 100 commanditaires.</p>
+            </div>
           </div>
-          <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-            <div class="parcours-num">Étape 02</div>
-            <h3>On entrepose</h3>
-            <p>Tout est trié puis entreposé : les repas sont congelés à l'avance, les vêtements et le matériel sont classés, prêts pour la prochaine sortie.</p>
+          <div class="proc-etape proc-2">
+            <span class="proc-chiffre" aria-hidden="true">2</span>
+            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+            <div class="proc-txt">
+              <div class="proc-num">Étape 02</div>
+              <h3>On entrepose</h3>
+              <p>Tout est trié puis entreposé : les repas sont congelés à l'avance, les vêtements et le matériel sont classés, prêts pour la prochaine sortie.</p>
+            </div>
           </div>
-          <div class="parcours-etape">
-            <div class="parcours-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-            <div class="parcours-num">Étape 03</div>
-            <h3>On distribue</h3>
-            <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
+          <div class="proc-etape proc-3">
+            <span class="proc-chiffre" aria-hidden="true">3</span>
+            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div class="proc-txt">
+              <div class="proc-num">Étape 03</div>
+              <h3>On distribue</h3>
+              <p>Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.</p>
+            </div>
           </div>
         </div>
       </div>
