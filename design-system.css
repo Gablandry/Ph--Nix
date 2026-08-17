@@ -22,7 +22,11 @@
 
 /* RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+/* overflow-x: clip plutot que hidden. « hidden » cree un conteneur de
+   defilement qui desactive position: sticky pour tous les descendants ;
+   « clip » coupe le debordement sans cet effet de bord. La ligne hidden
+   reste en repli pour les navigateurs qui ne connaissent pas clip. */
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
@@ -30,6 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }

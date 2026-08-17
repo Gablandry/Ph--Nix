@@ -19,6 +19,38 @@
 .service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
 
 /* Points clés */
+/* ===== PAGE DE SERVICE — colonne fixe a gauche =====
+   Le titre, l'intro et le bouton restent accroches pendant que le contenu
+   defile a droite : la page cesse d'etre une pile de blocs empiles. */
+.svc { padding: 0 40px 90px; }
+.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
+             max-width: var(--maxw); margin: 0 auto; align-items: start; }
+.svc-side { position: sticky; top: 108px; padding-top: 92px; }
+.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
+.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 28px; max-width: 400px; }
+.svc-flow { padding-top: 92px; display: grid; gap: 54px; }
+.svc-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 22px; display: block; }
+.svc-bloc h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 16px; }
+.svc-bloc p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 14px; }
+.svc-bloc p:last-child { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .svc { padding: 0 24px 60px; }
+  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
+  .svc-side { position: static; padding-top: 46px; }
+  .svc-side .lead { max-width: none; }
+  .svc-flow { padding-top: 0; gap: 40px; }
+  .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
+}
+
+/* la FAQ entre dans la colonne de droite : sinon la colonne de gauche
+   cesse de coller des la fin de la premiere section */
+.svc-faq { text-align: left; }
+.svc-faq .faq { margin: 0; max-width: none; }
+.svc-faq h2 { font-size: clamp(24px, 2.4vw, 30px); margin-bottom: 6px; }
+.svc-faq .lead { margin: 0 0 26px; font-size: 16px; }
+.svc-faq .eyebrow { justify-content: flex-start; }
+
 /* ===== POINTS CLES — bande de faits =====
    Les cartes a pastille coloree et petite icone sont le motif que produit
    n'importe quel generateur : on les retire. Restent les faits, separes par
@@ -111,24 +143,27 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.jpg') center/cover no-repeat;">
-  <div class="page-hero-content">
-    <div class="eyebrow" style="justify-content:center; color:#fff;">Nos services</div>
-    <h1>Distribution alimentaire dans les rues.</h1>
-    <p>Des repas chauds à manger sur place et des repas congelés à emporter, distribués une fois par semaine, directement dans la rue.</p>
-  </div>
-</section>
+<section class="svc">
+  <div class="svc-inner">
 
-<!-- DESCRIPTION -->
-<section class="section">
-  <div class="service-body">
+    <aside class="svc-side">
+      <div class="eyebrow">Nos services</div>
+      <h1>Distribution alimentaire dans les rues.</h1>
+      <p class="lead">Des repas chauds à manger sur place et des repas congelés à emporter, distribués une fois par semaine, directement dans la rue.</p>
+      <a href="#contact-service" class="btn btn-primary">Nous écrire →</a>
+    </aside>
+
+    <div class="svc-flow">
+      <img class="svc-photo" src="distribution-rue.jpg" alt="Un repas chaud remis en mains propres dans la rue">
+
+      <div class="svc-bloc">
     <div class="eyebrow">Comment ça fonctionne</div>
     <h2>Sur le terrain, chaque semaine.</h2>
     <p>Une fois par semaine, notre équipe de bénévoles va à la rencontre des personnes en situation d'itinérance, peu importe la température. On offre un repas chaud à manger sur le moment, mais aussi des repas congelés à emporter : congelés à l'avance, ils se conservent et permettent de manger encore le lendemain. On distribue également de l'eau embouteillée et du café.</p>
     <p>Les distributions ont lieu dans plusieurs villes du Québec : Montréal, Longueuil, Saint-Jean-sur-Richelieu, en Montérégie, à Gatineau et à Trois-Rivières. Le tout est réalisé 100 % par des bénévoles.</p>
-  </div>
+      </div>
 
-  <div class="conditions">
+      <div class="conditions">
     <div class="condition">
       <h3>Chaque semaine</h3>
       <p>Des distributions régulières, semaine après semaine, depuis 2022.</p>
@@ -146,11 +181,9 @@
       <p>Aucun salaire : tout le travail est fait par des bénévoles.</p>
     </div>
   </div>
-</section>
 
-<!-- FOIRE AUX QUESTIONS -->
-<section class="section section-soft center">
-  <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
+      <div class="svc-faq">
+        <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
   <h2>Vos questions.</h2>
   <p class="lead">Ce qu'il faut savoir sur nos distributions dans la rue.</p>
   <div class="faq">
@@ -183,10 +216,16 @@
       <div class="faq-a">Avec plaisir. Aucune expérience n'est requise. Rendez-vous sur la page <a href="benevole.html" style="color:var(--accent);text-decoration:none;">Devenir bénévole</a> ou écrivez-nous directement.</div>
     </div>
   </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
+
+
 <!-- CONTACT -->
-<section class="section center">
+<section class="section center" id="contact-service">
   <div class="eyebrow" style="justify-content:center;">Une question ?</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">On répond à tous les messages, généralement sous 24 à 48 h.</p>
