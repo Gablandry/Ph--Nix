@@ -1,5 +1,8 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "Chaque sortie est annoncée et racontée sur notre groupe Facebook. C'est là qu'on partage les photos, les besoins du moment et les prochaines distributions.": "Every outing is announced and shared on our Facebook group. That's where we post the photos, the current needs and the upcoming distributions.",
+ "semaine après semaine.": "week after week.",
+ "Nos actions,": "Our work,",
  "L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution": "The Phé-Nix volunteer team in front of the pickup truck, before a distribution",
  "sans arrêt": "without a break",
  "Sur le terrain,": "In the field,",

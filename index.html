@@ -401,19 +401,20 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
 
 /* ===== GALERIE uniforme + zoom ===== */
-.galerie-head { display: flex; justify-content: space-between; align-items: flex-end; max-width: var(--maxw); margin: 0 auto 44px; gap: 16px; flex-wrap: wrap; }
 /* Ruban qui défile en continu — les bords s'estompent pour éviter une coupe nette */
 /* grille plutot que ruban defilant : les photos sont des preuves du travail,
    elles meritent d'etre regardees, pas de defiler. Le masque en degrade qui
    effacait les bords disparait avec le defilement. */
-/* grille decalee : la deuxieme rangee est poussee vers la droite, ce qui
-   casse l'effet tableur d'une grille reguliere. La grille est retrecie de
-   la valeur du decalage, donc l'ensemble tient exactement dans la largeur
-   habituelle et ne deborde jamais. */
-.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-           max-width: calc(var(--maxw) - 52px); margin: 0 auto; }
-.galerie > *:nth-child(n+4):nth-child(-n+6) { transform: translateX(52px); }
-.galerie > *:nth-child(n+10):nth-child(-n+12) { transform: translateX(52px); }
+/* « Sur le terrain » : le texte tient la colonne de gauche, la mosaique
+   occupe la droite. Les deux colonnes d'images sont decalees verticalement,
+   ce qui evite l'effet tableur d'une grille reguliere. */
+.terrain-inner { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px;
+                 align-items: center; max-width: var(--maxw); margin: 0 auto; }
+.terrain-txt h2 { margin-bottom: 18px; }
+.terrain-txt .lead { margin: 0 0 30px; max-width: 420px; }
+.galerie { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* la colonne de droite descend, celle de gauche reste en place */
+.galerie > *:nth-child(even) { transform: translateY(38px); }
 /* marge (et non gap) pour que la boucle à -50 % soit exactement raccord */
 .galerie-img-wrap { overflow: hidden; border-radius: 22px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
 .galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
@@ -516,8 +517,11 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   /* cartes empilées : une colonne, image au-dessus du texte */
   .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
   .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
-  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 100%; }
-  .galerie > * { transform: none !important; }
+  .terrain-inner { grid-template-columns: 1fr; gap: 30px; }
+  .terrain-txt .lead { max-width: none; }
+  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* le decalage vertical est conserve, il fonctionne aussi a deux colonnes */
+  .galerie > *:nth-child(even) { transform: translateY(22px); }
   .galerie-img-wrap, .gvid { border-radius: 16px; }
   .pile-txt { padding: 28px 24px 30px; }
   /* la description est retiree sur telephone : photo, titre et bouton
@@ -966,19 +970,21 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- SUR LE TERRAIN -->
-<section class="section">
-  <div class="galerie-head">
-    <div><div class="eyebrow">Sur le terrain</div><h2>Nos actions, semaine après semaine.</h2></div>
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;">Voir plus sur Facebook →</a>
-  </div>
-  <div class="galerie" id="galerie-ruban">
-    <!-- Rangée 1 : photos -->
-    <div class="galerie-img-wrap" data-src="equipe-terrain.jpg"><img src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution"></div>
-    <div class="galerie-img-wrap" data-src="terrain-legumes.jpg"><img src="terrain-legumes.jpg" alt="Pick-up rempli de boîtes de légumes frais pour la distribution"></div>
-    <!-- Rangée 2 : vidéos en boucle (déposer terrain-1/2/3.mp4 pour les activer ; sinon la photo s'affiche) -->
-    <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
-    <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
-    <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
+<section class="section terrain">
+  <div class="terrain-inner">
+    <div class="terrain-txt reveal-left">
+      <div class="eyebrow">Sur le terrain</div>
+      <h2>Nos actions,<br>semaine après semaine.</h2>
+      <p class="lead">Chaque sortie est annoncée et racontée sur notre groupe Facebook. C'est là qu'on partage les photos, les besoins du moment et les prochaines distributions.</p>
+      <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Voir plus sur Facebook →</a>
+    </div>
+    <div class="galerie reveal-right" id="galerie-ruban">
+      <div class="galerie-img-wrap" data-src="equipe-terrain.jpg"><img src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution"></div>
+      <div class="galerie-img-wrap" data-src="terrain-legumes.jpg"><img src="terrain-legumes.jpg" alt="Pick-up rempli de boîtes de légumes frais pour la distribution"></div>
+      <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
+      <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
+      <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
+    </div>
   </div>
 </section>
 
