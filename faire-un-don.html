@@ -54,6 +54,10 @@
 .repart { max-width: 600px; margin: 30px auto 0; text-align: left; }
 .repart-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .repart-label { min-width: 196px; font-size: 14px; color: #fff; font-weight: 500; }
+.repart-label em { display: block; font-style: normal; font-size: 12px; font-weight: 400;
+                   color: rgba(255,255,255,0.55); margin-top: 2px; line-height: 1.35; }
+.repart-precision { max-width: 600px; margin: 20px auto 0; text-align: left; font-size: 13.5px;
+                    line-height: 1.6; color: rgba(255,255,255,0.68); }
 .repart-bar { flex: 1; height: 9px; background: rgba(255,255,255,0.12); border-radius: 5px; overflow: hidden; }
 .repart-fill { height: 100%; background: linear-gradient(90deg, #F4B942, var(--accent)); border-radius: 5px; width: 0; transition: width 1.3s cubic-bezier(0.4,0,0.2,1); }
 .repart-pct { min-width: 42px; text-align: right; font-weight: 700; font-size: 14px; color: #F4B942; }
@@ -64,14 +68,18 @@
 /* Bande photo pleine largeur dans le bloc sombre. Elle remplace du texte :
    une image de distribution dit en une seconde ce qu'un paragraphe explique. */
 .don-photo { position: relative; margin: 70px auto 0; max-width: 900px; border-radius: 24px; overflow: hidden; }
-.don-photo img { width: 100%; aspect-ratio: 21/9; object-fit: cover; display: block; }
+.don-photo img { width: 100%; height: auto; display: block; }
+/* Chaque photo garde ses proportions reelles. Un ratio impose rognait les
+   cotes du camion (1477x455) et 43 % de la hauteur de la photo de rue. */
+.don-photo.pano img { aspect-ratio: 1477 / 455; }
+.don-photo.carre img { aspect-ratio: 950 / 712; }
 .don-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 28px 20px;
   background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.78) 100%);
   color: #fff; font-size: 15px; font-weight: 600; text-align: left; letter-spacing: -0.01em; }
 @media (max-width: 700px) {
   .don-photo { margin-top: 46px; border-radius: 18px; }
-  .don-photo img { aspect-ratio: 4/3; }
   .don-photo figcaption { font-size: 13.5px; padding: 20px 18px 16px; }
+  .don-photo.pano figcaption { position: static; background: rgba(255,255,255,0.07); padding: 12px 16px 14px; }
 }
 /* Repartition : plus de pourcentages inventes, on montre l'ordre de grandeur. */
 .repart-pct { min-width: 132px; font-size: 12.5px; font-weight: 600; letter-spacing: -0.01em; }
@@ -190,7 +198,7 @@
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré au Québec</span>
     </div>
 
-    <figure class="don-photo reveal">
+    <figure class="don-photo carre reveal">
       <img src="distribution-rue.jpg" alt="Distribution de repas dans la rue par les bénévoles de Phé-Nix">
       <figcaption>Chaque samedi, dans la rue.</figcaption>
     </figure>
@@ -215,7 +223,7 @@
       </div>
     </div>
 
-    <figure class="don-photo reveal">
+    <figure class="don-photo pano reveal">
       <img src="camion-phenix.webp" alt="Le camion de Phé-Nix chargé avant une distribution">
       <figcaption>Le camion, l'essence, les kilomètres.</figcaption>
     </figure>
@@ -226,11 +234,12 @@
       <h3 class="block-title">Rien ne se perd en chemin.</h3>
       <p class="block-sub">La nourriture et les vêtements nous sont donnés. Votre argent sert à les amener jusqu'aux gens. Voici l'ordre de grandeur.</p>
       <div class="repart">
-        <div class="repart-row"><span class="repart-label">Essence &amp; déplacements</span><div class="repart-bar"><div class="repart-fill" data-width="100%"></div></div><span class="repart-pct">La plus grosse part</span></div>
+        <div class="repart-row"><span class="repart-label">Essence &amp; déplacements<em>Collectes et distributions</em></span><div class="repart-bar"><div class="repart-fill" data-width="100%"></div></div><span class="repart-pct">La plus grosse part</span></div>
         <div class="repart-row"><span class="repart-label">Logistique des distributions</span><div class="repart-bar"><div class="repart-fill" data-width="64%"></div></div><span class="repart-pct">Une part importante</span></div>
         <div class="repart-row"><span class="repart-label">Transport vers la thérapie</span><div class="repart-bar"><div class="repart-fill" data-width="40%"></div></div><span class="repart-pct">Une part réelle</span></div>
         <div class="repart-row"><span class="repart-label">Achats de dépannage</span><div class="repart-bar"><div class="repart-fill" data-width="22%"></div></div><span class="repart-pct">Une petite part</span></div>
       </div>
+      <p class="repart-precision">Le gros de l'essence part avant même la distribution : ce sont les allers-retours pour aller chercher les dons, un commerce à la fois, semaine après semaine. Personne ne roule pour rien.</p>
       <p class="repart-note">0 % en administration. 0 % en salaires. <span>100 % sur le terrain.</span></p>
     </div>
 

@@ -467,6 +467,8 @@ var DICO = {
  "Ouvrez votre application bancaire → « Virement Interac » → collez l'adresse.": "Open your banking app → \"Interac e-Transfer\" → paste the address.",
  "Distribution de repas dans la rue par les bénévoles de Phé-Nix": "Phé-Nix volunteers handing out meals in the street",
  "Le camion de Phé-Nix chargé avant une distribution": "The Phé-Nix truck loaded up before a distribution",
+ "Collectes et distributions": "Pickups and distributions",
+ "Le gros de l'essence part avant même la distribution : ce sont les allers-retours pour aller chercher les dons, un commerce à la fois, semaine après semaine. Personne ne roule pour rien.": "Most of the fuel is spent before the distribution even starts: the round trips to pick up donations, one business at a time, week after week. Nobody drives around for nothing.",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
