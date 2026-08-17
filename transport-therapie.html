@@ -19,11 +19,23 @@
 .service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
 
 /* Points clés */
-.conditions { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 760px; margin: 48px auto 0; text-align: left; }
-.condition { background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; }
-.condition-ic { width: 38px; height: 38px; background: var(--accent-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 14px; }
-.condition h3 { font-size: 15.5px; margin-bottom: 6px; }
-.condition p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+/* ===== POINTS CLES — bande de faits =====
+   Les cartes a pastille coloree et petite icone sont le motif que produit
+   n'importe quel generateur : on les retire. Restent les faits, separes par
+   de fins filets, le mot-cle en gros et l'explication en dessous. */
+.conditions { display: grid; grid-template-columns: repeat(2,1fr); gap: 0;
+              max-width: 780px; margin: 44px auto 0; text-align: left; }
+.condition { padding: 26px 30px; border-top: 1px solid var(--hairline); }
+/* le filet vertical n'existe qu'entre les deux colonnes */
+.condition:nth-child(even) { border-left: 1px solid var(--hairline); }
+.condition h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 8px; color: var(--ink); }
+.condition p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+@media (max-width: 640px) {
+  .conditions { grid-template-columns: 1fr; max-width: 460px; }
+  .condition { padding: 22px 0; }
+  .condition:nth-child(even) { border-left: none; }
+  .condition h3 { font-size: 19px; }
+}
 
 /* Foire aux questions (même modèle que la page Faire un don) */
 .faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
@@ -34,17 +46,25 @@
 .faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
 .faq-item.open .faq-a { max-height: 320px; padding-bottom: 22px; }
 /* Contact */
-.contacts { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 840px; margin: 48px auto 0; }
-.contact-card { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 26px; text-align: center; text-decoration: none; display: block; transition: transform 0.25s, box-shadow 0.25s; }
-.contact-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.07); }
-.contact-card .ic { width: 48px; height: 48px; background: var(--accent-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin: 0 auto 16px; }
-.contact-card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
-.contact-card .val { font-family: 'Inter',sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); word-break: break-word; }
+/* cartes de contact en ligne : centrees et etroites, l'adresse courriel se
+   cassait sur trois lignes. Icone a gauche, texte a droite, une seule ligne. */
+.contacts { display: grid; gap: 14px; max-width: 560px; margin: 44px auto 0; text-align: left; }
+.contact-card { display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 18px;
+                background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px;
+                padding: 18px 22px; text-decoration: none;
+                transition: transform .25s, box-shadow .25s, border-color .25s; }
+.contact-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.07); border-color: var(--accent); }
+.contact-card .ic { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; }
+.cc-courriel .ic { background: rgba(232,80,14,.10); color: #C7440B; }
+.cc-tel      .ic { background: rgba(22,163,74,.11); color: #15803D; }
+.cc-fb       .ic { background: rgba(24,119,242,.11); color: #1877F2; }
+.contact-card .lbl { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft); margin-bottom: 3px; }
+.contact-card .val { font-family: 'Inter',sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 420px) { .contact-card .val { font-size: 14.5px; } .contact-card { padding: 15px 16px; gap: 14px; grid-template-columns: 44px 1fr; } }
 
 @media (max-width: 860px) {
   .section { padding: 72px 24px; }
   .conditions { grid-template-columns: 1fr; max-width: 440px; }
-  .contacts { grid-template-columns: 1fr; max-width: 360px; }
 }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/transport-therapie.html">
@@ -109,22 +129,18 @@
 
   <div class="conditions">
     <div class="condition">
-      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
       <h3>On vous conduit</h3>
       <p>L'équipe assure le déplacement jusqu'à vos rendez-vous.</p>
     </div>
     <div class="condition">
-      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
       <h3>La suite du référencement</h3>
       <p>On trouve d'abord la bonne ressource, puis on vous y amène.</p>
     </div>
     <div class="condition">
-      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
       <h3>Par des bénévoles</h3>
       <p>Comme tout ce qu'on fait : 100 % bénévole, sans salaire.</p>
     </div>
     <div class="condition">
-      <div class="condition-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>Plus d'excuse</h3>
       <p>Le manque de transport ne doit jamais être ce qui vous arrête.</p>
     </div>
@@ -162,20 +178,26 @@
   <h2>Parlons-nous.</h2>
   <p class="lead">Contactez-nous directement pour organiser un transport vers une thérapie.</p>
   <div class="contacts">
-    <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card">
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card cc-courriel">
       <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <div class="lbl">Courriel</div>
-      <div class="val">phenixactioncitoyenne<br>@gmail.com</div>
+      <div>
+        <div class="lbl">Courriel</div>
+        <div class="val">phenixactioncitoyenne@gmail.com</div>
+      </div>
     </a>
-    <a href="tel:4385263889" class="contact-card">
+    <a href="tel:4385263889" class="contact-card cc-tel">
       <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-      <div class="lbl">Téléphone</div>
-      <div class="val">(438) 526-3889</div>
+      <div>
+        <div class="lbl">Téléphone</div>
+        <div class="val">(438) 526-3889</div>
+      </div>
     </a>
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="contact-card">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
-      <div class="lbl">Facebook</div>
-      <div class="val">Suivez la mission</div>
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="contact-card cc-fb">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg></div>
+      <div>
+        <div class="lbl">Facebook</div>
+        <div class="val">Suivez la mission</div>
+      </div>
     </a>
   </div>
 </section>
