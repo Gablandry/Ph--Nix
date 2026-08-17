@@ -93,29 +93,22 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .section-sable .stat-lbl, .section-terre .stat-lbl,
 .section-sable .lead,     .section-terre .lead { color: var(--ink-soft-warm); }
 
-/* ===== ORIGINE — chronologie verticale =====
-   Volontairement differente du .parcours horizontal deja present plus haut
-   sur la page : ici c'est un recit date, pas des etapes de processus. */
-.origine { max-width: 780px; margin: 46px auto 0; list-style: none; padding: 0; position: relative; }
-.origine::before { content: ''; position: absolute; left: 92px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(180deg, #D63FA3, #FF5C1A 55%, #F4B942); opacity: 0.35; }
-.origine-moment { position: relative; display: grid; grid-template-columns: 92px 1fr; gap: 30px; padding-bottom: 34px; }
-.origine-moment:last-child { padding-bottom: 0; }
-/* l'orange de marque n'atteint que 3.0 sur le sable : on le fonce pour
-   ce petit texte, tout en restant dans la meme famille */
-.origine-date { text-align: right; font-weight: 700; font-size: 15px; line-height: 1.35; color: #B23C09; padding-top: 2px; }
-.origine-corps { position: relative; padding-left: 26px; }
-/* le point sur la ligne */
-.origine-corps::before { content: ''; position: absolute; left: -7px; top: 7px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg-sable); }
-.origine-corps h3 { font-size: 18px; color: var(--ink); margin-bottom: 7px; line-height: 1.3; }
-.origine-corps p { font-size: 15.5px; color: var(--ink-soft-warm); line-height: 1.7; }
-.origine-fin { max-width: 780px; margin: 34px auto 0; padding-left: 148px; font-size: 15.5px; color: var(--ink-soft-warm); line-height: 1.7; }
+/* ===== RECIT FONDATEUR — mission et origine reunies =====
+   Un seul bloc narratif plutot que deux sections : sur telephone, la
+   chronologie verticale faisait beaucoup trop de lignes. */
+.recit { max-width: 760px; margin: 0 auto; }
+.recit h2 { margin-bottom: 24px; }
+.recit p { font-size: 16.5px; line-height: 1.75; color: var(--ink-soft-warm); margin-bottom: 18px; }
+.recit p:last-child { margin-bottom: 0; }
+.recit-fort { font-size: 19px !important; color: var(--ink) !important; font-weight: 500; }
+/* le jalon : la date detachee en couleur, le reste suit */
+.recit-jalon { border-left: 3px solid #B23C09; padding-left: 20px; }
+.recit-jalon span { display: block; font-weight: 700; color: #B23C09; margin-bottom: 4px; }
 @media (max-width: 860px) {
-  .origine::before { left: 7px; }
-  .origine-moment { grid-template-columns: 1fr; gap: 0; padding-left: 34px; padding-bottom: 30px; }
-  .origine-date { text-align: left; margin-bottom: 5px; }
-  .origine-corps { padding-left: 0; }
-  .origine-corps::before { left: -34px; top: 4px; }
-  .origine-fin { padding-left: 34px; }
+  .recit p { font-size: 15.5px; margin-bottom: 15px; }
+  .recit-fort { font-size: 17.5px !important; }
+  .recit h2 { margin-bottom: 18px; }
+  .recit-jalon { padding-left: 16px; }
 }
 
 /* ===== BLOC SOMBRE — ponctue le défilement pour qu'on sente une progression
@@ -616,52 +609,15 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 </section>
 
 <!-- MISSION -->
-<section class="section">
-  <div class="split">
-    <div class="reveal-left">
-      <div class="eyebrow">Notre mission</div>
-      <h2>Personne ne devrait dormir dehors le ventre vide.</h2>
-      <p>Phé-Nix est né en 2022 de la conviction de Michel Couture (Mike) et de ses bénévoles : l'itinérance n'est pas une fatalité. Ce que nous partageons tous, c'est un investissement absolu envers les plus démunis.</p>
-      <p>Chaque semaine, on distribue nourriture, vêtements adaptés à la saison, couvertures et écoute sincère — et on accompagne vers la thérapie ceux qui veulent reconstruire leur vie.</p>
-    </div>
-    <div class="reveal-right">
-      <img src="hero.jpg" alt="L'équipe bénévole Phé-Nix devant le camion">
-    </div>
-  </div>
-</section>
-
-<!-- ORIGINE — comment tout a commence -->
-<section class="section section-sable">
-  <div class="wrap">
-    <div class="eyebrow">Comment ça a démarré</div>
-    <h2>Tout a commencé par un deuil.</h2>
-    <p class="lead" style="margin-left:0;">Phé-Nix n'est pas né d'un plan. C'est né d'un sentiment d'impuissance, et du refus de le garder pour soi.</p>
-
-    <ol class="origine" data-replay>
-      <li class="origine-moment">
-        <div class="origine-date">2021</div>
-        <div class="origine-corps">
-          <h3>Un ami meurt dans la rue</h3>
-          <p>Mike perd un ami, mort dehors. De ce vide naît une conviction : l'itinérance n'est pas une fatalité, c'est un problème auquel trop peu de gens s'attaquent.</p>
-        </div>
-      </li>
-      <li class="origine-moment">
-        <div class="origine-date">2022</div>
-        <div class="origine-corps">
-          <h3>Neuf personnes, 20 $ chacune</h3>
-          <p>Mike décide d'agir à sa mémoire. Il réunit neuf personnes autour de lui : chacune met 20 $. Avec ces 180 $, ils achètent des sandwichs.</p>
-        </div>
-      </li>
-      <li class="origine-moment">
-        <div class="origine-date">16 septembre<br>2022</div>
-        <div class="origine-corps">
-          <h3>La première distribution</h3>
-          <p>Un an après le décès de son ami, la petite équipe descend dans la rue distribuer ces sandwichs. C'est la première distribution de Phé-Nix — et sa date de naissance officielle.</p>
-        </div>
-      </li>
-    </ol>
-
-    <p class="origine-fin">Ce qui devait être un hommage d'une journée ne s'est jamais arrêté.</p>
+<!-- MISSION + ORIGINE — le recit fondateur, condense -->
+<section class="section section-warm">
+  <div class="recit reveal">
+    <div class="eyebrow">Notre mission</div>
+    <h2>Tout est parti d'un ami<br>qu'on n'a pas pu sauver.</h2>
+    <p class="recit-fort">En 2021, Mike perd un ami, mort dans la rue. Il en reste un sentiment d'impuissance — et le refus de s'y résigner.</p>
+    <p>Un an plus tard, il réunit neuf personnes. Chacune met 20 $. Avec ces 180 $, ils achètent des sandwichs et descendent dans la rue, à la mémoire de leur ami.</p>
+    <p class="recit-jalon"><span>16 décembre 2022</span>La première distribution. Ce qui devait être un hommage d'une seule journée ne s'est jamais arrêté.</p>
+    <p>Depuis, chaque semaine : nourriture, vêtements adaptés à la saison, couvertures et écoute sincère — et un accompagnement vers la thérapie pour ceux qui veulent reconstruire leur vie.</p>
   </div>
 </section>
 
