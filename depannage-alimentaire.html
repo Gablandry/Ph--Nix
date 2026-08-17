@@ -20,6 +20,38 @@
 .service-body p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 18px; }
 
 /* Conditions */
+/* ===== PAGE DE SERVICE — colonne fixe a gauche =====
+   Le titre, l'intro et le bouton restent accroches pendant que le contenu
+   defile a droite : la page cesse d'etre une pile de blocs empiles. */
+.svc { padding: 0 40px 90px; }
+.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
+             max-width: var(--maxw); margin: 0 auto; align-items: start; }
+.svc-side { position: sticky; top: 108px; padding-top: 92px; }
+.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
+.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 28px; max-width: 400px; }
+.svc-flow { padding-top: 92px; display: grid; gap: 54px; }
+.svc-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 22px; display: block; }
+.svc-bloc h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 16px; }
+.svc-bloc p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 14px; }
+.svc-bloc p:last-child { margin-bottom: 0; }
+
+/* la FAQ entre dans la colonne de droite : sinon la colonne de gauche
+   cesse de coller des la fin de la premiere section */
+.svc-faq { text-align: left; }
+.svc-faq .faq { margin: 0; max-width: none; }
+.svc-faq h2 { font-size: clamp(24px, 2.4vw, 30px); margin-bottom: 6px; }
+.svc-faq .lead { margin: 0 0 26px; font-size: 16px; }
+.svc-faq .eyebrow { justify-content: flex-start; }
+
+@media (max-width: 900px) {
+  .svc { padding: 0 24px 60px; }
+  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
+  .svc-side { position: static; padding-top: 46px; }
+  .svc-side .lead { max-width: none; }
+  .svc-flow { padding-top: 0; gap: 40px; }
+  .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
+}
+
 /* ===== POINTS CLES — bande de faits =====
    Les cartes a pastille coloree et petite icone sont le motif que produit
    n'importe quel generateur : on les retire. Restent les faits, separes par
@@ -113,24 +145,27 @@
 </header>
 
 <!-- HERO -->
-<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.jpg') center/cover no-repeat;">
-  <div class="page-hero-content">
-    <div class="eyebrow" style="justify-content:center; color:#fff;">Nos services</div>
-    <h1>Dépannage alimentaire.</h1>
-    <p>Un soutien ponctuel en denrées pour les personnes ou familles qui ont besoin d'un coup de main pour se nourrir.</p>
-  </div>
-</section>
+<section class="svc">
+  <div class="svc-inner">
 
-<!-- DESCRIPTION -->
-<section class="section">
-  <div class="service-body">
+    <aside class="svc-side">
+      <div class="eyebrow">Nos services</div>
+      <h1>Dépannage alimentaire.</h1>
+      <p class="lead">Un soutien ponctuel en denrées pour les personnes ou familles qui ont besoin d'un coup de main pour se nourrir.</p>
+      <a href="#contact-service" class="btn btn-primary">Nous écrire →</a>
+    </aside>
+
+    <div class="svc-flow">
+      <img class="svc-photo" src="depannage-boite.jpg" alt="Une boîte de denrées préparée pour un dépannage alimentaire">
+
+      <div class="svc-bloc">
     <div class="eyebrow">Comment ça fonctionne</div>
     <h2>Un don, sans complications.</h2>
     <p>Le dépannage alimentaire comprend 1 à 2 boîtes de denrées, offertes en don aux personnes qui ont besoin de soutien alimentaire. <strong style="color:var(--ink);">Aucune enquête de crédit n'est requise.</strong></p>
     <p>Le service est offert exclusivement dans les secteurs de <strong style="color:var(--ink);">Montréal Sud-Ouest</strong>, <strong style="color:var(--ink);">Saint-Jean-sur-Richelieu</strong> et <strong style="color:var(--ink);">Longueuil</strong>.</p>
-  </div>
+      </div>
 
-  <div class="conditions">
+      <div class="conditions">
     <div class="condition">
       <h3>2 à 3 dépannages par année</h3>
       <p>Maximum par personne ou par famille, sauf cas exceptionnel.</p>
@@ -148,11 +183,9 @@
       <p>10 $ à 15 $ peuvent s'appliquer, seulement si une livraison est nécessaire.</p>
     </div>
   </div>
-</section>
 
-<!-- FOIRE AUX QUESTIONS -->
-<section class="section section-soft center">
-  <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
+      <div class="svc-faq">
+        <div class="eyebrow" style="justify-content:center;">Bon à savoir</div>
   <h2>Vos questions.</h2>
   <p class="lead">Tout ce qu'il faut savoir avant de faire une demande.</p>
   <div class="faq">
@@ -181,10 +214,16 @@
       <div class="faq-a">Par courriel, par téléphone ou par Facebook. Les coordonnées se trouvent juste en dessous. Écrivez-nous ou appelez-nous, et on prend le relais.</div>
     </div>
   </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
+
+
 <!-- CONTACT -->
-<section class="section center">
+<section class="section center" id="contact-service">
   <div class="eyebrow" style="justify-content:center;">Faire une demande</div>
   <h2>Parlons-nous.</h2>
   <p class="lead">Contactez-nous directement pour faire une demande de dépannage alimentaire.</p>
