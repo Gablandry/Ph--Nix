@@ -182,10 +182,22 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .camion-img { width: 100%; max-width: 720px; height: auto; display: block; margin: 40px auto 0; filter: drop-shadow(0 22px 30px rgba(0,0,0,0.13)); }
 
 /* ===== STATS ===== */
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: var(--maxw); margin: 0 auto; }
-.stat { text-align: center; }
-.stat-num { font-weight: 700; font-size: clamp(40px,5vw,60px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 10px; }
-.stat-lbl { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+/* les chiffres dans une carte plutot qu'une bande nue : sans cadre ni titre,
+   la section paraissait vide et generique */
+.impact-carte { max-width: var(--maxw); margin: 0 auto; background: var(--bg-warm);
+                border: 1px solid var(--warm-line); border-radius: 24px; padding: 34px 40px 38px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 30px; margin-top: 26px; }
+.stat { text-align: left; }
+.stat-num { font-weight: 700; font-size: clamp(38px,4.4vw,54px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 8px; }
+.stat-lbl { font-size: 14px; color: var(--ink-soft-warm); line-height: 1.5; }
+@media (max-width: 860px) {
+  .impact-carte { padding: 26px 24px 30px; border-radius: 20px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; margin-top: 22px; }
+  /* le filet entre les deux rangees, comme sur la maquette */
+  .stat:nth-child(n+3) { padding-top: 26px; border-top: 1px solid var(--warm-line); }
+  .stat-num { font-size: 34px; }
+  .stat-lbl { font-size: 13px; }
+}
 
 /* ===== Split texte + image ===== */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: var(--maxw); margin: 0 auto; align-items: center; }
@@ -712,11 +724,14 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 
 <!-- STATS -->
 <section class="section section-sable">
-  <div class="stats-grid">
-    <div class="stat reveal"><div class="stat-num" data-counter data-target="3" data-suffix=" ans">3 ans</div><div class="stat-lbl">Sur le terrain,<br>semaine après semaine</div></div>
-    <div class="stat reveal reveal-d1"><div class="stat-num" data-counter data-target="5">5</div><div class="stat-lbl">Régions du Québec<br>couvertes</div></div>
-    <div class="stat reveal reveal-d2"><div class="stat-num" data-counter data-target="100" data-suffix="%">100%</div><div class="stat-lbl">Bénévole,<br>aucun salaire</div></div>
-    <div class="stat reveal reveal-d3"><div class="stat-num" data-counter data-target="52" data-suffix="+">52+</div><div class="stat-lbl">Distributions<br>par année</div></div>
+  <div class="impact-carte reveal">
+    <div class="eyebrow">Notre impact</div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num" data-counter data-target="52" data-suffix="+">52+</div><div class="stat-lbl">Distributions<br>par année</div></div>
+      <div class="stat"><div class="stat-num" data-counter data-target="100" data-suffix="%">100%</div><div class="stat-lbl">Bénévole,<br>aucun salaire</div></div>
+      <div class="stat"><div class="stat-num" data-counter data-target="5">5</div><div class="stat-lbl">Régions<br>couvertes</div></div>
+      <div class="stat"><div class="stat-num" data-counter data-target="3" data-suffix=" ans">3 ans</div><div class="stat-lbl">Sur le terrain,<br>sans arrêt</div></div>
+    </div>
   </div>
 </section>
 
@@ -859,7 +874,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
           </div>
           <div class="proc-etape proc-2" data-x="600">
             <span class="proc-chiffre" aria-hidden="true">2</span>
-            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3.6" y1="7.5" x2="20.4" y2="16.5"/><line x1="3.6" y1="16.5" x2="20.4" y2="7.5"/><polyline points="9.4 4.8 12 6.6 14.6 4.8"/><polyline points="9.4 19.2 12 17.4 14.6 19.2"/></svg></div>
+            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18"/><path d="M21 3v18"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="3" y1="21" x2="21" y2="21"/><rect x="6" y="5" width="5" height="4" rx=".5"/><rect x="13.5" y="5" width="4" height="4" rx=".5"/><rect x="6" y="11" width="4" height="4" rx=".5"/><rect x="12.5" y="11" width="5" height="4" rx=".5"/></svg></div>
             <div class="proc-txt">
               <div class="proc-num">Étape 02</div>
               <h3>On entrepose</h3>
@@ -868,7 +883,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
           </div>
           <div class="proc-etape proc-3" data-x="1000">
             <span class="proc-chiffre" aria-hidden="true">3</span>
-            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11.5V4.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 11.5V6a1.5 1.5 0 0 1 3 0v7"/><path d="M17 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-2l-1.6-1.6a1.5 1.5 0 0 1 2.1-2.1L8 11"/></svg></div>
+            <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5.5h13a1 1 0 0 1 1 1V16H1z"/><path d="M15 9h3.6a1 1 0 0 1 .8.4L22 12.6V16h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M7.5 16h8.5"/></svg></div>
             <div class="proc-txt">
               <div class="proc-num">Étape 03</div>
               <h3>On distribue</h3>

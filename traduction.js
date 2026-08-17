@@ -1,5 +1,9 @@
 /* Traductions francais -> anglais du site Phe-Nix (genere automatiquement) */
 var DICO = {
+ "sans arrêt": "without a break",
+ "Sur le terrain,": "In the field,",
+ "Régions": "Regions",
+ "Notre impact": "Our impact",
  "Un bénévole de Phé-Nix tend la main à une personne allongée sur un banc, dans la neige": "A Phé-Nix volunteer reaches out to a person lying on a bench, in the snow",
  "Tout est trié puis entreposé : les repas sont congelés à l'avance, les vêtements et le matériel sont classés, prêts pour la prochaine sortie.": "Everything is sorted then stored: meals are frozen ahead of time, clothing and supplies are organized, ready for the next outing.",
  "On entrepose": "We store",
@@ -341,7 +345,6 @@ var DICO = {
  "Référencement pour thérapie": "Referrals to treatment",
  "Référencement pour thérapie | Phé-Nix": "Referrals to treatment | Phé-Nix",
  "Référencement pour thérapie.": "Referrals to treatment.",
- "Régions du Québec": "Quebec regions",
  "Sans vous, rien de tout ça": "Without you, none of this",
  "Secteurs desservis": "Areas served",
  "Selon les besoins, remises directement à la personne ou à la famille.": "Depending on need, handed directly to the person or family.",
@@ -356,7 +359,6 @@ var DICO = {
  "Sur la route, chaque semaine": "On the road, every week",
  "Sur le terrain": "In the field",
  "Sur le terrain depuis 2022": "In the field since 2022",
- "Sur le terrain,": "In the field,",
  "Sur le terrain, chaque semaine.": "In the field, every week.",
  "Sur le terrain, on remet tout en mains propres, on écoute, et on accompagne vers la thérapie ceux qui le souhaitent.": "In the field, we hand everything over in person, we listen, and we guide toward treatment those who want it.",
  "Sur le terrain. Aucun équipement requis, l'équipe prend soin de tout.": "In the field. No equipment needed, the team takes care of everything.",
@@ -429,7 +431,6 @@ var DICO = {
  "pour changer une vie.": "to change a life.",
  "prend le relais pour vous amener à vos rendez-vous.": "takes over to get you to your appointments.",
  "référencement pour thérapie": "referrals to treatment",
- "semaine après semaine": "week after week",
  "transport vers la thérapie": "rides to treatment",
  "un repas chaud ce soir.": "a hot meal tonight.",
  "vers la thérapie": "toward treatment",
