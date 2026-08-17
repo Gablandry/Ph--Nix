@@ -66,50 +66,6 @@
 @media (max-width: 860px) {
   .section { padding: 72px 24px; }
 }
-
-/* ===== PAGE AIDER — colonne fixe a gauche =====
-   Meme disposition que les pages de service et la page benevole. Les trois
-   panneaux qui s'ouvraient au survol deviennent trois cartes empilees : le
-   survol ne marchait pas au doigt, et une carte se lit d'un coup d'oeil. */
-.svc { padding: 0 40px 90px; }
-.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
-             max-width: var(--maxw); margin: 0 auto; align-items: start; }
-.svc-side { position: sticky; top: 108px; padding-top: 92px; }
-.svc-side .eyebrow { justify-content: flex-start; }
-.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
-.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 26px; max-width: 400px; }
-.svc-flow { padding-top: 92px; }
-.svc-flow > .eyebrow { justify-content: flex-start; }
-.svc-flow > h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 26px; }
-
-/* Une carte = une facon d'aider. La bande de gauche porte la photo. */
-.voies { display: grid; gap: 18px; }
-.voie { display: grid; grid-template-columns: 210px 1fr; align-items: stretch;
-        background: #fff; border: 1px solid var(--line); border-radius: 20px;
-        overflow: hidden; text-decoration: none; color: inherit;
-        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-.voie:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); border-color: rgba(0,0,0,0.14); }
-.voie-vis { position: relative; min-height: 168px; background-size: cover; background-position: center; }
-.voie-vis.marque { background: linear-gradient(150deg, #2B0F3D 0%, #6B1B52 40%, #C43F2B 76%, #E8730E 100%); }
-.voie-ic { position: absolute; top: 16px; left: 16px; width: 40px; height: 40px;
-           background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-           border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; }
-.voie-vis:not(.marque)::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.28); }
-.voie-txt { padding: 26px 28px; display: flex; flex-direction: column; justify-content: center; }
-.voie-txt h3 { font-size: 20px; line-height: 1.25; margin-bottom: 8px; }
-.voie-txt p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; margin: 0 0 14px; }
-.voie-go { font-size: 14px; font-weight: 600; color: var(--accent); }
-
-@media (max-width: 900px) {
-  .svc { padding: 0 24px 60px; }
-  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
-  .svc-side { position: static; padding-top: 46px; }
-  .svc-side .lead { max-width: none; }
-  .svc-flow { padding-top: 0; }
-  .voie { grid-template-columns: 1fr; }
-  .voie-vis { min-height: 150px; }
-  .voie-txt { padding: 22px 20px; }
-}
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/aider.html">
 <meta property="og:type" content="website">
@@ -155,47 +111,46 @@
 </header>
 
 <!-- HERO -->
-<section class="svc">
-  <div class="svc-inner">
+<section class="page-hero" style="background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.80) 72%, rgba(0,0,0,0.38) 100%), url('hero-phenix.jpg') center/cover no-repeat;">
+  <div class="page-hero-content">
+    <div class="eyebrow" style="justify-content:center; color:#fff;">Comment aider</div>
+    <h1>Aider, c'est simple.</h1>
+    <p>Un don, une heure de votre temps, ou quelques vêtements à déposer. Tout va directement sur le terrain.</p>
+  </div>
+</section>
 
-    <aside class="svc-side">
-      <div class="eyebrow">Comment aider</div>
-      <h1>Aider, c'est simple.</h1>
-      <p class="lead">Un don, une heure de votre temps, ou quelques vêtements à déposer. Tout va directement sur le terrain.</p>
-      <a href="faire-un-don.html" class="btn btn-primary btn-lg">Faire un don →</a>
-    </aside>
-
-    <div class="svc-flow">
-      <div class="eyebrow">3 façons de faire une différence</div>
-      <h2>Choisissez la vôtre.</h2>
-      <div class="voies reveal">
-      <a href="faire-un-don.html" class="voie">
-        <div class="voie-vis marque"><div class="voie-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div>
-        <div class="voie-txt">
-          <h3>Faire un don</h3>
-          <p>Par Interac, en 30 secondes. Chaque dollar achète nourriture et vêtements, sans aucun frais.</p>
-          <span class="voie-go">Faire un don →</span>
-        </div>
-      </a>
-      <a href="benevole.html" class="voie">
-        <div class="voie-vis" style="background-image:url('hero.jpg')"><div class="voie-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div>
-        <div class="voie-txt">
-          <h3>Devenir bénévole</h3>
-          <p>Aucune expérience requise. Juste l'envie d'agir, un samedi à la fois, près de chez vous.</p>
-          <span class="voie-go">Devenir bénévole →</span>
-        </div>
-      </a>
-      <a href="dons-materiels.html" class="voie">
-        <div class="voie-vis" style="background-image:url('dons-materiels-boite.jpg')"><div class="voie-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div></div>
-        <div class="voie-txt">
-          <h3>Contributions matérielles</h3>
-          <p>Vêtements, nourriture, articles d'hygiène dont des produits féminins, à déposer dans un de nos 3 points de collecte.</p>
-          <span class="voie-go">Voir les points de dépôt →</span>
-        </div>
-      </a>
+<!-- 3 FAÇONS -->
+<section class="section center">
+  <div class="eyebrow" style="justify-content:center;">3 façons de faire une différence</div>
+  <h2>Choisissez la vôtre.</h2>
+  <div class="acc reveal">
+    <a href="faire-un-don.html" class="acc-panel acc-panel-marque">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <span class="acc-collapsed">Faire un don</span>
+      <div class="acc-expanded">
+        <h3>Faire un don</h3>
+        <p>Par Interac, en 30 secondes. Chaque dollar achète nourriture et vêtements, sans aucun frais.</p>
+        <span class="acc-go">Faire un don →</span>
       </div>
-    </div>
-
+    </a>
+    <a href="benevole.html" class="acc-panel" style="background-image:url('hero.jpg')">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="acc-collapsed">Devenir bénévole</span>
+      <div class="acc-expanded">
+        <h3>Devenir bénévole</h3>
+        <p>Aucune expérience requise. Juste l'envie d'agir, un samedi à la fois, près de chez vous.</p>
+        <span class="acc-go">Devenir bénévole →</span>
+      </div>
+    </a>
+    <a href="dons-materiels.html" class="acc-panel" style="background-image:url('dons-materiels-boite.jpg')">
+      <div class="acc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+      <span class="acc-collapsed">Contributions matérielles</span>
+      <div class="acc-expanded">
+        <h3>Contributions matérielles</h3>
+        <p>Vêtements, nourriture, articles d'hygiène dont des produits féminins, à déposer dans un de nos 3 points de collecte.</p>
+        <span class="acc-go">Voir les points de dépôt →</span>
+      </div>
+    </a>
   </div>
 </section>
 
