@@ -38,26 +38,34 @@
   const proc = document.querySelector('.proc');
   if (proc) {
     const DUREE = 3500;
-    const trace = proc.querySelector('.proc-trace');
+    // deux traces coexistent : on pilote celui qui est visible
+    function traceVisible() {
+      return Array.prototype.slice.call(proc.querySelectorAll('.proc-trace'))
+        .filter(function (el) { return el.getClientRects().length > 0; })[0];
+    }
     const etapes = Array.prototype.slice.call(proc.querySelectorAll('.proc-etape'));
     let minuteries = [];
 
-    function fractionAuX(x) {
+    // fraction de la longueur du trace atteinte a une coordonnee donnee :
+    // en x pour la courbe horizontale, en y pour le serpentin vertical
+    function fractionA(trace, valeur, vertical) {
       const L = trace.getTotalLength();
       let bas = 0, haut = L;
       for (let i = 0; i < 22; i++) {
         const mid = (bas + haut) / 2;
-        if (trace.getPointAtLength(mid).x < x) bas = mid; else haut = mid;
+        const pt = trace.getPointAtLength(mid);
+        if ((vertical ? pt.y : pt.x) < valeur) bas = mid; else haut = mid;
       }
       return bas / L;
     }
 
     function lancer() {
-      const courbe = window.matchMedia('(min-width: 861px)').matches;
+      const trace = traceVisible();
+      if (!trace) return;
+      const vertical = !window.matchMedia('(min-width: 861px)').matches;
       etapes.forEach(function (e, i) {
-        const t = courbe
-          ? fractionAuX(parseFloat(e.dataset.x)) * DUREE
-          : (i / etapes.length) * DUREE;
+        const cible = vertical ? parseFloat(e.dataset.y) : parseFloat(e.dataset.x);
+        const t = fractionA(trace, cible, vertical) * DUREE;
         minuteries.push(setTimeout(function () { e.classList.add('ecrit'); }, t));
       });
     }

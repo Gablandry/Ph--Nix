@@ -184,8 +184,13 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 /* ===== STATS ===== */
 /* les chiffres dans une carte plutot qu'une bande nue : sans cadre ni titre,
    la section paraissait vide et generique */
-.impact-carte { max-width: var(--maxw); margin: 0 auto; background: var(--bg-warm);
-                border: 1px solid var(--warm-line); border-radius: 24px; padding: 34px 40px 38px; }
+/* carte blanche franche : en peche sur fond sable, les deux tons etaient
+   trop proches et la carte semblait mal posee */
+.impact-carte { max-width: var(--maxw); margin: 0 auto; background: #fff;
+                border-radius: 24px; padding: 36px 44px 40px;
+                box-shadow: 0 18px 44px rgba(90,50,20,.10); }
+/* un filet vertical entre les chiffres, plutot qu'un simple espace */
+.stat + .stat { border-left: 1px solid var(--hairline); padding-left: 30px; }
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 30px; margin-top: 26px; }
 .stat { text-align: left; }
 .stat-num { font-weight: 700; font-size: clamp(38px,4.4vw,54px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 8px; }
@@ -193,6 +198,9 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 @media (max-width: 860px) {
   .impact-carte { padding: 26px 24px 30px; border-radius: 20px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; margin-top: 22px; }
+  /* en 2x2 le filet vertical ne vaut que pour la colonne de droite */
+  .stat + .stat { border-left: none; padding-left: 0; }
+  .stat:nth-child(even) { border-left: 1px solid var(--hairline); padding-left: 22px; }
   /* le filet entre les deux rangees, comme sur la maquette */
   .stat:nth-child(n+3) { padding-top: 26px; border-top: 1px solid var(--warm-line); }
   .stat-num { font-size: 34px; }
@@ -296,27 +304,35 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   .proc-noeud, .proc-num, .proc-etape p { opacity: 1; transform: none; transition: none; }
 }
 
-/* sous 860 px la courbe ne tient pas : liste verticale, meme sequence */
+/* un seul trace visible a la fois */
+.proc-ligne-etroit { display: none; }
+.proc-ligne-etroit .proc-trace { stroke: url(#procDegradeV); }
+
+/* sous 860 px : meme animation, mais le trace serpente verticalement */
 @media (max-width: 860px) {
-  .proc { height: auto; }
-  .proc-ligne { display: none; }
+  .proc { height: 700px; }
+  .proc-ligne-large { display: none; }
+  .proc-ligne-etroit { display: block; width: 120px; height: 100%; }
   .proc-etapes { display: block; }
-  .proc-etape { padding: 0 0 30px 64px; }
-  .proc-etape:last-child { padding-bottom: 0; }
-  .proc-etape:not(:last-child)::before {
-    content: ''; position: absolute; left: 23px; top: 52px; bottom: 6px; width: 2px;
-    background: linear-gradient(180deg, #D63FA3, #FF5C1A);
-    transform: scaleY(0); transform-origin: top; transition: transform 1s linear;
-  }
-  .proc-etape.ecrit::before { transform: scaleY(1); }
+  .proc-etape { position: static; }
+  /* le trait CSS ne sert plus : c'est le trace SVG qui relie les jalons */
+  .proc-etape::before { content: none; }
   .proc-chiffre { display: none; }
+  /* les jalons sont poses sur le serpentin, aux memes y que le trace */
   .proc-noeud, .proc-1 .proc-noeud, .proc-2 .proc-noeud, .proc-3 .proc-noeud {
-    top: 0; left: 0; margin-left: 0; width: 46px; height: 46px;
+    left: 30px; margin-left: -23px; width: 46px; height: 46px;
   }
+  .proc-1 .proc-noeud { top:  51px; }
+  .proc-2 .proc-noeud { top: 349px; }
+  .proc-3 .proc-noeud { top: 641px; }
   .proc-txt, .proc-1 .proc-txt, .proc-2 .proc-txt, .proc-3 .proc-txt {
-    position: relative; top: 0; left: 0; width: auto; margin-left: 0;
+    position: absolute; left: 84px; right: 4px; width: auto; margin-left: 0;
   }
+  .proc-1 .proc-txt { top:  46px; }
+  .proc-2 .proc-txt { top: 344px; }
+  .proc-3 .proc-txt { top: 636px; }
   .proc-etape h3 { font-size: 18px; }
+  .proc-etape p { font-size: 14px; }
 }
 
 /* ===== CARTES EMPILÉES — les 4 services ===== */
@@ -387,17 +403,11 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 /* ===== GALERIE uniforme + zoom ===== */
 .galerie-head { display: flex; justify-content: space-between; align-items: flex-end; max-width: var(--maxw); margin: 0 auto 44px; gap: 16px; flex-wrap: wrap; }
 /* Ruban qui défile en continu — les bords s'estompent pour éviter une coupe nette */
-.galerie-piste {
-  overflow: hidden; max-width: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-}
-.galerie { display: flex; width: max-content; animation: galerieDefile 55s linear infinite; }
+/* grille plutot que ruban defilant : les photos sont des preuves du travail,
+   elles meritent d'etre regardees, pas de defiler. Le masque en degrade qui
+   effacait les bords disparait avec le defilement. */
+.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--maxw); margin: 0 auto; }
 /* marge (et non gap) pour que la boucle à -50 % soit exactement raccord */
-.galerie > * { flex: 0 0 340px; margin-right: 16px; }
-.galerie-piste:hover .galerie { animation-play-state: paused; }
-@keyframes galerieDefile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .galerie { animation: none; } }
 .galerie-img-wrap { overflow: hidden; border-radius: 16px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
 .galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
 .galerie-img-wrap:hover img { transform: scale(1.05); }
@@ -499,6 +509,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   /* cartes empilées : une colonne, image au-dessus du texte */
   .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
   .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
+  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; }
   .pile-txt { padding: 28px 24px 30px; }
   /* la description est retiree sur telephone : photo, titre et bouton
      suffisent, et la carte respire beaucoup plus */
@@ -510,7 +521,6 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   .pile-carte:nth-child(4) { top: 108px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
-  .galerie > * { flex-basis: 290px; }
   .cta-premium { padding: 56px 28px; border-radius: 24px; }
   .home-contacts { grid-template-columns: repeat(3,1fr); gap: 8px; max-width: 100%; }
   .hc-card { padding: 16px 6px; border-radius: 14px; }
@@ -536,8 +546,6 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   /* Ruban plus étroit et un peu plus rapide sur petit écran */
-  .galerie > * { flex-basis: 250px; margin-right: 12px; }
-  .galerie { animation-duration: 38s; }
 }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/">
@@ -853,7 +861,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
       <p class="lead" style="margin-bottom:0;">Une chaîne simple et directe, sans intermédiaire ni frais d'administration.</p>
       <!-- Ligne de progression : le trait se remplit et les jalons s'allument un à un -->
       <div class="proc" data-replay>
-        <svg class="proc-ligne" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="proc-ligne proc-ligne-large" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="procDegrade" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
               <stop offset="0" stop-color="#D63FA3"/><stop offset="0.55" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/>
@@ -862,8 +870,13 @@ body.hero-anim.nav-visible .mobile-nav-bar {
           <path class="proc-fond" d="M 0 360 L 230 360 C 320 360, 340 170, 470 170 L 750 170 C 890 170, 890 280, 1000 280 L 1200 280"/>
           <path class="proc-trace" pathLength="1" d="M 0 360 L 230 360 C 320 360, 340 170, 470 170 L 750 170 C 890 170, 890 280, 1000 280 L 1200 280"/>
         </svg>
+        <svg class="proc-ligne proc-ligne-etroit" viewBox="0 0 120 700" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="procDegradeV" x1="0" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#D63FA3"/><stop offset="0.55" stop-color="#FF5C1A"/><stop offset="1" stop-color="#F4B942"/></linearGradient></defs>
+          <path class="proc-fond" d="M 30 74 C 30 150, 92 170, 92 232 C 92 292, 30 300, 30 372 C 30 448, 92 466, 92 528 C 92 588, 30 596, 30 664 L 30 700"/>
+          <path class="proc-trace" pathLength="1" d="M 30 74 C 30 150, 92 170, 92 232 C 92 292, 30 300, 30 372 C 30 448, 92 466, 92 528 C 92 588, 30 596, 30 664 L 30 700"/>
+        </svg>
         <div class="proc-etapes">
-          <div class="proc-etape proc-1" data-x="200">
+          <div class="proc-etape proc-1" data-x="200" data-y="74">
             <span class="proc-chiffre" aria-hidden="true">1</span>
             <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8"/><path d="M2 4h20v4H2z"/><path d="M10 12h4"/></svg></div>
             <div class="proc-txt">
@@ -872,7 +885,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
               <p>Dons en argent, nourriture, vêtements et articles d'hygiène, dont des produits d'hygiène féminine, de citoyens et de plus de 100 commanditaires.</p>
             </div>
           </div>
-          <div class="proc-etape proc-2" data-x="600">
+          <div class="proc-etape proc-2" data-x="600" data-y="372">
             <span class="proc-chiffre" aria-hidden="true">2</span>
             <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18"/><path d="M21 3v18"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="3" y1="21" x2="21" y2="21"/><rect x="6" y="5" width="5" height="4" rx=".5"/><rect x="13.5" y="5" width="4" height="4" rx=".5"/><rect x="6" y="11" width="4" height="4" rx=".5"/><rect x="12.5" y="11" width="5" height="4" rx=".5"/></svg></div>
             <div class="proc-txt">
@@ -881,7 +894,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
               <p>Tout est trié puis entreposé : les repas sont congelés à l'avance, les vêtements et le matériel sont classés, prêts pour la prochaine sortie.</p>
             </div>
           </div>
-          <div class="proc-etape proc-3" data-x="1000">
+          <div class="proc-etape proc-3" data-x="1000" data-y="664">
             <span class="proc-chiffre" aria-hidden="true">3</span>
             <div class="proc-noeud"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5.5h13a1 1 0 0 1 1 1V16H1z"/><path d="M15 9h3.6a1 1 0 0 1 .8.4L22 12.6V16h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M7.5 16h8.5"/></svg></div>
             <div class="proc-txt">
@@ -949,7 +962,6 @@ body.hero-anim.nav-visible .mobile-nav-bar {
     <div><div class="eyebrow">Sur le terrain</div><h2>Nos actions, semaine après semaine.</h2></div>
     <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;">Voir plus sur Facebook →</a>
   </div>
-  <div class="galerie-piste">
   <div class="galerie" id="galerie-ruban">
     <!-- Rangée 1 : photos -->
     <div class="galerie-img-wrap" data-src="equipe-benevoles.jpg"><img src="equipe-benevoles.jpg" alt="L'équipe bénévole Phé-Nix"></div>
@@ -958,7 +970,6 @@ body.hero-anim.nav-visible .mobile-nav-bar {
     <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
     <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
     <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
-  </div>
   </div>
 </section>
 
@@ -1062,16 +1073,10 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   placer();
 })();
 
-/* Galerie « Sur le terrain » — on double les éléments pour que le défilement boucle sans coupure */
+/* Galerie « Sur le terrain » — en grille : plus de duplication a faire */
 (function () {
   var ruban = document.getElementById('galerie-ruban');
   if (!ruban) return;
-  var originaux = Array.prototype.slice.call(ruban.children);
-  originaux.forEach(function (el) {
-    var copie = el.cloneNode(true);
-    copie.setAttribute('aria-hidden', 'true');
-    ruban.appendChild(copie);
-  });
 
   // Les vidéos ne se téléchargent qu'à l'approche de la galerie : ceux qui ne
   // descendent pas jusqu'ici n'en paient jamais le poids.
