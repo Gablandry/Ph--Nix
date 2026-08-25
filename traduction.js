@@ -474,6 +474,8 @@ var DICO = {
  "Collez l'adresse ci-dessous": "Paste the address below",
  "Copier": "Copy",
  "Copier l'adresse courriel de Phé-Nix": "Copy the Phé-Nix email address",
+ "(Volet thérapie)": "(Treatment referrals)",
+ "(Volet dépannage alimentaire)": "(Emergency food support)",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 

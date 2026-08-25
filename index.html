@@ -160,6 +160,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   background: radial-gradient(115% 75% at 14% 50%, rgba(232,80,14,0.17), transparent 62%);
 }
 .section-sombre h2, .section-sombre .founder-name { color: #fff; }
+.section-sombre .founder-volet { color: rgba(255,255,255,0.62); }
 .section-sombre .lead, .section-sombre .founder-desc { color: rgba(255,255,255,0.72); }
 .section-sombre .eyebrow { color: #F4B942; }
 .section-sombre .founder-photo {
@@ -228,7 +229,9 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .founder-photo { position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg, var(--accent-soft), rgba(214,63,163,0.06)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--hairline); }
 .founder-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .founder-name { font-size: 22px; font-weight: 700; color: var(--ink); margin: 24px 0 4px; }
-.founder-role { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 14px; }
+.founder-role { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 4px; }
+/* Sous le titre, le volet dont chacun s'occupe sur le terrain. */
+.founder-volet { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; }
 .founder-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 360px; margin: 0 auto; }
 
 /* ===== ÉTAPES ===== */
@@ -826,6 +829,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
         </div>
         <div class="founder-name">Michel Couture « Mike »</div>
         <div class="founder-role">Président-fondateur</div>
+        <div class="founder-volet">(Volet thérapie)</div>
         <p class="founder-desc">C'est sa conviction qui a tout lancé en 2022 : l'itinérance n'est pas une fatalité. On le retrouve sur le terrain chaque semaine, là où les besoins sont les plus criants.</p>
       </div>
       <div class="founder reveal reveal-d2" data-parallax="-0.06">
@@ -834,6 +838,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
         </div>
         <div class="founder-name">Guy Couture</div>
         <div class="founder-role">Vice-président-fondateur</div>
+        <div class="founder-volet">(Volet dépannage alimentaire)</div>
         <p class="founder-desc">Le père de Mike, à ses côtés depuis le tout premier jour. La preuve vivante qu'aider son prochain, ça se transmet d'une génération à l'autre.</p>
       </div>
     </div>
