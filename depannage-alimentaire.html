@@ -100,6 +100,9 @@
   .section { padding: 72px 24px; }
   .conditions { grid-template-columns: 1fr; max-width: 440px; }
 }
+.contacts-solo { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+.contact-note { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 26px auto 0; max-width: 520px; }
+.contact-note a { color: var(--accent); text-decoration: none; }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/depannage-alimentaire.html">
 <meta property="og:type" content="website">
@@ -217,7 +220,7 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Comment fait-on la demande ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Le plus simple est d'appeler Guy, qui s'occupe des dépannages, au <a href="tel:4384641703" style="color:var(--accent);text-decoration:none;">(438) 464-1703</a>. Vous pouvez aussi passer par courriel ou par Facebook. Chaque demande est ensuite traitée selon vos besoins et selon les denrées disponibles.</div>
+      <div class="faq-a">Uniquement par téléphone, en appelant Guy au <a href="tel:4384641703" style="color:var(--accent);text-decoration:none;">(438) 464-1703</a>. Le courriel et Facebook ne servent pas pour les demandes de dépannage : elles n'y sont pas traitées. Chaque demande est ensuite évaluée selon vos besoins et selon les denrées disponibles.</div>
     </div>
   </div>
       </div>
@@ -231,16 +234,9 @@
 <!-- CONTACT -->
 <section class="section center" id="contact-service">
   <div class="eyebrow" style="justify-content:center;">Faire une demande</div>
-  <h2>Parlons-nous.</h2>
-  <p class="lead">Contactez-nous directement pour faire une demande de dépannage alimentaire.</p>
-  <div class="contacts">
-    <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card cc-courriel">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <div>
-        <div class="lbl">Courriel</div>
-        <div class="val">phenixactioncitoyenne@gmail.com</div>
-      </div>
-    </a>
+  <h2>Un seul numéro.</h2>
+  <p class="lead">Le dépannage alimentaire se demande <strong style="color:var(--ink);">uniquement par téléphone</strong>. Les demandes envoyées par courriel ou par Facebook ne sont pas traitées.</p>
+  <div class="contacts contacts-solo">
     <a href="tel:4384641703" class="contact-card cc-tel">
       <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
       <div>
@@ -248,21 +244,8 @@
         <div class="val">(438) 464-1703</div>
       </div>
     </a>
-    <a href="tel:4385263889" class="contact-card cc-tel">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-      <div>
-        <div class="lbl">Téléphone</div>
-        <div class="val">(438) 526-3889</div>
-      </div>
-    </a>
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="contact-card cc-fb">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg></div>
-      <div>
-        <div class="lbl">Facebook</div>
-        <div class="val">Suivez la mission</div>
-      </div>
-    </a>
   </div>
+  <p class="contact-note">Appelez pour vous-même ou pour quelqu'un d'autre. Pour toute autre question sur Phé-Nix, écrivez-nous à <a href="mailto:phenixactioncitoyenne@gmail.com">phenixactioncitoyenne@gmail.com</a>.</p>
 </section>
 
 <!-- FOOTER -->

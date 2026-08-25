@@ -505,9 +505,14 @@ var DICO = {
  "Puis-je appeler pour quelqu'un d'autre ?": "Can I call on behalf of someone else?",
  "Oui. Beaucoup de gens n'appellent pas pour eux-mêmes. Si vous connaissez une personne ou une famille qui manque de nourriture, appelez Guy au": "Yes. Many people do not call for themselves. If you know a person or a family who is short of food, call Guy at",
  "et expliquez-lui la situation.": "and explain the situation.",
- "Le plus simple est d'appeler Guy, qui s'occupe des dépannages, au": "The simplest way is to call Guy, who handles emergency food support, at",
- ". Vous pouvez aussi passer par courriel ou par Facebook. Chaque demande est ensuite traitée selon vos besoins et selon les denrées disponibles.": ". You can also reach us by email or on Facebook. Each request is then handled according to your needs and to what food is available.",
+ "Uniquement par téléphone, en appelant Guy au": "By phone only, by calling Guy at",
+ ". Le courriel et Facebook ne servent pas pour les demandes de dépannage : elles n'y sont pas traitées. Chaque demande est ensuite évaluée selon vos besoins et selon les denrées disponibles.": ". Email and Facebook are not used for emergency food requests: they are not processed there. Each request is then assessed according to your needs and to what food is available.",
  "Guy — dépannage alimentaire": "Guy — emergency food support",
+ "Un seul numéro.": "One number, that's it.",
+ "Le dépannage alimentaire se demande": "Emergency food support is requested",
+ "uniquement par téléphone": "by phone only",
+ ". Les demandes envoyées par courriel ou par Facebook ne sont pas traitées.": ". Requests sent by email or through Facebook are not processed.",
+ "Appelez pour vous-même ou pour quelqu'un d'autre. Pour toute autre question sur Phé-Nix, écrivez-nous à": "Call for yourself or for someone else. For any other question about Phé-Nix, write to us at",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
