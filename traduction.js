@@ -133,7 +133,7 @@ var DICO = {
  "Combien de temps avant d'avoir une réponse ?": "How long before I get an answer?",
  "Commanditaires": "Sponsors",
  "Commandite": "Sponsorship",
- "Comme tout ce qu'on fait : 100 % bénévole, sans salaire.": "Like everything we do. 100% volunteer-run, no salaries.",
+ "Deux bénévoles par transport, jamais un seul. Comme tout ce qu'on fait : 100 % bénévole, sans salaire.": "Two volunteers per ride, never just one. Like everything we do: 100% volunteer-run, no salaries.",
  "Comment aider": "How to help",
  "Comment choisissez-vous la ressource ?": "How do you choose the resource?",
  "Comment faire la demande ?": "How do I make a request?",
@@ -160,7 +160,7 @@ var DICO = {
  "Dans quels secteurs le service est-il offert ?": "Which areas is the service offered in?",
  "De 1 à 2 boîtes de denrées selon les besoins, remises directement à la personne ou à la famille.": "One to two boxes of food depending on need, handed directly to the person or family.",
  "De 2 à 3 dépannages par année, par personne ou par famille. Dans des situations exceptionnelles, il est possible d'en recevoir davantage. Parlez-nous de votre situation.": "Two to three packages per year, per person or family. In exceptional situations more may be possible, tell us about your circumstances.",
- "Des bénévoles de l'équipe Phé-Nix, comme pour tout ce qu'on fait.": "Volunteers from the Phé-Nix team, as with everything we do.",
+ "Des bénévoles de l'équipe Phé-Nix, comme pour tout ce qu'on fait. Ils sont toujours deux : un transport n'est jamais assuré par un bénévole seul.": "Volunteers from the Phé-Nix team, like everything we do. There are always two of them: a ride is never handled by a single volunteer.",
  "Des chiffres qui parlent.": "Numbers that speak.",
  "Des distributions régulières, semaine après semaine, depuis 2022.": "Regular distributions, week after week, since 2022.",
  "Devenez bénévole chez Phé-Nix. Aucune expérience requise, juste l'envie d'agir. Écrivez-nous votre région et vos disponibilités.": "Volunteer with Phé-Nix. No experience needed, just the will to act. Send us your area and your availability.",
@@ -293,7 +293,7 @@ var DICO = {
  "Par Interac, en 30 secondes. Chaque dollar achète nourriture et vêtements, sans aucun frais.": "By Interac, in 30 seconds. Every dollar buys food and clothing, with no fees.",
  "Par courriel, par téléphone ou par Facebook. Les coordonnées se trouvent juste en dessous. Écrivez-nous ou appelez-nous, et on prend le relais.": "By email, phone or Facebook, our details are just below. Write or call us, and we'll take it from there.",
  "Par courriel, par téléphone ou par Facebook. Les coordonnées sont juste en dessous. Écrivez-nous et on prend le relais.": "By email, phone or Facebook, our details are just below. Write to us and we'll take it from there.",
- "Par des bénévoles": "By volunteers",
+ "Toujours à deux": "Always in pairs",
  "Parlons-nous": "Let's talk",
  "Parlons-nous directement →": "Let's talk directly →",
  "Parlons-nous.": "Let's talk.",
@@ -492,6 +492,11 @@ var DICO = {
  "Des pompiers partenaires devant la bannière de Phé-Nix": "Partner firefighters in front of the Phé-Nix banner",
  "Michel Couture avec un partenaire, au local de préparation": "Michel Couture with a partner at the preparation space",
  "Kiosque de Phé-Nix lors d'un événement communautaire": "The Phé-Nix booth at a community event",
+ "Chaque transport est encadré par": "Every ride is handled by",
+ "deux bénévoles, jamais un seul": "two volunteers, never just one",
+ ". C'est une règle à laquelle on ne déroge pas : elle protège la personne qu'on accompagne autant que les bénévoles qui conduisent.": ". This is a rule we do not bend: it protects the person we are helping as much as the volunteers doing the driving.",
+ "Pourquoi deux bénévoles pour un seul transport ?": "Why two volunteers for a single ride?",
+ "Parce que personne ne devrait se retrouver seul en voiture avec quelqu'un qu'il connaît peu, ni d'un côté ni de l'autre. La présence de deux bénévoles protège la personne accompagnée comme celle qui conduit, et permet de réagir si le trajet ne se déroule pas comme prévu. C'est une condition, pas une préférence : sans deux bénévoles disponibles, le transport est reporté.": "Because nobody should end up alone in a car with someone they barely know, on either side. Having two volunteers protects the person being helped as much as the one driving, and means someone can react if the trip does not go as planned. It is a condition, not a preference: without two volunteers available, the ride is postponed.",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
