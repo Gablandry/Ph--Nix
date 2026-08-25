@@ -19,7 +19,14 @@
 
 /* Dépôts */
 .depots { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: var(--maxw); margin: 56px auto 0; }
-.depot { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 32px 28px; text-align: left; }
+.depot { display: block; background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px;
+         padding: 32px 28px; text-align: left; text-decoration: none; color: inherit;
+         transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.depot:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.08); border-color: var(--accent); }
+.depot:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.point-map { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+             font-size: 13.5px; font-weight: 600; color: var(--accent); }
+.depot:hover .point-map { text-decoration: underline; }
 .depot-ic { width: 44px; height: 44px; background: var(--accent-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 18px; }
 .depot-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 10px; }
 .depot h3 { font-size: 18px; margin-bottom: 8px; }
@@ -172,27 +179,24 @@
         <h2>Nos 3 points de collecte.</h2>
         <p class="lead">Déposez vos dons directement dans l'un de ces commerces partenaires.</p>
         <div class="depots">
-    <div class="depot">
+    <a class="depot" href="https://www.google.com/maps/search/?api=1&amp;query=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC" target="_blank" rel="noopener noreferrer">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
       <div class="depot-num">Point 01</div>
       <h3>Cantine BB-LOO</h3>
       <p>349, rue Jacques-Cartier Sud<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Eugène)</span></p>
-      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
-    </div>
-    <div class="depot">
+      <span class="point-map"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</span></a>
+    <a class="depot" href="https://www.google.com/maps/search/?api=1&amp;query=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC" target="_blank" rel="noopener noreferrer">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div class="depot-num">Point 02</div>
       <h3>Clinique Accès Santé</h3>
       <p>268, boul. Saint-Luc<br>Saint-Jean-sur-Richelieu<br><span class="sub">(St-Luc)</span></p>
-      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
-    </div>
-    <div class="depot">
+      <span class="point-map"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</span></a>
+    <a class="depot" href="https://www.google.com/maps/search/?api=1&amp;query=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC" target="_blank" rel="noopener noreferrer">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <div class="depot-num">Point 03</div>
       <h3>Mangeons Maison</h3>
       <p>353, rue Saint-Jacques<br>Napierville</p>
-      <a class="point-map" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</a>
-    </div>
+      <span class="point-map"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Itinéraire</span></a>
   </div>
         <p class="note">Pour un dépôt spécial ou une collecte, <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent);text-decoration:none;">écrivez-nous</a>.</p>
       </div>
