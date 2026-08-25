@@ -251,7 +251,7 @@ var DICO = {
  "Montréal · Rive-Sud": "Montreal · South Shore",
  "Montréal, Montérégie, Gatineau et Trois-Rivières.": "Montreal, Montérégie, Gatineau and Trois-Rivières.",
  "Navigation principale": "Main navigation",
- "Non. Nos bénévoles vont directement à la rencontre des personnes sur le terrain. Il n'y a aucun formulaire à remplir, aucune inscription, aucune condition.": "No. Our volunteers go straight to people in the field. There's no form to fill out, no registration, no conditions.",
+ "Non. Nos bénévoles vont directement à la rencontre des personnes sur le terrain. Il n'y a aucun formulaire à remplir, aucune inscription, aucune condition d'admissibilité. On demande seulement de prendre connaissance du code d'éthique et des règlements généraux, qui encadrent le déroulement de la distribution.": "No. Our volunteers go straight out to meet people where they are. There is no form to fill in, no registration and no eligibility conditions. We only ask that you read our code of ethics and general rules, which set the framework for how a distribution unfolds.",
  "Nos 3 points de collecte.": "Our 3 collection points.",
  "Nos actions, semaine après semaine.": "Our work, week after week.",
  "Nos commanditaires": "Our sponsors",
@@ -476,6 +476,10 @@ var DICO = {
  "Copier l'adresse courriel de Phé-Nix": "Copy the Phé-Nix email address",
  "(Volet thérapie)": "(Treatment referrals)",
  "(Volet dépannage alimentaire)": "(Emergency food support)",
+ "Chaque personne qui bénéficie du service prend connaissance du code d'éthique et des règlements généraux de Phé-Nix. Ce n'est pas une formalité : c'est ce qui permet à la distribution de se dérouler dans un cadre respectueux et sécuritaire, autant pour les personnes servies que pour les bénévoles.": "Everyone who uses the service reads Phé-Nix's code of ethics and general rules. This is not red tape: it is what allows a distribution to unfold in a respectful, safe setting, for the people served and the volunteers alike.",
+ "Y a-t-il des règles à respecter pendant la distribution ?": "Are there rules to follow during a distribution?",
+ "Oui. Chaque personne qui bénéficie du service prend connaissance du code d'éthique et des règlements généraux de Phé-Nix. Ils encadrent le déroulement de la distribution pour que tout se passe dans le respect de chacun, personnes servies comme bénévoles. Demandez-les à un bénévole sur place, ou": "Yes. Everyone who uses the service reads Phé-Nix's code of ethics and general rules. They set the framework for a distribution so that everyone is treated with respect, the people served and the volunteers alike. Ask a volunteer on site, or",
+ "pour les recevoir.": "to receive a copy.",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
