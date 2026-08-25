@@ -409,24 +409,28 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 
 /* ===== GALERIE uniforme + zoom ===== */
 /* Ruban qui défile en continu — les bords s'estompent pour éviter une coupe nette */
-/* grille plutot que ruban defilant : les photos sont des preuves du travail,
-   elles meritent d'etre regardees, pas de defiler. Le masque en degrade qui
-   effacait les bords disparait avec le defilement. */
-/* « Sur le terrain » : le texte tient la colonne de gauche, la mosaique
-   occupe la droite. Les deux colonnes d'images sont decalees verticalement,
-   ce qui evite l'effet tableur d'une grille reguliere. */
-.terrain-inner { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px;
-                 align-items: center; max-width: var(--maxw); margin: 0 auto; }
-.terrain-txt h2 { margin-bottom: 18px; }
-.terrain-txt .lead { margin: 0 0 30px; max-width: 420px; }
-.galerie { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-/* la colonne de droite descend, celle de gauche reste en place */
-.galerie > *:nth-child(even) { transform: translateY(38px); }
-/* marge (et non gap) pour que la boucle à -50 % soit exactement raccord */
-.galerie-img-wrap { overflow: hidden; border-radius: 22px; position: relative; cursor: zoom-in; aspect-ratio: 4/3; }
+/* Ruban defilant plutot qu'une grille : a 15 photos, la grille faisait
+   2113 px de haut et mangeait la page. Le ruban tient sur une rangee. */
+.terrain-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.terrain-inner .eyebrow { justify-content: center; }
+.terrain-txt .lead { margin: 0 auto 30px; max-width: 560px; }
+
+.ruban { margin-top: 46px; overflow: hidden; }
+.ruban-piste { display: flex; gap: 16px; width: max-content;
+               animation: ruban-defile 90s linear infinite; }
+.ruban:hover .ruban-piste, .ruban:focus-within .ruban-piste { animation-play-state: paused; }
+@keyframes ruban-defile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ruban { overflow-x: auto; }
+  .ruban-piste { animation: none; }
+}
+/* La piste est dupliquee : la moitie exacte fait une boucle sans raccord.
+   Le gap final doit donc exister aussi, d'ou la marge sur chaque element. */
+.galerie-img-wrap, .gvid { flex: 0 0 auto; width: 310px; aspect-ratio: 3/2;
+                           overflow: hidden; border-radius: 20px; position: relative; }
+.galerie-img-wrap { cursor: zoom-in; }
 .galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
 .galerie-img-wrap:hover img { transform: scale(1.05); }
-.gvid { overflow: hidden; border-radius: 22px; position: relative; aspect-ratio: 4/3; }
 .gvid video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .galerie-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 55%); opacity: 0; transition: opacity 0.3s; }
 .galerie-img-wrap:hover::after { opacity: 1; }
@@ -539,12 +543,10 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   /* cartes empilées : une colonne, image au-dessus du texte */
   .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
   .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
-  .terrain-inner { grid-template-columns: 1fr; gap: 30px; }
+  .ruban { margin-top: 32px; }
   .terrain-txt .lead { max-width: none; }
-  .galerie { grid-template-columns: 1fr 1fr; gap: 12px; }
   /* le decalage vertical est conserve, il fonctionne aussi a deux colonnes */
-  .galerie > *:nth-child(even) { transform: translateY(22px); }
-  .galerie-img-wrap, .gvid { border-radius: 16px; }
+  .galerie-img-wrap, .gvid { width: 232px; border-radius: 16px; }
   .pile-txt { padding: 28px 24px 30px; }
   /* la description est retiree sur telephone : photo, titre et bouton
      suffisent, et la carte respire beaucoup plus */
@@ -1020,18 +1022,33 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 <!-- SUR LE TERRAIN -->
 <section class="section terrain">
   <div class="terrain-inner">
-    <div class="terrain-txt reveal-left">
+    <div class="terrain-txt reveal">
       <div class="eyebrow">Sur le terrain</div>
       <h2>Nos actions,<br>semaine après semaine.</h2>
       <p class="lead">Chaque sortie est annoncée et racontée sur notre groupe Facebook. C'est là qu'on partage les photos, les besoins du moment et les prochaines distributions.</p>
       <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Voir plus sur Facebook →</a>
     </div>
-    <div class="galerie reveal-right" id="galerie-ruban">
+  </div>
+
+  <div class="ruban" id="galerie-ruban">
+    <div class="ruban-piste" id="ruban-piste">
       <div class="galerie-img-wrap" data-src="equipe-terrain.jpg"><img src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution"></div>
       <div class="galerie-img-wrap" data-src="terrain-legumes.jpg"><img src="terrain-legumes.jpg" alt="Pick-up rempli de boîtes de légumes frais pour la distribution"></div>
       <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
       <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
       <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
+    <div class="galerie-img-wrap" data-src="terrain-table-rue.jpg"><img src="terrain-table-rue.jpg" alt="Table de distribution installée sur un trottoir de Montréal" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-preparation.jpg"><img src="terrain-preparation.jpg" alt="Un bénévole de Phé-Nix prépare les caisses de fruits avant la distribution" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-collecte-pain.jpg"><img src="terrain-collecte-pain.jpg" alt="Collecte de pain invendu chez un commerçant partenaire" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-panier.jpg"><img src="terrain-panier.jpg" alt="Un panier d'épicerie contenant les effets personnels d'une personne sans domicile" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-camion-cote.jpg"><img src="terrain-camion-cote.jpg" alt="Le pick-up de Phé-Nix chargé, prêt pour la tournée" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-matiere-premiere.jpg"><img src="terrain-matiere-premiere.jpg" alt="Caisse de légumes récupérée chez un producteur maraîcher" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-chandail.jpg"><img src="terrain-chandail.jpg" alt="Un bénévole en chandail Phé-Nix tient une toile offerte à l'organisme" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-brigade.jpg"><img src="terrain-brigade.jpg" alt="La brigade de cuisine partenaire devant la bannière de Phé-Nix" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-pasquier.jpg"><img src="terrain-pasquier.jpg" alt="Remise de denrées par un commanditaire à deux bénévoles de Phé-Nix" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-pompiers.jpg"><img src="terrain-pompiers.jpg" alt="Des pompiers partenaires devant la bannière de Phé-Nix" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-partenaire.jpg"><img src="terrain-partenaire.jpg" alt="Michel Couture avec un partenaire, au local de préparation" loading="lazy"></div>
+    <div class="galerie-img-wrap" data-src="terrain-banniere.jpg"><img src="terrain-banniere.jpg" alt="Kiosque de Phé-Nix lors d'un événement communautaire" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -1114,10 +1131,26 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   placer();
 })();
 
-/* Galerie « Sur le terrain » — en grille : plus de duplication a faire */
+/* Ruban « Sur le terrain » — la piste est dupliquee pour boucler sans raccord */
 (function () {
   var ruban = document.getElementById('galerie-ruban');
-  if (!ruban) return;
+  var piste = document.getElementById('ruban-piste');
+  if (!ruban || !piste) return;
+
+  // On duplique une seule fois : l'animation va jusqu'a -50 %, donc la seconde
+  // moitie prend exactement la place de la premiere au moment du retour.
+  var originaux = Array.prototype.slice.call(piste.children);
+  originaux.forEach(function (el) {
+    var copie = el.cloneNode(true);
+    copie.setAttribute('aria-hidden', 'true');
+    // La visionneuse est branchee sur les originaux : la copie relaie le clic.
+    copie.addEventListener('click', function () { el.click(); });
+    piste.appendChild(copie);
+  });
+
+  // La duree suit le nombre de photos, sinon un ruban plus long defile plus vite.
+  ruban.style.setProperty('--duree', (originaux.length * 5.5) + 's');
+  piste.style.animationDuration = (originaux.length * 5.5) + 's';
 
   // Les vidéos ne se téléchargent qu'à l'approche de la galerie : ceux qui ne
   // descendent pas jusqu'ici n'en paient jamais le poids.

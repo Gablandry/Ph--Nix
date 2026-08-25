@@ -480,6 +480,18 @@ var DICO = {
  "Y a-t-il des règles à respecter pendant la distribution ?": "Are there rules to follow during a distribution?",
  "Oui. Chaque personne qui bénéficie du service prend connaissance du code d'éthique et des règlements généraux de Phé-Nix. Ils encadrent le déroulement de la distribution pour que tout se passe dans le respect de chacun, personnes servies comme bénévoles. Demandez-les à un bénévole sur place, ou": "Yes. Everyone who uses the service reads Phé-Nix's code of ethics and general rules. They set the framework for a distribution so that everyone is treated with respect, the people served and the volunteers alike. Ask a volunteer on site, or",
  "pour les recevoir.": "to receive a copy.",
+ "Table de distribution installée sur un trottoir de Montréal": "Distribution table set up on a Montreal sidewalk",
+ "Un bénévole de Phé-Nix prépare les caisses de fruits avant la distribution": "A Phé-Nix volunteer preparing crates of fruit before a distribution",
+ "Collecte de pain invendu chez un commerçant partenaire": "Picking up unsold bread from a partner business",
+ "Un panier d'épicerie contenant les effets personnels d'une personne sans domicile": "A shopping cart holding the belongings of someone without a home",
+ "Le pick-up de Phé-Nix chargé, prêt pour la tournée": "The Phé-Nix pickup loaded and ready to roll",
+ "Caisse de légumes récupérée chez un producteur maraîcher": "A crate of vegetables collected from a market grower",
+ "Un bénévole en chandail Phé-Nix tient une toile offerte à l'organisme": "A volunteer in a Phé-Nix shirt holding a painting donated to the organisation",
+ "La brigade de cuisine partenaire devant la bannière de Phé-Nix": "The partner kitchen brigade in front of the Phé-Nix banner",
+ "Remise de denrées par un commanditaire à deux bénévoles de Phé-Nix": "A sponsor handing food over to two Phé-Nix volunteers",
+ "Des pompiers partenaires devant la bannière de Phé-Nix": "Partner firefighters in front of the Phé-Nix banner",
+ "Michel Couture avec un partenaire, au local de préparation": "Michel Couture with a partner at the preparation space",
+ "Kiosque de Phé-Nix lors d'un événement communautaire": "The Phé-Nix booth at a community event",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
