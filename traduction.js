@@ -497,6 +497,17 @@ var DICO = {
  ". C'est une règle à laquelle on ne déroge pas : elle protège la personne qu'on accompagne autant que les bénévoles qui conduisent.": ". This is a rule we do not bend: it protects the person we are helping as much as the volunteers doing the driving.",
  "Pourquoi deux bénévoles pour un seul transport ?": "Why two volunteers for a single ride?",
  "Parce que personne ne devrait se retrouver seul en voiture avec quelqu'un qu'il connaît peu, ni d'un côté ni de l'autre. La présence de deux bénévoles protège la personne accompagnée comme celle qui conduit, et permet de réagir si le trajet ne se déroule pas comme prévu. C'est une condition, pas une préférence : sans deux bénévoles disponibles, le transport est reporté.": "Because nobody should end up alone in a car with someone they barely know, on either side. Having two volunteers protects the person being helped as much as the one driving, and means someone can react if the trip does not go as planned. It is a condition, not a preference: without two volunteers available, the ride is postponed.",
+ "C'est": "It is",
+ "Guy": "Guy",
+ "qui s'occupe des dépannages alimentaires. Vous pouvez l'appeler directement au": "who handles emergency food support. You can call him directly at",
+ ", pour vous-même ou pour quelqu'un d'autre qui a besoin d'aide.": ", for yourself or for someone else who needs help.",
+ "Chaque demande est traitée selon les besoins de la personne et selon ce qui est disponible au moment de l'appel. Le service s'adresse à toute personne en situation de précarité alimentaire.": "Every request is handled according to the person's needs and to what is available at the time of the call. The service is open to anyone facing food insecurity.",
+ "Puis-je appeler pour quelqu'un d'autre ?": "Can I call on behalf of someone else?",
+ "Oui. Beaucoup de gens n'appellent pas pour eux-mêmes. Si vous connaissez une personne ou une famille qui manque de nourriture, appelez Guy au": "Yes. Many people do not call for themselves. If you know a person or a family who is short of food, call Guy at",
+ "et expliquez-lui la situation.": "and explain the situation.",
+ "Le plus simple est d'appeler Guy, qui s'occupe des dépannages, au": "The simplest way is to call Guy, who handles emergency food support, at",
+ ". Vous pouvez aussi passer par courriel ou par Facebook. Chaque demande est ensuite traitée selon vos besoins et selon les denrées disponibles.": ". You can also reach us by email or on Facebook. Each request is then handled according to your needs and to what food is available.",
+ "Guy — dépannage alimentaire": "Guy — emergency food support",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 
