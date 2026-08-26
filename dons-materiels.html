@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contributions matérielles | Phé-Nix, points de collecte</title>
 <meta name="description" content="Déposez vêtements, nourriture non périssable et articles d'hygiène, dont des produits d'hygiène féminine dans l'un des 3 points de collecte de Phé-Nix en Montérégie.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="fonts/inter.css" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="design-system.css">
@@ -27,6 +26,17 @@
 .depot-infos { padding: 30px 26px; }
 .depot-carte { position: relative; min-height: 100%; background: #ece9e4; }
 .depot-carte iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+/* Tant qu'on n'a pas clique, aucune requete ne part vers Google. */
+.carte-btn { position: absolute; inset: 0; width: 100%; height: 100%; display: flex;
+  flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: repeating-linear-gradient(45deg, #ece9e4 0 10px, #e6e2dc 10px 20px);
+  border: 0; cursor: pointer; font-family: inherit; color: var(--ink-soft); padding: 16px;
+  transition: background .2s ease, color .2s ease; }
+.carte-btn:hover { background: #e2ddd6; color: var(--accent); }
+.carte-btn span { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.carte-btn:hover span { color: var(--accent); }
+.carte-btn em { font-style: normal; font-size: 11.5px; line-height: 1.4; text-align: center; max-width: 200px; }
+.carte-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .point-map { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
              font-size: 13.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .point-map:hover { text-decoration: underline; }
@@ -230,9 +240,13 @@ setTimeout(function () {
         <p class="lead">Déposez vos dons directement dans l'un de ces commerces partenaires.</p>
         <div class="depots">
     <div class="depot">
-      <div class="depot-carte">
-        <iframe src="https://www.google.com/maps?q=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte de Cantine BB-LOO" allowfullscreen></iframe>
-      </div>
+      <div class="depot-carte" data-carte="https://www.google.com/maps?q=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed">
+          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Cantine BB-LOO — afficher la carte Google">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Afficher la carte</span>
+            <em>Google sera contacté seulement à ce moment</em>
+          </button>
+        </div>
       <div class="depot-infos">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
       <div class="depot-num">Point 01</div>
@@ -242,9 +256,13 @@ setTimeout(function () {
       </div>
     </div>
     <div class="depot">
-      <div class="depot-carte">
-        <iframe src="https://www.google.com/maps?q=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte de Clinique Accès Santé" allowfullscreen></iframe>
-      </div>
+      <div class="depot-carte" data-carte="https://www.google.com/maps?q=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed">
+          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Clinique Accès Santé — afficher la carte Google">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Afficher la carte</span>
+            <em>Google sera contacté seulement à ce moment</em>
+          </button>
+        </div>
       <div class="depot-infos">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
       <div class="depot-num">Point 02</div>
@@ -254,9 +272,13 @@ setTimeout(function () {
       </div>
     </div>
     <div class="depot">
-      <div class="depot-carte">
-        <iframe src="https://www.google.com/maps?q=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte de Mangeons Maison" allowfullscreen></iframe>
-      </div>
+      <div class="depot-carte" data-carte="https://www.google.com/maps?q=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC&amp;output=embed">
+          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Mangeons Maison — afficher la carte Google">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Afficher la carte</span>
+            <em>Google sera contacté seulement à ce moment</em>
+          </button>
+        </div>
       <div class="depot-infos">
       <div class="depot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <div class="depot-num">Point 03</div>
@@ -292,7 +314,7 @@ setTimeout(function () {
     </div>
     <div class="footer-col"><h3>Navigation</h3><ul><li><a href="index.html">Accueil</a></li><li><a href="services.html">Services</a></li><li><a href="aider.html">Aider</a></li><li><a href="commanditaires.html">Nos commanditaires</a></li></ul></div>
     <div class="footer-col"><h3>Aider</h3><ul><li><a href="faire-un-don.html">Faire un don</a></li><li><a href="benevole.html">Devenir bénévole</a></li><li><a href="dons-materiels.html">Contributions matérielles</a></li></ul></div>
-    <div class="footer-col"><h3>Contact</h3><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li class="footer-place">Montréal · Rive-Sud</li></ul></div>
+    <div class="footer-col"><h3>Contact</h3><ul><li><a href="mailto:phenixactioncitoyenne@gmail.com">Courriel</a></li><li><a href="tel:4385263889">(438) 526-3889</a></li><li><a href="politique-confidentialite.html">Confidentialité</a></li><li class="footer-place">Montréal · Rive-Sud</li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.</span><span>Fait avec soin pour ceux qui en ont le plus besoin.</span></div>
 </footer>
@@ -310,5 +332,20 @@ setTimeout(function () {
   <a href="commanditaires.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Merci</span></a>
 </nav>
 <script src="traduction.js"></script>
+<script>
+/* Charge la carte Google seulement quand la personne la demande. Avant le
+   clic, aucune donnee du visiteur ne part vers Google. */
+function afficherCarte(btn) {
+  var boite = btn.parentElement;
+  var f = document.createElement('iframe');
+  f.src = boite.dataset.carte;
+  f.loading = 'lazy';
+  f.title = btn.getAttribute('aria-label');
+  f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+  f.setAttribute('allowfullscreen', '');
+  btn.remove();
+  boite.appendChild(f);
+}
+</script>
 </body>
 </html>
