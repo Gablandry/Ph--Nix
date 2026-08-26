@@ -45,7 +45,9 @@
 @media (max-width: 900px) {
   .svc { padding: 0 24px 60px; }
   .svc-inner { grid-template-columns: 1fr; gap: 34px; }
-  .svc-side { position: static; padding-top: 46px; }
+  /* L'entete est fixe et haute de 56 px : sans cette marge, le premier
+     texte de la page passait dessous et se faisait couper. */
+  .svc-side { position: static; padding-top: 88px; }
   .svc-side .lead { max-width: none; }
   .svc-flow { padding-top: 0; gap: 40px; }
   .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
