@@ -92,7 +92,7 @@ var DICO = {
  "3 ans": "3 years",
  "3 façons d'aider Phé-Nix : faire un don par Interac, devenir bénévole, ou déposer vêtements et nourriture dans nos points de collecte.": "3 ways to help Phé-Nix: donate by Interac, volunteer, or drop off clothing and food at our collection points.",
  "3 façons de faire une différence": "3 ways to make a difference",
- "6 villes desservies": "6 cities served",
+ "Quatre régions desservies": "Four regions served",
  "plus ou moins 72 heures": "roughly 72 hours",
  "Accueil": "Home",
  "Adapté à votre réalité": "Matched to your reality",

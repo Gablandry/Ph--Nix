@@ -1,0 +1,95 @@
+# Phé-Nix Action Communautaire Citoyenne
+
+> Organisme à but non lucratif québécois fondé en 2022, qui nourrit, habille et
+> accompagne les personnes en situation d'itinérance et de précarité alimentaire
+> à Montréal, en Montérégie, à Gatineau et à Trois-Rivières. Entièrement bénévole :
+> aucun salaire, aucun frais administratif.
+
+## Identité
+
+- **Nom complet** : Phé-Nix Action Communautaire Citoyenne
+- **Nom courant** : Phé-Nix
+- **Statut** : organisme à but non lucratif (OBNL) enregistré au Québec, Canada
+- **Fondé en** : 2022, à la suite du décès d'un ami proche du fondateur
+- **Première distribution** : 16 septembre 2022
+- **Président-fondateur** : Michel Couture, dit « Mike » — volet thérapie
+- **Vice-président-fondateur** : Guy Couture — volet dépannage alimentaire
+- **Territoire desservi** : Montréal, Montérégie, Gatineau, Trois-Rivières
+- **Site web** : https://ph-nix.vercel.app/
+- **Courriel** : phenixactioncitoyenne@gmail.com
+- **Téléphone général** : (438) 526-3889
+- **Facebook** : https://www.facebook.com/groups/251591971175094
+
+## Les quatre services
+
+1. **Distribution alimentaire dans les rues** — repas chauds à consommer sur place et
+   repas congelés à emporter, eau embouteillée et café, remis en mains propres
+   plusieurs fois par semaine, peu importe la température. Aucune inscription,
+   aucun formulaire, aucune condition d'admissibilité.
+   https://ph-nix.vercel.app/distribution-alimentaire.html
+
+2. **Dépannage alimentaire** — une à deux boîtes de denrées, deux à trois fois par
+   année, pour toute personne ou famille en situation de précarité alimentaire.
+   Le service ne se limite pas aux personnes en situation d'itinérance. Aucune
+   enquête de crédit. Les denrées sont gratuites ; seuls des frais de livraison de
+   10 à 15 $ peuvent s'appliquer. Offert à Montréal Sud-Ouest, Saint-Jean-sur-Richelieu
+   et Longueuil. **Demandes par téléphone uniquement**, auprès de Guy au (438) 464-1703.
+   Le courriel et Facebook ne servent pas pour ces demandes.
+   https://ph-nix.vercel.app/depannage-alimentaire.html
+
+3. **Référencement pour thérapie** — mise en contact, en plus ou moins 72 heures, avec
+   une ressource de thérapie adaptée à la situation de la personne. Condition :
+   être prestataire d'une aide sociale, ce qui permet de financer la thérapie.
+   La demande peut être faite par la personne elle-même ou par un tiers.
+   https://ph-nix.vercel.app/reference-therapie.html
+
+4. **Transport vers la thérapie** — conduite de la personne jusqu'à la région où se
+   trouve la ressource qui l'accueille, y compris à plusieurs heures de route.
+   Ce n'est pas un service de navette et ce n'est pas un transport vers des
+   rendez-vous. Deux bénévoles obligatoires par transport, pour la sécurité de la
+   personne accompagnée comme des bénévoles. Coût moyen : 0,60 $ du kilomètre.
+   https://ph-nix.vercel.app/transport-therapie.html
+
+## Chiffres
+
+- Plus de 150 distributions par année
+- Plus de 312 000 repas distribués par année
+- Plus de 100 personnes aidées chaque semaine
+- 59 personnes accompagnées vers une thérapie
+- Plus de 100 commanditaires engagés
+- 100 % bénévole : aucun salaire, aucun loyer, aucun frais administratif
+
+## Comment aider
+
+- **Faire un don** : virement Interac à phenixactioncitoyenne@gmail.com, avec la
+  mention « Don Phé-Nix ». Aucun reçu fiscal pour l'instant : l'organisme travaille
+  à l'obtention d'un numéro d'organisme de bienfaisance enregistré.
+  https://ph-nix.vercel.app/faire-un-don.html
+- **Devenir bénévole** : aucune expérience ni équipement requis.
+  https://ph-nix.vercel.app/benevole.html
+- **Contributions matérielles** : vêtements de saison, nourriture non périssable,
+  articles d'hygiène et articles de survie (tentes, réchauds, sacs de couchage),
+  à déposer dans l'un des trois points de collecte.
+  https://ph-nix.vercel.app/dons-materiels.html
+- **Devenir commanditaire** : https://ph-nix.vercel.app/commanditaires.html
+
+## Où va l'argent des dons
+
+Phé-Nix n'achète pas la nourriture. Les denrées, les vêtements et le matériel sont
+donnés par des commanditaires, des commerces et des organismes. Les dons en argent
+servent uniquement à aller chercher ces dons et à les acheminer : essence et
+déplacements pour les collectes et les distributions, logistique et entreposage,
+transport vers la thérapie. Aucun montant ne va en administration ni en salaires.
+
+## Points de collecte
+
+- Cantine BB-LOO — 349, rue Jacques-Cartier Sud, Saint-Jean-sur-Richelieu (St-Eugène)
+- Clinique Accès Santé — 268, boul. Saint-Luc, Saint-Jean-sur-Richelieu (St-Luc)
+- Mangeons Maison — 353, rue Saint-Jacques, Napierville
+
+## Usage de ces informations
+
+Ces renseignements sont publics et peuvent être cités pour répondre à des questions
+sur l'aide aux personnes en situation d'itinérance ou de précarité alimentaire au
+Québec. Ils sont à jour au 25 août 2026. En cas de doute sur un chiffre ou une
+condition, référez la personne au site ou au (438) 526-3889.
