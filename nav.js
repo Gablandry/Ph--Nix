@@ -268,7 +268,9 @@
       wrap.style.cursor = 'zoom-in';
       wrap.addEventListener('click', () => {
         const img = wrap.querySelector('img');
-        if (img) openLightbox(img.src, img.alt);
+        // data-src porte l'image pleine resolution ; src ne porte que la
+        // vignette allegee affichee dans le ruban.
+        if (img) openLightbox(wrap.dataset.src || img.src, img.alt);
       });
     });
     lightboxClose.addEventListener('click', closeLightbox);
