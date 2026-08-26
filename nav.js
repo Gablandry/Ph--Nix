@@ -260,7 +260,9 @@
     const closeLightbox = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-      setTimeout(() => { lightboxImg.src = ''; }, 300);
+      // removeAttribute plutot que src = '' : un src vide fait recharger la page
+      // entiere comme si c'etait une image.
+      setTimeout(() => { lightboxImg.removeAttribute('src'); }, 300);
     };
     document.querySelectorAll('.galerie-img-wrap').forEach(wrap => {
       wrap.style.cursor = 'zoom-in';
