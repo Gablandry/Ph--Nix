@@ -224,10 +224,15 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 .reveal, .reveal-left, .reveal-right {
   transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
-.reveal       { opacity: 0; transform: translateY(28px); }
-.reveal-left  { opacity: 0; transform: translateX(-32px); }
-.reveal-right { opacity: 0; transform: translateX(32px); }
+/* Le masquage n'est applique que si le JavaScript a demarre (classe « js »
+   posee en tete de page). Sans cela, une panne de script laissait douze
+   sections completement invisibles pour le visiteur. */
+.js .reveal       { opacity: 0; transform: translateY(28px); }
+.js .reveal-left  { opacity: 0; transform: translateX(-32px); }
+.js .reveal-right { opacity: 0; transform: translateX(32px); }
 .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+/* Filet de securite : si rien n'a revele les sections apres 3 s, on les montre. */
+html.reveal-secours .reveal, html.reveal-secours .reveal-left, html.reveal-secours .reveal-right { opacity: 1 !important; transform: none !important; }
 .reveal-d1 { transition-delay: 0.10s; }
 .reveal-d2 { transition-delay: 0.20s; }
 .reveal-d3 { transition-delay: 0.30s; }
