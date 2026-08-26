@@ -389,7 +389,7 @@ var DICO = {
  "Une question sur la commandite ?": "A question about sponsorship?",
  "Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.": "One to two boxes of food for people and families who need it. No credit check. Two to three times a year, in Montreal's South-West, Saint-Jean-sur-Richelieu and Longueuil.",
  "Vice-président-fondateur": "Co-founder and vice-president",
- "Vies accompagnées": "Lives guided",
+ "Personnes sorties de la rue": "People who left the street",
  "Virement Interac · 30 secondes": "Interac transfer · 30 seconds",
  "Voir directement sur YouTube →": "Watch it on YouTube →",
  "Voir les points de dépôt →": "See the drop-off points →",
@@ -431,7 +431,7 @@ var DICO = {
  "référencement pour thérapie": "referrals to treatment",
  "transport vers la thérapie": "rides to treatment",
  "un repas chaud ce soir.": "a hot meal tonight.",
- "vers la thérapie": "toward treatment",
+ "grâce à une réhabilitation": "through rehabilitation",
  "© 2026 Phé-Nix Action Communautaire Citoyenne · OBNL enregistré.": "© 2026 Phé-Nix Action Communautaire Citoyenne · Registered non-profit.",
  "« Don Phé-Nix »": "“Don Phé-Nix”",
  "À Montréal, en Montérégie, à Gatineau et à Trois-Rivières.": "In Montreal, the Montérégie, Gatineau and Trois-Rivières.",
@@ -531,6 +531,8 @@ var DICO = {
  "Le coût moyen d'un transport, qui couvre l'essence et l'usage du véhicule.": "The average cost of a ride, covering fuel and vehicle wear.",
  "Combien coûte un transport ?": "How much does a ride cost?",
  "En moyenne 0,60 $ du kilomètre. Ce montant couvre l'essence et l'usage du véhicule, rien d'autre : aucun bénévole n'est payé. Parlez-nous de votre situation, nous évaluerons ensemble ce qui est possible.": "On average $0.60 per kilometre. That amount covers fuel and vehicle wear, nothing else: no volunteer is paid. Tell us about your situation and we will work out together what is possible.",
+ "Et bien d'autres": "And many more",
+ "partenaires encore": "partners besides",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 

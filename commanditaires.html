@@ -95,10 +95,13 @@
 }
 
 /* ===== MUR DES PARTENAIRES (anonyme) ===== */
-.mur-cats { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; max-width: 880px; margin: 56px auto 0; }
+.mur-cats { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; max-width: 880px; margin: 56px auto 0; }
 .mur-cat { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; padding: 28px 18px; text-align: center; }
 .mur-cat-n { font-weight: 700; font-size: 42px; line-height: 1; letter-spacing: -0.03em; color: var(--accent); margin-bottom: 10px; }
 .mur-cat-l { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
+/* Les categories nommees ne couvrent pas tout le monde : cette case le dit,
+   plutot que de laisser croire que l'addition donne le total. */
+.mur-cat-plus { background: var(--accent-soft); border-color: transparent; }
 
 /* Grand MERCI aux couleurs du phénix */
 .merci-geant { text-align: center; margin: 64px auto 0; }
@@ -115,6 +118,7 @@
   .impact-stats, .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
   .commanditaires-grid-section, .pourquoi-cmdite-section, .tiers-section, .sur-mesure-section, .contact-commandite { padding-left: 24px; padding-right: 24px; }
   .mur-cats { grid-template-columns: repeat(2,1fr); gap: 12px; max-width: 380px; }
+  .mur-cat-plus { grid-column: 1 / -1; }
   .mur-cat { padding: 22px 12px; }
   .mur-cat-n { font-size: 34px; }
   .merci-mot { letter-spacing: -0.035em; }
@@ -237,6 +241,10 @@ setTimeout(function () {
     <div class="mur-cat">
       <div class="mur-cat-n">5</div>
       <div class="mur-cat-l">Sports<br>&amp; bien-être</div>
+    </div>
+    <div class="mur-cat mur-cat-plus">
+      <div class="mur-cat-n">+</div>
+      <div class="mur-cat-l">Et bien d'autres<br>partenaires encore</div>
     </div>
   </div>
 
