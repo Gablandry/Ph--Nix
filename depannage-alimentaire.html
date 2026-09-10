@@ -75,7 +75,7 @@
 .faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
 .faq-item { border-bottom: 1px solid var(--hairline); }
 .faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-arrow { font-size: 22px; color: var(--accent-texte); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
 .faq-item.open .faq-arrow { transform: rotate(45deg); }
 .faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
 .faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
@@ -88,7 +88,7 @@
                 background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px;
                 padding: 18px 22px; text-decoration: none;
                 transition: transform .25s, box-shadow .25s, border-color .25s; }
-.contact-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.07); border-color: var(--accent); }
+.contact-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.07); border-color: var(--accent-texte); }
 .contact-card .ic { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; }
 .cc-courriel .ic { background: rgba(232,80,14,.10); color: #C7440B; }
 .cc-tel      .ic { background: rgba(22,163,74,.11); color: #15803D; }
@@ -103,7 +103,7 @@
 }
 .contacts-solo { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
 .contact-note { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 26px auto 0; max-width: 520px; }
-.contact-note a { color: var(--accent); text-decoration: none; }
+.contact-note a { color: var(--accent-texte); text-decoration: none; }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/depannage-alimentaire.html">
 <meta property="og:type" content="website">
@@ -307,7 +307,7 @@ setTimeout(function () {
     <div class="eyebrow">Comment cela fonctionne</div>
     <h2>Un don, sans complications.</h2>
     <p>Le dépannage alimentaire comprend 1 à 2 boîtes de denrées, offertes en don aux personnes qui ont besoin de soutien alimentaire. <strong style="color:var(--ink);">Aucune enquête de crédit n'est requise.</strong></p>
-    <p>C'est <strong style="color:var(--ink);">Guy</strong> qui s'occupe des dépannages alimentaires. Vous pouvez l'appeler directement au <a href="tel:4384641703" style="color:var(--accent); text-decoration:none; font-weight:600;">(438) 464-1703</a>, pour vous-même ou pour quelqu'un d'autre qui a besoin d'aide.</p>
+    <p>C'est <strong style="color:var(--ink);">Guy</strong> qui s'occupe des dépannages alimentaires. Vous pouvez l'appeler directement au <a href="tel:4384641703" style="color:var(--accent-texte); text-decoration:none; font-weight:600;">(438) 464-1703</a>, pour vous-même ou pour quelqu'un d'autre qui a besoin d'aide.</p>
     <p>Chaque demande est traitée selon les besoins de la personne et selon ce qui est disponible au moment de l'appel. Le service s'adresse à toute personne en situation de précarité alimentaire : il ne se limite pas aux personnes en situation d'itinérance. Une famille, un ménage, une personne seule qui n'arrive plus à remplir son frigo, tous peuvent faire une demande.</p>
     <p>Le service est offert exclusivement dans les secteurs de <strong style="color:var(--ink);">Montréal Sud-Ouest</strong>, <strong style="color:var(--ink);">Saint-Jean-sur-Richelieu</strong> et <strong style="color:var(--ink);">Longueuil</strong>.</p>
       </div>
@@ -342,7 +342,7 @@ setTimeout(function () {
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Puis-je appeler pour quelqu'un d'autre ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Oui. Beaucoup de gens n'appellent pas pour eux-mêmes. Si vous connaissez une personne ou une famille qui manque de nourriture, appelez Guy au <a href="tel:4384641703" style="color:var(--accent);text-decoration:none;">(438) 464-1703</a> et expliquez-lui la situation.</div>
+      <div class="faq-a">Oui. Beaucoup de gens n'appellent pas pour eux-mêmes. Si vous connaissez une personne ou une famille qui manque de nourriture, appelez Guy au <a href="tel:4384641703" style="color:var(--accent-texte);text-decoration:none;">(438) 464-1703</a> et expliquez-lui la situation.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Combien de fois par année puis-je y avoir droit ? <span class="faq-arrow">+</span></button>
@@ -362,7 +362,7 @@ setTimeout(function () {
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Comment faire une demande ? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Uniquement par téléphone, en appelant Guy au <a href="tel:4384641703" style="color:var(--accent);text-decoration:none;">(438) 464-1703</a>. Le courriel et Facebook ne servent pas pour les demandes de dépannage : elles n'y sont pas traitées. Chaque demande est ensuite évaluée selon vos besoins et selon les denrées disponibles.</div>
+      <div class="faq-a">Uniquement par téléphone, en appelant Guy au <a href="tel:4384641703" style="color:var(--accent-texte);text-decoration:none;">(438) 464-1703</a>. Le courriel et Facebook ne servent pas pour les demandes de dépannage : elles n'y sont pas traitées. Chaque demande est ensuite évaluée selon vos besoins et selon les denrées disponibles.</div>
     </div>
   </div>
       </div>

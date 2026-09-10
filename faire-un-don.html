@@ -20,7 +20,7 @@
 .don-hero { background: var(--bg); }
 .don-hero .page-hero-content h1 { color: var(--ink); }
 .don-hero .page-hero-content p { color: var(--ink-soft); }
-.don-hero .eyebrow { color: var(--accent); }
+.don-hero .eyebrow { color: var(--accent-texte); }
 
 /* ===== LE GRAND BLOC DON — décor du phénix, comme le reste du site ===== */
 .dongive {
@@ -90,7 +90,7 @@
 
 /* Carte Interac — la finale, fort contraste */
 .interac-final { background: #fff; border-radius: 26px; padding: 44px 40px; max-width: 560px; margin: 44px auto 0; box-shadow: 0 28px 70px rgba(0,0,0,0.45); text-align: left; }
-.interac-final .tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+.interac-final .tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-texte); margin-bottom: 12px; }
 .interac-final h3 { font-size: 24px; color: var(--ink); margin-bottom: 22px; }
 
 /* Trois etapes numerotees plutot qu'une phrase avec des fleches : on suit
@@ -99,7 +99,7 @@
 .don-etapes li { display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 12px;
                  font-size: 15px; color: var(--ink); line-height: 1.4; }
 .don-etapes b { width: 26px; height: 26px; border-radius: 50%; background: var(--bg-soft);
-                color: var(--accent); font-size: 13px; font-weight: 700;
+                color: var(--accent-texte); font-size: 13px; font-weight: 700;
                 display: flex; align-items: center; justify-content: center; }
 
 /* Le champ courriel EST le bouton : une seule chose a toucher.
@@ -109,18 +109,18 @@
   background: var(--bg-soft); border: 1.5px solid var(--hairline); border-radius: 14px;
   padding: 14px 16px; cursor: pointer; font-family: inherit;
   transition: border-color .2s ease, background .2s ease; }
-.interac-copy:hover { border-color: var(--accent); background: #fff; }
+.interac-copy:hover { border-color: var(--accent-texte); background: #fff; }
 .interac-copy .adr { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden;
   font-weight: 600; font-size: clamp(13px, 3.9vw, 17px); letter-spacing: -0.015em; color: var(--ink); }
 .interac-copy .act { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px;
-  font-size: 14px; font-weight: 700; color: var(--accent); }
+  font-size: 14px; font-weight: 700; color: var(--accent-texte); }
 .interac-copy .act svg { flex-shrink: 0; }
 .interac-copy.ok { border-color: #16a34a; background: #f0fdf4; }
 .interac-copy.ok .act { color: #16a34a; }
 
 .copied-msg { display: none; margin-top: 12px; font-size: 14px; font-weight: 600; color: #16a34a; }
 .copied-msg.show { display: block; }
-.copied-msg.err { color: var(--accent); }
+.copied-msg.err { color: var(--accent-texte); }
 
 .interac-final .don-note { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin-top: 18px; }
 .interac-final .don-note strong { color: var(--ink); }
@@ -137,7 +137,7 @@
 .faq { max-width: 720px; margin: 48px auto 0; text-align: left; }
 .faq-item { border-bottom: 1px solid var(--hairline); }
 .faq-q { width: 100%; background: none; border: none; text-align: left; font-family: 'Inter',sans-serif; font-weight: 600; font-size: 17px; color: var(--ink); padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-arrow { font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
+.faq-arrow { font-size: 22px; color: var(--accent-texte); transition: transform 0.25s; flex-shrink: 0; line-height: 1; }
 .faq-item.open .faq-arrow { transform: rotate(45deg); }
 .faq-a { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
 .faq-item.open .faq-a { max-height: 280px; padding-bottom: 22px; }
@@ -394,7 +394,7 @@ setTimeout(function () {
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Je préfère donner du matériel plutôt que de l'argent. <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Avec plaisir ! Déposez vêtements, nourriture non périssable et articles d'hygiène, dont des produits d'hygiène féminine dans l'un de nos <a href="dons-materiels.html" style="color:var(--accent);text-decoration:none;">points de collecte</a>, ou contactez-nous pour organiser un dépôt.</div>
+      <div class="faq-a">Avec plaisir ! Déposez vêtements, nourriture non périssable et articles d'hygiène, dont des produits d'hygiène féminine dans l'un de nos <a href="dons-materiels.html" style="color:var(--accent-texte);text-decoration:none;">points de collecte</a>, ou contactez-nous pour organiser un dépôt.</div>
     </div>
   </div>
 </section>

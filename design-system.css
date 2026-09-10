@@ -10,6 +10,15 @@
   --accent:      #E8500E;   /* orange Phé-Nix, profond */
   --accent-deep: #C7440B;   /* hover */
   --accent-soft: rgba(232,80,14,0.08);
+  /* L'orange de marque #E8500E n'atteint que 3.76 sur blanc et 3.14 sur le rose
+     des cartes : sous le seuil de 4.5 exige pour du petit texte. Il reste la
+     couleur des SURFACES (boutons, pastilles, degrades, la flamme), ou il porte
+     la marque et ou aucun seuil ne s'applique de la meme facon. Pour du TEXTE
+     sur fond clair, cette version plus profonde passe partout : 5.63 sur blanc,
+     4.70 dans le pire cas mesure sur les 13 pages. */
+  --accent-texte: #B73F0B;
+  --accent-texte-fort: #8B3008;  /* survol du texte */
+  --accent-clair: #FF8A3D;       /* texte orange sur fond sombre : 8.07 */
   --bg-warm:     #FBF4EF;   /* pêche très clair — chaleur entre les blancs */
   --bg-sable:    #F3E3D3;   /* sable chaud — sépare deux sections blanches */
   --bg-terre:    #E8D5C4;   /* terre douce — le ton le plus affirmé du clair */
@@ -52,7 +61,7 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   font-family: 'Inter', sans-serif;
   font-weight: 600; font-size: 12px;
   text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--accent-texte);
   display: flex; align-items: center; gap: 10px;
   margin-bottom: 20px;
 }
@@ -168,7 +177,7 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   text-decoration: none; padding: 16px 4px;
   border-bottom: 1px solid var(--hairline); transition: color 0.2s;
 }
-.nav-mobile-panel a:hover, .nav-mobile-panel a.active { color: var(--accent); }
+.nav-mobile-panel a:hover, .nav-mobile-panel a.active { color: var(--accent-texte); }
 .nav-mobile-ctas { display: flex; gap: 10px; margin-top: 24px; padding-top: 20px; }
 .nav-mobile-ctas .btn { flex: 1; }
 
@@ -208,7 +217,7 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
   text-decoration: none; transition: all 0.2s;
 }
 .social-icon { transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), border-color 0.2s, color 0.2s, background 0.2s; }
-.social-icon:hover { border-color: var(--accent); color: #fff; background: var(--accent); transform: translateY(-3px); }
+.social-icon:hover { border-color: var(--accent-texte); color: #fff; background: var(--accent); transform: translateY(-3px); }
 /* h3 et non h4 : le balisage est passe en h3 pour supprimer le saut de niveau
    dans la hierarchie des titres, et ce selecteur n'avait pas suivi. Les trois
    titres heritaient alors du noir du body sur fond sombre : 1,13 pour 1. */
@@ -286,9 +295,9 @@ html.reveal-secours .reveal, html.reveal-secours .reveal-left, html.reveal-secou
   padding: 6px 1px; border-radius: 12px; transition: color 0.2s, background 0.2s;
 }
 .mobile-nav-bar a svg { width: 20px; height: 20px; flex-shrink: 0; }
-.mobile-nav-bar a.active { color: var(--accent); background: var(--accent-soft); }
+.mobile-nav-bar a.active { color: var(--accent-texte); background: var(--accent-soft); }
 /* Case « Don » : pastille orange pleine, le chemin de don reste visible en tout temps */
-.mobile-nav-bar a.nav-don { color: var(--accent); font-weight: 700; }
+.mobile-nav-bar a.nav-don { color: var(--accent-texte); font-weight: 700; }
 .mobile-nav-bar a.nav-don svg {
   width: 34px; height: 34px; padding: 7px; border-radius: 50%;
   background: var(--accent); color: #fff;
