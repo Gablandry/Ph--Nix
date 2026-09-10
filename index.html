@@ -571,18 +571,32 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 .vitrine-vignette { display: none; }
 
 @media (max-width: 900px) {
-  .vitrine { grid-template-columns: 1fr; gap: 0; margin-top: 34px; }
+  /* Sur telephone, chaque service devient une bande photographique pleine
+     largeur et le texte se pose dessus. Les vignettes de 74 px reduisaient des
+     photos de terrain a des timbres : elles ne servaient plus de preuve. */
+  .vitrine { grid-template-columns: 1fr; gap: 14px; margin-top: 34px; }
   .vitrine-scene { display: none; }
-  /* Sur telephone le texte est haut : la vignette et la fleche s'alignent sur
-     la premiere ligne du titre plutot que de flotter au milieu du bloc. */
-  .vitrine-entree { grid-template-columns: 74px 1fr 18px; gap: 16px; padding: 18px 2px;
-                    align-items: start; }
-  .vitrine-vignette, .vitrine-entree .vitrine-fleche { margin-top: 3px; }
-  .vitrine-vignette { display: block; width: 74px; height: 74px; border-radius: 14px;
-                      object-fit: cover; }
-  .vitrine-entree strong { font-size: 18px; margin-bottom: 5px; }
-  .vitrine-entree em { font-size: 14.5px; line-height: 1.55; max-width: none; }
-  .vitrine-entree:hover { padding-left: 2px; }
+  .vitrine-liste { display: grid; gap: 14px; }
+  .vitrine-entree { display: block; position: relative; padding: 0;
+                    border: 0; border-radius: 18px; overflow: hidden;
+                    min-height: 218px; }
+  .vitrine-liste li:last-child .vitrine-entree { border-bottom: 0; }
+  .vitrine-vignette { display: block; position: absolute; inset: 0;
+                      width: 100%; height: 100%; border-radius: 0; object-fit: cover;
+                      margin: 0; transition: transform .5s cubic-bezier(0.4,0,0.2,1); }
+  .vitrine-entree::after { content: ''; position: absolute; inset: 0; z-index: 1;
+                           background: linear-gradient(180deg, rgba(20,12,30,0.20) 0%,
+                             rgba(20,12,30,0.72) 52%, rgba(20,12,30,0.90) 100%); }
+  .vitrine-entree > span { position: relative; z-index: 2; display: block;
+                           padding: 96px 20px 20px; }
+  .vitrine-entree strong { font-size: 20px; margin-bottom: 6px; color: #fff; }
+  .vitrine-entree:hover strong, .vitrine-entree:focus-visible strong { color: #fff; }
+  .vitrine-entree em { font-size: 14.5px; line-height: 1.55; max-width: none;
+                       color: rgba(255,255,255,0.88); }
+  .vitrine-entree .vitrine-fleche { position: absolute; z-index: 2; right: 18px; top: 18px;
+                                    margin: 0; color: #fff; }
+  .vitrine-entree:hover { padding-left: 0; }
+  .vitrine-entree:active .vitrine-vignette { transform: scale(1.03); }
 }
 
 /* ===== LIEN RAPIDE — la personne qui a besoin d'aide =====
@@ -980,7 +994,7 @@ setTimeout(function () {
       </div>
       <ul class="vitrine-liste">
         <li><a href="distribution-alimentaire.html" class="vitrine-entree" data-vitrine="0">
-          <img class="vitrine-vignette" src="mini/distribution-rue.jpg" alt="" loading="lazy">
+          <img class="vitrine-vignette" src="bande/distribution-rue.jpg" alt="" loading="lazy">
           <span>
             <strong>Distribution alimentaire dans les rues</strong>
             <em>Des repas chauds remis en mains propres, plusieurs fois par semaine, peu importe la température, à Montréal, en Montérégie, à Gatineau et à Trois-Rivières.</em>
@@ -988,7 +1002,7 @@ setTimeout(function () {
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="depannage-alimentaire.html" class="vitrine-entree" data-vitrine="1">
-          <img class="vitrine-vignette" src="mini/depannage-boite.jpg" alt="" loading="lazy">
+          <img class="vitrine-vignette" src="bande/depannage-boite.jpg" alt="" loading="lazy">
           <span>
             <strong>Dépannage alimentaire</strong>
             <em>Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.</em>
@@ -996,7 +1010,7 @@ setTimeout(function () {
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="reference-therapie.html" class="vitrine-entree" data-vitrine="2">
-          <img class="vitrine-vignette" src="mini/reference-appel.jpg" alt="" loading="lazy">
+          <img class="vitrine-vignette" src="bande/reference-appel.jpg" alt="" loading="lazy">
           <span>
             <strong>Référencement pour thérapie</strong>
             <em>En plus ou moins 72 heures, nous vous mettons en contact avec une ressource adaptée à votre réalité, pour vous ou pour un proche. Nous connaissons le milieu et nous orientons vers la ressource appropriée.</em>
@@ -1004,7 +1018,7 @@ setTimeout(function () {
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="transport-therapie.html" class="vitrine-entree" data-vitrine="3">
-          <img class="vitrine-vignette" src="mini/therapie-route-voiture.jpg" alt="" loading="lazy">
+          <img class="vitrine-vignette" src="bande/therapie-route-voiture.jpg" alt="" loading="lazy">
           <span>
             <strong>Transport vers la thérapie</strong>
             <em>Une fois la bonne ressource trouvée, nous conduisons la personne jusqu'à la région où se trouve sa thérapie, même à plusieurs heures de route.</em>
