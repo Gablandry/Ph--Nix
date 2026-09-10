@@ -386,10 +386,13 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 }
 /* La piste est dupliquee : la moitie exacte fait une boucle sans raccord.
    Le gap final doit donc exister aussi, d'ou la marge sur chaque element. */
-.galerie-img-wrap, .gvid { flex: 0 0 auto; width: 310px; aspect-ratio: 3/2;
+/* Hauteur fixe, largeur libre : chaque photo garde ses proportions et rien
+   n'est recadre. Un cadre 3/2 impose coupait jusqu'a 68 % de la hauteur des
+   portraits, et la moitie des deux photos de groupe, donc des visages. */
+.galerie-img-wrap, .gvid { flex: 0 0 auto; height: 210px; width: auto;
                            overflow: hidden; border-radius: 20px; position: relative; }
 .galerie-img-wrap { cursor: zoom-in; }
-.galerie-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.galerie-img-wrap img { height: 100%; width: auto; max-width: none; display: block; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
 .galerie-img-wrap:hover img { transform: scale(1.05); }
 .gvid video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .galerie-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 55%); opacity: 0; transition: opacity 0.3s; }
@@ -505,7 +508,7 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .ruban { margin-top: 32px; }
   .terrain-txt .lead { max-width: none; }
   /* le decalage vertical est conserve, il fonctionne aussi a deux colonnes */
-  .galerie-img-wrap, .gvid { width: 232px; border-radius: 16px; }
+  .galerie-img-wrap, .gvid { height: 158px; width: auto; border-radius: 16px; }
   /* la description est retiree sur telephone : photo, titre et bouton
      suffisent, et la carte respire beaucoup plus */
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -1171,8 +1174,8 @@ setTimeout(function () {
     <div class="ruban-piste" id="ruban-piste">
       <div class="galerie-img-wrap" data-src="equipe-terrain.jpg"><img src="mini/equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution"></div>
       <div class="galerie-img-wrap" data-src="terrain-legumes.jpg"><img src="mini/terrain-legumes.jpg" alt="Pick-up rempli de boîtes de légumes frais pour la distribution"></div>
-      <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
-      <div class="gvid"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
+      <div class="gvid" style="aspect-ratio:9/16"><video muted loop playsinline preload="none" poster="terrain-1-poster.jpg" data-src="terrain-1.mp4"></video></div>
+      <div class="gvid" style="aspect-ratio:9/16"><video muted loop playsinline preload="none" poster="terrain-2-poster.jpg" data-src="terrain-2.mp4"></video></div>
       <div class="galerie-img-wrap" data-src="terrain-cuisine.jpg"><img src="mini/terrain-cuisine.jpg" alt="Caisses de légumes frais triés avant la distribution"></div>
     <div class="galerie-img-wrap" data-src="terrain-table-rue.jpg"><img src="mini/terrain-table-rue.jpg" alt="Table de distribution installée sur un trottoir de Montréal" loading="lazy"></div>
     <div class="galerie-img-wrap" data-src="terrain-preparation.jpg"><img src="mini/terrain-preparation.jpg" alt="Un bénévole de Phé-Nix prépare les caisses de fruits avant la distribution" loading="lazy"></div>
