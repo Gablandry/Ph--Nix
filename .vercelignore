@@ -1,0 +1,10 @@
+# Fichiers de travail interne.
+#
+# Tout fichier a la racine du depot est servi publiquement par Vercel :
+# llms.txt et robots.txt repondent en HTTP 200. Un fichier Markdown le serait
+# aussi. Ce qui est liste ici reste dans Git mais n'est jamais deploye.
+
+PRODUCT.md
+DESIGN.md
+*.md
+.impeccable/
