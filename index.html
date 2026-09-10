@@ -323,41 +323,18 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 }
 
 /* ===== CARTES EMPILÉES — les 4 services ===== */
-.pile { max-width: var(--maxw); margin: 56px auto 0; }
-.pile-carte {
   position: sticky; top: 96px;
   display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
   background: var(--bg); border: 1px solid var(--hairline); border-radius: 26px;
   overflow: hidden; text-decoration: none; margin-bottom: 26px;
 }
 /* chaque carte passe au-dessus de la précédente et descend un peu plus bas */
-.pile-carte:nth-child(1) { z-index: 1; top: 96px; }
-.pile-carte:nth-child(2) { z-index: 2; top: 112px; }
-.pile-carte:nth-child(3) { z-index: 3; top: 128px; }
-.pile-carte:nth-child(4) { z-index: 4; top: 144px; }
 /* aspect-ratio impose la hauteur de l'image : sans lui, une photo verticale
    etirait sa carte a près du double des autres. La forme de la photo n'a
    donc plus aucun effet sur la hauteur de la carte. */
-.pile-carte img { width: 100%; height: 100%; aspect-ratio: 4/3; min-height: 340px; object-fit: cover; display: block; }
-.pile-txt { padding: 46px 44px; display: flex; flex-direction: column; justify-content: center; }
-.pile-no { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; }
-.pile-txt h3 { font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
-.pile-txt p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 22px; }
-.pile-go { display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; background: var(--accent); color: #fff;
            font-size: 14.5px; font-weight: 600; padding: 12px 22px; border-radius: 999px;
            transition: background .25s, transform .25s; }
-.pile-carte:hover .pile-go { background: var(--accent-deep); transform: translateY(-2px); }
 
-
-/* ===== PROGRAMMES (4 cartes) ===== */
-.progs { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: var(--maxw); margin: 60px auto 0; }
-.prog { background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; text-align: left; }
-.prog:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,0.07); }
-.prog img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-.prog:hover img { transform: scale(1.05); }
-.prog-body { padding: 22px 22px 26px; }
-.prog h3 { font-size: 17px; margin-bottom: 8px; }
-.prog p { font-size: 14px; line-height: 1.55; margin: 0; }
 
 /* ===== IMPACT + RÉGIONS ===== */
 .impact { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; max-width: var(--maxw); margin: 64px auto 0; }
@@ -525,21 +502,12 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .founder { transform: none !important; }
   .steps { gap: 16px; }
   /* cartes empilées : une colonne, image au-dessus du texte */
-  .pile-carte { grid-template-columns: 1fr; margin-bottom: 18px; border-radius: 20px; }
-  .pile-carte img { min-height: 0; aspect-ratio: 16/10; }
   .ruban { margin-top: 32px; }
   .terrain-txt .lead { max-width: none; }
   /* le decalage vertical est conserve, il fonctionne aussi a deux colonnes */
   .galerie-img-wrap, .gvid { width: 232px; border-radius: 16px; }
-  .pile-txt { padding: 28px 24px 30px; }
   /* la description est retiree sur telephone : photo, titre et bouton
      suffisent, et la carte respire beaucoup plus */
-  .pile-txt p { display: none; }
-  .pile-txt h3 { margin-bottom: 20px; }
-  .pile-carte:nth-child(1) { top: 78px; }
-  .pile-carte:nth-child(2) { top: 88px; }
-  .pile-carte:nth-child(3) { top: 98px; }
-  .pile-carte:nth-child(4) { top: 108px; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
   .cta-premium { padding: 56px 28px; border-radius: 24px; }
@@ -562,6 +530,59 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   /* Ruban plus étroit et un peu plus rapide sur petit écran */
+}
+
+/* ===== VITRINE DES SERVICES — une image, quatre entrees =====
+   Remplace la pile de cartes collantes, qui prenait 1703 px de defilement pour
+   quatre liens et masquait les descriptions sur telephone. La photo est tenue a
+   gauche, la liste a droite ; l'image suit l'entree survolee ou tabulee. */
+.vitrine { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 44px;
+           max-width: var(--maxw); margin: 48px auto 0; align-items: start; }
+
+.vitrine-scene { position: relative; aspect-ratio: 4/5; border-radius: 22px;
+                 overflow: hidden; background: var(--bg-soft); }
+.vitrine-scene img { position: absolute; inset: 0; width: 100%; height: 100%;
+                     object-fit: cover; opacity: 0;
+                     transition: opacity .45s cubic-bezier(0.4,0,0.2,1); }
+.vitrine-scene img.actif { opacity: 1; }
+
+.vitrine-liste { list-style: none; margin: 0; padding: 0; }
+.vitrine-entree { display: grid; grid-template-columns: 1fr 22px; gap: 18px;
+                  align-items: center; padding: 22px 4px 22px 0;
+                  border-top: 1px solid var(--hairline);
+                  text-decoration: none; color: inherit;
+                  transition: padding-left .25s cubic-bezier(0.4,0,0.2,1); }
+.vitrine-liste li:last-child .vitrine-entree { border-bottom: 1px solid var(--hairline); }
+.vitrine-entree:hover, .vitrine-entree:focus-visible { padding-left: 10px; }
+.vitrine-entree:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.vitrine-entree strong { display: block; font-size: 21px; font-weight: 600;
+                         line-height: 1.25; letter-spacing: -0.015em;
+                         color: var(--ink); margin-bottom: 7px;
+                         transition: color .25s ease; }
+.vitrine-entree:hover strong, .vitrine-entree:focus-visible strong { color: var(--accent); }
+.vitrine-entree em { display: block; font-style: normal; font-size: 15.5px;
+                     line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
+.vitrine-fleche { color: var(--hairline); flex-shrink: 0;
+                  transition: color .25s ease, transform .25s cubic-bezier(0.4,0,0.2,1); }
+.vitrine-entree:hover .vitrine-fleche,
+.vitrine-entree:focus-visible .vitrine-fleche { color: var(--accent); transform: translateX(4px); }
+
+/* La vignette ne sert que sur telephone, ou la grande photo disparait. */
+.vitrine-vignette { display: none; }
+
+@media (max-width: 900px) {
+  .vitrine { grid-template-columns: 1fr; gap: 0; margin-top: 34px; }
+  .vitrine-scene { display: none; }
+  /* Sur telephone le texte est haut : la vignette et la fleche s'alignent sur
+     la premiere ligne du titre plutot que de flotter au milieu du bloc. */
+  .vitrine-entree { grid-template-columns: 74px 1fr 18px; gap: 16px; padding: 18px 2px;
+                    align-items: start; }
+  .vitrine-vignette, .vitrine-entree .vitrine-fleche { margin-top: 3px; }
+  .vitrine-vignette { display: block; width: 74px; height: 74px; border-radius: 14px;
+                      object-fit: cover; }
+  .vitrine-entree strong { font-size: 18px; margin-bottom: 5px; }
+  .vitrine-entree em { font-size: 14.5px; line-height: 1.55; max-width: none; }
+  .vitrine-entree:hover { padding-left: 2px; }
 }
 
 /* ===== LIEN RAPIDE — la personne qui a besoin d'aide =====
@@ -950,44 +971,48 @@ setTimeout(function () {
   </div>
 
   <!-- Cartes empilées : chaque service se pose par-dessus le précédent au défilement -->
-  <div class="pile">
-    <a href="distribution-alimentaire.html" class="pile-carte">
-      <img src="distribution-rue.jpg" alt="Un repas chaud remis en mains propres dans la rue">
-      <div class="pile-txt">
-        <span class="pile-no">Service 01</span>
-        <h3>Distribution alimentaire dans les rues</h3>
-        <p>Des repas chauds remis en mains propres, plusieurs fois par semaine, peu importe la température, à Montréal, en Montérégie, à Gatineau et à Trois-Rivières.</p>
-        <span class="pile-go">En savoir plus →</span>
+  <div class="vitrine">
+      <div class="vitrine-scene">
+        <img src="distribution-rue.jpg" alt="Un repas chaud remis en mains propres dans la rue" data-vitrine="0" class="actif" loading="lazy">
+        <img src="depannage-boite.jpg" alt="Une boîte de denrées préparée pour un dépannage alimentaire" data-vitrine="1" loading="lazy">
+        <img src="reference-appel.jpg" alt="Un appel passé pour trouver la bonne ressource, et le nom noté dans un carnet" data-vitrine="2" loading="lazy">
+        <img src="therapie-route-voiture.jpg" alt="La route vers un nouveau départ" data-vitrine="3" loading="lazy">
       </div>
-    </a>
-    <a href="depannage-alimentaire.html" class="pile-carte">
-      <img src="depannage-boite.jpg" alt="Une boîte de denrées préparée pour un dépannage alimentaire">
-      <div class="pile-txt">
-        <span class="pile-no">Service 02</span>
-        <h3>Dépannage alimentaire</h3>
-        <p>Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.</p>
-        <span class="pile-go">En savoir plus →</span>
-      </div>
-    </a>
-    <a href="reference-therapie.html" class="pile-carte">
-      <img src="reference-appel.jpg" alt="Un appel passé pour trouver la bonne ressource, et le nom noté dans un carnet">
-      <div class="pile-txt">
-        <span class="pile-no">Service 03</span>
-        <h3>Référencement pour thérapie</h3>
-        <p>En plus ou moins 72 heures, nous vous mettons en contact avec une ressource adaptée à votre réalité, pour vous ou pour un proche. Nous connaissons le milieu et nous orientons vers la ressource appropriée.</p>
-        <span class="pile-go">En savoir plus →</span>
-      </div>
-    </a>
-    <a href="transport-therapie.html" class="pile-carte">
-      <img src="therapie-route-voiture.jpg" alt="La route vers un nouveau départ">
-      <div class="pile-txt">
-        <span class="pile-no">Service 04</span>
-        <h3>Transport vers la thérapie</h3>
-        <p>Une fois la bonne ressource trouvée, nous conduisons la personne jusqu'à la région où se trouve sa thérapie, même à plusieurs heures de route.</p>
-        <span class="pile-go">En savoir plus →</span>
-      </div>
-    </a>
-  </div>
+      <ul class="vitrine-liste">
+        <li><a href="distribution-alimentaire.html" class="vitrine-entree" data-vitrine="0">
+          <img class="vitrine-vignette" src="mini/distribution-rue.jpg" alt="" loading="lazy">
+          <span>
+            <strong>Distribution alimentaire dans les rues</strong>
+            <em>Des repas chauds remis en mains propres, plusieurs fois par semaine, peu importe la température, à Montréal, en Montérégie, à Gatineau et à Trois-Rivières.</em>
+          </span>
+          <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a></li>
+        <li><a href="depannage-alimentaire.html" class="vitrine-entree" data-vitrine="1">
+          <img class="vitrine-vignette" src="mini/depannage-boite.jpg" alt="" loading="lazy">
+          <span>
+            <strong>Dépannage alimentaire</strong>
+            <em>Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.</em>
+          </span>
+          <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a></li>
+        <li><a href="reference-therapie.html" class="vitrine-entree" data-vitrine="2">
+          <img class="vitrine-vignette" src="mini/reference-appel.jpg" alt="" loading="lazy">
+          <span>
+            <strong>Référencement pour thérapie</strong>
+            <em>En plus ou moins 72 heures, nous vous mettons en contact avec une ressource adaptée à votre réalité, pour vous ou pour un proche. Nous connaissons le milieu et nous orientons vers la ressource appropriée.</em>
+          </span>
+          <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a></li>
+        <li><a href="transport-therapie.html" class="vitrine-entree" data-vitrine="3">
+          <img class="vitrine-vignette" src="mini/therapie-route-voiture.jpg" alt="" loading="lazy">
+          <span>
+            <strong>Transport vers la thérapie</strong>
+            <em>Une fois la bonne ressource trouvée, nous conduisons la personne jusqu'à la région où se trouve sa thérapie, même à plusieurs heures de route.</em>
+          </span>
+          <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a></li>
+      </ul>
+    </div>
 
   <div class="wrap center">
 
@@ -1197,6 +1222,28 @@ setTimeout(function () {
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<script>
+/* Vitrine des services : l'image de gauche suit l'entrée pointée ou tabulée.
+   Sans JavaScript, la première photo reste affichée et les quatre liens
+   fonctionnent normalement : rien n'est perdu. */
+(function () {
+  var scene = document.querySelectorAll('.vitrine-scene img');
+  var entrees = document.querySelectorAll('.vitrine-entree');
+  if (!scene.length || !entrees.length) return;
+
+  function montrer(n) {
+    for (var k = 0; k < scene.length; k++) {
+      scene[k].classList.toggle('actif', k === n);
+    }
+  }
+
+  entrees.forEach(function (a) {
+    var n = parseInt(a.dataset.vitrine, 10);
+    a.addEventListener('mouseenter', function () { montrer(n); });
+    a.addEventListener('focus', function () { montrer(n); });
+  });
+})();
+</script>
 <script src="nav.js"></script>
 <!-- GSAP 3.15.0 héberge ici plutôt que sur un CDN externe : le site ne
      dépend plus d'un serveur tiers qui pourrait changer ou être compromis. -->
