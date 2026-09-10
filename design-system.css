@@ -209,7 +209,10 @@ p  { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color
 }
 .social-icon { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.2s, color 0.2s, background 0.2s; }
 .social-icon:hover { border-color: var(--accent); color: #fff; background: var(--accent); transform: translateY(-3px); }
-.footer-col h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 18px; }
+/* h3 et non h4 : le balisage est passe en h3 pour supprimer le saut de niveau
+   dans la hierarchie des titres, et ce selecteur n'avait pas suivi. Les trois
+   titres heritaient alors du noir du body sur fond sombre : 1,13 pour 1. */
+.footer-col h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 18px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
 .footer-col a { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.68); text-decoration: none; transition: color 0.2s, transform 0.2s; display: inline-block; }
 .footer-col a:hover { color: #fff; transform: translateX(3px); }
