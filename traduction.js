@@ -533,11 +533,8 @@ var DICO = {
  "En moyenne 0,60 $ du kilomètre. Ce montant couvre l'essence et l'usage du véhicule, rien d'autre : aucun bénévole n'est payé. Parlez-nous de votre situation, nous évaluerons ensemble ce qui est possible.": "On average $0.60 per kilometre. That amount covers fuel and vehicle wear, nothing else: no volunteer is paid. Tell us about your situation and we will work out together what is possible.",
  "Et bien d'autres": "And many more",
  "partenaires encore": "partners besides",
- "Besoin d'aide": "Need help",
- "Vous manquez de nourriture ?": "Are you short of food?",
- "Pour un dépannage alimentaire, appelez Guy. Aucune condition, aucun formulaire, aucune enquête de crédit. Vous pouvez aussi appeler pour quelqu'un d'autre. Le service est offert à Montréal Sud-Ouest, à Saint-Jean-sur-Richelieu et à Longueuil.": "For emergency food support, call Guy. No conditions, no forms, no credit check. You can also call on behalf of someone else. The service is offered in Montreal South-West, Saint-Jean-sur-Richelieu and Longueuil.",
- "Pour les distributions dans la rue, il n'y a rien à faire : venez, c'est sans inscription.": "For street distributions there is nothing to arrange: just come, no registration.",
- "Voir où nous passons": "See where we go",
+ "Besoin d'aide alimentaire ? Appelez Guy au (438) 464-1703": "Need food assistance? Call Guy at (438) 464-1703",
+ "Aucune condition, aucun formulaire. Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.": "No conditions, no forms. Montreal South-West, Saint-Jean-sur-Richelieu and Longueuil.",
  "✓ Adresse copiée. Collez-la dans votre virement": "✓ Address copied, paste it into your transfer"
 };
 

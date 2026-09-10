@@ -21,7 +21,10 @@
    sinon le titre se perd dans les plumes du logo. */
 @media (max-aspect-ratio: 6/5) {
   .intro-phenix-scrim {
-    background: linear-gradient(180deg, rgba(20,12,30,0) 22%, rgba(20,12,30,0.55) 46%, rgba(20,12,30,0.88) 68%, rgba(20,12,30,0.96) 100%);
+    /* Le voile n'atteignait que 18 % d'opacite la ou le titre commence : le
+       lettrage du logo traversait le texte. Il monte a 42 % des 30 %, ce qui
+       nettoie le fond sans voiler le mot PHE-NIX au-dessus. */
+    background: linear-gradient(180deg, rgba(20,12,30,0) 18%, rgba(20,12,30,0.10) 25%, rgba(20,12,30,0.70) 30%, rgba(20,12,30,0.88) 55%, rgba(20,12,30,0.96) 100%);
   }
 }
 /* Indice de défilement : deux chevrons qui s'allument en cascade vers le bas.
@@ -57,18 +60,9 @@
    Sans JS ou en mouvement réduit, la classe n'est pas posée et tout reste visible. */
 body.hero-anim .hero-content,
 body.hero-anim .intro-phenix-scrim { opacity: 0; }
-body.hero-anim .site-header { opacity: 0; pointer-events: none; }
-body.hero-anim .site-header.revealed { opacity: 1; pointer-events: auto; transition: opacity 0.7s ease; }
-/* la barre du bas s'efface aussi tant qu'on n'a pas commencé à défiler :
-   à l'arrivée, il n'y a que le hero à l'écran */
-body.hero-anim .mobile-nav-bar {
-  opacity: 0; pointer-events: none; transform: translateY(100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-body.hero-anim .site-header.revealed ~ .mobile-nav-bar,
-body.hero-anim.nav-visible .mobile-nav-bar {
-  opacity: 1; pointer-events: auto; transform: none;
-}
+/* Le menu du haut et la barre du bas restent visibles et cliquables des le
+   premier pixel. Seul le texte du heros est revele au defilement : une page
+   d'accueil ne doit jamais etre une impasse a l'arrivee. */
 
 @media (max-width: 640px) {
   .intro-phenix-hint { bottom: 96px; }
@@ -570,44 +564,29 @@ body.hero-anim.nav-visible .mobile-nav-bar {
   /* Ruban plus étroit et un peu plus rapide sur petit écran */
 }
 
-/* ===== PORTE D'ENTREE — la personne qui a besoin d'aide =====
-   Les deux boutons du heros s'adressent au donateur et au benevole. Cette bande
-   est le seul endroit de l'accueil qui parle a la personne en difficulte, et
-   elle vient avant tout le reste. Fond sable pour trancher avec le heros sombre
-   sans reprendre le blanc de la section suivante. */
-.aide-bande { background: var(--bg-sable); padding: 44px 40px; }
-.aide-inner { max-width: var(--maxw); margin: 0 auto; display: grid;
-              grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: center; }
-.aide-txt h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; margin-bottom: 12px;
-               /* sans cela, le point d'interrogation tombait seul sur la 2e ligne */
-               text-wrap: balance; }
-.aide-txt p { color: var(--ink-soft-warm); font-size: 16px; line-height: 1.7; margin: 0; }
-.aide-txt .aide-rue { margin-top: 10px; font-size: 14.5px; }
-.aide-txt .aide-rue a { color: var(--accent-deep); text-decoration: none; font-weight: 600; }
-.aide-txt .aide-rue a:hover { text-decoration: underline; }
-
-/* Le numero est la seule action de la bande : une carte plate, filet 1 px,
-   conforme a la regle du plat par defaut. */
-.aide-tel { display: flex; align-items: center; gap: 16px; background: var(--bg);
-            border: 1px solid var(--warm-line); border-radius: 16px; padding: 20px 24px;
-            text-decoration: none; color: inherit;
-            transition: border-color .22s ease, transform .22s ease; }
-.aide-tel:hover { border-color: var(--accent); transform: translateY(-2px); }
-.aide-tel:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.aide-tel-ic { width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
-               background: var(--accent); color: #fff;
-               display: flex; align-items: center; justify-content: center; }
-.aide-tel em { display: block; font-style: normal; font-size: 12px; font-weight: 600;
-               text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft-warm);
-               margin-bottom: 4px; }
-.aide-tel strong { display: block; font-size: clamp(20px, 2.2vw, 25px); font-weight: 700;
-                   letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
-
+/* ===== LIEN RAPIDE — la personne qui a besoin d'aide =====
+   Une seule ligne, juste sous le heros. Ce n'est pas un chapitre du site,
+   c'est un raccourci : le numero est atteignable avant tout le reste sans
+   occuper l'espace d'une section. */
+.aide-rapide { display: flex; align-items: center; gap: 16px; justify-content: center;
+               background: var(--bg-sable); padding: 18px 40px;
+               text-decoration: none; color: inherit;
+               border-bottom: 1px solid var(--warm-line);
+               transition: background .22s ease; }
+.aide-rapide:hover { background: var(--bg-terre); }
+.aide-rapide:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.aide-rapide-ic { width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px;
+                  background: var(--accent); color: #fff;
+                  display: flex; align-items: center; justify-content: center; }
+.aide-rapide strong { display: block; font-size: 16px; font-weight: 600;
+                      color: var(--ink); line-height: 1.35; }
+.aide-rapide em { display: block; font-style: normal; font-size: 13px;
+                  color: var(--ink-soft-warm); line-height: 1.45; margin-top: 3px; }
 @media (max-width: 860px) {
-  .aide-bande { padding: 34px 24px; }
-  .aide-inner { grid-template-columns: 1fr; gap: 22px; }
-  .aide-tel { padding: 16px 18px; gap: 14px; }
-  .aide-tel-ic { width: 46px; height: 46px; border-radius: 13px; }
+  .aide-rapide { padding: 14px 20px; gap: 12px; justify-content: flex-start; }
+  .aide-rapide-ic { width: 38px; height: 38px; border-radius: 11px; }
+  .aide-rapide strong { font-size: 15px; }
+  .aide-rapide em { font-size: 12.5px; }
 }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/">
@@ -839,13 +818,13 @@ setTimeout(function () {
   </picture>
   <div class="intro-phenix-scrim" id="intro-phenix-scrim"></div>
   <div class="hero-content" id="hero-content">
-    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
     <h1>Chaque semaine, nous sommes là.</h1>
     <p class="hero-sub">Nourrir, habiller et accompagner les personnes en situation d'itinérance au Québec. 100 % bénévole, sur le terrain depuis 2022.</p>
     <div class="hero-btns">
       <a href="faire-un-don.html" class="btn btn-primary btn-lg">Faire un don</a>
       <a href="benevole.html" class="btn btn-ghost btn-lg">Devenir bénévole</a>
     </div>
+    <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="hero-event-chip" style="text-decoration:none;"><span class="live-dot"></span>Prochaines distributions sur Facebook →</a>
   </div>
   <div class="intro-phenix-hint" id="intro-phenix-hint">
     <span class="hint-mot">Défilez</span>
@@ -857,24 +836,14 @@ setTimeout(function () {
 </section>
 
 
-<!-- PORTE D'ENTREE — la personne qui a besoin d'aide, avant tout le reste -->
-<section class="aide-bande">
-  <div class="aide-inner">
-    <div class="aide-txt">
-      <div class="eyebrow">Besoin d'aide</div>
-      <h2>Vous manquez de nourriture ?</h2>
-      <p>Pour un dépannage alimentaire, appelez Guy. Aucune condition, aucun formulaire, aucune enquête de crédit. Vous pouvez aussi appeler pour quelqu'un d'autre. Le service est offert à Montréal Sud-Ouest, à Saint-Jean-sur-Richelieu et à Longueuil.</p>
-      <p class="aide-rue">Pour les distributions dans la rue, il n'y a rien à faire : venez, c'est sans inscription. <a href="distribution-alimentaire.html">Voir où nous passons</a></p>
-    </div>
-    <a href="tel:4384641703" class="aide-tel">
-      <span class="aide-tel-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
-      <span>
-        <em>Dépannage alimentaire</em>
-        <strong>(438) 464-1703</strong>
-      </span>
-    </a>
-  </div>
-</section>
+<!-- LIEN RAPIDE — la personne qui a besoin d'aide, avant tout le reste -->
+<a href="tel:4384641703" class="aide-rapide">
+  <span class="aide-rapide-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
+  <span>
+    <strong>Besoin d'aide alimentaire ? Appelez Guy au (438) 464-1703</strong>
+    <em>Aucune condition, aucun formulaire. Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.</em>
+  </span>
+</a>
 
 <!-- TRUST STRIP -->
 <div class="trust-piste">
@@ -1343,14 +1312,7 @@ setTimeout(function () {
       end: '+=85%',
       scrub: true,
       pin: true,
-      anticipatePin: 1,
-      onUpdate: function (self) {
-        // dès les premiers pixels de défilement, le menu du haut et la barre
-        // du bas reviennent en même temps que le texte
-        var entame = self.progress > 0.04;
-        if (header) header.classList.toggle('revealed', entame);
-        document.body.classList.toggle('nav-visible', entame);
-      }
+      anticipatePin: 1
     }
   });
 
