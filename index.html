@@ -465,6 +465,7 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 .hc-courriel .hc-ic { background: rgba(232,80,14,.10); color: #C7440B; }
 .hc-tel      .hc-ic { background: rgba(22,163,74,.11); color: #15803D; }
 .hc-fb       .hc-ic { background: rgba(24,119,242,.11); color: #1877F2; }
+.hc-aide     .hc-ic { background: var(--accent); color: #fff; }
 .hc-lbl { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft); margin-bottom: 3px; }
 .hc-val { font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; overflow-wrap: anywhere; }
 @media (max-width: 420px) { .hc-val { font-size: 14.5px; } }
@@ -567,6 +568,46 @@ body.hero-anim.nav-visible .mobile-nav-bar {
 @media (max-width: 540px) {
   .progs { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   /* Ruban plus étroit et un peu plus rapide sur petit écran */
+}
+
+/* ===== PORTE D'ENTREE — la personne qui a besoin d'aide =====
+   Les deux boutons du heros s'adressent au donateur et au benevole. Cette bande
+   est le seul endroit de l'accueil qui parle a la personne en difficulte, et
+   elle vient avant tout le reste. Fond sable pour trancher avec le heros sombre
+   sans reprendre le blanc de la section suivante. */
+.aide-bande { background: var(--bg-sable); padding: 44px 40px; }
+.aide-inner { max-width: var(--maxw); margin: 0 auto; display: grid;
+              grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: center; }
+.aide-txt h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; margin-bottom: 12px;
+               /* sans cela, le point d'interrogation tombait seul sur la 2e ligne */
+               text-wrap: balance; }
+.aide-txt p { color: var(--ink-soft-warm); font-size: 16px; line-height: 1.7; margin: 0; }
+.aide-txt .aide-rue { margin-top: 10px; font-size: 14.5px; }
+.aide-txt .aide-rue a { color: var(--accent-deep); text-decoration: none; font-weight: 600; }
+.aide-txt .aide-rue a:hover { text-decoration: underline; }
+
+/* Le numero est la seule action de la bande : une carte plate, filet 1 px,
+   conforme a la regle du plat par defaut. */
+.aide-tel { display: flex; align-items: center; gap: 16px; background: var(--bg);
+            border: 1px solid var(--warm-line); border-radius: 16px; padding: 20px 24px;
+            text-decoration: none; color: inherit;
+            transition: border-color .22s ease, transform .22s ease; }
+.aide-tel:hover { border-color: var(--accent); transform: translateY(-2px); }
+.aide-tel:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.aide-tel-ic { width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+               background: var(--accent); color: #fff;
+               display: flex; align-items: center; justify-content: center; }
+.aide-tel em { display: block; font-style: normal; font-size: 12px; font-weight: 600;
+               text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft-warm);
+               margin-bottom: 4px; }
+.aide-tel strong { display: block; font-size: clamp(20px, 2.2vw, 25px); font-weight: 700;
+                   letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .aide-bande { padding: 34px 24px; }
+  .aide-inner { grid-template-columns: 1fr; gap: 22px; }
+  .aide-tel { padding: 16px 18px; gap: 14px; }
+  .aide-tel-ic { width: 46px; height: 46px; border-radius: 13px; }
 }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/">
@@ -815,6 +856,26 @@ setTimeout(function () {
   </div>
 </section>
 
+
+<!-- PORTE D'ENTREE — la personne qui a besoin d'aide, avant tout le reste -->
+<section class="aide-bande">
+  <div class="aide-inner">
+    <div class="aide-txt">
+      <div class="eyebrow">Besoin d'aide</div>
+      <h2>Vous manquez de nourriture ?</h2>
+      <p>Pour un dépannage alimentaire, appelez Guy. Aucune condition, aucun formulaire, aucune enquête de crédit. Vous pouvez aussi appeler pour quelqu'un d'autre. Le service est offert à Montréal Sud-Ouest, à Saint-Jean-sur-Richelieu et à Longueuil.</p>
+      <p class="aide-rue">Pour les distributions dans la rue, il n'y a rien à faire : venez, c'est sans inscription. <a href="distribution-alimentaire.html">Voir où nous passons</a></p>
+    </div>
+    <a href="tel:4384641703" class="aide-tel">
+      <span class="aide-tel-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
+      <span>
+        <em>Dépannage alimentaire</em>
+        <strong>(438) 464-1703</strong>
+      </span>
+    </a>
+  </div>
+</section>
+
 <!-- TRUST STRIP -->
 <div class="trust-piste">
   <div class="trust">
@@ -1043,6 +1104,13 @@ setTimeout(function () {
   <h2>Une question ? Nous sommes là.</h2>
   <p class="lead">Nous répondons à tous les messages, généralement sous 24 à 48 h.</p>
   <div class="home-contacts">
+    <a href="tel:4384641703" class="hc-card hc-aide">
+      <div class="hc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+      <div>
+        <div class="hc-lbl">Dépannage alimentaire</div>
+        <div class="hc-val">(438) 464-1703</div>
+      </div>
+    </a>
     <a href="mailto:phenixactioncitoyenne@gmail.com" class="hc-card hc-courriel">
       <div class="hc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m2.8 6 8.1 6.1a2 2 0 0 0 2.2 0L21.2 6"/></svg></div>
       <div>
