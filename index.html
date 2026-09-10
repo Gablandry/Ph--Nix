@@ -571,15 +571,15 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 .s-majeur .wrap.center h2, .s-majeur .wrap.center h3 { max-width: none; }
 .s-majeur .wrap.center .lead { margin-left: auto; margin-right: auto; }
 
-/* Le contact n a pas de conteneur intermediaire dans le balisage : ses trois
-   premieres lignes sont ramenees a la main sur l axe commun de 1080 px. */
-.section-soft.s-mineur > .eyebrow,
-.section-soft.s-mineur > h2,
-.section-soft.s-mineur > .lead,
-.section-soft.s-mineur > .home-contacts { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
-.section-soft.s-mineur > .lead { max-width: min(var(--maxw), 54ch); }
-.section-soft.s-mineur > .home-contacts { max-width: 560px; margin-right: auto;
-                                          margin-left: max(0px, calc(50% - 540px)); }
+/* Une section peut demander le centre, a condition de le demander pour tout ce
+   qu'elle contient. Le contact est un bloc terminal, court et symetrique : les
+   quatre cartes forment une colonne unique qui se tient mieux au milieu qu'a
+   cheval sur l'axe de gauche. La classe .center l'emporte alors sur l'axe. */
+.s-mineur.center, .s-majeur.center { text-align: center; }
+.s-mineur.center > .eyebrow, .s-majeur.center > .eyebrow { justify-content: center; }
+.s-mineur.center > h2, .s-majeur.center > h2 { max-width: none; }
+.s-mineur.center > .lead, .s-majeur.center > .lead { margin-left: auto; margin-right: auto; }
+.section-soft.center > .home-contacts { margin-left: auto; margin-right: auto; }
 
 /* Le ruban touche les deux bords : une pellicule qui sort du cadre dit qu'il y
    a plus de photos que l'ecran n'en montre. */
@@ -1172,7 +1172,7 @@ setTimeout(function () {
 </section>
 
 <!-- CONTACT (accueil) -->
-<section class="section section-soft s-mineur">
+<section class="section section-soft s-mineur center">
   <div class="eyebrow">Parlons-nous</div>
   <h2>Une question ? Nous sommes là.</h2>
   <p class="lead">Nous répondons à tous les messages, généralement sous 24 à 48 h.</p>
