@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-10T17:44:05-04:00",
+  "title": "Design System: Phé-Nix",
+  "extensions": {
+    "colorMeta": {
+      "orange-phenix": {
+        "role": "primary",
+        "displayName": "Orange Phé-Nix",
+        "canonical": "#E8500E",
+        "tonalRamp": [
+          "#481904",
+          "#7F2C08",
+          "#B63F0B",
+          "#ED520E",
+          "#F47842",
+          "#F79F79",
+          "#FAC6B0",
+          "#FEEEE7"
+        ]
+      },
+      "orange-profond": {
+        "role": "primary",
+        "displayName": "Orange profond",
+        "canonical": "#C7440B",
+        "tonalRamp": [
+          "#481904",
+          "#802C07",
+          "#B73F0A",
+          "#EE510D",
+          "#F57841",
+          "#F89F78",
+          "#FBC6B0",
+          "#FEEEE7"
+        ]
+      },
+      "blanc-papier": {
+        "role": "neutral",
+        "displayName": "Blanc papier",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#434343",
+          "#616161",
+          "#7E7E7E",
+          "#9B9B9B",
+          "#B8B8B8",
+          "#D5D5D5",
+          "#F2F2F2"
+        ]
+      },
+      "gris-respiration": {
+        "role": "neutral",
+        "displayName": "Gris respiration",
+        "canonical": "#F5F5F7",
+        "tonalRamp": [
+          "#22222A",
+          "#3C3C4B",
+          "#56566B",
+          "#70708C",
+          "#9090A6",
+          "#B0B0C0",
+          "#D0D0DA",
+          "#F1F1F4"
+        ]
+      },
+      "encre": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "#1D1D1F",
+        "tonalRamp": [
+          "#252528",
+          "#414146",
+          "#5D5D64",
+          "#797982",
+          "#97979E",
+          "#B6B6BA",
+          "#D4D4D7",
+          "#F2F2F3"
+        ]
+      },
+      "encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre douce",
+        "canonical": "#6E6E73",
+        "tonalRamp": [
+          "#252527",
+          "#424245",
+          "#5E5E63",
+          "#7B7B80",
+          "#99999D",
+          "#B6B6BA",
+          "#D4D4D6",
+          "#F2F2F3"
+        ]
+      },
+      "encre-douce-chaude": {
+        "role": "neutral",
+        "displayName": "Encre douce chaude",
+        "canonical": "#59595E",
+        "tonalRamp": [
+          "#252527",
+          "#424245",
+          "#5E5E63",
+          "#7A7A81",
+          "#98989E",
+          "#B6B6BA",
+          "#D4D4D6",
+          "#F2F2F3"
+        ]
+      },
+      "filet": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "#D2D2D7",
+        "tonalRamp": [
+          "#242429",
+          "#3F3F47",
+          "#5B5B66",
+          "#767685",
+          "#9595A1",
+          "#B4B4BC",
+          "#D3D3D8",
+          "#F1F1F3"
+        ]
+      },
+      "peche-clair": {
+        "role": "tertiary",
+        "displayName": "Pêche clair",
+        "canonical": "#FBF4EF",
+        "tonalRamp": [
+          "#3D220F",
+          "#6C3D1B",
+          "#9A5727",
+          "#C97132",
+          "#D7915F",
+          "#E3B18D",
+          "#EED1BC",
+          "#FAF1EB"
+        ]
+      },
+      "sable-chaud": {
+        "role": "tertiary",
+        "displayName": "Sable chaud",
+        "canonical": "#F3E3D3",
+        "tonalRamp": [
+          "#3C2610",
+          "#6A431D",
+          "#986129",
+          "#C57E36",
+          "#D49B62",
+          "#E1B88F",
+          "#EDD5BD",
+          "#FAF2EB"
+        ]
+      },
+      "terre-douce": {
+        "role": "tertiary",
+        "displayName": "Terre douce",
+        "canonical": "#E8D5C4",
+        "tonalRamp": [
+          "#372515",
+          "#614226",
+          "#8B5E36",
+          "#B57B47",
+          "#C7986F",
+          "#D7B699",
+          "#E7D4C3",
+          "#F8F2ED"
+        ]
+      },
+      "filet-chaud": {
+        "role": "tertiary",
+        "displayName": "Filet chaud",
+        "canonical": "#EDE0D7",
+        "tonalRamp": [
+          "#352418",
+          "#5D3F2A",
+          "#855A3C",
+          "#AD754E",
+          "#C19475",
+          "#D3B39D",
+          "#E5D2C5",
+          "#F7F1ED"
+        ]
+      },
+      "prune-nuit": {
+        "role": "tertiary",
+        "displayName": "Prune nuit",
+        "canonical": "#150D20",
+        "tonalRamp": [
+          "#241636",
+          "#3F2760",
+          "#5A3889",
+          "#7549B3",
+          "#9471C5",
+          "#B39AD6",
+          "#D2C3E7",
+          "#F1EDF8"
+        ]
+      },
+      "orange-voile": {
+        "role": "primary",
+        "displayName": "Orange voilé",
+        "canonical": "rgba(232,80,14,0.08)",
+        "tonalRamp": [
+          "#481904",
+          "#7F2C08",
+          "#B63F0B",
+          "#ED520E",
+          "#F47842",
+          "#F79F79",
+          "#FAC6B0",
+          "#FEEEE7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Le titre unique de chaque page. Un seul par page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titres de section, souvent coupés sur deux lignes."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titres de cartes et d'encadrés."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant, largeur de lecture 560 à 720px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "L'étiquette orange qui coiffe chaque section."
+      }
+    },
+    "shadows": [
+      {
+        "name": "accent-repos",
+        "value": "0 2px 10px rgba(232,80,14,0.16)",
+        "purpose": "Halo permanent et discret sous le bouton principal."
+      },
+      {
+        "name": "accent-survol",
+        "value": "0 12px 26px rgba(232,80,14,0.30)",
+        "purpose": "Réponse au survol du bouton principal, avec translateY(-2px)."
+      },
+      {
+        "name": "carte-survol",
+        "value": "0 14px 32px rgba(0,0,0,0.08)",
+        "purpose": "Carte cliquable soulevée au survol. Jamais au repos."
+      },
+      {
+        "name": "flottant-sombre",
+        "value": "0 28px 70px rgba(0,0,0,0.45)",
+        "purpose": "Carte blanche détachée sur le bloc prune-nuit."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Courbe par défaut des changements d'état et des révélations."
+      },
+      {
+        "name": "ease-sortie",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Décélération longue pour les entrées de section."
+      },
+      {
+        "name": "duree-etat",
+        "value": "0.22s",
+        "purpose": "Durée des transitions de boutons et de cartes."
+      },
+      {
+        "name": "duree-revelation",
+        "value": "0.7s",
+        "purpose": "Apparition des sections au défilement."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "colonnes",
+        "value": "900px"
+      },
+      {
+        "name": "principal",
+        "value": "860px"
+      },
+      {
+        "name": "tablette",
+        "value": "720px"
+      },
+      {
+        "name": "telephone",
+        "value": "640px"
+      },
+      {
+        "name": "petit-telephone",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "L'action unique d'un écran. Halo orange au repos, remontée de 2px au survol.",
+      "html": "<button class=\"ds-btn-primary\">Faire un don</button>",
+      "css": ".ds-btn-primary{padding:14px 30px;border:none;border-radius:12px;font-family:Inter,-apple-system,sans-serif;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:background .22s ease,border-color .22s ease,transform .22s ease,box-shadow .22s ease;background:#E8500E;color:#fff;box-shadow:0 2px 10px rgba(232,80,14,.16);}.ds-btn-primary:hover{background:#C7440B;transform:translateY(-2px);box-shadow:0 12px 26px rgba(232,80,14,.30);}.ds-btn-primary:active{transform:translateY(0);}.ds-btn-primary:focus-visible{outline:2px solid #E8500E;outline-offset:3px;}"
+    },
+    {
+      "name": "Bouton fantôme",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Le second bouton d'une paire. Jamais le premier, jamais orange.",
+      "html": "<button class=\"ds-btn-ghost\">Voir nos services</button>",
+      "css": ".ds-btn-ghost{padding:14px 30px;border:none;border-radius:12px;font-family:Inter,-apple-system,sans-serif;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:background .22s ease,border-color .22s ease,transform .22s ease,box-shadow .22s ease;background:transparent;color:#1D1D1F;border:1px solid #D2D2D7;}.ds-btn-ghost:hover{border-color:#1D1D1F;background:rgba(0,0,0,.02);}.ds-btn-ghost:focus-visible{outline:2px solid #E8500E;outline-offset:3px;}"
+    },
+    {
+      "name": "Étiquette de section",
+      "kind": "chip",
+      "refersTo": "eyebrow",
+      "description": "Coiffe chaque section avant son titre. L'élément le plus répété du site.",
+      "html": "<div class=\"ds-eyebrow\">Nos services</div>",
+      "css": ".ds-eyebrow{font-family:Inter,-apple-system,sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#E8500E;display:flex;align-items:center;gap:10px;margin-bottom:20px;}"
+    },
+    {
+      "name": "Carte de contenu",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Filet de 1px, aucun ombre au repos. L'ombre n'arrive qu'au survol.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-t\">Distribution alimentaire</div><p class=\"ds-card-p\">Des repas chauds remis en mains propres, plusieurs fois par semaine.</p></a>",
+      "css": ".ds-card{display:block;background:#fff;border:1px solid #D2D2D7;border-radius:16px;padding:22px 26px;text-decoration:none;color:inherit;max-width:340px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;}.ds-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.08);border-color:#E8500E;}.ds-card-t{font-family:Inter,-apple-system,sans-serif;font-size:22px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:#1D1D1F;margin-bottom:8px;}.ds-card-p{font-family:Inter,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:#6E6E73;margin:0;}"
+    },
+    {
+      "name": "Entête fixe",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "56px en verre dépoli. Le bouton de don y est toujours présent.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav-logo\">Phé-Nix</span><nav class=\"ds-nav-links\"><a href=\"#\" class=\"ds-actif\">Accueil</a><a href=\"#\">Services</a><a href=\"#\">Aider</a></nav><button class=\"ds-nav-cta\">Faire un don</button></header>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:24px;height:56px;padding:0 20px;background:rgba(255,255,255,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.07);font-family:Inter,-apple-system,sans-serif;}.ds-nav-logo{font-weight:700;font-size:15px;color:#1D1D1F;letter-spacing:-.01em;}.ds-nav-links{display:flex;gap:20px;flex:1;}.ds-nav-links a{font-size:14px;font-weight:600;color:#1D1D1F;text-decoration:none;}.ds-nav-links a:hover{color:#E8500E;}.ds-nav-links a.ds-actif{color:#E8500E;}.ds-nav-cta{background:#E8500E;color:#fff;border:none;border-radius:10px;padding:9px 20px;font-family:inherit;font-weight:600;font-size:13.5px;cursor:pointer;}.ds-nav-cta:hover{background:#C7440B;}"
+    },
+    {
+      "name": "Barre de navigation mobile",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixée en bas d'écran, à portée de pouce. L'onglet actif est orange.",
+      "html": "<nav class=\"ds-mnav\"><a href=\"#\"><span>Accueil</span></a><a href=\"#\"><span>Services</span></a><a href=\"#\" class=\"ds-actif\"><span>Don</span></a><a href=\"#\"><span>Aider</span></a></nav>",
+      "css": ".ds-mnav{display:flex;background:#fff;border-top:1px solid #D2D2D7;font-family:Inter,-apple-system,sans-serif;max-width:375px;}.ds-mnav a{flex:1;padding:10px 4px;text-align:center;text-decoration:none;color:#6E6E73;font-size:11px;font-weight:600;}.ds-mnav a.ds-actif{color:#E8500E;background:rgba(232,80,14,.08);}"
+    },
+    {
+      "name": "Chiffre d'impact",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Compté à l'écran. Largeur figée pour que l'animation ne fasse pas trembler la page.",
+      "html": "<div class=\"ds-stat\"><div class=\"ds-stat-n\">312 000+</div><div class=\"ds-stat-l\">Repas distribués<br>chaque année</div></div>",
+      "css": ".ds-stat{font-family:Inter,-apple-system,sans-serif;text-align:center;}.ds-stat-n{font-variant-numeric:tabular-nums;font-weight:700;font-size:54px;line-height:1;letter-spacing:-.03em;color:#E8500E;margin-bottom:10px;}.ds-stat-l{font-size:13.5px;line-height:1.45;color:#6E6E73;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La braise sur le papier",
+    "overview": "Une page presque vide, blanche ou sable, et une seule braise orange qui ressort. Tout le système découle de ce rapport de force : le fond ne réclame rien, l'accent est rare, donc il compte. Quand l'orange apparaît, c'est parce qu'il y a quelque chose à faire ou à retenir, jamais pour décorer.\n\nLe second principe est la chaleur. Le blanc pur seul rendrait le site froid et clinique, ce qui trahirait un organisme dont le travail est de nourrir des gens. Trois teintes chaudes alternent avec le blanc pour donner un rythme respirable. Elles ne sont pas décoratives : elles séparent les idées.\n\nLe troisième est la preuve. Toute image est une photographie documentaire réelle du terrain de Phé-Nix. Aucune illustration, aucune photo de banque, aucune image générée.",
+    "keyCharacteristics": [
+      "Blanc et sable dominants, une seule couleur d'accent",
+      "Inter en une seule famille ; la taille et le poids font toute la hiérarchie",
+      "Interlettrage négatif serré sur les grands titres, positif large sur les étiquettes",
+      "Photographie documentaire réelle, jamais d'illustration",
+      "Surfaces plates au repos ; l'ombre est une réponse au geste",
+      "Blocs sombres prune-nuit pour les moments de gravité",
+      "Zéro requête externe : polices, images et styles viennent du site lui-même"
+    ],
+    "rules": [
+      {
+        "name": "La règle de la braise unique",
+        "body": "L'orange occupe moins de 10 % de n'importe quel écran. Deux boutons orange côte à côte annulent l'effet : le second devient un bouton fantôme.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du fond qui alterne",
+        "body": "Deux sections consécutives ne partagent jamais le même fond. Blanc, puis chaud, puis blanc.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du texte chaud",
+        "body": "Sur sable ou terre, le texte secondaire est #59595E, jamais #6E6E73. C'est une règle d'accessibilité, pas de goût.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du serrage inverse",
+        "body": "Plus le texte est gros, plus les lettres se resserrent ; plus il est petit, plus elles s'écartent.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle de l'étiquette",
+        "body": "Chaque section commence par une étiquette orange en majuscules avant son titre.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle du défilement horizontal interdit",
+        "body": "Aucune page ne doit jamais déborder latéralement, à aucune largeur.",
+        "section": "layout"
+      },
+      {
+        "name": "La règle du plat par défaut",
+        "body": "Une surface au repos n'a pas d'ombre. Si une ombre apparaît, c'est qu'il s'est passé quelque chose.",
+        "section": "elevation"
+      },
+      {
+        "name": "La règle de l'arrondi proportionnel",
+        "body": "Le rayon grandit avec l'élément. 22px sur un petit bouton le fait paraître mou ; 10px sur une grande image le fait paraître raide.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do commencer chaque section par une étiquette orange en majuscules avant son titre.",
+      "Do alterner les fonds — blanc, chaud, blanc — pour donner un rythme vertical.",
+      "Do utiliser #59595E pour le texte secondaire posé sur sable ou terre.",
+      "Do dégager au moins 88px sous l'entête fixe en haut d'une page.",
+      "Do contraindre par aspect-ratio toute image vivant dans une grille, et laisser leurs proportions natives aux bannières.",
+      "Do garder le contour orange du focus clavier sur tout élément interactif.",
+      "Do vérifier l'absence de débordement horizontal à 1280px et à 375px avant de publier."
+    ],
+    "donts": [
+      "Don't poser deux boutons orange côte à côte ; le second est un bouton fantôme.",
+      "Don't mettre d'ombre sur une surface au repos.",
+      "Don't utiliser de tiret cadratin dans un texte visible.",
+      "Don't écrire un mur de texte : si une page épuise avant d'informer, elle a échoué.",
+      "Don't employer d'illustration, de photo de banque ou d'image générée.",
+      "Don't charger une ressource externe. Polices, images et styles viennent du site.",
+      "Don't imbriquer un lien dans un lien : la carte entière devient le lien.",
+      "Don't poser un dégradé de flou sur les bords d'une galerie.",
+      "Don't mélanger les vrais logos de marques tierces dans une même série d'icônes."
+    ]
+  }
+}
