@@ -452,58 +452,36 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 .btn-ghost-dark2:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
 
 /* ===== CONTACT (accueil) ===== */
-/* cartes en ligne plutot qu'empilees : centrees et etroites, l'adresse
-   courriel de 30 caracteres se cassait fatalement sur trois lignes. */
-/* Une hierarchie plutot que quatre cartes identiques : la ligne de depannage,
-   la seule qui reponde a une urgence, occupe toute la largeur ; les trois
-   autres voies se rangent dessous. La colonne du courriel est plus large
-   parce que l'adresse fait trente caracteres. */
-.home-contacts { display: grid; gap: 14px; max-width: 940px; margin: 34px 0 0; text-align: left; }
-@media (min-width: 1000px) { .home-contacts { grid-template-columns: 1.32fr 1fr 1fr; } }
-@media (min-width: 861px) and (max-width: 999px) {
-  .home-contacts { grid-template-columns: 1fr 1fr; max-width: 640px; }
-  .hc-courriel { grid-column: 1 / -1; }
-}
-@media (min-width: 861px) {
-  .hc-aide { grid-column: 1 / -1; grid-template-columns: 62px 1fr 50px !important; gap: 22px !important;
-             padding: 26px 30px !important; border-radius: 20px !important; }
-  .hc-aide .hc-ic { width: 62px; height: 62px; border-radius: 17px; }
-  .hc-aide .hc-ic svg { width: 27px; height: 27px; }
-  .hc-aide .hc-lbl { font-size: 12px; margin-bottom: 5px; }
-  .hc-aide .hc-val { font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; letter-spacing: -0.025em;
-                     line-height: 1.05; font-variant-numeric: tabular-nums; }
-  .hc-card:not(.hc-aide) { display: flex; flex-direction: column; align-items: flex-start;
-                           gap: 22px; padding: 22px 24px 24px; }
-}
-.hc-go { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--hairline);
-         color: var(--ink); display: flex; align-items: center; justify-content: center;
-         transition: background .25s ease, border-color .25s ease, color .25s ease,
-                     transform .35s cubic-bezier(0.16,1,0.3,1); }
-.hc-aide:hover .hc-go, .hc-aide:focus-visible .hc-go { background: var(--accent); border-color: var(--accent);
-                                                       color: #fff; transform: translateX(4px); }
-@media (max-width: 860px) { .hc-go { display: none; } .hc-aide .hc-val { font-size: 19px; font-weight: 700; } }
-/* A 375 px, l adresse de trente caracteres depassait d une lettre et se cassait en deux. */
-@media (max-width: 400px) { .hc-courriel .hc-val { font-size: 13px; letter-spacing: -0.01em; } }
-.hc-card { display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 16px;
-           background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px;
-           padding: 18px 22px; text-decoration: none;
-           transition: transform .3s cubic-bezier(0.16,1,0.3,1), border-color .25s ease; }
-.hc-card:hover { transform: translateY(-2px); border-color: var(--accent-texte); }
-.hc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.hc-ic { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center;
-          justify-content: center; flex-shrink: 0; }
-.hc-ic svg { display: block; }
-/* Trois pictogrammes dessines dans le meme trait, chacun sur sa pastille
-   teintee. Les vrais logos de marque ont ete essayes puis retires : trois
-   identites graphiques etrangeres se battaient entre elles et tiraient l'oeil
-   hors de la palette de Phe-Nix. */
-.hc-courriel .hc-ic { background: rgba(232,80,14,.10); color: #C7440B; }
-.hc-tel      .hc-ic { background: rgba(22,163,74,.11); color: #15803D; }
-.hc-fb       .hc-ic { background: rgba(24,119,242,.11); color: #1877F2; }
-.hc-aide     .hc-ic { background: var(--accent); color: #fff; }
-.hc-lbl { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft); margin-bottom: 3px; }
-.hc-val { font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; overflow-wrap: anywhere; }
-@media (max-width: 420px) { .hc-val { font-size: 14.5px; } }
+/* ===== CONTACT — section sombre, un numero geant =====
+   Le numero de depannage alimentaire est la seule ligne qui reponde a une
+   urgence : il occupe la section, en tres grand et en orange clair. Les
+   trois autres voies se rangent dessous sur une ligne, sans carte. */
+.section-sombre.s-contact { padding-top: 88px; padding-bottom: 92px; border-top: 1px solid rgba(255,255,255,0.10); }
+/* le filigrane du phenix est deja dans la section sombre juste au-dessus */
+.section-sombre.s-contact::before { display: none; }
+.home-contacts { display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+                 gap: 14px 38px; max-width: 940px; margin: 40px auto 0; }
+.hc-card { text-decoration: none; color: #fff; }
+.hc-card:focus-visible { outline: 2px solid var(--accent-clair); outline-offset: 6px; border-radius: 6px; }
+.hc-aide { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center;
+           padding-bottom: 34px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+.hc-aide .hc-ic { display: none; }
+.hc-aide .hc-lbl { font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+                   color: rgba(255,255,255,0.72); margin-bottom: 10px; }
+.hc-aide .hc-val { font-size: clamp(34px, 10.5vw, 88px); font-weight: 700; line-height: 1;
+                   letter-spacing: -0.045em; font-variant-numeric: tabular-nums; white-space: nowrap;
+                   color: var(--accent-clair); transition: color .25s ease; }
+.hc-aide:hover .hc-val { color: #fff; }
+.hc-card:not(.hc-aide) { display: inline-flex; align-items: center; gap: 10px; padding: 6px 0; }
+.hc-card:not(.hc-aide) .hc-ic { display: flex; color: rgba(255,255,255,0.78); }
+.hc-card:not(.hc-aide) .hc-ic svg { width: 20px; height: 20px; display: block; }
+/* le libelle reste lu par les lecteurs d'ecran ; a l'oeil, le pictogramme suffit */
+.hc-card:not(.hc-aide) .hc-lbl { position: absolute; width: 1px; height: 1px; overflow: hidden;
+                                 clip-path: inset(50%); white-space: nowrap; }
+.hc-card:not(.hc-aide) .hc-val { font-size: 15.5px; font-weight: 500; color: #fff;
+                                 text-decoration: underline; text-decoration-color: transparent;
+                                 text-underline-offset: 5px; transition: text-decoration-color .25s ease; }
+.hc-card:not(.hc-aide):hover .hc-val { text-decoration-color: var(--accent-clair); }
 
 /* ===== TÉMOIGNAGES IMMERSIF ===== */
 .testi { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 40px; background: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.74)), url('equipe-terrain.jpg') center/cover no-repeat fixed; }
@@ -568,16 +546,10 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .impact { grid-template-columns: 1fr 1fr; gap: 36px; }
   .hero-content { padding: 0 24px 72px; }
   .cta-premium { padding: 56px 28px; border-radius: 24px; }
-  /* une carte par ligne : a trois de front, l'adresse courriel ne pouvait
-     pas tenir sur une seule ligne */
-  .home-contacts { grid-template-columns: 1fr; gap: 10px; max-width: 100%; }
-  /* Une seule regle de marge interieure : il y en avait deux qui se
-     contredisaient. Et surtout, plus de margin-bottom sur la pastille : dans
-     une carte centree verticalement, il la remontait de 4 px. */
-  .hc-card { padding: 14px 16px; gap: 14px; grid-template-columns: 46px 1fr; border-radius: 14px; }
-  .hc-ic { width: 46px; height: 46px; border-radius: 13px; }
-  .hc-lbl { font-size: 10px; margin-bottom: 3px; }
-  .hc-val { font-size: 14px; line-height: 1.3; }
+  .section-sombre.s-contact { padding-top: 64px; padding-bottom: 70px; }
+  .home-contacts { flex-direction: column; gap: 14px; margin-top: 32px; }
+  .hc-aide { padding-bottom: 28px; margin-bottom: 8px; width: 100%; }
+  .hc-card:not(.hc-aide) .hc-val { font-size: 15px; }
   .testi { background-attachment: scroll; padding: 90px 24px; min-height: 50vh; }
 }
 @media (max-width: 700px) {
@@ -623,7 +595,6 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 .s-mineur.center > .eyebrow, .s-majeur.center > .eyebrow { justify-content: center; }
 .s-mineur.center > h2, .s-majeur.center > h2 { max-width: none; }
 .s-mineur.center > .lead, .s-majeur.center > .lead { margin-left: auto; margin-right: auto; }
-.section-soft.center > .home-contacts { margin-left: auto; margin-right: auto; }
 
 /* Le ruban touche les deux bords : une pellicule qui sort du cadre dit qu'il y
    a plus de photos que l'ecran n'en montre. */
@@ -1235,7 +1206,7 @@ setTimeout(function () {
 </section>
 
 <!-- CONTACT (accueil) -->
-<section class="section section-soft s-mineur center">
+<section class="section section-sombre center s-mineur s-contact">
   <div class="eyebrow">Parlons-nous</div>
   <h2>Une question ? Nous sommes là.</h2>
   <p class="lead">Nous répondons à tous les messages, généralement sous 24 à 48 h.</p>
@@ -1246,7 +1217,6 @@ setTimeout(function () {
         <div class="hc-lbl">Dépannage alimentaire</div>
         <div class="hc-val">(438) 464-1703</div>
       </div>
-      <span class="hc-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
     </a>
     <a href="mailto:phenixactioncitoyenne@gmail.com" class="hc-card hc-courriel">
       <div class="hc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m2.8 6 8.1 6.1a2 2 0 0 0 2.2 0L21.2 6"/></svg></div>
