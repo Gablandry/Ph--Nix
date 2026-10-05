@@ -205,8 +205,14 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
    s'y inscrivent sans carte. Les roues mordent de quelques pixels pour que
    le camion paraisse plante plutot que colle. */
 .camion-sol { padding-bottom: 0 !important; }
-.camion-img { width: 100%; max-width: 840px; height: auto; display: block;
-              margin: 26px 0 -9px auto; position: relative; z-index: 1; }
+/* sur ordinateur le camion occupe toute la largeur du conteneur : a 840 px
+   il laissait un quart de la section vide a sa gauche */
+.camion-img { width: 100%; max-width: none; height: auto; display: block;
+              margin: 22px 0 -11px; position: relative; z-index: 1; }
+@media (min-width: 861px) {
+  .camion-sol h2 { font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -0.028em; }
+  .camion-sol .lead { font-size: 17.5px; }
+}
 @media (max-width: 860px) { .camion-img { margin: 26px auto -5px; } }
 
 /* ===== STATS ===== */
