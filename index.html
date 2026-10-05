@@ -215,26 +215,18 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
    la section paraissait vide et generique */
 /* carte blanche franche : en peche sur fond sable, les deux tons etaient
    trop proches et la carte semblait mal posee */
-/* Plus de carte : la bande sable est le sol sur lequel roule le camion, et
-   les chiffres y sont inscrits en grand, separes par des filets. */
+/* Les quatre chiffres tiennent dans une seule phrase, ecrite en grand sur la
+   bande sable ou le camion est pose. Une phrase se lit ; quatre gros chiffres
+   alignes se reconnaissent comme un gabarit. Les chiffres portent l'orange. */
 .impact-carte { max-width: var(--maxw); margin: 0 auto; }
-.section-sable.s-mineur { padding-top: 60px; padding-bottom: 76px; }
-.stat + .stat { border-left: 1px solid rgba(29,29,31,0.16); padding-left: 32px; }
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 30px; }
-.stat { text-align: left; padding-right: 24px; }
-.stat-num { font-variant-numeric: tabular-nums; display: inline-block; font-weight: 700; font-size: clamp(44px,6vw,76px); line-height: 0.95; color: var(--ink); letter-spacing: -0.04em; margin-bottom: 14px; white-space: nowrap; }
-.stat-lbl { font-size: 15px; color: var(--ink-soft-warm); line-height: 1.5; }
+.section-sable.s-mineur { padding-top: 64px; padding-bottom: 84px; }
+.impact-phrase { font-size: clamp(27px, 3.7vw, 48px); font-weight: 700; line-height: 1.2;
+                 letter-spacing: -0.032em; color: var(--ink); max-width: 21em; margin: 0;
+                 text-wrap: balance; }
+.impact-phrase span { color: var(--accent-deep); white-space: nowrap; }
 @media (max-width: 860px) {
-  .section-sable.s-mineur { padding-top: 44px; padding-bottom: 52px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 22px; }
-  .stat { padding: 0 12px 24px 0; }
-  /* en 2x2 le filet vertical ne vaut que pour la colonne de droite */
-  .stat + .stat { border-left: none; padding-left: 0; }
-  .stat:nth-child(even) { border-left: 1px solid rgba(29,29,31,0.16); padding-left: 22px; }
-  /* le filet entre les deux rangees */
-  .stat:nth-child(n+3) { padding-top: 24px; padding-bottom: 0; border-top: 1px solid rgba(29,29,31,0.16); }
-  .stat-num { font-size: 44px; margin-bottom: 10px; }
-  .stat-lbl { font-size: 13.5px; }
+  .section-sable.s-mineur { padding-top: 44px; padding-bottom: 56px; }
+  .impact-phrase { line-height: 1.24; }
 }
 
 /* ===== Split texte + image ===== */
@@ -1046,12 +1038,7 @@ setTimeout(function () {
 <section class="section section-sable s-mineur">
   <div class="impact-carte reveal">
     <div class="eyebrow">Notre impact</div>
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-num" data-counter data-target="150" data-suffix="+">150+</div><div class="stat-lbl">Distributions<br>par année</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Bénévole,<br>aucun salaire</div></div>
-      <div class="stat"><div class="stat-num" data-counter data-target="4">4</div><div class="stat-lbl">Régions<br>couvertes</div></div>
-      <div class="stat"><div class="stat-num" data-counter data-target="3" data-suffix=" ans">3 ans</div><div class="stat-lbl">Sur le terrain,<br>sans arrêt</div></div>
-    </div>
+    <p class="impact-phrase">Plus de <span>150 distributions</span> par année, par une équipe <span>100 % bénévole</span>, dans <span>4 régions</span>, depuis <span>3 ans</span> sans arrêt.</p>
   </div>
 </section>
 
