@@ -220,9 +220,10 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
    alignes se reconnaissent comme un gabarit. Les chiffres portent l'orange. */
 .impact-carte { max-width: var(--maxw); margin: 0 auto; }
 .section-sable.s-mineur { padding-top: 64px; padding-bottom: 84px; }
-.impact-phrase { font-size: clamp(27px, 3.7vw, 48px); font-weight: 700; line-height: 1.2;
-                 letter-spacing: -0.032em; color: var(--ink); max-width: 21em; margin: 0;
-                 text-wrap: balance; }
+/* la phrase occupe toute la largeur du conteneur : equilibree, elle se
+   resserrait sur les deux tiers gauches et laissait le reste vide */
+.impact-phrase { font-size: clamp(27px, 4.2vw, 57px); font-weight: 700; line-height: 1.16;
+                 letter-spacing: -0.035em; color: var(--ink); margin: 0; text-wrap: pretty; }
 .impact-phrase span { color: var(--accent-deep); white-space: nowrap; }
 @media (max-width: 860px) {
   .section-sable.s-mineur { padding-top: 44px; padding-bottom: 56px; }
