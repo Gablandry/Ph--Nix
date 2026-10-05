@@ -68,22 +68,21 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .intro-phenix-hint { bottom: 96px; }
 }
 
-/* ===== TRUST STRIP ===== */
-/* Les mentions quittent la barre noire a coches : quatre faits separes par
-   des filets, poses sur le papier, alignes sur l'axe de la page. */
-.trust-piste { background: var(--bg); overflow: hidden; border-bottom: 1px solid var(--hairline); }
-/* les mentions dupliquees ne servent qu'a la boucle du defilement mobile :
-   sur ordinateur elles feraient passer la barre sur deux lignes */
-.trust-item[aria-hidden="true"] { display: none; }
-.trust { max-width: calc(var(--maxw) + 80px); margin: 0 auto; padding: 0 40px;
-         display: flex; align-items: stretch; justify-content: space-between; }
-.trust-item { display: flex; align-items: center; padding: 17px 0; font-size: 13px;
-              font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
-.trust-item + .trust-item { border-left: 1px solid var(--hairline); padding-left: 26px; }
-.trust-item:not(:last-child) { padding-right: 26px; }
-@media (min-width: 861px) and (max-width: 1180px) {
-  .trust { flex-wrap: wrap; justify-content: center; column-gap: 30px; padding-top: 8px; padding-bottom: 8px; }
-  .trust-item, .trust-item + .trust-item, .trust-item:not(:last-child) { border: 0; padding: 6px 0; }
+/* ===== REPERES — quatre faits sous le heros =====
+   Chaque fait a son pictogramme orange, un mot fort et sa precision dessous.
+   Quatre colonnes alignees sur l'axe de la page ; deux par deux sur telephone,
+   sans defilement : on lit les quatre d'un seul coup d'oeil. */
+.trust-piste { background: var(--bg); border-bottom: 1px solid var(--hairline); }
+.trust { max-width: calc(var(--maxw) + 80px); margin: 0 auto; padding: 30px 40px;
+         display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.trust-item { display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; }
+.trust-item svg { width: 28px; height: 28px; color: var(--accent); margin-top: 1px; }
+.trust-item strong { display: block; font-size: 15.5px; font-weight: 600; line-height: 1.3;
+                     letter-spacing: -0.01em; color: var(--ink); }
+.trust-item em { display: block; font-style: normal; font-size: 13.5px; line-height: 1.45;
+                 color: var(--ink-soft); margin-top: 3px; }
+@media (min-width: 861px) and (max-width: 1040px) {
+  .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 28px; }
 }
 
 /* ===== Génériques ===== */
@@ -545,18 +544,11 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
      on le centre en haut, où il fait office de texture derrière le titre */
   .section-sombre::before { left: 50%; top: 22%; transform: translate(-50%,-50%); width: min(460px, 92vw); }
   .section-sombre::after { background: radial-gradient(105% 55% at 50% 22%, rgba(232,80,14,0.20), transparent 65%); }
-  /* sur telephone les 4 mentions passaient chacune a la ligne, ce qui
-     donnait un gros bloc noir. Elles defilent maintenant sur une seule
-     ligne, comme la galerie et le bandeau des villes. */
-  .trust-item[aria-hidden="true"] { display: flex; }
-  .trust { flex-wrap: nowrap; justify-content: flex-start; width: max-content; max-width: none;
-           margin: 0; gap: 0; padding: 0; animation: trustDefile 26s linear infinite; }
-  .trust-item, .trust-item + .trust-item, .trust-item:not(:last-child) { padding: 14px 20px; border-left: 1px solid var(--hairline); }
-  .trust-piste:hover .trust, .trust-piste:active .trust { animation-play-state: paused; }
-  @keyframes trustDefile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) {
-    .trust { animation: none; overflow-x: auto; width: auto; padding-left: 24px; padding-right: 24px; }
-  }
+  .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 16px; padding: 24px 24px; }
+  .trust-item { grid-template-columns: 24px 1fr; gap: 10px; }
+  .trust-item svg { width: 23px; height: 23px; }
+  .trust-item strong { font-size: 14px; }
+  .trust-item em { font-size: 12.5px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   /* sur petit écran : une colonne, plus de décalage ni de texte fixe */
   .fondation { grid-template-columns: 1fr; gap: 40px; }
@@ -1015,13 +1007,13 @@ setTimeout(function () {
 
 
 
-<!-- TRUST STRIP -->
+<!-- REPERES -->
 <div class="trust-piste">
   <div class="trust">
-    <div class="trust-item">OBNL enregistré au Québec</div>
-    <div class="trust-item">100 % bénévole, aucun salaire</div>
-    <div class="trust-item">Reçu fiscal : à venir, dès l'obtention du numéro de charité</div>
-    <div class="trust-item">Sur le terrain depuis 2022</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9.5 10h.01M14.5 10h.01M9.5 14h.01M14.5 14h.01"/><path d="M10 21v-3h4v3"/></svg><div><strong>OBNL enregistré</strong><em>au Québec</em></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><div><strong>100 % bénévole</strong><em>aucun salaire</em></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v18l2.5-1.5L10 21l2-1.5 2 1.5 2.5-1.5L19 21V3l-2.5 1.5L14 3l-2 1.5L10 3 7.5 4.5 5 3z"/><path d="M9 9h6M9 13h6"/></svg><div><strong>Reçu fiscal à venir</strong><em>dès l'obtention du numéro de charité</em></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Sur le terrain</strong><em>depuis 2022</em></div></div>
   </div>
 </div>
 
