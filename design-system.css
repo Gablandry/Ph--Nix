@@ -46,6 +46,8 @@ body {
   overflow-x: clip;
 }
 img { max-width: 100%; display: block; }
+/* La selection de texte porte la braise plutot que le bleu du systeme. */
+::selection { background: rgba(232,80,14,0.22); color: var(--ink); }
 a { color: inherit; }
 ul { list-style: none; }
 

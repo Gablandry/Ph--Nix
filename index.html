@@ -69,13 +69,22 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 }
 
 /* ===== TRUST STRIP ===== */
-.trust-piste { background: var(--ink); overflow: hidden; }
+/* Les mentions quittent la barre noire a coches : quatre faits separes par
+   des filets, poses sur le papier, alignes sur l'axe de la page. */
+.trust-piste { background: var(--bg); overflow: hidden; border-bottom: 1px solid var(--hairline); }
 /* les mentions dupliquees ne servent qu'a la boucle du defilement mobile :
    sur ordinateur elles feraient passer la barre sur deux lignes */
 .trust-item[aria-hidden="true"] { display: none; }
-.trust { padding: 18px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,0.7); white-space: nowrap; }
-.trust-item svg { color: var(--accent-texte); flex-shrink: 0; }
+.trust { max-width: calc(var(--maxw) + 80px); margin: 0 auto; padding: 0 40px;
+         display: flex; align-items: stretch; justify-content: space-between; }
+.trust-item { display: flex; align-items: center; padding: 17px 0; font-size: 13px;
+              font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+.trust-item + .trust-item { border-left: 1px solid var(--hairline); padding-left: 26px; }
+.trust-item:not(:last-child) { padding-right: 26px; }
+@media (min-width: 861px) and (max-width: 1180px) {
+  .trust { flex-wrap: wrap; justify-content: center; column-gap: 30px; padding-top: 8px; padding-bottom: 8px; }
+  .trust-item, .trust-item + .trust-item, .trust-item:not(:last-child) { border: 0; padding: 6px 0; }
+}
 
 /* ===== Génériques ===== */
 .section { padding: 120px 40px; }
@@ -180,32 +189,40 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 .wrap { max-width: var(--maxw); margin: 0 auto; }
 .center { text-align: center; }
 .lead { font-size: 19px; color: var(--ink-soft); max-width: 620px; margin: 18px auto 0; line-height: 1.6; }
-.camion-img { width: 100%; max-width: 720px; height: auto; display: block; margin: 40px auto 0;  }
+/* Le camion est une image detouree dont les roues touchent le bord bas. Il
+   est pose sur la bande sable qui suit : elle devient le sol, et les chiffres
+   s'y inscrivent sans carte. Les roues mordent de quelques pixels pour que
+   le camion paraisse plante plutot que colle. */
+.camion-sol { padding-bottom: 0 !important; }
+.camion-img { width: 100%; max-width: 840px; height: auto; display: block;
+              margin: 26px 0 -9px auto; position: relative; z-index: 1; }
+@media (max-width: 860px) { .camion-img { margin: 26px auto -5px; } }
 
 /* ===== STATS ===== */
 /* les chiffres dans une carte plutot qu'une bande nue : sans cadre ni titre,
    la section paraissait vide et generique */
 /* carte blanche franche : en peche sur fond sable, les deux tons etaient
    trop proches et la carte semblait mal posee */
-.impact-carte { max-width: var(--maxw); margin: 0 auto; background: #fff;
-                border-radius: 24px; padding: 36px 44px 40px;
-                border: 1px solid var(--hairline); }
-/* un filet vertical entre les chiffres, plutot qu'un simple espace */
-.stat + .stat { border-left: 1px solid var(--hairline); padding-left: 30px; }
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 30px; margin-top: 26px; }
-.stat { text-align: left; }
-.stat-num { font-variant-numeric: tabular-nums; display: inline-block; font-weight: 700; font-size: clamp(38px,4.4vw,54px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 8px; }
-.stat-lbl { font-size: 14px; color: var(--ink-soft-warm); line-height: 1.5; }
+/* Plus de carte : la bande sable est le sol sur lequel roule le camion, et
+   les chiffres y sont inscrits en grand, separes par des filets. */
+.impact-carte { max-width: var(--maxw); margin: 0 auto; }
+.section-sable.s-mineur { padding-top: 60px; padding-bottom: 76px; }
+.stat + .stat { border-left: 1px solid rgba(29,29,31,0.16); padding-left: 32px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 30px; }
+.stat { text-align: left; padding-right: 24px; }
+.stat-num { font-variant-numeric: tabular-nums; display: inline-block; font-weight: 700; font-size: clamp(44px,6vw,76px); line-height: 0.95; color: var(--ink); letter-spacing: -0.04em; margin-bottom: 14px; white-space: nowrap; }
+.stat-lbl { font-size: 15px; color: var(--ink-soft-warm); line-height: 1.5; }
 @media (max-width: 860px) {
-  .impact-carte { padding: 26px 24px 30px; border-radius: 20px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; margin-top: 22px; }
+  .section-sable.s-mineur { padding-top: 44px; padding-bottom: 52px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 22px; }
+  .stat { padding: 0 12px 24px 0; }
   /* en 2x2 le filet vertical ne vaut que pour la colonne de droite */
   .stat + .stat { border-left: none; padding-left: 0; }
-  .stat:nth-child(even) { border-left: 1px solid var(--hairline); padding-left: 22px; }
-  /* le filet entre les deux rangees, comme sur la maquette */
-  .stat:nth-child(n+3) { padding-top: 26px; border-top: 1px solid var(--warm-line); }
-  .stat-num { font-size: 34px; }
-  .stat-lbl { font-size: 13px; }
+  .stat:nth-child(even) { border-left: 1px solid rgba(29,29,31,0.16); padding-left: 22px; }
+  /* le filet entre les deux rangees */
+  .stat:nth-child(n+3) { padding-top: 24px; padding-bottom: 0; border-top: 1px solid rgba(29,29,31,0.16); }
+  .stat-num { font-size: 44px; margin-bottom: 10px; }
+  .stat-lbl { font-size: 13.5px; }
 }
 
 /* ===== Split texte + image ===== */
@@ -433,12 +450,42 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 /* ===== CONTACT (accueil) ===== */
 /* cartes en ligne plutot qu'empilees : centrees et etroites, l'adresse
    courriel de 30 caracteres se cassait fatalement sur trois lignes. */
-.home-contacts { display: grid; gap: 14px; max-width: 560px; margin: 28px 0 0; text-align: left; }
+/* Une hierarchie plutot que quatre cartes identiques : la ligne de depannage,
+   la seule qui reponde a une urgence, occupe toute la largeur ; les trois
+   autres voies se rangent dessous. La colonne du courriel est plus large
+   parce que l'adresse fait trente caracteres. */
+.home-contacts { display: grid; gap: 14px; max-width: 940px; margin: 34px 0 0; text-align: left; }
+@media (min-width: 1000px) { .home-contacts { grid-template-columns: 1.32fr 1fr 1fr; } }
+@media (min-width: 861px) and (max-width: 999px) {
+  .home-contacts { grid-template-columns: 1fr 1fr; max-width: 640px; }
+  .hc-courriel { grid-column: 1 / -1; }
+}
+@media (min-width: 861px) {
+  .hc-aide { grid-column: 1 / -1; grid-template-columns: 62px 1fr 50px !important; gap: 22px !important;
+             padding: 26px 30px !important; border-radius: 20px !important; }
+  .hc-aide .hc-ic { width: 62px; height: 62px; border-radius: 17px; }
+  .hc-aide .hc-ic svg { width: 27px; height: 27px; }
+  .hc-aide .hc-lbl { font-size: 12px; margin-bottom: 5px; }
+  .hc-aide .hc-val { font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; letter-spacing: -0.025em;
+                     line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .hc-card:not(.hc-aide) { display: flex; flex-direction: column; align-items: flex-start;
+                           gap: 22px; padding: 22px 24px 24px; }
+}
+.hc-go { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--hairline);
+         color: var(--ink); display: flex; align-items: center; justify-content: center;
+         transition: background .25s ease, border-color .25s ease, color .25s ease,
+                     transform .35s cubic-bezier(0.16,1,0.3,1); }
+.hc-aide:hover .hc-go, .hc-aide:focus-visible .hc-go { background: var(--accent); border-color: var(--accent);
+                                                       color: #fff; transform: translateX(4px); }
+@media (max-width: 860px) { .hc-go { display: none; } .hc-aide .hc-val { font-size: 19px; font-weight: 700; } }
+/* A 375 px, l adresse de trente caracteres depassait d une lettre et se cassait en deux. */
+@media (max-width: 400px) { .hc-courriel .hc-val { font-size: 13px; letter-spacing: -0.01em; } }
 .hc-card { display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 16px;
            background: var(--bg); border: 1px solid var(--hairline); border-radius: 16px;
            padding: 18px 22px; text-decoration: none;
-           transition: transform .25s, box-shadow .25s, border-color .25s; }
-.hc-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.07); border-color: var(--accent-texte); }
+           transition: transform .3s cubic-bezier(0.16,1,0.3,1), border-color .25s ease; }
+.hc-card:hover { transform: translateY(-2px); border-color: var(--accent-texte); }
+.hc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .hc-ic { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center;
           justify-content: center; flex-shrink: 0; }
 .hc-ic svg { display: block; }
@@ -497,14 +544,14 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
      donnait un gros bloc noir. Elles defilent maintenant sur une seule
      ligne, comme la galerie et le bandeau des villes. */
   .trust-item[aria-hidden="true"] { display: flex; }
-  .trust { flex-wrap: nowrap; justify-content: flex-start; width: max-content; gap: 30px; padding: 14px 0;
-           animation: trustDefile 26s linear infinite; }
+  .trust { flex-wrap: nowrap; justify-content: flex-start; width: max-content; max-width: none;
+           margin: 0; gap: 0; padding: 0; animation: trustDefile 26s linear infinite; }
+  .trust-item, .trust-item + .trust-item, .trust-item:not(:last-child) { padding: 14px 20px; border-left: 1px solid var(--hairline); }
   .trust-piste:hover .trust, .trust-piste:active .trust { animation-play-state: paused; }
   @keyframes trustDefile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) {
     .trust { animation: none; overflow-x: auto; width: auto; padding-left: 24px; padding-right: 24px; }
   }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   /* sur petit écran : une colonne, plus de décalage ni de texte fixe */
   .fondation { grid-template-columns: 1fr; gap: 40px; }
@@ -601,36 +648,51 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
    Remplace la pile de cartes collantes, qui prenait 1703 px de defilement pour
    quatre liens et masquait les descriptions sur telephone. La photo est tenue a
    gauche, la liste a droite ; l'image suit l'entree survolee ou tabulee. */
-.vitrine { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 44px;
-           max-width: var(--maxw); margin: 48px auto 0; align-items: start; }
+.vitrine { display: grid; grid-template-columns: 1fr 1.06fr; gap: 56px;
+           max-width: var(--maxw); margin: 48px auto 0; align-items: stretch; }
 
-.vitrine-scene { position: relative; aspect-ratio: 4/5; border-radius: 22px;
+/* La photo prend exactement la hauteur de la liste : les deux colonnes
+   commencent et finissent sur les memes lignes. */
+.vitrine-scene { position: relative; min-height: 520px; border-radius: 20px;
                  overflow: hidden; background: var(--bg-soft); }
 .vitrine-scene img { position: absolute; inset: 0; width: 100%; height: 100%;
-                     object-fit: cover; opacity: 0;
-                     transition: opacity .45s cubic-bezier(0.4,0,0.2,1); }
-.vitrine-scene img.actif { opacity: 1; }
+                     object-fit: cover; opacity: 0; transform: scale(1.045);
+                     transition: opacity .6s cubic-bezier(0.4,0,0.2,1),
+                                 transform 1.4s cubic-bezier(0.16,1,0.3,1); }
+.vitrine-scene img.actif { opacity: 1; transform: none; }
 
 .vitrine-liste { list-style: none; margin: 0; padding: 0; }
-.vitrine-entree { display: grid; grid-template-columns: 1fr 22px; gap: 18px;
-                  align-items: center; padding: 22px 4px 22px 0;
+.vitrine-liste { display: flex; flex-direction: column; }
+.vitrine-liste li { flex: 1; display: flex; }
+.vitrine-entree { display: grid; grid-template-columns: 1fr 44px; gap: 22px; flex: 1;
+                  align-items: center; padding: 26px 0; position: relative;
                   border-top: 1px solid var(--hairline);
-                  text-decoration: none; color: inherit;
-                  transition: padding-left .25s cubic-bezier(0.4,0,0.2,1); }
+                  text-decoration: none; color: inherit; }
 .vitrine-liste li:last-child .vitrine-entree { border-bottom: 1px solid var(--hairline); }
-.vitrine-entree:hover, .vitrine-entree:focus-visible { padding-left: 10px; }
 .vitrine-entree:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .vitrine-entree strong { display: block; font-size: 21px; font-weight: 600;
                          line-height: 1.25; letter-spacing: -0.015em;
                          color: var(--ink); margin-bottom: 7px;
                          transition: color .25s ease; }
 .vitrine-entree:hover strong, .vitrine-entree:focus-visible strong { color: var(--accent-texte); }
+/* L'entree dont la photo est affichee le dit : un trait orange se tire sur
+   son filet, son titre et sa fleche prennent la couleur. */
+@media (min-width: 901px) {
+  .vitrine-entree::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 2px;
+                            background: var(--accent); transform: scaleX(0); transform-origin: left;
+                            transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
+  .vitrine-entree.actif::before { transform: scaleX(1); }
+  .vitrine-entree.actif strong { color: var(--accent-texte); }
+  .vitrine-entree.actif .vitrine-fleche { background: var(--accent); border-color: var(--accent); color: #fff; }
+}
 .vitrine-entree em { display: block; font-style: normal; font-size: 15.5px;
                      line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
-.vitrine-fleche { color: var(--hairline); flex-shrink: 0;
-                  transition: color .25s ease, transform .25s cubic-bezier(0.4,0,0.2,1); }
+.vitrine-fleche { width: 44px; height: 44px; padding: 11px; box-sizing: border-box; border-radius: 50%;
+                  border: 1px solid var(--hairline); color: var(--ink); flex-shrink: 0;
+                  transition: background .25s ease, border-color .25s ease, color .25s ease,
+                              transform .35s cubic-bezier(0.16,1,0.3,1); }
 .vitrine-entree:hover .vitrine-fleche,
-.vitrine-entree:focus-visible .vitrine-fleche { color: var(--accent-texte); transform: translateX(4px); }
+.vitrine-entree:focus-visible .vitrine-fleche { transform: translateX(4px); }
 
 /* La vignette ne sert que sur telephone, ou la grande photo disparait. */
 .vitrine-vignette { display: none; }
@@ -642,6 +704,7 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .vitrine { grid-template-columns: 1fr; gap: 14px; margin-top: 34px; }
   .vitrine-scene { display: none; }
   .vitrine-liste { display: grid; gap: 14px; }
+  .vitrine-liste li { display: block; }
   .vitrine-entree { display: block; position: relative; padding: 0;
                     border: 0; border-radius: 18px; overflow: hidden;
                     min-height: 218px; }
@@ -658,8 +721,9 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .vitrine-entree:hover strong, .vitrine-entree:focus-visible strong { color: #fff; }
   .vitrine-entree em { font-size: 14.5px; line-height: 1.55; max-width: none;
                        color: rgba(255,255,255,0.88); }
-  .vitrine-entree .vitrine-fleche { position: absolute; z-index: 2; right: 18px; top: 18px;
-                                    margin: 0; color: #fff; }
+  .vitrine-entree .vitrine-fleche { position: absolute; z-index: 2; right: 16px; top: 16px;
+                                    margin: 0; color: #fff; width: 40px; height: 40px; padding: 10px;
+                                    border-color: rgba(255,255,255,0.55); }
   .vitrine-entree:hover { padding-left: 0; }
   .vitrine-entree:active .vitrine-vignette { transform: scale(1.03); }
 }
@@ -668,22 +732,33 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
    Une seule ligne, juste sous le heros. Ce n'est pas un chapitre du site,
    c'est un raccourci : le numero est atteignable avant tout le reste sans
    occuper l'espace d'une section. */
-.aide-rapide { display: flex; align-items: center; gap: 16px; justify-content: center;
-               background: var(--bg-sable); padding: 18px 40px;
+.aide-rapide { display: flex; align-items: center; gap: 18px;
+               background: var(--bg-sable);
+               padding: 22px max(40px, calc(50% - var(--maxw) / 2));
                text-decoration: none; color: inherit;
                border-bottom: 1px solid var(--warm-line);
                transition: background .22s ease; }
 .aide-rapide:hover { background: var(--bg-terre); }
 .aide-rapide:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
-.aide-rapide-ic { width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px;
+.aide-rapide > span:nth-child(2) { flex: 1; min-width: 0; }
+.aide-rapide-go { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%;
+                  border: 1px solid rgba(29,29,31,0.28); color: var(--ink);
+                  display: flex; align-items: center; justify-content: center;
+                  transition: background .25s ease, border-color .25s ease, color .25s ease,
+                              transform .35s cubic-bezier(0.16,1,0.3,1); }
+.aide-rapide:hover .aide-rapide-go,
+.aide-rapide:focus-visible .aide-rapide-go { background: var(--accent); border-color: var(--accent);
+                                             color: #fff; transform: translateX(4px); }
+.aide-rapide-ic { width: 46px; height: 46px; flex-shrink: 0; border-radius: 13px;
                   background: var(--accent); color: #fff;
                   display: flex; align-items: center; justify-content: center; }
-.aide-rapide strong { display: block; font-size: 16px; font-weight: 600;
+.aide-rapide strong { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.012em;
                       color: var(--ink); line-height: 1.35; }
 .aide-rapide em { display: block; font-style: normal; font-size: 13px;
                   color: var(--ink-soft-warm); line-height: 1.45; margin-top: 3px; }
 @media (max-width: 860px) {
   .aide-rapide { padding: 14px 20px; gap: 12px; justify-content: flex-start; }
+  .aide-rapide-go { display: none; }
   .aide-rapide-ic { width: 38px; height: 38px; border-radius: 11px; }
   .aide-rapide strong { font-size: 15px; }
   .aide-rapide em { font-size: 12.5px; }
@@ -943,20 +1018,21 @@ setTimeout(function () {
     <strong>Besoin d'aide alimentaire ? Appelez Guy au (438) 464-1703</strong>
     <em>Aucune condition, aucun formulaire. Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.</em>
   </span>
+  <span class="aide-rapide-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
 </a>
 
 <!-- TRUST STRIP -->
 <div class="trust-piste">
   <div class="trust">
-    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OBNL enregistré au Québec</div>
-    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100 % bénévole, aucun salaire</div>
-    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reçu fiscal : à venir, dès l'obtention du numéro de charité</div>
-    <div class="trust-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sur le terrain depuis 2022</div>
+    <div class="trust-item">OBNL enregistré au Québec</div>
+    <div class="trust-item">100 % bénévole, aucun salaire</div>
+    <div class="trust-item">Reçu fiscal : à venir, dès l'obtention du numéro de charité</div>
+    <div class="trust-item">Sur le terrain depuis 2022</div>
   </div>
 </div>
 
 <!-- CAMION PHÉ-NIX -->
-<section class="section s-mineur">
+<section class="section s-mineur camion-sol">
   <div class="wrap">
     <div class="eyebrow">Sur la route, chaque semaine</div>
     <h2>Reconnaissable entre tous.</h2>
@@ -1058,7 +1134,7 @@ setTimeout(function () {
         <img src="therapie-route-voiture.jpg" alt="La route vers un nouveau départ" data-vitrine="3" loading="lazy">
       </div>
       <ul class="vitrine-liste">
-        <li><a href="distribution-alimentaire.html" class="vitrine-entree" data-vitrine="0">
+        <li><a href="distribution-alimentaire.html" class="vitrine-entree actif" data-vitrine="0">
           <img class="vitrine-vignette" src="bande/distribution-rue.jpg" alt="" loading="lazy">
           <span>
             <strong>Distribution alimentaire dans les rues</strong>
@@ -1183,6 +1259,7 @@ setTimeout(function () {
         <div class="hc-lbl">Dépannage alimentaire</div>
         <div class="hc-val">(438) 464-1703</div>
       </div>
+      <span class="hc-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
     </a>
     <a href="mailto:phenixactioncitoyenne@gmail.com" class="hc-card hc-courriel">
       <div class="hc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m2.8 6 8.1 6.1a2 2 0 0 0 2.2 0L21.2 6"/></svg></div>
@@ -1313,6 +1390,9 @@ setTimeout(function () {
   function montrer(n) {
     for (var k = 0; k < scene.length; k++) {
       scene[k].classList.toggle('actif', k === n);
+    }
+    for (var j = 0; j < entrees.length; j++) {
+      entrees[j].classList.toggle('actif', j === n);
     }
   }
 
