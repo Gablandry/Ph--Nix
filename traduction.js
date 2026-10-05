@@ -185,6 +185,8 @@ var DICO = {
  "Déposez vêtements, nourriture non périssable et articles d'hygiène dans l'un des 3 points de collecte de Phé-Nix en Montérégie.": "Drop off clothing, non-perishable food and hygiene products at one of Phé-Nix's 3 collection points in the Montérégie.",
  "Une thérapie se trouve rarement au coin de la rue. En complément du": "A treatment centre is rarely around the corner. Alongside our",
  "En savoir plus →": "Learn more →",
+ "Fermer": "Close",
+ "Aide alimentaire": "Food assistance",
  "Encadrement complet par notre équipe": "Full guidance from our team",
  "Entrevue avec Michel Couture": "Interview with Michel Couture",
  "Est-ce que vous sortez même par mauvais temps ?": "Do you go out even in bad weather?",
