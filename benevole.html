@@ -33,40 +33,77 @@
   .steps { gap: 12px; }
 }
 @media (max-width: 540px) { .steps { grid-template-columns: 1fr; max-width: 400px; } }
-/* ===== PAGE BENEVOLE — colonne fixe a gauche =====
-   Meme disposition que les pages de service : le titre et le bouton pour
-   ecrire restent accroches pendant qu'on lit les etapes. Sur une page dont
-   tout l'enjeu est d'obtenir un courriel, garder le bouton visible compte. */
-.svc { padding: 0 40px 90px; }
-.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
-             max-width: var(--maxw); margin: 0 auto; align-items: start; }
-.svc-side { position: sticky; top: 108px; padding-top: 92px; }
-.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
-.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 26px; max-width: 400px; }
-.svc-side .eyebrow { justify-content: flex-start; }
-.svc-side .benevole-btns { justify-content: flex-start; margin-top: 0; gap: 10px; }
-.svc-side .benevole-btns .btn { width: 100%; justify-content: center; }
-.svc-side .note { font-size: 13px; color: var(--ink-soft); margin-top: 16px; max-width: 380px; line-height: 1.55; }
-.svc-flow { padding-top: 92px; display: grid; gap: 50px; }
-.svc-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 22px; display: block; }
-.svc-bloc h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 16px; }
-.svc-bloc p { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin: 0; }
-.svc-bloc .eyebrow { justify-content: flex-start; }
-.svc-etapes .eyebrow { justify-content: flex-start; }
-.svc-etapes h2 { font-size: clamp(24px, 2.4vw, 30px); margin-bottom: 22px; }
-.svc-etapes .steps { grid-template-columns: 1fr 1fr; margin-top: 0; gap: 16px; }
+/* ===== PAGE DE SERVICE — une bande par sujet =====
+   Chaque partie de la page a sa propre bande et son propre fond : l'entete
+   sur la photo, les faits, le fonctionnement, les questions. Avant, tout
+   defilait dans une seule colonne a droite d'un titre fixe, et les blocs se
+   lisaient comme un seul long texte. */
+.sv-hero { position: relative; isolation: isolate; overflow: hidden; background: #150D20;
+           min-height: min(74vh, 640px); display: flex; align-items: flex-end;
+           padding: 150px 40px 64px; }
+.sv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.sv-hero::after { content: ''; position: absolute; inset: 0; z-index: -1;
+                  background: linear-gradient(180deg, rgba(21,13,32,0.38) 0%, rgba(21,13,32,0.55) 45%, rgba(21,13,32,0.90) 100%); }
+.sv-hero-in { width: 100%; max-width: var(--maxw); margin: 0 auto; }
+.sv-hero .eyebrow { color: var(--accent-clair); margin-bottom: 16px; }
+.sv-hero h1 { color: #fff; font-size: clamp(34px, 5.2vw, 66px); line-height: 1.03; letter-spacing: -0.035em;
+              max-width: 16ch; margin-bottom: 18px; text-wrap: balance; }
+.sv-hero .lead { color: rgba(255,255,255,0.88); font-size: 18px; line-height: 1.6; max-width: 54ch; margin: 0 0 30px; }
+
+.sv-bande { padding: 84px 40px; }
+.sv-in { max-width: var(--maxw); margin: 0 auto; }
+.sv-deux { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; }
+.sv-tete .eyebrow { justify-content: flex-start; margin-bottom: 14px; }
+.sv-tete h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+.sv-tete .lead { font-size: 16px; color: var(--ink-soft); line-height: 1.65; margin: 14px 0 0; max-width: 34ch; }
+
+/* les faits : un mot fort, sa precision, un court trait orange au-dessus */
+.sv-faits { padding-top: 58px; padding-bottom: 58px; border-bottom: 1px solid var(--hairline); }
+.conditions { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 30px 34px; text-align: left; }
+.condition { padding-top: 18px; position: relative; }
+.condition::before { content: ''; position: absolute; left: 0; top: 0; width: 34px; height: 3px; background: var(--accent); }
+.condition h3 { font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; margin-bottom: 8px; color: var(--ink); }
+.condition p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+/* le fonctionnement : le premier paragraphe se lit d'emblee, la suite se deplie */
+.sv-comment { background: var(--bg-warm); }
+.sv-texte p { font-size: 16.5px; color: var(--ink-soft-warm); line-height: 1.75; margin: 0 0 16px; }
+.sv-texte p.sv-fort { font-size: 20px; line-height: 1.55; color: var(--ink); letter-spacing: -0.01em; }
+.sv-suite { overflow: hidden; max-height: 0; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
+.sv-texte.ouvert .sv-suite { max-height: 1200px; }
+/* sans JavaScript, tout le texte est visible */
+html:not(.js) .sv-suite { max-height: none; }
+html:not(.js) .sv-plus { display: none; }
+.sv-plus { margin-top: 6px; background: none; border: none; padding: 0; cursor: pointer;
+           font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: var(--accent-texte-fort);
+           display: inline-flex; align-items: center; gap: 7px; }
+.sv-plus:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sv-plus:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+.sv-plus svg { transition: transform .3s; }
+.sv-texte.ouvert .sv-plus svg { transform: rotate(180deg); }
+
+.sv-questions .faq { margin: 0; max-width: none; border-top: 1px solid var(--hairline); }
 
 @media (max-width: 900px) {
-  .svc { padding: 0 24px 60px; }
-  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
-  /* L'entete est fixe et haute de 56 px : sans cette marge, le premier
-     texte de la page passait dessous et se faisait couper. */
-  .svc-side { position: static; padding-top: 88px; }
-  .svc-side .lead, .svc-side .note { max-width: none; }
-  .svc-flow { padding-top: 0; gap: 38px; }
-  .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
-  .svc-etapes .steps { grid-template-columns: 1fr; }
+  .sv-hero { padding: 120px 24px 44px; min-height: 0; }
+  .sv-hero .lead { font-size: 16.5px; }
+  .sv-bande { padding: 56px 24px; }
+  .sv-faits { padding-top: 40px; padding-bottom: 44px; }
+  .sv-deux { grid-template-columns: 1fr; gap: 24px; }
+  .sv-tete .lead { max-width: none; }
+  .conditions { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
+  .condition h3 { font-size: 17px; }
+  .sv-texte p.sv-fort { font-size: 18px; }
 }
+
+/* --- propre a la page benevole --- */
+.sv-hero .benevole-btns { justify-content: flex-start; margin-top: 0; gap: 12px; }
+.sv-hero .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.55); }
+.sv-hero .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.sv-hero .note { font-size: 13.5px; color: rgba(255,255,255,0.78); margin-top: 18px; max-width: 46ch; line-height: 1.55; }
+.sv-etapes .sv-tete { margin-bottom: 34px; }
+.sv-etapes .steps { margin-top: 0; }
+@media (max-width: 900px) { .sv-hero .benevole-btns .btn { width: 100%; justify-content: center; } }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/benevole.html">
 <meta property="og:type" content="website">
@@ -151,10 +188,10 @@ setTimeout(function () {
 </header>
 
 <!-- HERO -->
-<section class="svc">
-  <div class="svc-inner">
-
-    <aside class="svc-side">
+<!-- ENTETE : le titre pose sur la photo -->
+<section class="sv-hero">
+  <img class="sv-hero-img" src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution">
+  <div class="sv-hero-in">
       <div class="eyebrow">Devenir bénévole</div>
       <h1>Votre présence<br>change une vie.</h1>
       <p class="lead">Aucune expérience requise, aucun équipement à prévoir. Juste l'envie d'agir, une sortie à la fois.</p>
@@ -163,21 +200,30 @@ setTimeout(function () {
       <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Voir les événements sur Facebook</a>
     </div>
       <p class="note">Le bouton ouvre votre courriel avec un message déjà préparé. Vous n'avez qu'à compléter et envoyer.</p>
-    </aside>
+  </div>
+</section>
 
-    <div class="svc-flow">
-      <img class="svc-photo" src="equipe-terrain.jpg" alt="L'équipe bénévole de Phé-Nix devant le pick-up, avant une distribution">
+<!-- REJOINDRE -->
+<section class="sv-bande sv-comment">
+  <div class="sv-in sv-deux">
+    <div class="sv-tete">
+      <div class="eyebrow">Rejoignez l'équipe</div>
+      <h2>Nous nous occupons de tout le reste.</h2>
+    </div>
+    <div class="sv-texte">
+        <p class="sv-fort">Écrivez-nous votre région et vos disponibilités. Nous vous recontactons pour vous expliquer les étapes, puis vous êtes assigné à une équipe de distribution selon les besoins du moment. L'équipe vous accueille et vous guide sur le terrain.</p>
+    </div>
+  </div>
+</section>
 
-      <div class="svc-bloc">
-        <div class="eyebrow">Rejoignez l'équipe</div>
-        <h2>Nous nous occupons de tout le reste.</h2>
-        <p>Écrivez-nous votre région et vos disponibilités. Nous vous recontactons pour vous expliquer les étapes, puis vous êtes assigné à une équipe de distribution selon les besoins du moment. L'équipe vous accueille et vous guide sur le terrain.</p>
-      </div>
-
-      <div class="svc-etapes">
-        <div class="eyebrow">Le déroulement</div>
-        <h2>Quatre étapes, c'est tout.</h2>
-        <div class="steps">
+<!-- LE DEROULEMENT -->
+<section class="sv-bande sv-etapes">
+  <div class="sv-in">
+    <div class="sv-tete">
+      <div class="eyebrow">Le déroulement</div>
+      <h2>Quatre étapes, c'est tout.</h2>
+    </div>
+    <div class="steps">
     <div class="step reveal reveal-d1">
       <div class="step-no">Étape 01</div>
       <div class="step-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -203,9 +249,6 @@ setTimeout(function () {
       <p>Sur le terrain. Aucun équipement requis, l'équipe prend soin de tout.</p>
     </div>
   </div>
-      </div>
-    </div>
-
   </div>
 </section>
 

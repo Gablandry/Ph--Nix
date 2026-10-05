@@ -68,42 +68,127 @@
 .point-map:hover { text-decoration: underline; }
 .point-map svg { flex-shrink: 0; }
 
-/* ===== Colonne fixe a gauche — meme disposition que les pages de service ===== */
-.svc { padding: 0 40px 90px; }
-.svc-inner { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 64px;
-             max-width: var(--maxw); margin: 0 auto; align-items: start; }
-.svc-side { position: sticky; top: 108px; padding-top: 92px; }
-.svc-side .eyebrow { justify-content: flex-start; }
-.svc-side h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 18px; }
-.svc-side .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 26px; max-width: 400px; }
-.svc-flow { padding-top: 92px; display: grid; gap: 54px; }
-.svc-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 22px; display: block; }
-.svc-bloc .eyebrow { justify-content: flex-start; }
-.svc-bloc h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin-bottom: 8px; }
-.svc-bloc .lead { font-size: 16px; color: var(--ink-soft); margin: 0 0 22px; }
-.svc-bloc .note { font-size: 13px; color: var(--ink-soft); margin-top: 22px; text-align: left; }
-/* Dans une colonne de 620 px, quatre puis trois colonnes ne tiennent pas. */
-.svc-flow .give { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
-.svc-flow .depots { grid-template-columns: 1fr; gap: 14px; margin-top: 22px; }
-.svc-cta { border-top: 1px solid var(--line); padding-top: 40px; }
-.svc-cta .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+/* ===== PAGE DE SERVICE — une bande par sujet =====
+   Chaque partie de la page a sa propre bande et son propre fond : l'entete
+   sur la photo, les faits, le fonctionnement, les questions. Avant, tout
+   defilait dans une seule colonne a droite d'un titre fixe, et les blocs se
+   lisaient comme un seul long texte. */
+.sv-hero { position: relative; isolation: isolate; overflow: hidden; background: #150D20;
+           min-height: min(74vh, 640px); display: flex; align-items: flex-end;
+           padding: 150px 40px 64px; }
+.sv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.sv-hero::after { content: ''; position: absolute; inset: 0; z-index: -1;
+                  background: linear-gradient(180deg, rgba(21,13,32,0.38) 0%, rgba(21,13,32,0.55) 45%, rgba(21,13,32,0.90) 100%); }
+.sv-hero-in { width: 100%; max-width: var(--maxw); margin: 0 auto; }
+.sv-hero .eyebrow { color: var(--accent-clair); margin-bottom: 16px; }
+.sv-hero h1 { color: #fff; font-size: clamp(34px, 5.2vw, 66px); line-height: 1.03; letter-spacing: -0.035em;
+              max-width: 16ch; margin-bottom: 18px; text-wrap: balance; }
+.sv-hero .lead { color: rgba(255,255,255,0.88); font-size: 18px; line-height: 1.6; max-width: 54ch; margin: 0 0 30px; }
+
+.sv-bande { padding: 84px 40px; }
+.sv-in { max-width: var(--maxw); margin: 0 auto; }
+.sv-deux { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; }
+.sv-tete .eyebrow { justify-content: flex-start; margin-bottom: 14px; }
+.sv-tete h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+.sv-tete .lead { font-size: 16px; color: var(--ink-soft); line-height: 1.65; margin: 14px 0 0; max-width: 34ch; }
+
+/* les faits : un mot fort, sa precision, un court trait orange au-dessus */
+.sv-faits { padding-top: 58px; padding-bottom: 58px; border-bottom: 1px solid var(--hairline); }
+.conditions { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 30px 34px; text-align: left; }
+.condition { padding-top: 18px; position: relative; }
+.condition::before { content: ''; position: absolute; left: 0; top: 0; width: 34px; height: 3px; background: var(--accent); }
+.condition h3 { font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; margin-bottom: 8px; color: var(--ink); }
+.condition p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+/* le fonctionnement : le premier paragraphe se lit d'emblee, la suite se deplie */
+.sv-comment { background: var(--bg-warm); }
+.sv-texte p { font-size: 16.5px; color: var(--ink-soft-warm); line-height: 1.75; margin: 0 0 16px; }
+.sv-texte p.sv-fort { font-size: 20px; line-height: 1.55; color: var(--ink); letter-spacing: -0.01em; }
+.sv-suite { overflow: hidden; max-height: 0; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
+.sv-texte.ouvert .sv-suite { max-height: 1200px; }
+/* sans JavaScript, tout le texte est visible */
+html:not(.js) .sv-suite { max-height: none; }
+html:not(.js) .sv-plus { display: none; }
+.sv-plus { margin-top: 6px; background: none; border: none; padding: 0; cursor: pointer;
+           font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; color: var(--accent-texte-fort);
+           display: inline-flex; align-items: center; gap: 7px; }
+.sv-plus:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sv-plus:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+.sv-plus svg { transition: transform .3s; }
+.sv-texte.ouvert .sv-plus svg { transform: rotate(180deg); }
+
+.sv-questions .faq { margin: 0; max-width: none; border-top: 1px solid var(--hairline); }
 
 @media (max-width: 900px) {
-  .svc { padding: 0 24px 60px; }
-  .svc-inner { grid-template-columns: 1fr; gap: 34px; }
-  /* L'entete est fixe et haute de 56 px : sans cette marge, le premier
-     texte de la page passait dessous et se faisait couper. */
-  .svc-side { position: static; padding-top: 88px; }
-  .svc-side .lead { max-width: none; }
-  .svc-flow { padding-top: 0; gap: 40px; }
-  .svc-photo { aspect-ratio: 4/3; border-radius: 18px; }
-  .svc-flow .give { grid-template-columns: 1fr; }
+  .sv-hero { padding: 120px 24px 44px; min-height: 0; }
+  .sv-hero .lead { font-size: 16.5px; }
+  .sv-bande { padding: 56px 24px; }
+  .sv-faits { padding-top: 40px; padding-bottom: 44px; }
+  .sv-deux { grid-template-columns: 1fr; gap: 24px; }
+  .sv-tete .lead { max-width: none; }
+  .conditions { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
+  .condition h3 { font-size: 17px; }
+  .sv-texte p.sv-fort { font-size: 18px; }
 }
-@media (max-width: 720px) {
-  .depot { grid-template-columns: 1fr; }
-  .depot-carte { min-height: 0; aspect-ratio: 16/10; }
-  .depot-carte iframe { position: static; height: 100%; }
-  .depot-infos { padding: 24px 20px; }
+
+/* Contact — meme dessin que sur l'accueil : fond nuit, le numero de
+   telephone en tres grand et en orange clair, les autres voies dessous sur
+   une ligne, sans carte. */
+.sv-contact { position: relative; isolation: isolate; overflow: hidden; background: #150D20;
+              padding-top: 88px; padding-bottom: 92px; }
+.sv-contact::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+                     background: radial-gradient(90% 70% at 50% 50%, rgba(232,80,14,0.20), transparent 65%); }
+.sv-contact .eyebrow { color: var(--accent-clair); }
+.sv-contact h2 { color: #fff; }
+.sv-contact .lead { color: rgba(255,255,255,0.74); }
+.sv-contact .lead strong { color: #fff; }
+.contacts { display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+            gap: 14px 38px; max-width: 940px; margin: 40px auto 0; }
+.contact-card { text-decoration: none; color: #fff; }
+.contact-card:focus-visible { outline: 2px solid var(--accent-clair); outline-offset: 6px; border-radius: 6px; }
+.cc-tel { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; }
+/* le filet ne se trace que s'il y a d'autres voies dessous */
+.cc-tel:not(:last-child) { padding-bottom: 34px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+.cc-tel .ic { display: none; }
+.cc-tel .lbl { font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+               color: rgba(255,255,255,0.72); margin-bottom: 10px; text-align: center; }
+.cc-tel .val { font-size: clamp(34px, 10.5vw, 88px); font-weight: 700; line-height: 1;
+               letter-spacing: -0.045em; font-variant-numeric: tabular-nums; white-space: nowrap;
+               color: var(--accent-clair); transition: color .25s ease; }
+.cc-tel:hover .val { color: #fff; }
+.contact-card:not(.cc-tel) { display: inline-flex; align-items: center; gap: 10px; padding: 6px 0; }
+.contact-card:not(.cc-tel) .ic { display: flex; color: rgba(255,255,255,0.78); }
+.contact-card:not(.cc-tel) .ic svg { width: 20px; height: 20px; display: block; }
+/* le libelle reste lu par les lecteurs d'ecran ; a l'oeil, le pictogramme suffit */
+.contact-card:not(.cc-tel) .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden;
+                                  clip-path: inset(50%); white-space: nowrap; }
+.contact-card:not(.cc-tel) .val { font-size: 15.5px; font-weight: 500; color: #fff;
+                                  text-decoration: underline; text-decoration-color: transparent;
+                                  text-underline-offset: 5px; transition: text-decoration-color .25s ease; }
+.contact-card:not(.cc-tel):hover .val { text-decoration-color: var(--accent-clair); }
+@media (max-width: 860px) {
+  .sv-contact { padding-top: 64px; padding-bottom: 70px; }
+  .contacts { flex-direction: column; gap: 14px; margin-top: 32px; }
+  .cc-tel { width: 100%; }
+  .cc-tel:not(:last-child) { padding-bottom: 28px; margin-bottom: 8px; }
+}
+/* --- propre a la page des contributions --- */
+.sv-tete-large { margin-bottom: 34px; }
+.sv-tete-large .lead { max-width: 54ch; }
+.sv-accepte .give { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 30px 26px; margin-top: 0; max-width: none; }
+.sv-accepte .give-item { text-align: left; }
+.sv-accepte .give-ic { margin-left: 0; margin-right: 0; }
+.sv-depots { background: var(--bg-warm); }
+/* trois points de collecte cote a cote : la carte au-dessus, l'adresse dessous */
+.sv-depots .depots { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: none; margin-top: 0; }
+.sv-depots .depot { grid-template-columns: 1fr; padding: 0; }
+.sv-depots .depot-carte { min-height: 0; aspect-ratio: 16/10; }
+.sv-depots .depot-infos { padding: 24px 22px 26px; }
+.sv-depots .note { font-size: 14px; color: var(--ink-soft-warm); margin-top: 26px; text-align: left; }
+.sv-contact .contact-card:not(.cc-tel) .val { font-size: 16.5px; }
+@media (max-width: 900px) {
+  .sv-depots .depots { grid-template-columns: 1fr; max-width: 460px; margin-left: 0; }
+  .sv-accepte .give { grid-template-columns: 1fr 1fr; }
 }
 </style>
 <link rel="canonical" href="https://ph-nix.vercel.app/dons-materiels.html">
@@ -189,23 +274,25 @@ setTimeout(function () {
 </header>
 
 <!-- HERO -->
-<section class="svc">
-  <div class="svc-inner">
-
-    <aside class="svc-side">
+<!-- ENTETE : le titre pose sur la photo -->
+<section class="sv-hero">
+  <img class="sv-hero-img" src="dons-materiels-boite.jpg" alt="Boîte de dons matériels préparée par Phé-Nix">
+  <div class="sv-hero-in">
       <div class="eyebrow">Contributions matérielles</div>
       <h1>Déposez vêtements,<br>nourriture ou articles.</h1>
       <p class="lead">Pas d'argent à donner ? Vos dons matériels font une différence tout aussi concrète sur le terrain.</p>
       <a href="#contact-dons" class="btn btn-primary btn-lg">Nous écrire →</a>
-    </aside>
+  </div>
+</section>
 
-    <div class="svc-flow">
-      <img class="svc-photo" src="dons-materiels-boite.jpg" alt="Boîte de dons matériels préparée par Phé-Nix">
-
-      <div class="svc-bloc">
-        <div class="eyebrow">Ce que nous acceptons</div>
-        <h2>Ce qui fait vraiment la différence.</h2>
-        <div class="give">
+<!-- CE QUE NOUS ACCEPTONS -->
+<section class="sv-bande sv-accepte">
+  <div class="sv-in">
+    <div class="sv-tete sv-tete-large">
+      <div class="eyebrow">Ce que nous acceptons</div>
+      <h2>Ce qui fait vraiment la différence.</h2>
+    </div>
+    <div class="give">
     <div class="give-item">
       <div class="give-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
       <h3>Vêtements adaptés à la saison</h3>
@@ -232,13 +319,18 @@ setTimeout(function () {
       <p>Tentes, réchauds, sacs de couchage et tout matériel qui aide à passer la nuit dehors.</p>
     </div>
   </div>
-      </div>
+  </div>
+</section>
 
-      <div class="svc-bloc">
-        <div class="eyebrow">Où déposer</div>
-        <h2>Nos 3 points de collecte.</h2>
-        <p class="lead">Déposez vos dons directement dans l'un de ces commerces partenaires.</p>
-        <div class="depots">
+<!-- OU DEPOSER -->
+<section class="sv-bande sv-depots">
+  <div class="sv-in">
+    <div class="sv-tete sv-tete-large">
+      <div class="eyebrow">Où déposer</div>
+      <h2>Nos 3 points de collecte.</h2>
+      <p class="lead">Déposez vos dons directement dans l'un de ces commerces partenaires.</p>
+    </div>
+    <div class="depots">
     <div class="depot">
       <div class="depot-carte" data-carte="https://www.google.com/maps?q=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed">
           <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Cantine BB-LOO — afficher la carte Google">
@@ -288,20 +380,18 @@ setTimeout(function () {
       </div>
     </div>
   </div>
-        <p class="note">Pour un dépôt spécial ou une collecte, <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent-texte);text-decoration:none;">écrivez-nous</a>.</p>
-      </div>
+    <p class="note">Pour un dépôt spécial ou une collecte, <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent-texte);text-decoration:none;">écrivez-nous</a>.</p>
+  </div>
+</section>
 
-      <div class="svc-bloc svc-cta" id="contact-dons">
-        <div class="eyebrow">Une question ?</div>
-        <h2>Nous sommes là pour vous répondre.</h2>
-        <p class="lead">Pour organiser un dépôt, une collecte en entreprise, ou poser une question.</p>
-        <div class="btns">
-      <a href="mailto:phenixactioncitoyenne@gmail.com" class="btn btn-primary btn-lg">Nous écrire →</a>
-      <a href="tel:4385263889" class="btn btn-ghost btn-lg">(438) 526-3889</a>
-    </div>
-      </div>
-    </div>
-
+<!-- CONTACT -->
+<section class="section sv-contact center" id="contact-dons">
+  <div class="eyebrow" style="justify-content:center;">Une question ?</div>
+  <h2>Nous sommes là pour vous répondre.</h2>
+  <p class="lead">Pour organiser un dépôt, une collecte en entreprise, ou poser une question.</p>
+  <div class="contacts">
+    <a href="tel:4385263889" class="contact-card cc-tel"><div class="val">(438) 526-3889</div></a>
+    <a href="mailto:phenixactioncitoyenne@gmail.com" class="contact-card"><div class="val">Nous écrire →</div></a>
   </div>
 </section>
 
