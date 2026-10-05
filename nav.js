@@ -91,6 +91,14 @@
     btn.querySelector('span').textContent = ouvert ? 'Lire moins' : 'Lire plus';
   };
 
+  // pages de service : la suite du texte se deplie sur place
+  window.toggleSuite = function (btn) {
+    const bloc = btn.closest('.sv-texte');
+    const ouvert = bloc.classList.toggle('ouvert');
+    btn.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    btn.querySelector('span').textContent = ouvert ? 'Lire moins' : 'Lire plus';
+  };
+
   window.toggleFaq = function (btn) {
     const item    = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
