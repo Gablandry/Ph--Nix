@@ -644,71 +644,77 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .s-majeur h2 { max-width: none; }
 }
 
-/* ===== SERVICES EN CARTES EMPILEES =====
-   Chaque service est une carte complete, avec sa propre photo : rien ne
-   depend d'un survol, qui n'existe pas sur un ecran tactile. Sur ordinateur
-   les cartes sont collantes et chacune vient se poser par-dessus la
-   precedente au defilement. Sur telephone elles se suivent simplement, l'une
-   sous l'autre, en bandes photographiques. */
-.vitrine { max-width: var(--maxw); margin: 48px auto 0; }
+/* ===== SERVICES EN ACCORDEON D'IMAGES =====
+   Sur ordinateur : quatre panneaux photo cote a cote, comme sur la page Nos
+   services. Un seul est ouvert a la fois, le premier par defaut, et celui
+   que la souris ou le clavier atteint prend sa place. Sur telephone, et sur
+   tout ecran tactile ou le survol n'existe pas, les quatre services se
+   suivent l'un sous l'autre, chacun avec sa photo. */
 .vitrine-liste { list-style: none; margin: 0; padding: 0; }
-.vitrine-entree { text-decoration: none; color: inherit; }
+.vitrine-entree { text-decoration: none; color: #fff; display: block; position: relative;
+                  overflow: hidden; isolation: isolate; }
 .vitrine-entree:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.vitrine-fleche { box-sizing: border-box; border-radius: 50%; flex-shrink: 0;
-                  transition: background .25s ease, border-color .25s ease, color .25s ease,
-                              transform .35s cubic-bezier(0.16,1,0.3,1); }
+.vitrine-vignette { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.vitrine-entree::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.vitrine-entree strong { display: block; color: #fff; }
+.vitrine-entree em { display: block; font-style: normal; }
 
-@media (min-width: 901px) {
-  .vitrine-liste li { position: sticky; margin-bottom: 26px; }
-  /* chaque carte passe au-dessus de la precedente et s'arrete un peu plus bas,
-     pour laisser voir le bord de celles qu'elle recouvre */
-  .vitrine-liste li:nth-child(1) { top: 92px;  z-index: 1; }
-  .vitrine-liste li:nth-child(2) { top: 108px; z-index: 2; }
-  .vitrine-liste li:nth-child(3) { top: 124px; z-index: 3; }
-  .vitrine-liste li:nth-child(4) { top: 140px; z-index: 4; margin-bottom: 0; }
+@media (min-width: 901px) and (hover: hover) {
+  /* l'accordeon deborde du conteneur de 1080 px : c'est le moment le plus
+     visuel de la page, il prend la largeur que l'ecran lui donne */
+  .vitrine { width: min(1320px, calc(100vw - 80px)); max-width: none;
+             margin: 48px 0 0 50%; transform: translateX(-50%); }
+  .vitrine-liste { display: flex; gap: 12px; height: clamp(480px, 68vh, 640px);
+                   container-type: inline-size; }
+  .vitrine-liste li { flex: 1 1 0; min-width: 64px;
+                      transition: flex-grow .65s cubic-bezier(0.16,1,0.3,1); }
+  .vitrine-liste li.ouvert { flex-grow: 3.4; }
+  .vitrine-entree { height: 100%; border-radius: 22px; }
+  .vitrine-entree::after { background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%,
+                             rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.82) 100%); }
+  .vitrine-vignette { transition: transform 1.4s cubic-bezier(0.16,1,0.3,1); }
+  .ouvert .vitrine-vignette { transform: scale(1.03); }
 
-  .vitrine-entree { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
-                    position: relative; min-height: 400px;
-                    background: var(--bg); border: 1px solid var(--hairline);
-                    border-radius: 24px; overflow: hidden; }
-  .vitrine-entree picture { display: block; overflow: hidden; }
-  .vitrine-vignette { width: 100%; height: 100%; min-height: 400px; object-fit: cover; display: block;
-                      transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
-  .vitrine-entree:hover .vitrine-vignette { transform: scale(1.035); }
-  .vitrine-entree > span { display: flex; flex-direction: column; justify-content: center;
-                           padding: 48px 52px 104px; }
-  .vitrine-entree strong { display: block; font-size: clamp(24px, 2.5vw, 31px); font-weight: 700;
-                           line-height: 1.15; letter-spacing: -0.025em; color: var(--ink);
-                           margin-bottom: 16px; text-wrap: balance; }
-  .vitrine-entree em { display: block; font-style: normal; font-size: 16.5px; line-height: 1.7;
-                       color: var(--ink-soft); max-width: 40ch; }
-  .vitrine-fleche { position: absolute; left: calc(50% + 52px); bottom: 44px;
-                    width: 48px; height: 48px; padding: 13px;
-                    border: 1px solid var(--hairline); color: var(--ink); }
-  .vitrine-entree:hover .vitrine-fleche,
-  .vitrine-entree:focus-visible .vitrine-fleche { background: var(--accent); border-color: var(--accent);
-                                                  color: #fff; transform: translateX(5px); }
+  .vitrine-ic { position: absolute; top: 22px; left: 22px; z-index: 2; width: 42px; height: 42px;
+                border-radius: 12px; background: rgba(255,255,255,0.16);
+                backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+                display: flex; align-items: center; justify-content: center; }
+  /* le titre couche le long du panneau ferme */
+  .vitrine-plie { position: absolute; left: 0; bottom: 0; z-index: 2; padding: 24px 14px;
+                  writing-mode: vertical-rl; transform: rotate(180deg);
+                  font-weight: 700; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap;
+                  transition: opacity .25s ease; }
+  .ouvert .vitrine-plie { opacity: 0; }
+  /* largeur fixee sur celle du panneau ouvert : le texte ne se recompose pas
+     pendant que le panneau s'elargit */
+  .vitrine-entree > span:not([class]) { position: absolute; left: 0; bottom: 0; z-index: 2;
+                  box-sizing: border-box; width: calc((100cqw - 36px) * 0.53125);
+                  padding: 30px 34px 32px; opacity: 0; transform: translateY(10px);
+                  transition: opacity .3s ease, transform .5s cubic-bezier(0.16,1,0.3,1);
+                  pointer-events: none; }
+  .ouvert .vitrine-entree > span:not([class]) { opacity: 1; transform: none; transition-delay: .14s; }
+  .vitrine-entree strong { font-size: clamp(21px, 1.9vw, 26px); font-weight: 700; line-height: 1.2;
+                           letter-spacing: -0.02em; margin-bottom: 10px; }
+  .vitrine-entree em { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 50ch; }
+  .vitrine-go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 600; color: #fff; }
+  .vitrine-fleche { display: none; }
 }
 
-@media (max-width: 900px) {
-  .vitrine { margin-top: 34px; }
+@media (max-width: 900px), (hover: none) {
+  .vitrine { max-width: var(--maxw); margin: 34px auto 0; }
   .vitrine-liste { display: grid; gap: 14px; }
-  .vitrine-entree { display: block; position: relative; border-radius: 18px; overflow: hidden;
-                    min-height: 218px; }
-  .vitrine-vignette { display: block; position: absolute; inset: 0;
-                      width: 100%; height: 100%; object-fit: cover;
-                      transition: transform .5s cubic-bezier(0.4,0,0.2,1); }
-  .vitrine-entree::after { content: ''; position: absolute; inset: 0; z-index: 1;
-                           background: linear-gradient(180deg, rgba(20,12,30,0.20) 0%,
+  .vitrine-entree { border-radius: 18px; min-height: 218px; }
+  .vitrine-vignette { transition: transform .5s cubic-bezier(0.4,0,0.2,1); }
+  .vitrine-entree::after { background: linear-gradient(180deg, rgba(20,12,30,0.20) 0%,
                              rgba(20,12,30,0.72) 52%, rgba(20,12,30,0.90) 100%); }
-  .vitrine-entree > span { position: relative; z-index: 2; display: block;
-                           padding: 96px 20px 20px; }
-  .vitrine-entree strong { display: block; font-size: 20px; font-weight: 600; line-height: 1.25;
-                           letter-spacing: -0.015em; margin-bottom: 6px; color: #fff; }
-  .vitrine-entree em { display: block; font-style: normal; font-size: 14.5px; line-height: 1.55;
-                       color: rgba(255,255,255,0.88); }
-  .vitrine-fleche { position: absolute; z-index: 2; right: 16px; top: 16px;
-                    width: 40px; height: 40px; padding: 10px; color: #fff;
+  .vitrine-ic, .vitrine-plie, .vitrine-go { display: none; }
+  .vitrine-entree > span:not([class]) { position: relative; z-index: 2; display: block;
+                                        padding: 96px 20px 20px; }
+  .vitrine-entree strong { font-size: 20px; font-weight: 600; line-height: 1.25;
+                           letter-spacing: -0.015em; margin-bottom: 6px; }
+  .vitrine-entree em { font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,0.88); max-width: 52ch; }
+  .vitrine-fleche { position: absolute; z-index: 2; right: 16px; top: 16px; box-sizing: border-box;
+                    width: 40px; height: 40px; padding: 10px; border-radius: 50%; color: #fff;
                     border: 1px solid rgba(255,255,255,0.55); }
   .vitrine-entree:active .vitrine-vignette { transform: scale(1.03); }
 }
@@ -1113,35 +1119,47 @@ setTimeout(function () {
   <!-- Cartes empilées : chaque service se pose par-dessus le précédent au défilement -->
   <div class="vitrine">
       <ul class="vitrine-liste">
-        <li><a href="distribution-alimentaire.html" class="vitrine-entree">
+        <li class="ouvert"><a href="distribution-alimentaire.html" class="vitrine-entree">
           <picture><source media="(max-width: 900px)" srcset="bande/distribution-rue.jpg"><img class="vitrine-vignette" src="distribution-rue.jpg" alt="Un repas chaud remis en mains propres dans la rue" loading="lazy"></picture>
+          <span class="vitrine-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="vitrine-plie" aria-hidden="true">Distribution alimentaire</span>
           <span>
             <strong>Distribution alimentaire dans les rues</strong>
             <em>Des repas chauds remis en mains propres, plusieurs fois par semaine, peu importe la température, à Montréal, en Montérégie, à Gatineau et à Trois-Rivières.</em>
+            <b class="vitrine-go">En savoir plus →</b>
           </span>
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="depannage-alimentaire.html" class="vitrine-entree">
           <picture><source media="(max-width: 900px)" srcset="bande/depannage-boite.jpg"><img class="vitrine-vignette" src="depannage-boite.jpg" alt="Une boîte de denrées préparée pour un dépannage alimentaire" loading="lazy"></picture>
+          <span class="vitrine-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+          <span class="vitrine-plie" aria-hidden="true">Dépannage alimentaire</span>
           <span>
             <strong>Dépannage alimentaire</strong>
             <em>Une à deux boîtes de denrées pour les personnes et les familles qui en ont besoin. Aucune enquête de crédit. De 2 à 3 fois par année, dans le Sud-Ouest de Montréal, à Saint-Jean-sur-Richelieu et à Longueuil.</em>
+            <b class="vitrine-go">En savoir plus →</b>
           </span>
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="reference-therapie.html" class="vitrine-entree">
           <picture><source media="(max-width: 900px)" srcset="bande/reference-appel.jpg"><img class="vitrine-vignette" src="reference-appel.jpg" alt="Un appel passé pour trouver la bonne ressource, et le nom noté dans un carnet" loading="lazy"></picture>
+          <span class="vitrine-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span class="vitrine-plie" aria-hidden="true">Référencement pour thérapie</span>
           <span>
             <strong>Référencement pour thérapie</strong>
             <em>En plus ou moins 72 heures, nous vous mettons en contact avec une ressource adaptée à votre réalité, pour vous ou pour un proche. Nous connaissons le milieu et nous orientons vers la ressource appropriée.</em>
+            <b class="vitrine-go">En savoir plus →</b>
           </span>
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
         <li><a href="transport-therapie.html" class="vitrine-entree">
           <picture><source media="(max-width: 900px)" srcset="bande/therapie-route-voiture.jpg"><img class="vitrine-vignette" src="therapie-route-voiture.jpg" alt="La route vers un nouveau départ" loading="lazy"></picture>
+          <span class="vitrine-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3V6a1 1 0 0 1 1-1h11v12h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M15 9h4l3 3v5h-2"/></svg></span>
+          <span class="vitrine-plie" aria-hidden="true">Transport vers la thérapie</span>
           <span>
             <strong>Transport vers la thérapie</strong>
             <em>Une fois la bonne ressource trouvée, nous conduisons la personne jusqu'à la région où se trouve sa thérapie, même à plusieurs heures de route.</em>
+            <b class="vitrine-go">En savoir plus →</b>
           </span>
           <svg class="vitrine-fleche" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a></li>
@@ -1357,6 +1375,21 @@ setTimeout(function () {
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<script>
+/* Accordeon des services : le panneau atteint par la souris ou le clavier
+   s'ouvre et le reste jusqu'au suivant. Sans JavaScript, le premier reste
+   ouvert et les quatre liens fonctionnent. */
+(function () {
+  var panneaux = document.querySelectorAll('.vitrine-liste li');
+  function ouvrir(li) {
+    for (var k = 0; k < panneaux.length; k++) panneaux[k].classList.toggle('ouvert', panneaux[k] === li);
+  }
+  panneaux.forEach(function (li) {
+    li.addEventListener('mouseenter', function () { ouvrir(li); });
+    li.addEventListener('focusin', function () { ouvrir(li); });
+  });
+})();
+</script>
 <script src="nav.js"></script>
 <!-- GSAP 3.15.0 héberge ici plutôt que sur un CDN externe : le site ne
      dépend plus d'un serveur tiers qui pourrait changer ou être compromis. -->
