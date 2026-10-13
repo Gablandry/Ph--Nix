@@ -11,3 +11,7 @@ DESIGN.md
 
 # propre a Cloudflare Pages
 _headers
+
+# script de build de Cloudflare Pages, et son dossier de sortie
+build.sh
+dist/
