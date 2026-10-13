@@ -693,53 +693,53 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   .vitrine-entree:active .vitrine-vignette { transform: scale(1.03); }
 }
 
-/* ===== AIDE ALIMENTAIRE — fenetre flottante =====
-   Le numero de Guy n'est plus un bandeau dans la page : c'est une petite
-   fenetre qui apparait apres quelques secondes et reste a portee pendant
-   toute la visite. Elle ne bloque rien : pas de voile, pas de clic oblige,
-   la page reste utilisable derriere. Fermee, elle ne revient pas pendant la
-   visite en cours. En bas a gauche sur ordinateur, a l'oppose du bouton de
-   retour en haut ; au-dessus de la barre de navigation sur telephone. */
-.aide-pop { position: fixed; left: 24px; bottom: 24px; z-index: 997; width: min(400px, calc(100vw - 48px));
-            background: var(--bg); border: 1px solid var(--hairline); border-radius: 20px;
-            box-shadow: 0 18px 44px -12px rgba(29,29,31,0.28), 0 2px 8px rgba(29,29,31,0.06);
+/* ===== NOS SERVICES — petite fenetre flottante =====
+   Une pastille dans le coin bas gauche : un pictogramme, une question, une
+   croix. Rien d'autre. Elle apparait apres quelques secondes, ne bloque
+   rien, et mene a la page du service quand on la touche. Fermee, elle ne
+   revient pas pendant la visite. Sur telephone elle reste petite et calee a
+   gauche, au-dessus de la barre de navigation ; le bouton de retour en haut
+   garde le coin droit. */
+.aide-pop { position: fixed; left: 24px; bottom: 24px; z-index: 997; max-width: calc(100vw - 48px);
+            background: var(--bg); border: 1px solid var(--hairline); border-radius: 999px;
+            box-shadow: 0 14px 34px -12px rgba(29,29,31,0.28), 0 2px 8px rgba(29,29,31,0.06);
             transition: opacity .45s ease, transform .6s cubic-bezier(0.16,1,0.3,1), visibility 0s; }
 /* sans JavaScript la fenetre est simplement affichee ; avec, elle attend son tour */
 .js .aide-pop:not(.visible) { opacity: 0; transform: translateY(18px); visibility: hidden; pointer-events: none;
                               transition: opacity .3s ease, transform .3s ease, visibility 0s .3s; }
-/* Les quatre messages occupent la meme case : la fenetre garde la hauteur du
-   plus long, et un seul est visible a la fois. Les autres sont retires de la
+/* Les messages occupent la meme case : la pastille garde la largeur du plus
+   long, et un seul est visible a la fois. Les autres sont retires de la
    navigation au clavier tant qu'ils sont caches. */
 .aide-pop-pile { display: grid; }
 .aide-pop-pile > .aide-pop-lien { grid-area: 1 / 1; opacity: 0; visibility: hidden;
                                   transition: opacity .25s ease, visibility 0s .25s; }
 /* le nouveau message n'apparait qu'une fois l'ancien efface : jamais deux textes superposes */
 .aide-pop-pile > .aide-pop-lien.actif { opacity: 1; visibility: visible; transition: opacity .45s ease .3s, visibility 0s .3s; }
-.aide-pop-lien { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start;
-                 padding: 18px 46px 18px 18px; text-decoration: none; color: inherit; border-radius: 20px; }
+.aide-pop-lien { display: flex; align-items: center; gap: 12px;
+                 padding: 8px 48px 8px 8px; text-decoration: none; color: inherit; border-radius: 999px; }
 .aide-pop-lien:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.aide-pop-ic svg { width: 21px; height: 21px; }
-.aide-pop-ic { width: 46px; height: 46px; border-radius: 13px; background: var(--accent); color: #fff;
+.aide-pop-ic { width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--accent); color: #fff;
                display: flex; align-items: center; justify-content: center; }
-.aide-pop strong { display: block; font-size: 15.5px; font-weight: 600; line-height: 1.35;
+.aide-pop-ic svg { width: 19px; height: 19px; }
+.aide-pop strong { display: block; font-size: 15px; font-weight: 600; line-height: 1.3;
                    letter-spacing: -0.01em; color: var(--ink); }
-.aide-pop em { display: block; font-style: normal; font-size: 13px; line-height: 1.5;
-               color: var(--ink-soft); margin-top: 5px; }
 .aide-pop-lien:hover strong { color: var(--accent-texte); }
-.aide-pop-fermer { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%;
+.aide-pop-fermer { position: absolute; top: 50%; right: 9px; margin-top: -16px; width: 32px; height: 32px; border-radius: 50%;
                    border: 0; background: transparent; color: var(--ink-soft); cursor: pointer;
                    display: flex; align-items: center; justify-content: center;
                    transition: background .2s ease, color .2s ease; }
 .aide-pop-fermer:hover { background: var(--bg-soft); color: var(--ink); }
 .aide-pop-fermer:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 860px) {
-  .aide-pop { left: 12px; right: 12px; width: auto; bottom: calc(86px + env(safe-area-inset-bottom)); border-radius: 18px; }
-  .aide-pop-lien { grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 42px 14px 14px; }
-  .aide-pop-ic { width: 40px; height: 40px; border-radius: 12px; }
-  .aide-pop strong { font-size: 14.5px; }
-  .aide-pop em { font-size: 12.5px; margin-top: 4px; }
-  /* le bouton de retour en haut monte d'un cran tant que la fenetre est la */
-  html.aide-pop-on .scroll-top-btn { bottom: calc(230px + env(safe-area-inset-bottom)); }
+  /* petite et dans le coin gauche : 76 px restent libres a droite pour le
+     bouton de retour en haut */
+  .aide-pop { left: 12px; bottom: calc(94px + env(safe-area-inset-bottom)); max-width: calc(100vw - 88px); }
+  .aide-pop-lien { gap: 9px; padding: 6px 38px 6px 6px; }
+  .aide-pop-ic { width: 32px; height: 32px; }
+  .aide-pop-ic svg { width: 16px; height: 16px; }
+  .aide-pop strong { font-size: 13px; line-height: 1.25; }
+  .aide-pop-fermer { right: 5px; width: 28px; height: 28px; margin-top: -14px; }
+  .aide-pop-fermer svg { width: 13px; height: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .aide-pop, .js .aide-pop:not(.visible) { transition: opacity .2s ease, visibility 0s; transform: none; }
@@ -1372,21 +1372,18 @@ setTimeout(function () {
       <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
       <span>
         <strong>Besoin d'aide alimentaire ?</strong>
-        <em>Aucune condition, aucun formulaire. Voyez comment faire une demande.</em>
       </span>
     </a>
     <a href="reference-therapie.html" class="aide-pop-lien">
       <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
       <span>
         <strong>Besoin d'un référencement en thérapie ?</strong>
-        <em>En plus ou moins 72 heures, nous vous orientons vers une ressource adaptée.</em>
       </span>
     </a>
     <a href="benevole.html" class="aide-pop-lien">
       <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <span>
         <strong>Envie de devenir bénévole ?</strong>
-        <em>Aucune expérience requise, aucun équipement à prévoir.</em>
       </span>
     </a>
   </div>
