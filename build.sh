@@ -16,4 +16,7 @@ git ls-files -z \
       mkdir -p "dist/$(dirname "$f")"
       cp "$f" "dist/$f"
     done
+# Numero de la version en ligne, pour verifier d un coup d oeil qu une mise a
+# jour est bien arrivee : https://<site>/version.txt
+git rev-parse --short HEAD > dist/version.txt
 echo "Fichiers publies : $(find dist -type f | wc -l)"
