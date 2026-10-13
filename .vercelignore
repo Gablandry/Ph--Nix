@@ -8,3 +8,6 @@ PRODUCT.md
 DESIGN.md
 *.md
 .impeccable/
+
+# propre a Cloudflare Pages
+_headers

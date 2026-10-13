@@ -1,0 +1,15 @@
+# En-tetes de securite pour Cloudflare Pages. Meme politique que vercel.json :
+# toute modification doit etre faite dans les deux fichiers.
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; manifest-src 'self'; frame-src https://www.youtube-nocookie.com https://www.google.com https://maps.google.com; worker-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(self), bluetooth=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), payment=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Permitted-Cross-Domain-Policies: none
+  X-DNS-Prefetch-Control: off
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
