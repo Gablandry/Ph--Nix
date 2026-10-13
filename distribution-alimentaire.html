@@ -285,17 +285,7 @@ html:not(.js) .sv-plus { display: none; }
 }
 </script>
 <!-- fin donnees structurees -->
-<script>
-/* Marque que le JavaScript fonctionne : sans cette classe, les sections
-   animees restent visibles au lieu de disparaitre. Le minuteur les revele
-   si le script d'animation n'a pas pris le relais apres 3 secondes. */
-document.documentElement.className += ' js';
-setTimeout(function () {
-  if (!document.querySelector('.reveal.visible, .reveal-left.visible, .reveal-right.visible')) {
-    document.documentElement.className += ' reveal-secours';
-  }
-}, 3000);
-</script>
+<script src="amorce.js"></script>
 </head>
 <body>
 
@@ -376,7 +366,7 @@ setTimeout(function () {
           <p>Les distributions ont lieu à Montréal, en Montérégie, à Gatineau et à Trois-Rivières. Le tout est réalisé 100 % par des bénévoles.</p>
           <p>Chaque personne qui bénéficie du service prend connaissance du code d'éthique et des règlements généraux de Phé-Nix. Ce n'est pas une formalité : c'est ce qui permet à la distribution de se dérouler dans un cadre respectueux et sécuritaire, autant pour les personnes servies que pour les bénévoles.</p>
         </div>
-        <button class="sv-plus" type="button" aria-expanded="false" aria-controls="sv-suite" onclick="toggleSuite(this)"><span>Lire plus</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="sv-plus" type="button" aria-expanded="false" aria-controls="sv-suite" data-clic="toggleSuite"><span>Lire plus</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
   </div>
 </section>
@@ -391,35 +381,35 @@ setTimeout(function () {
     </div>
     <div class="faq">
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Faut-il s'inscrire ou prendre rendez-vous ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Faut-il s'inscrire ou prendre rendez-vous ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Non. Nos bénévoles vont directement à la rencontre des personnes sur le terrain. Il n'y a aucun formulaire à remplir, aucune inscription, aucune condition d'admissibilité. Nous demandons seulement de prendre connaissance du code d'éthique et des règlements généraux, qui encadrent le déroulement de la distribution.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Y a-t-il des règles à respecter pendant la distribution ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Y a-t-il des règles à respecter pendant la distribution ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Oui. Chaque personne qui bénéficie du service prend connaissance du code d'éthique et des règlements généraux de Phé-Nix. Ils encadrent le déroulement de la distribution pour que tout se passe dans le respect de chacun, personnes servies comme bénévoles. Demandez-les à un bénévole sur place, ou <a href="mailto:phenixactioncitoyenne@gmail.com" style="color:var(--accent-texte);text-decoration:none;">écrivez-nous</a> pour les recevoir.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Où ont lieu les distributions ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Où ont lieu les distributions ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">À Montréal, en Montérégie, à Gatineau et à Trois-Rivières.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Comment savoir quand vous passez près de chez moi ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Comment savoir quand vous passez près de chez moi ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Les prochaines distributions sont annoncées sur notre <a href="https://www.facebook.com/groups/251591971175094" target="_blank" rel="noopener noreferrer" style="color:var(--accent-texte);text-decoration:none;">groupe Facebook</a>. Vous pouvez aussi nous écrire ou nous appeler.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">D'où vient la nourriture ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">D'où vient la nourriture ? <span class="faq-arrow">+</span></button>
         <div class="faq-a">Des dons de citoyens et de commerces partenaires, et d'un <strong>programme anti-gaspillage alimentaire</strong> : des aliments encore bons sont récupérés avant d'être jetés, puis préparés et redistribués.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que vous distribuez exactement ? <span class="faq-arrow">+</span></button>
+        <button class="faq-q" data-clic="toggleFaq">Qu'est-ce que vous distribuez exactement ? <span class="faq-arrow">+</span></button>
         <div class="faq-a">Des repas chauds à consommer sur place, des repas congelés à emporter pour le lendemain, de l'eau embouteillée et du café. Les repas sont congelés à l'avance : cela préserve la fraîcheur et permet de conserver de la nourriture pour plus tard.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Est-ce que vous sortez même par mauvais temps ? <span class="faq-arrow">+</span></button>
+        <button class="faq-q" data-clic="toggleFaq">Est-ce que vous sortez même par mauvais temps ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Oui, peu importe la température. C'est souvent quand les conditions sont les plus dures que le besoin est le plus grand.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Je voudrais aider lors d'une distribution. <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Je voudrais aider lors d'une distribution. <span class="faq-arrow">+</span></button>
       <div class="faq-a">Avec plaisir. Aucune expérience n'est requise. Rendez-vous sur la page <a href="benevole.html" style="color:var(--accent-texte);text-decoration:none;">Devenir bénévole</a> ou écrivez-nous directement.</div>
     </div>
   </div>

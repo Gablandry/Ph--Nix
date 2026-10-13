@@ -244,17 +244,7 @@
 }
 </script>
 <!-- fin donnees structurees -->
-<script>
-/* Marque que le JavaScript fonctionne : sans cette classe, les sections
-   animees restent visibles au lieu de disparaitre. Le minuteur les revele
-   si le script d'animation n'a pas pris le relais apres 3 secondes. */
-document.documentElement.className += ' js';
-setTimeout(function () {
-  if (!document.querySelector('.reveal.visible, .reveal-left.visible, .reveal-right.visible')) {
-    document.documentElement.className += ' reveal-secours';
-  }
-}, 3000);
-</script>
+<script src="amorce.js"></script>
 </head>
 <body>
 
@@ -363,7 +353,7 @@ setTimeout(function () {
           <li><b>2</b>Choisissez « Virement Interac »</li>
           <li><b>3</b>Collez l'adresse ci-dessous</li>
         </ol>
-        <button type="button" class="interac-copy" id="copy-btn" onclick="copyInterac()" aria-label="Copier l'adresse courriel de Phé-Nix">
+        <button type="button" class="interac-copy" id="copy-btn" data-clic="copyInterac" aria-label="Copier l'adresse courriel de Phé-Nix">
           <span class="adr">phenixactioncitoyenne@gmail.com</span>
           <span class="act"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="act-txt">Copier</span></span>
         </button>
@@ -381,19 +371,19 @@ setTimeout(function () {
   <h2>Avant de donner, vous vous demandez peut-être…</h2>
   <div class="faq">
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Puis-je obtenir un reçu fiscal ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Puis-je obtenir un reçu fiscal ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Pas encore. Phé-Nix travaille à l'obtention d'un numéro d'organisme de bienfaisance enregistré. Dès qu'il sera délivré, les reçus fiscaux seront disponibles. D'ici là, votre don reste entièrement utilisé sur le terrain, mais il n'ouvre pas droit à une déduction.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Mon don par Interac est-il sécurisé ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Mon don par Interac est-il sécurisé ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Tout à fait. Le virement Interac passe directement par votre institution bancaire, chiffré de bout en bout. Phé-Nix ne voit jamais vos informations bancaires.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Puis-je faire un don mensuel ? <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Puis-je faire un don mensuel ? <span class="faq-arrow">+</span></button>
       <div class="faq-a">Oui. La plupart des applications bancaires permettent de programmer un virement Interac récurrent vers notre courriel. Écrivez-nous si vous avez besoin d'aide.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Je préfère donner du matériel plutôt que de l'argent. <span class="faq-arrow">+</span></button>
+      <button class="faq-q" data-clic="toggleFaq">Je préfère donner du matériel plutôt que de l'argent. <span class="faq-arrow">+</span></button>
       <div class="faq-a">Avec plaisir ! Déposez vêtements, nourriture non périssable et articles d'hygiène, dont des produits d'hygiène féminine dans l'un de nos <a href="dons-materiels.html" style="color:var(--accent-texte);text-decoration:none;">points de collecte</a>, ou contactez-nous pour organiser un dépôt.</div>
     </div>
   </div>
@@ -419,42 +409,7 @@ setTimeout(function () {
 </button>
 
 <script src="nav.js"></script>
-<script>
-function copyInterac() {
-  var email = 'phenixactioncitoyenne@gmail.com';
-  var btn = document.getElementById('copy-btn');
-  var txt = btn.querySelector('.act-txt');
-  var msg = document.getElementById('copied-msg');
-  var libelle = txt.textContent;
-
-  // Succes et echec doivent se distinguer : annoncer « copie » alors que le
-  // presse-papier a refuse enverrait le donateur coller du vide.
-  function fin(ok) {
-    txt.textContent = ok ? 'Copié' : 'Copiez à la main';
-    btn.classList.toggle('ok', ok);
-    msg.textContent = ok ? '✓ Adresse copiée. Collez-la dans votre virement'
-                         : "La copie automatique a échoué. Sélectionnez l'adresse ci-dessus.";
-    msg.classList.toggle('err', !ok);
-    msg.classList.add('show');
-    setTimeout(function () {
-      txt.textContent = libelle;
-      btn.classList.remove('ok');
-      msg.classList.remove('show', 'err');
-    }, 3500);
-  }
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(email).then(function () { fin(true); }, function () { fin(false); });
-    return;
-  }
-  var t = document.createElement('textarea');
-  t.value = email; document.body.appendChild(t); t.select();
-  var ok = false;
-  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-  document.body.removeChild(t);
-  fin(ok);
-}
-</script>
+<script src="don.js"></script>
 <nav class="mobile-nav-bar" aria-label="Navigation principale">
   <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></a>
   <a href="services.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Services</span></a>

@@ -282,3 +282,30 @@
      dans la page si ce fichier avait un jour été modifié. */
 
 })();
+
+/* ===== ACTIONS DECLAREES DANS LA PAGE =====
+   Le HTML ne contient plus aucun code : un bouton declare seulement le nom
+   de son action dans data-clic. Seules les actions de cette liste peuvent
+   etre declenchees, et la politique de securite du site interdit tout
+   script ecrit directement dans une page. */
+(function () {
+  var PERMISES = ['toggleFaq', 'toggleRecit', 'toggleSuite', 'afficherCarte', 'copyInterac'];
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-clic]') : null;
+    if (!el) return;
+    var nom = el.getAttribute('data-clic');
+    if (PERMISES.indexOf(nom) === -1 || typeof window[nom] !== 'function') return;
+    window[nom](el);
+  });
+
+  /* une photo qui ne se charge pas s'efface au lieu d'afficher une icone cassee */
+  function masquer(img) { img.style.opacity = '0'; }
+  document.addEventListener('error', function (e) {
+    var c = e.target;
+    if (c && c.tagName === 'IMG' && c.getAttribute('data-si-erreur') === 'masquer') masquer(c);
+  }, true);
+  var deja = document.querySelectorAll('img[data-si-erreur="masquer"]');
+  for (var i = 0; i < deja.length; i++) {
+    if (deja[i].complete && deja[i].naturalWidth === 0) masquer(deja[i]);
+  }
+})();

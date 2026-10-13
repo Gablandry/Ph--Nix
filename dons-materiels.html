@@ -231,17 +231,7 @@ html:not(.js) .sv-plus { display: none; }
 }
 </script>
 <!-- fin donnees structurees -->
-<script>
-/* Marque que le JavaScript fonctionne : sans cette classe, les sections
-   animees restent visibles au lieu de disparaitre. Le minuteur les revele
-   si le script d'animation n'a pas pris le relais apres 3 secondes. */
-document.documentElement.className += ' js';
-setTimeout(function () {
-  if (!document.querySelector('.reveal.visible, .reveal-left.visible, .reveal-right.visible')) {
-    document.documentElement.className += ' reveal-secours';
-  }
-}, 3000);
-</script>
+<script src="amorce.js"></script>
 </head>
 <body>
 
@@ -333,7 +323,7 @@ setTimeout(function () {
     <div class="depots">
     <div class="depot">
       <div class="depot-carte" data-carte="https://www.google.com/maps?q=Cantine%20BB-LOO%2C%20349%2C%20rue%20Jacques-Cartier%20Sud%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed">
-          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Cantine BB-LOO — afficher la carte Google">
+          <button type="button" class="carte-btn" data-clic="afficherCarte" aria-label="Carte de Cantine BB-LOO — afficher la carte Google">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Afficher la carte</span>
             <em>Google sera contacté seulement à ce moment</em>
@@ -349,7 +339,7 @@ setTimeout(function () {
     </div>
     <div class="depot">
       <div class="depot-carte" data-carte="https://www.google.com/maps?q=Clinique%20Acc%C3%A8s%20Sant%C3%A9%2C%20268%2C%20boul.%20Saint-Luc%2C%20Saint-Jean-sur-Richelieu%2C%20QC&amp;output=embed">
-          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Clinique Accès Santé — afficher la carte Google">
+          <button type="button" class="carte-btn" data-clic="afficherCarte" aria-label="Carte de Clinique Accès Santé — afficher la carte Google">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Afficher la carte</span>
             <em>Google sera contacté seulement à ce moment</em>
@@ -365,7 +355,7 @@ setTimeout(function () {
     </div>
     <div class="depot">
       <div class="depot-carte" data-carte="https://www.google.com/maps?q=Mangeons%20Maison%2C%20353%2C%20rue%20Saint-Jacques%2C%20Napierville%2C%20QC&amp;output=embed">
-          <button type="button" class="carte-btn" onclick="afficherCarte(this)" aria-label="Carte de Mangeons Maison — afficher la carte Google">
+          <button type="button" class="carte-btn" data-clic="afficherCarte" aria-label="Carte de Mangeons Maison — afficher la carte Google">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Afficher la carte</span>
             <em>Google sera contacté seulement à ce moment</em>
@@ -422,20 +412,6 @@ setTimeout(function () {
   <a href="commanditaires.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Merci</span></a>
 </nav>
 <script src="traduction.js"></script>
-<script>
-/* Charge la carte Google seulement quand la personne la demande. Avant le
-   clic, aucune donnee du visiteur ne part vers Google. */
-function afficherCarte(btn) {
-  var boite = btn.parentElement;
-  var f = document.createElement('iframe');
-  f.src = boite.dataset.carte;
-  f.loading = 'lazy';
-  f.title = btn.getAttribute('aria-label');
-  f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-  f.setAttribute('allowfullscreen', '');
-  btn.remove();
-  boite.appendChild(f);
-}
-</script>
+<script src="carte.js"></script>
 </body>
 </html>

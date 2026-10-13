@@ -921,17 +921,7 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
   }
 }
 </script>
-<script>
-/* Marque que le JavaScript fonctionne : sans cette classe, les sections
-   animees restent visibles au lieu de disparaitre. Le minuteur les revele
-   si le script d'animation n'a pas pris le relais apres 3 secondes. */
-document.documentElement.className += ' js';
-setTimeout(function () {
-  if (!document.querySelector('.reveal.visible, .reveal-left.visible, .reveal-right.visible')) {
-    document.documentElement.className += ' reveal-secours';
-  }
-}, 3000);
-</script>
+<script src="amorce.js"></script>
 </head>
 <body>
 
@@ -1038,18 +1028,10 @@ setTimeout(function () {
       <p>Il n'a jamais arrêté depuis. Chaque semaine : nourriture, vêtements adaptés à la saison, couvertures, écoute et un accompagnement vers la thérapie pour ceux qui veulent s'en sortir.</p>
     </div>
 
-    <button class="recit-plus" type="button" aria-expanded="false" aria-controls="recit-texte" onclick="toggleRecit(this)">
+    <button class="recit-plus" type="button" aria-expanded="false" aria-controls="recit-texte" data-clic="toggleRecit">
       <span>Lire plus</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
-
-    <!-- LES NEUF — a activer des que Mike fournit prenoms et photos.
-         Structure prete : dupliquer un .neuf-carte par personne.
-    <h3 class="neuf-titre">Les neuf du premier soir</h3>
-    <div class="neuf">
-      <div class="neuf-carte"><img src="" alt=""><span>Prénom</span></div>
-    </div>
-    -->
   </div>
   </section>
 
@@ -1064,7 +1046,7 @@ setTimeout(function () {
     <div class="founders">
       <div class="founder reveal reveal-d1" data-parallax="0.10">
         <div class="founder-photo">
-          <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
+          <img src="mike.jpg" alt="Michel Couture, président-fondateur de Phé-Nix" data-si-erreur="masquer">
         </div>
         <div class="founder-name">Michel Couture « Mike »</div>
         <div class="founder-role">Président-fondateur</div>
@@ -1073,7 +1055,7 @@ setTimeout(function () {
       </div>
       <div class="founder reveal reveal-d2" data-parallax="-0.06">
         <div class="founder-photo">
-          <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" onerror="this.style.opacity='0'">
+          <img src="guy.jpg" alt="Guy Couture, vice-président-fondateur de Phé-Nix" data-si-erreur="masquer">
         </div>
         <div class="founder-name">Guy Couture</div>
         <div class="founder-role">Vice-président-fondateur</div>
@@ -1350,21 +1332,7 @@ setTimeout(function () {
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script>
-/* Accordeon des services : le panneau atteint par la souris ou le clavier
-   s'ouvre et le reste jusqu'au suivant. Sans JavaScript, le premier reste
-   ouvert et les quatre liens fonctionnent. */
-(function () {
-  var panneaux = document.querySelectorAll('.vitrine-liste li');
-  function ouvrir(li) {
-    for (var k = 0; k < panneaux.length; k++) panneaux[k].classList.toggle('ouvert', panneaux[k] === li);
-  }
-  panneaux.forEach(function (li) {
-    li.addEventListener('mouseenter', function () { ouvrir(li); });
-    li.addEventListener('focusin', function () { ouvrir(li); });
-  });
-})();
-</script>
+<script src="accueil-services.js"></script>
 <!-- NOS SERVICES — fenetre flottante, non bloquante, un service a la fois -->
 <aside class="aide-pop" id="aide-pop" aria-label="Nos services">
   <div class="aide-pop-pile">
@@ -1391,202 +1359,14 @@ setTimeout(function () {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
   </button>
 </aside>
-<script>
-/* La fenetre apparait apres 5 s et presente les services un a la fois, sans
-   jamais bloquer la page. Pour rester discrete :
-   - un seul message visible, remplace en fondu toutes les 10 s ;
-   - un seul tour : apres le troisieme, elle revient au premier et s'arrete ;
-   - la rotation se met en pause tant que la souris ou le clavier est dessus ;
-   - aucune rotation si le visiteur a demande moins d'animations ;
-   - fermee, elle ne revient pas tant que l'onglet reste ouvert. */
-(function () {
-  var pop = document.getElementById('aide-pop');
-  if (!pop) return;
-  var fermee = false;
-  try { fermee = sessionStorage.getItem('aidePopFermee') === '1'; } catch (e) {}
-  if (fermee) { pop.hidden = true; return; }
-
-  var msgs = pop.querySelectorAll('.aide-pop-lien');
-  var n = 0, vus = 1, minuteur = null, pause = false;
-  var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function montrer(k) {
-    for (var i = 0; i < msgs.length; i++) msgs[i].classList.toggle('actif', i === k);
-    n = k;
-  }
-  function suivant() {
-    if (pause) return;
-    if (vus >= msgs.length) { montrer(0); clearInterval(minuteur); minuteur = null; return; }
-    montrer((n + 1) % msgs.length); vus++;
-  }
-
-  setTimeout(function () {
-    pop.classList.add('visible');
-    document.documentElement.classList.add('aide-pop-on');
-    if (!calme && msgs.length > 1) minuteur = setInterval(suivant, 10000);
-  }, 5000);
-
-  pop.addEventListener('mouseenter', function () { pause = true; });
-  pop.addEventListener('mouseleave', function () { pause = false; });
-  pop.addEventListener('focusin', function () { pause = true; });
-  pop.addEventListener('focusout', function () { pause = false; });
-
-  document.getElementById('aide-pop-fermer').addEventListener('click', function () {
-    pop.classList.remove('visible');
-    document.documentElement.classList.remove('aide-pop-on');
-    if (minuteur) clearInterval(minuteur);
-    try { sessionStorage.setItem('aidePopFermee', '1'); } catch (e) {}
-  });
-})();
-</script>
+<script src="accueil-fenetre.js"></script>
 <script src="nav.js"></script>
 <!-- GSAP 3.15.0 héberge ici plutôt que sur un CDN externe : le site ne
      dépend plus d'un serveur tiers qui pourrait changer ou être compromis. -->
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
-<script>
-/* Fondateurs — les deux portraits défilent à des vitesses très légèrement différentes.
-   C'est ce décalage, à peine perceptible, qui donne l'impression de profondeur. */
-(function () {
-  var els = document.querySelectorAll('[data-parallax]');
-  if (!els.length) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.matchMedia && window.matchMedia('(max-width: 860px)').matches) return;
-
-  var enAttente = false;
-  function placer() {
-    var milieu = window.innerHeight / 2;
-    els.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var centre = r.top + r.height / 2;
-      var decalage = (centre - milieu) * parseFloat(el.dataset.parallax);
-      el.style.transform = 'translateY(' + decalage.toFixed(1) + 'px)';
-    });
-    enAttente = false;
-  }
-  window.addEventListener('scroll', function () {
-    if (!enAttente) { enAttente = true; requestAnimationFrame(placer); }
-  }, { passive: true });
-  placer();
-})();
-
-/* Ruban « Sur le terrain » — la piste est dupliquee pour boucler sans raccord */
-(function () {
-  var ruban = document.getElementById('galerie-ruban');
-  var piste = document.getElementById('ruban-piste');
-  if (!ruban || !piste) return;
-
-  // On duplique une seule fois : l'animation va jusqu'a -50 %, donc la seconde
-  // moitie prend exactement la place de la premiere au moment du retour.
-  var originaux = Array.prototype.slice.call(piste.children);
-  originaux.forEach(function (el) {
-    var copie = el.cloneNode(true);
-    copie.setAttribute('aria-hidden', 'true');
-    // La visionneuse est branchee sur les originaux : la copie relaie le clic.
-    copie.addEventListener('click', function () { el.click(); });
-    piste.appendChild(copie);
-  });
-
-  // La duree suit le nombre de photos, sinon un ruban plus long defile plus vite.
-  ruban.style.setProperty('--duree', (originaux.length * 5.5) + 's');
-  piste.style.animationDuration = (originaux.length * 5.5) + 's';
-
-  // Les vidéos ne se téléchargent qu'à l'approche de la galerie : ceux qui ne
-  // descendent pas jusqu'ici n'en paient jamais le poids.
-  function activerVideos() {
-    ruban.querySelectorAll('video[data-src]').forEach(function (v) {
-      v.src = v.dataset.src;
-      v.removeAttribute('data-src');
-      v.play().catch(function () {});
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { activerVideos(); io.disconnect(); }
-    }, { rootMargin: '300px' });
-    io.observe(ruban);
-  } else {
-    activerVideos();
-  }
-})();
-
-/* Entrevue — on ne charge YouTube qu'au clic sur la miniature */
-(function () {
-  var btn = document.getElementById('testi-facade');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    var frame = document.createElement('iframe');
-    frame.src = 'https://www.youtube-nocookie.com/embed/OJ-6xagkNmM?start=947&rel=0&autoplay=1';
-    frame.title = 'Entrevue avec Michel Couture, fondateur de Phé-Nix';
-    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    frame.allowFullscreen = true;
-    btn.replaceWith(frame);
-  });
-})();
-
-/* Hero — le logo reste fixe ; le texte, les boutons et le menu se révèlent au scroll. */
-(function () {
-  var section = document.getElementById('intro-phenix');
-  var hint = document.getElementById('intro-phenix-hint');
-  if (!section) return;
-
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || !window.gsap || !window.ScrollTrigger) {
-    // Sans animation : tout est visible d'emblée.
-    if (hint) hint.style.display = 'none';
-    return;
-  }
-
-  // À partir d'ici le scroll pilote l'affichage : on masque texte + menu au départ.
-  document.body.classList.add('hero-anim');
-
-  var header = document.getElementById('site-header');
-  var content = document.getElementById('hero-content');
-  var scrim = document.getElementById('intro-phenix-scrim');
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  var tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: section,
-      start: 'top top',
-      end: '+=85%',
-      scrub: true,
-      pin: true,
-      anticipatePin: 1
-    }
-  });
-
-  if (hint) tl.to(hint, { opacity: 0, ease: 'none', duration: 0.25 }, 0);
-  if (scrim) tl.to(scrim, { opacity: 1, ease: 'none', duration: 0.45 }, 0.15);
-  if (content) tl.to(content, { opacity: 1, ease: 'none', duration: 0.4 }, 0.4);
-})();
-
-</script>
-<script>
-/* Défileur vertical des régions — une ville à la fois, mouvement lent et discret */
-(function () {
-  var list = document.getElementById('ticker-list');
-  if (!list) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var step = 1.25; // doit correspondre à la hauteur d'item (em)
-  var total = list.children.length - 1; // exclut le clone final
-  var i = 0;
-  setInterval(function () {
-    i++;
-    list.style.transition = 'transform 0.55s cubic-bezier(0.5,0,0.2,1)';
-    list.style.transform = 'translateY(-' + (i * step) + 'em)';
-    if (i === total) {
-      setTimeout(function () {
-        list.style.transition = 'none';
-        list.style.transform = 'translateY(0)';
-        i = 0;
-      }, 570);
-    }
-  }, 1900);
-})();
-</script>
+<script src="accueil-animations.js"></script>
+<script src="accueil-regions.js"></script>
 <nav class="mobile-nav-bar" aria-label="Navigation principale">
   <a href="index.html" class=" active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Accueil</span></a>
   <a href="services.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Services</span></a>
