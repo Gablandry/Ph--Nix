@@ -707,9 +707,18 @@ body.hero-anim .intro-phenix-scrim { opacity: 0; }
 /* sans JavaScript la fenetre est simplement affichee ; avec, elle attend son tour */
 .js .aide-pop:not(.visible) { opacity: 0; transform: translateY(18px); visibility: hidden; pointer-events: none;
                               transition: opacity .3s ease, transform .3s ease, visibility 0s .3s; }
+/* Les quatre messages occupent la meme case : la fenetre garde la hauteur du
+   plus long, et un seul est visible a la fois. Les autres sont retires de la
+   navigation au clavier tant qu'ils sont caches. */
+.aide-pop-pile { display: grid; }
+.aide-pop-pile > .aide-pop-lien { grid-area: 1 / 1; opacity: 0; visibility: hidden;
+                                  transition: opacity .25s ease, visibility 0s .25s; }
+/* le nouveau message n'apparait qu'une fois l'ancien efface : jamais deux textes superposes */
+.aide-pop-pile > .aide-pop-lien.actif { opacity: 1; visibility: visible; transition: opacity .45s ease .3s, visibility 0s .3s; }
 .aide-pop-lien { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start;
                  padding: 18px 46px 18px 18px; text-decoration: none; color: inherit; border-radius: 20px; }
 .aide-pop-lien:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.aide-pop-ic svg { width: 21px; height: 21px; }
 .aide-pop-ic { width: 46px; height: 46px; border-radius: 13px; background: var(--accent); color: #fff;
                display: flex; align-items: center; justify-content: center; }
 .aide-pop strong { display: block; font-size: 15.5px; font-weight: 600; line-height: 1.35;
@@ -1356,36 +1365,86 @@ setTimeout(function () {
   });
 })();
 </script>
-<!-- AIDE ALIMENTAIRE — fenetre flottante, non bloquante -->
-<aside class="aide-pop" id="aide-pop" aria-label="Aide alimentaire">
-  <a href="tel:4384641703" class="aide-pop-lien">
-    <span class="aide-pop-ic" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
-    <span>
-      <strong>Besoin d'aide alimentaire ? Appelez Guy au (438) 464-1703</strong>
-      <em>Aucune condition, aucun formulaire. Montréal Sud-Ouest, Saint-Jean-sur-Richelieu et Longueuil.</em>
-    </span>
-  </a>
+<!-- NOS SERVICES — fenetre flottante, non bloquante, un service a la fois -->
+<aside class="aide-pop" id="aide-pop" aria-label="Nos services">
+  <div class="aide-pop-pile">
+    <a href="depannage-alimentaire.html" class="aide-pop-lien actif">
+      <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+      <span>
+        <strong>Besoin d'aide alimentaire ?</strong>
+        <em>Aucune condition, aucun formulaire. Voyez comment faire une demande.</em>
+      </span>
+    </a>
+    <a href="reference-therapie.html" class="aide-pop-lien">
+      <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+      <span>
+        <strong>Besoin d'un référencement en thérapie ?</strong>
+        <em>En plus ou moins 72 heures, nous vous orientons vers une ressource adaptée.</em>
+      </span>
+    </a>
+    <a href="transport-therapie.html" class="aide-pop-lien">
+      <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3V6a1 1 0 0 1 1-1h11v12h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M15 9h4l3 3v5h-2"/></svg></span>
+      <span>
+        <strong>Besoin d'un transport vers la thérapie ?</strong>
+        <em>Nous conduisons la personne jusqu'à la région où se trouve sa thérapie.</em>
+      </span>
+    </a>
+    <a href="distribution-alimentaire.html" class="aide-pop-lien">
+      <span class="aide-pop-ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <span>
+        <strong>Où trouver un repas chaud ?</strong>
+        <em>Nos distributions dans la rue, plusieurs fois par semaine, sans inscription.</em>
+      </span>
+    </a>
+  </div>
   <button type="button" class="aide-pop-fermer" id="aide-pop-fermer" aria-label="Fermer">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
   </button>
 </aside>
 <script>
-/* La fenetre d'aide apparait apres 2,5 s. Fermee, elle ne revient pas tant
-   que l'onglet reste ouvert. Le stockage peut etre refuse (navigation
-   privee) : dans ce cas elle reapparait simplement a la page suivante. */
+/* La fenetre apparait apres 5 s et presente les services un a la fois, sans
+   jamais bloquer la page. Pour rester discrete :
+   - un seul message visible, remplace en fondu toutes les 10 s ;
+   - un seul tour : apres le quatrieme, elle revient au premier et s'arrete ;
+   - la rotation se met en pause tant que la souris ou le clavier est dessus ;
+   - aucune rotation si le visiteur a demande moins d'animations ;
+   - fermee, elle ne revient pas tant que l'onglet reste ouvert. */
 (function () {
   var pop = document.getElementById('aide-pop');
   if (!pop) return;
   var fermee = false;
   try { fermee = sessionStorage.getItem('aidePopFermee') === '1'; } catch (e) {}
   if (fermee) { pop.hidden = true; return; }
+
+  var msgs = pop.querySelectorAll('.aide-pop-lien');
+  var n = 0, vus = 1, minuteur = null, pause = false;
+  var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function montrer(k) {
+    for (var i = 0; i < msgs.length; i++) msgs[i].classList.toggle('actif', i === k);
+    n = k;
+  }
+  function suivant() {
+    if (pause) return;
+    if (vus >= msgs.length) { montrer(0); clearInterval(minuteur); minuteur = null; return; }
+    montrer((n + 1) % msgs.length); vus++;
+  }
+
   setTimeout(function () {
     pop.classList.add('visible');
     document.documentElement.classList.add('aide-pop-on');
-  }, 2500);
+    if (!calme && msgs.length > 1) minuteur = setInterval(suivant, 10000);
+  }, 5000);
+
+  pop.addEventListener('mouseenter', function () { pause = true; });
+  pop.addEventListener('mouseleave', function () { pause = false; });
+  pop.addEventListener('focusin', function () { pause = true; });
+  pop.addEventListener('focusout', function () { pause = false; });
+
   document.getElementById('aide-pop-fermer').addEventListener('click', function () {
     pop.classList.remove('visible');
     document.documentElement.classList.remove('aide-pop-on');
+    if (minuteur) clearInterval(minuteur);
     try { sessionStorage.setItem('aidePopFermee', '1'); } catch (e) {}
   });
 })();
